@@ -29,12 +29,29 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
-    public function store(Request $request)
+
+
+//    public function store(Request $request)
+//    {
+//
+//        return $request->all();
+//
+//    }
+
+    public function  destroy(Article $article)
     {
+        $this->authorize('update',$article);
 
-        return $request->all();
+        $article->delete();
 
-        dd('in');
+        $article->comments->each->delete();
+
+        alert('文章删除成功','success');
+
+        return redirect('/');
+
+        dd($article);
+
     }
 
 }

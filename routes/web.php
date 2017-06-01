@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('articles/create', 'ArticlesController@create');
     Route::get('categories/{category}/articles/{article}','ArticlesController@show');
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
+    Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
     Route::post('register','UsersController@store');
     Route::get('users/{user}','UsersController@store')->name('users.show');
 

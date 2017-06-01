@@ -5,3 +5,16 @@ a:hover{
   text-decoration: none;
 }
 
+.level{
+  display: flex;
+  align-items: center;
+
+}
+
+.flex{
+  flex: 1;
+}
+
+[v-cloak] {
+  display: none;
+}
