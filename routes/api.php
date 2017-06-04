@@ -19,9 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
-    Route::post('categories/{category}/articles','ArticlesController@store');
+    Route::post('articles','ArticlesController@store');
 
     Route::get('categories','CategoriesController@index');
     Route::get('categories/all','CategoriesController@all');
 
+    Route::get('articles/{category}/{article}/comments','CommentsController@index');
+
+    Route::post('articles/{category}/{article}/comments','CommentsController@store');
 });

@@ -83,6 +83,16 @@ class ApiSerializer extends SerializerAbstract
             'total_pages' => $lastPage,
         ];
 
+        $pagination['links'] = [];
+
+        if ($currentPage > 1) {
+            $pagination['links']['previous'] = $paginator->getUrl($currentPage - 1);
+        }
+
+        if ($currentPage < $lastPage) {
+            $pagination['links']['next'] = $paginator->getUrl($currentPage + 1);
+        }
+
         return ['pagination' => $pagination];
     }
 

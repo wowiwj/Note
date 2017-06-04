@@ -11,6 +11,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <script>
+        window.App = {!!
+            json_encode([
+                'user' => Auth()->user(),
+                'csrfTtoken' => csrf_token(),
+                'signedIn' => Auth::check()
+
+            ]);
+
+        !!};
+    </script>
+
     @yield('styles')
 </head>
 <body>

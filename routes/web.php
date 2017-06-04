@@ -30,8 +30,12 @@ Auth::routes();
 
 Route::group(['namespace' => 'Web'], function () {
     Route::get('articles', 'ArticlesController@index');
+
+    Route::get('articles/{category}', 'ArticlesController@index');
+
+
     Route::get('articles/create', 'ArticlesController@create');
-    Route::get('categories/{category}/articles/{article}','ArticlesController@show');
+    Route::get('articles/{category}/{article}','ArticlesController@show');
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
     Route::post('register','UsersController@store');

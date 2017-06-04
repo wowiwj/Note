@@ -7,7 +7,7 @@
             @foreach($popular_categories as $item)
                 <li class="list-group-item">
                     <span class="badge">{{ $item->articles_count }}</span>
-                    <a href="{{ url("categories/".$item->slug) }}">{{ $item->name }}
+                    <a href="{{ url("articles/".$item->slug) }}">{{ $item->name }}
                     </a>
                 </li>
             @endforeach

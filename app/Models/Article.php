@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Helpers\Fitters\ArticleFitters;
 use App\Helpers\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,7 +31,7 @@ class Article extends Model
 
     public function path()
     {
-        return 'categories/'.$this->category->slug.'/articles/'.$this->id;
+        return '/articles/'.$this->category->slug.'/'.$this->id;
     }
 
     public function setContentAttribute($value)
@@ -51,6 +52,11 @@ class Article extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class,'commentable');
+    }
+
+    public function scopeFilter($query, ArticleFitters $filters)
+    {
+        return $filters->apply($query);
     }
 
 

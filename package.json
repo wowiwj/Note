@@ -22,6 +22,7 @@
   "dependencies": {
     "googlemaps": "^1.12.0",
     "marked": "^0.3.6",
+    "moment": "^2.18.1",
     "simplemde": "^1.11.2",
     "vue-multiselect": "^2.0.0-beta.15",
     "vue-quill-editor": "^2.2.1"

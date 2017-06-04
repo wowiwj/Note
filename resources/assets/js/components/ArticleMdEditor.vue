@@ -76,12 +76,13 @@
 
                 var formData = new FormData(event.target);
                 formData.append('body', this.simplemde.value())
-                formData.append('title', this.title);
+                formData.append('title', this.title)
+                formData.append('category_id',this.category.id)
 
                 console.log(formData)
 
 
-                axios.post('/api/v1/categories/'+this.category.id+'/articles',formData).then((response)=>{
+                axios.post('/api/v1/articles',formData).then((response)=>{
 
                     flash('添加成功','success');
 
@@ -139,7 +140,10 @@
 
     .CodeMirror{
         z-index: 0;
+        height:500px;
     }
+
+    
 
     @media screen and (min-width: 992px) {
 

@@ -8,6 +8,12 @@
 
 
 window.Vue = require('vue');
+Vue.prototype.authorize = function(hander){
+    let user = window.App.user;
+
+    return user ? hander(user) : false;
+
+};
 
 require('./bootstrap');
 
@@ -29,6 +35,8 @@ Vue.component('ArticleMdEditor', require('./components/ArticleMdEditor.vue'));
 Vue.component('parse', require('./components/Parse.vue'));
 Vue.component('ArticleInfo', require('./components/ArticleInfo.vue'));
 Vue.component('ArticleView',require('./pages/Article.vue'));
+Vue.component('Paginator',require('./components/Paginator.vue'));
+Vue.component('Comments',require('./components/Comments.vue'));
 
 window.marked = require('marked');
 

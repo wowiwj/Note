@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Input;
 use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;

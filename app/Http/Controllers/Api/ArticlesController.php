@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,14 +19,18 @@ class ArticlesController extends ApiController
 
     }
 
-    public function store($category_id,Request $request)
+    public function store(Request $request)
     {
-        $category = Category::find($category_id);
-
-        $article = $category->articles()->create([
+        $this->validate($request,[
+            'category_id' => 'required|exists:categories,id',
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        $article = Article::create([
             'title' => $request->title,
             'content' => $request->body,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+            'category_id' => $request->category_id
         ]);
 
         return $article->load('category');

@@ -32,43 +32,45 @@
                     </div>
                 </div>
 
-                <div class="comment">
-                    @foreach($article->comments as $comment)
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="level">
-                                <span class="flex">
-                                    <a href="#">{{ $comment->user->name }}</a>
-                             发表于 {{ $comment->created_at->diffForHumans() }}
-                                </span>
-                                    <a href="#">回复</a>
-                                </div>
+                <comments></comments>
 
-                            </div>
+                {{--<div class="comment">--}}
+                    {{--@foreach($article->comments as $comment)--}}
+                        {{--<div class="panel panel-default">--}}
+                            {{--<div class="panel-heading">--}}
+                                {{--<div class="level">--}}
+                                {{--<span class="flex">--}}
+                                    {{--<a href="#">{{ $comment->user->name }}</a>--}}
+                             {{--发表于 {{ $comment->created_at->diffForHumans() }}--}}
+                                {{--</span>--}}
+                                    {{--<a href="#">回复</a>--}}
+                                {{--</div>--}}
 
-                            <div class="panel-body">
-                                <div class="article">
-                                    <parse :content="{{ $comment->body }}"></parse>
-                                </div>
+                            {{--</div>--}}
 
-                            </div>
-                        </div>
-                    @endforeach
+                            {{--<div class="panel-body">--}}
+                                {{--<div class="article">--}}
+                                    {{--<parse :content="{{ $comment->body }}"></parse>--}}
+                                {{--</div>--}}
 
-                    <form action="{{ route('comments.store',$article->id) }}" method="post">
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endforeach--}}
 
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                        <textarea placeholder="添加留言" class="form-control" name="body" rows="5" >
-                        </textarea>
-                        </div>
+                    {{--<form action="{{ route('comments.store',$article->id) }}" method="post">--}}
 
-                        <div class="form-group">
-                            <button class="btn btn-primary" type="submit">提交</button>
-                        </div>
-                    </form>
+                        {{--{{ csrf_field() }}--}}
+                        {{--<div class="form-group">--}}
+                        {{--<textarea placeholder="添加留言" class="form-control" name="body" rows="5" >--}}
+                        {{--</textarea>--}}
+                        {{--</div>--}}
 
-                </div>
+                        {{--<div class="form-group">--}}
+                            {{--<button class="btn btn-primary" type="submit">提交</button>--}}
+                        {{--</div>--}}
+                    {{--</form>--}}
+
+                {{--</div>--}}
 
             </div>
 
