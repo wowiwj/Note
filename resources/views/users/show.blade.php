@@ -47,7 +47,6 @@
                     @empty
                         <p>There is no activity for this user yet.</p>
                     @endforelse
-
                 </div>
 
             </div>

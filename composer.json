@@ -9,6 +9,7 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "caouecs/laravel-lang": "~3.0",
         "erusev/parsedown": "^1.6",
+        "intervention/image": "^2.3",
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",

@@ -2223,6 +2223,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -2259,7 +2263,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.simplemde = new __WEBPACK_IMPORTED_MODULE_0_simplemde_dist_simplemde_min_js___default.a({
-            toolbar: [],
+            toolbar: [{
+                name: "custom",
+                action: function customFunction(editor) {
+                    var fileBtn = document.getElementById("btn_file");
+                    fileBtn.click();
+
+                    fileBtn.onchange = function () {
+                        var formData = new FormData();
+                        formData.append("file", fileBtn.files[0]);
+                        console.log(fileBtn.files[0]);
+
+                        console.log(1);
+                    };
+
+                    // Add your own code
+                },
+                className: "fa fa-star",
+                title: "Custom Button"
+            }],
             element: document.getElementById("editor"),
             placeholder: '请输入评论内容.',
             autoDownloadFontAwesome: true
@@ -63342,7 +63364,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.newComment
     }
-  }, [_vm._v("提交")])])]) : _c('p', {
+  }, [_vm._v("提交")])]), _vm._v(" "), _c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "id": "btn_file"
+    }
+  })]) : _c('p', {
     staticClass: "text-center"
   }, [_vm._v("\n            Please "), _c('a', {
     attrs: {

@@ -2192,87 +2192,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/NewComment.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_simplemde_dist_simplemde_min_js__ = __webpack_require__("./node_modules/simplemde/dist/simplemde.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_simplemde_dist_simplemde_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_simplemde_dist_simplemde_min_js__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            body: '',
-            simplemde: null
-        };
-    },
-
-    methods: {
-        newComment: function newComment() {
-            var _this = this;
-
-            var value = this.simplemde.value();
-            if (!value) {
-                flash('评论内容不能为空', 'danger');
-                return;
-            }
-            var formData = new FormData(event.target);
-            formData.append('body', value);
-
-            axios.post('/api/v1' + location.pathname + '/comments', formData).then(function (_ref) {
-                var data = _ref.data;
-
-                console.log(data);
-                _this.simplemde.value('');
-                flash('添加评论成功');
-                _this.$emit('created', data.data);
-            });
-        }
-
-    },
-    mounted: function mounted() {
-        this.simplemde = new __WEBPACK_IMPORTED_MODULE_0_simplemde_dist_simplemde_min_js___default.a({
-            toolbar: [],
-            element: document.getElementById("editor"),
-            placeholder: '请输入评论内容.',
-            autoDownloadFontAwesome: true
-        });
-    },
-
-    computed: {
-        signedIn: function signedIn() {
-            return window.App.signedIn;
-        }
-    }
-
-});
+throw new Error("Module build failed: SyntaxError: Unexpected token, expected { (32:6)\n\n\u001b[0m \u001b[90m 30 | \u001b[39m\n \u001b[90m 31 | \u001b[39m\u001b[36mimport\u001b[39m { \u001b[36mdefault\u001b[39m as \u001b[33mSimpleMDE\u001b[39m } from \u001b[32m'simplemde/dist/simplemde.min.js'\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 | \u001b[39m\u001b[36mimport\u001b[39m(\u001b[32m'./modules/plupload.full.min.js'\u001b[39m)\n \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 33 | \u001b[39m\n \u001b[90m 34 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m {\n \u001b[90m 35 | \u001b[39m\u001b[0m\n");
 
 /***/ }),
 
@@ -63342,7 +63264,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.newComment
     }
-  }, [_vm._v("提交")])])]) : _c('p', {
+  }, [_vm._v("提交")])]), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "traditional-uploader"
+    }
+  }, [_vm._v("上传文件")])]) : _c('p', {
     staticClass: "text-center"
   }, [_vm._v("\n            Please "), _c('a', {
     attrs: {

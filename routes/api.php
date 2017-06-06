@@ -27,4 +27,6 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('articles/{category}/{article}/comments','CommentsController@index');
 
     Route::post('articles/{category}/{article}/comments','CommentsController@store');
+
+    Route::post('image/upload','FilesController@ImageUpload');
 });

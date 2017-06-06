@@ -11,6 +11,9 @@
         <div class="form-group">
             <button class="btn btn-primary" @click="newComment">提交</button>
         </div>
+
+        <input type="file" id="btn_file" style="display:none">
+
     </div>
 
     <p class="text-center" v-else>
@@ -26,6 +29,7 @@
 <script>
 
 import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
+
 export default {
 
     data(){
@@ -56,7 +60,34 @@ export default {
     },
     mounted() {
             this.simplemde = new SimpleMDE({
-                toolbar: [],
+                toolbar: [{
+                    name: "custom",
+                    action: function customFunction(editor){
+                        var fileBtn = document.getElementById("btn_file");
+                        fileBtn.click();
+                        
+                        fileBtn.onchange = function () {
+                            var formData = new FormData();
+                            formData.append("file", fileBtn.files[0]);
+
+
+                            axios.post('/api/v1/image/upload',formData).then(({data})=>{
+
+                                editor.value(editor.value()+'![]('+data.data.image+')');
+                                console.log(data);
+
+                            });
+
+                            console.log(fileBtn.files[0]);
+
+                            console.log(1);
+                        }
+
+                        // Add your own code
+                    },
+                    className: "fa fa-star",
+                    title: "Custom Button",
+                }],
                 element: document.getElementById("editor"),
                 placeholder: '请输入评论内容.',
                 autoDownloadFontAwesome: true

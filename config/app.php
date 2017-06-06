@@ -174,6 +174,7 @@ return [
          */
         Barryvdh\Debugbar\ServiceProvider::class,
         Naux\Mail\ SendCloudServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -235,6 +236,7 @@ return [
 
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
