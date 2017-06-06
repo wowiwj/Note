@@ -28,7 +28,7 @@ class ImageUploadHandler
         $this->file = $file;
         $this->checkAllowedExtensionsOrFail();
         $local_image = $this->saveImageToLocal('topic', 1440);
-        return ['filename' => url($local_image)];
+        return ['filename' => $local_image];
     }
 
     protected function checkAllowedExtensionsOrFail()

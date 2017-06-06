@@ -61,7 +61,7 @@ export default {
     mounted() {
             this.simplemde = new SimpleMDE({
                 toolbar: [{
-                    name: "custom",
+                    name: "select image",
                     action: function customFunction(editor){
                         var fileBtn = document.getElementById("btn_file");
                         fileBtn.click();
@@ -85,8 +85,8 @@ export default {
 
                         // Add your own code
                     },
-                    className: "fa fa-star",
-                    title: "Custom Button",
+                    className: "fa fa-image",
+                    title: "select image",
                 }],
                 element: document.getElementById("editor"),
                 placeholder: '请输入评论内容.',
@@ -104,11 +104,11 @@ export default {
 
 <style>
 .newComment .CodeMirror, .CodeMirror-scroll {
-    min-height: 100px;
+    min-height: 80px;
 }
 
 .newComment .CodeMirror {
-    height: 200px;
+    height: 150px;
 }
 </style>
 
