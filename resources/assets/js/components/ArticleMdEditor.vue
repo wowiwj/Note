@@ -89,7 +89,7 @@
                     var article = response.data;
                     console.log(article)
 
-                    var path = 'categories'+'/'+article.category.name+'/articles/'+article.id;
+                    var path = 'articles'+'/'+article.category.name+'/'+article.id;
 
 
                     window.location.href = '/' + path;

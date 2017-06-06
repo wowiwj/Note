@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use App\Helpers\Markdowner;
+use App\Helpers\Traits\Favoritable;
+use App\Helpers\Traits\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+
+    use Favoritable,RecordsActivity;
+
     protected $guarded = [];
 
 
@@ -34,20 +39,6 @@ class Comment extends Model
         $this->body = json_encode($data);
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-
-//        static::created(function ($comment) {
-//            $comment->commentable->increment('replies_count');
-//        });
-//
-//        static::deleted(function ($comment) {
-//            $comment->commentable->decrement('replies_count');
-//        });
-
-
-    }
 
 
 }

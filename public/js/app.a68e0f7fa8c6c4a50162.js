@@ -1941,7 +1941,7 @@ __webpack_require__("./node_modules/vue-multiselect/dist/vue-multiselect.min.css
                 var article = response.data;
                 console.log(article);
 
-                var path = 'categories' + '/' + article.category.name + '/articles/' + article.id;
+                var path = 'articles' + '/' + article.category.name + '/articles/' + article.id;
 
                 window.location.href = '/' + path;
                 console.log(path);

@@ -3,12 +3,16 @@
 namespace App\Models;
 
 
-use App\Helpers\Fitters\ArticleFitters;
+use App\Helpers\Fitters\ArticleFilters;
 use App\Helpers\Markdowner;
+use App\Helpers\Traits\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+
+
+    use RecordsActivity;
     protected $guarded = [];
 
     protected $with = ['category','user','tags'];
@@ -54,7 +58,7 @@ class Article extends Model
         return $this->morphMany(Comment::class,'commentable');
     }
 
-    public function scopeFilter($query, ArticleFitters $filters)
+    public function scopeFilter($query, ArticleFilters $filters)
     {
         return $filters->apply($query);
     }

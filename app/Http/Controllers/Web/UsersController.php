@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Models\Activity;
 use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,15 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
+
+    public function show(User $user){
+
+        return view('users.show',[
+            'user'=>$user,
+            'activities' => Activity::feed($user)
+        ]);
+    }
+
 
     public function store(Request $request)
     {

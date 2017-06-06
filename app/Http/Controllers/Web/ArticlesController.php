@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Helpers\Fitters\ArticleFitters;
+use App\Helpers\Fitters\ArticleFilters;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
@@ -10,14 +10,20 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
-    public function index(Category $category,ArticleFitters $fitters)
+
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
+    public function index(Category $category, ArticleFilters $fitters)
     {
         $articles = $this->getArticles($category,$fitters);
 
         return view('articles.index',compact('articles'));
     }
 
-    protected function getArticles(Category $category,ArticleFitters $fitters)
+    protected function getArticles(Category $category, ArticleFilters $fitters)
     {
         $article = Article::withCount('comments')->latest()->filter($fitters);
 

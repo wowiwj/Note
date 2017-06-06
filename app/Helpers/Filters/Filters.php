@@ -3,7 +3,7 @@ namespace App\Helpers\Fitters;
 
 use Illuminate\Http\Request;
 
-abstract class Fitters{
+abstract class Filters{
 
     protected $request;
 

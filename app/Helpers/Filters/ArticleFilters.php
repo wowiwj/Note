@@ -11,7 +11,7 @@ namespace App\Helpers\Fitters;
 
 use App\Models\User;
 
-class ArticleFitters extends Fitters
+class ArticleFilters extends Filters
 {
     protected $filters = ['by','popular','uncommented',''];
 

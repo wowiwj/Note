@@ -31,15 +31,15 @@ Auth::routes();
 Route::group(['namespace' => 'Web'], function () {
     Route::get('articles', 'ArticlesController@index');
 
+    Route::get('articles/create', 'ArticlesController@create');
+
     Route::get('articles/{category}', 'ArticlesController@index');
 
-
-    Route::get('articles/create', 'ArticlesController@create');
     Route::get('articles/{category}/{article}','ArticlesController@show');
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
     Route::post('register','UsersController@store');
-    Route::get('users/{user}','UsersController@store')->name('users.show');
+    Route::get('users/{user}','UsersController@show')->name('users.show');
 
     Route::post('login','SessionsController@store');
 
