@@ -34,6 +34,8 @@
         <div class="container">
             @yield('content')
         </div>
+
+        @include('layouts.partials.footer')
         <flash message='{{ session('flash.text') }}'
                 level="{{ session('flash.level') }}" >
         </flash>

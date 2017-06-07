@@ -17,11 +17,12 @@ Vue.prototype.authorize = function(hander){
 
 require('./bootstrap');
 
-require('./libs');
+require('./libs/prism');
 
-var VueQuillEditor = require('vue-quill-editor');
+// var VueQuillEditor = require('vue-quill-editor');
+//
+// Vue.use(VueQuillEditor);
 
-Vue.use(VueQuillEditor);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

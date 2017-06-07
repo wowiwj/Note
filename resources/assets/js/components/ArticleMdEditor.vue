@@ -28,9 +28,14 @@
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group" v-show="!isUpdate">
             <div class="col-sm-offset-3 col-sm-9">
-                <input class="btn btn-primary pull-right" id="user-edit-submit" @click="create()" value="添加">
+                <button class="btn btn-primary pull-right" id="user-edit-submit" @click="create()">添加</button>
+            </div>
+        </div>
+        <div class="form-group" v-show="isUpdate">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-primary pull-right" id="user-edit-submit" @click="update()">更新</button>
             </div>
         </div>
 
@@ -51,16 +56,26 @@
 
     export default {
         components: { Multiselect },
+        props:['articleId'],
         data() {
             return {
                 categories:[],
                 category:null,
                 title:'',
+                article:{},
                 simplemde: '',
                 pageImage: ''
             }
         },
+        computed:{
+            isUpdate:function(){
+                return this.articleId != null
+            }
+            
+
+        },
         mounted() {
+
             this.simplemde = new SimpleMDE({
                 toolbar: [{
                     name: "bold",
@@ -118,33 +133,7 @@
                     },
                     {
                         name: "image",
-                        action: function customFunction(editor){
-                            var fileBtn = document.getElementById("btn_file");
-                            fileBtn.click();
-
-                            fileBtn.onchange = function () {
-                                var formData = new FormData();
-                                formData.append("file", fileBtn.files[0]);
-
-
-                                axios.post('/api/v1/image/upload',formData).then(({data})=>{
-
-                                    var pos = editor.codemirror.getCursor();
-                                    editor.codemirror.setSelection(pos, pos);
-                                    editor.codemirror.replaceSelection('![]('+data.data.image+')');
-
-//                        
-                                    console.log(data);
-
-                                });
-
-                                console.log(fileBtn.files[0]);
-
-                                console.log(1);
-                            }
-
-                            // Add your own code
-                        },
+                        action: this.selectImage,
                         className: "fa fa-picture-o",
                         title: "Insert Image",
                     },
@@ -226,21 +215,99 @@
                 },(error)=>{
                     console.log(error);
                 });
+            },
+            update(){
+
+                if (!this.category) {
+                    flash('Category must select one or more.','danger')
+                    return;
+                }
+                var value = this.simplemde.value();
+                console.log(value);
+
+                var formData = new FormData(event.target);
+                formData.append('content', value)
+    
+                formData.append('title', this.title)
+                formData.append('category_id',this.category.id)
+
+
+                console.log(value)
+                console.log(this.title)
+                console.log(this.category.id)
+                console.log(formData)
+
+
+                axios.post('/api/v1/articles/'+this.articleId+'?_method=put',formData).then((response)=>{
+
+                    flash('修改成功','success');
+
+                    var article = response.data;
+                    console.log(response.data)
+
+                    var path = 'articles'+'/'+article.category.name+'/'+article.id;
+
+
+                    window.location.href = '/' + path;
+                    console.log(path);
+
+                },(error)=>{
+                    console.log(error);
+                });
+
+
+            },
+            selectImage(editor){
+                var fileBtn = document.getElementById("btn_file");
+                fileBtn.onchange = this.uploadImage;
+                fileBtn.click();
+            },
+            uploadImage()
+            {
+                var fileBtn = document.getElementById("btn_file");
+                var formData = new FormData();
+                formData.append("file", fileBtn.files[0]);
+                axios.post('/api/v1/image/upload',formData).then(({data})=>{
+
+                    var pos = this.simplemde.codemirror.getCursor();
+                    this.simplemde.codemirror.setSelection(pos, pos);
+                    this.simplemde.codemirror.replaceSelection('![]('+data.data.image+')');
+
+                    console.log(data);
+
+                });
+                console.log(fileBtn.files[0]);
+                console.log(1);
+            },
+            fetchCategories(){
+                axios.get('/api/v1/categories/all').then((response)=>{
+                console.log(response.data);
+                this.categories = response.data.data;
+                },(error)=>{
+                    console.log(error);
+                });
+            },
+            fetchArticle(){
+                axios.get('/api/v1/articles/'+this.articleId).then((response)=>{
+                    console.log(response.data);
+                    this.category = response.data.category;
+                    this.article = response.data;
+                    this.title = this.article.title;
+                    this.simplemde.value(JSON.parse(this.article.body).raw);
+                },(error)=>{
+                    console.log(error);
+                });
+
             }
-
-
         },
         created(){
 
-            axios.get('/api/v1/categories/all').then((response)=>{
-                console.log(response.data);
-                this.categories = response.data.data;
-            },(error)=>{
-                console.log(error);
-            });
-
-
-
+            this.fetchCategories();
+            if(!this.isUpdate){
+                return;
+            }
+            this.fetchArticle();
+            
             console.log('created');
 
 

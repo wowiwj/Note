@@ -89,12 +89,28 @@
 
 }
 
+.delete-article{
+
+  i[class*="ion-"]{
+    color: red;
+    font-size: 18px;
+
+  }
+  background: transparent;
+  border: 0;
+  padding: 0;
+  padding-left: 15px;
+
+}
+
 .article{
 
   img{
 
     max-width: 100%;
   }
+
+
 
 
 }

@@ -15,8 +15,13 @@ class ArticlesController extends ApiController
     {
         parent::__construct();
 
-        $this->middleware('auth:api');
+        $this->middleware('auth:api',['except' => 'show']);
 
+    }
+
+    public function show(Article $article)
+    {
+        return $article;
     }
 
     public function store(Request $request)
@@ -39,5 +44,19 @@ class ArticlesController extends ApiController
         return $this->respondWithMessage('成功');
 
 
+    }
+
+
+    public function update(Article $article,Request $request)
+    {
+        $this->validate($request,[
+            'category_id' => 'required|exists:categories,id',
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+        $this->authorize('update',$article);
+        $article->update($request->all());
+        return $article;
+        
     }
 }

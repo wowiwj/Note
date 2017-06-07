@@ -19,6 +19,40 @@ a:hover{
   display: none;
 }
 
-img{
+
+img {
   max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+img:not(.emoji) {
+  border: 1px solid #ddd;
+  max-width: 100%;
+  box-shadow: 0 0 30px #ccc;
+  -moz-box-shadow: 0 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+i[class*="ion-"]{
+
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  //height: 60px;
+  background-color: #8eb4cb;
 }

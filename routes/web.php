@@ -33,6 +33,8 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::get('articles/create', 'ArticlesController@create');
 
+    Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
+
     Route::get('articles/{category}', 'ArticlesController@index');
 
     Route::get('articles/{category}/{article}','ArticlesController@show');

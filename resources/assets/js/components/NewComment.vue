@@ -110,6 +110,13 @@ export default {
 .newComment .CodeMirror {
     height: 150px;
 }
+
+.newComment .editor-toolbar{
+    height: 35px;
+}
+.newComment .editor-toolbar:before {
+    margin-bottom: 0;
+}
 </style>
 
 

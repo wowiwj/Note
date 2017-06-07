@@ -7,7 +7,7 @@
                     <a href="#">{{ comment.user.name }}</a>
                     发表于 {{ ago }}
                 </span>
-                <a href="#">回复</a>
+                <a href="#"><i class="ion-reply"></i></a>
             </div>
 
         </div>
@@ -33,7 +33,7 @@
             body : function(){
                 var comment = JSON.parse(this.comment.body)
 
-                return comment.html
+                return marked(comment.raw)
 
             },
             ago : function(){

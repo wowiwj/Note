@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::post('articles','ArticlesController@store');
+    Route::get('articles/{article}','ArticlesController@show');
+    Route::put('articles/{article}','ArticlesController@update');
 
     Route::get('categories','CategoriesController@index');
     Route::get('categories/all','CategoriesController@all');
