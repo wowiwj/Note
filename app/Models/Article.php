@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Helpers\Fitters\ArticleFilters;
+use App\Helpers\Handler\ImageUploadHandler;
 use App\Helpers\Markdowner;
 use App\Helpers\Traits\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
@@ -40,12 +41,33 @@ class Article extends Model
 
     public function setContentAttribute($value)
     {
+
+        $html = (new Markdowner)->convertMarkdownToHtml($value);
         $data = [
             'raw'  => $value,
-            'html' => (new Markdowner)->convertMarkdownToHtml($value)
+            'html' => $html
         ];
 
+        $this->makeArticleImage($html);
+
         $this->body = json_encode($data);
+    }
+
+    public function makeArticleImage($html){
+
+        $pattern = "/[img|IMG].*?src=['|\"](.*?(?:[.gif|.jpg]))['|\"].*?[\/]?>/";
+        preg_match($pattern,$html,$match);
+
+        // 压缩缩略图
+        // todo
+        if (empty($match) || is_null($match[1])){
+            return;
+        }
+
+        $article_image = (new ImageUploadHandler())
+                        ->makeArticleImage($match[1],'');
+
+        $this->page_image = $article_image;
     }
 
     public function replies()

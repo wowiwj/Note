@@ -23,7 +23,7 @@
         },
         created() {
 
-            this.articleInfo = this.info.html.replace(/<[^>]+>/g,"");
+            this.articleInfo = this.info.html.replace(/<[^>]+>/g,"").substr(0,80)+'...';
         }
     }
 </script>

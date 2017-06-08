@@ -178,7 +178,8 @@
                 ],
                 element: document.getElementById("editor"),
                 placeholder: '请输入文章内容.',
-                autoDownloadFontAwesome: true
+                autoDownloadFontAwesome: true,
+                spellChecker: false
             })
         },
         methods: {
@@ -245,7 +246,7 @@
                     var article = response.data;
                     console.log(response.data)
 
-                    var path = 'articles'+'/'+article.category.name+'/'+article.id;
+                    var path = 'articles'+'/'+article.category.slug+'/'+article.id;
 
 
                     window.location.href = '/' + path;

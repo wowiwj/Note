@@ -34,7 +34,7 @@ class CategoriesController extends Controller
 
         Category::create($request->only('name','slug'));
 
-        alert('分类添加成功');
+        alert('分类添加成功','success');
         return back();
 
     }

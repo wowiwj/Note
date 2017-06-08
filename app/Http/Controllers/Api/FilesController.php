@@ -29,7 +29,7 @@ class FilesController extends ApiController
         $result = $imageHander->uploadImage($file);
 
         return $this->respondWithSuccess([
-            'image' => url($result['filename'])
+            'image' => '/'.$result['filename']
         ]);
     }
 }

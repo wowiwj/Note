@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('replies_count')->default(0);
             $table->unsignedInteger('views_count')->default(0);
             $table->string('title');
-            $table->string('page_image')->nullanle();
+            $table->string('page_image')->nullable();
             $table->text('body');
 
             // published_at 为空的话默认为草稿

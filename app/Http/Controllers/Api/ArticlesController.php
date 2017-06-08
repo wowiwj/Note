@@ -54,6 +54,7 @@ class ArticlesController extends ApiController
             'title' => 'required',
             'content' => 'required'
         ]);
+
         $this->authorize('update',$article);
         $article->update($request->all());
         return $article;

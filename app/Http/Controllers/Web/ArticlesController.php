@@ -38,6 +38,7 @@ class ArticlesController extends Controller
     {
 
         $article->load('comments');
+        $article->increment('views_count');
 
         return view('articles.show',compact('article'));
 
@@ -48,14 +49,6 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
-
-
-//    public function store(Request $request)
-//    {
-//
-//        return $request->all();
-//
-//    }
 
 
     public function edit(Article $article)

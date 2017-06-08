@@ -35,15 +35,22 @@
             @yield('content')
         </div>
 
-        @include('layouts.partials.footer')
+
         <flash message='{{ session('flash.text') }}'
                 level="{{ session('flash.level') }}" >
         </flash>
+
+        @include('layouts.partials.footer')
 
     </div>
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 
     @yield('scripts')
 </body>

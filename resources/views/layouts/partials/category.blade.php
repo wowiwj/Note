@@ -4,13 +4,15 @@
     <div class="panel-body">
         <ul class="list-group">
 
-            @foreach($popular_categories as $item)
+            @forelse($popular_categories as $item)
                 <li class="list-group-item">
                     <span class="badge">{{ $item->articles_count }}</span>
                     <a href="{{ url("articles/".$item->slug) }}">{{ $item->name }}
                     </a>
                 </li>
-            @endforeach
+            @empty
+                <li class="empty-block">没有分类数据</li>
+            @endforelse
 
         </ul>
     </div>

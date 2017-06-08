@@ -9,7 +9,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-primary" @click="newComment">提交</button>
+            <button class="btn btn-primary pull-right" @click="newComment">提交</button>
         </div>
 
         <input type="file" id="btn_file" style="display:none">
@@ -90,7 +90,8 @@ export default {
                 }],
                 element: document.getElementById("editor"),
                 placeholder: '请输入评论内容.',
-                autoDownloadFontAwesome: true
+                autoDownloadFontAwesome: true,
+                spellChecker: false
             })
     },
     computed: {

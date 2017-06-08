@@ -49,13 +49,38 @@ class ImageUploadHandler
         $safeName  = $filename ? :str_random(10) . '.' . $extension;
         $this->file->move($destinationPath, $safeName);
         if ($this->file->getClientOriginalExtension() != 'gif') {
-            $img = Image::make($destinationPath . '/' . $safeName);
-            $img->resize($resize, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img = $this->makeSize($destinationPath . '/' . $safeName,$resize);
             $img->save();
         }
         return $folderName .'/'. $safeName;
+    }
+
+    public function makeArticleImage($path,$savePath){
+
+        $dirName = dirname($path);
+        $baseName = basename($path);
+        $savePath = substr($dirName.'/'.'tn-'.$baseName,1);
+        try {
+            $this->makeSize(public_path($path), 600,400)
+                ->save($savePath);
+        }catch (\Exception $e){
+            return $path;
+        }
+        return '/'.$savePath;
+    }
+
+
+    private function makeSize($path,$width,$height = null){
+
+        $img = Image::make($path);
+        if ($height != null){
+            $img->fit($width,$height);
+            return $img;
+        }
+        $img->resize($width, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+        return $img;
     }
 }
