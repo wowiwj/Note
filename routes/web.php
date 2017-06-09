@@ -42,6 +42,9 @@ Route::group(['namespace' => 'Web'], function () {
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
     Route::post('register','UsersController@store');
     Route::get('users/{user}','UsersController@show')->name('users.show');
+    Route::get('users/{user}/edit','UsersController@edit')->name('users.edit');
+    Route::get('users/{user}/editAvatar','UsersController@editAvatar')->name('users.editAvatar');
+    Route::put('users/{user}','UsersController@update')->name('users.update');
 
     Route::post('login','SessionsController@store');
 

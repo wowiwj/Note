@@ -39,6 +39,7 @@ Vue.component('ArticleInfo', require('./components/ArticleInfo.vue'));
 Vue.component('ArticleView',require('./pages/Article.vue'));
 Vue.component('Paginator',require('./components/Paginator.vue'));
 Vue.component('Comments',require('./components/Comments.vue'));
+Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));
 
 window.marked = require('marked');
 

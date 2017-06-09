@@ -15,3 +15,10 @@ function alert($message=null,$level='success')
     return $flash->message($message,$level);
 
 }
+
+
+
+function navIsActive($name)
+{
+    return Route::currentRouteName() == $name ? 'active' : '';
+}

@@ -101,6 +101,7 @@
                         className: "fa fa-header",
                         title: "Heading",
                     },
+                    "|",
                     {
                         name: "code",
                         action: SimpleMDE.toggleCodeBlock,
@@ -125,6 +126,8 @@
                         className: "fa fa-list-ol",
                         title: "Numbered List",
                     },
+                    "|"
+                    ,
                     {
                         name: "link",
                         action: SimpleMDE.drawLink,
@@ -149,6 +152,8 @@
                         className: "fa fa-minus",
                         title: "Insert Horizontal Line",
                     },
+                    "|",
+
                     {
                         name: "preview",
                         action: SimpleMDE.togglePreview,

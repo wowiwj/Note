@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('page_image')->nullable();
             $table->text('body');
+            $table->boolean('is_original')->default(false)->comment('是否为原创');
 
             // published_at 为空的话默认为草稿
             $table->timestamp('published_at')->nullable();

@@ -23,6 +23,8 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('articles/{article}','ArticlesController@show');
     Route::put('articles/{article}','ArticlesController@update');
 
+    Route::post('uploadAvatar','UsersController@uploadAvatar');
+
     Route::get('categories','CategoriesController@index');
     Route::get('categories/all','CategoriesController@all');
 

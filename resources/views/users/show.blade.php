@@ -24,10 +24,10 @@
 
                         <hr>
                         <p class="text-center">个新签名:嘻嘻嘻，哈哈哈</p>
-                        {{--@can('update',$user)--}}
+                        @can('update',$user)
                             <hr>
-                            <a class="btn btn-primary btn-block" href="#">编辑个人资料</a>
-                        {{--@endcan--}}
+                            <a class="btn btn-primary btn-block" href="{{ route('users.edit',$user) }}">编辑个人资料</a>
+                        @endcan
 
                     </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Activity;
 use Auth;
 use App\Models\User;
@@ -20,6 +21,24 @@ class UsersController extends Controller
         ]);
     }
 
+
+    public function edit(User $user){
+        return view('users.edit',compact('user'));
+    }
+
+    public function editAvatar(User $user){
+        return view('users.editAvatar',compact('user'));
+    }
+
+    public function update(User $user,UpdateUserRequest $request){
+
+        $this->authorize('update',$user);
+
+        $request->updateUser($user);
+        alert('修改成功','success');
+        return back();
+
+    }
 
     public function store(Request $request)
     {
