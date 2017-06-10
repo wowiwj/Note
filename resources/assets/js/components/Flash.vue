@@ -32,7 +32,7 @@
 
         },
         methods:{
-            flash(message,level){
+            flash(message,level='success'){
                 this.body = message;
                 this.showLevel = level;
                 this.show = true;

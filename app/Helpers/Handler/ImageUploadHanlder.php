@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers\Handler;
+use App\Models\User;
 use Image;
 use Auth;
 
@@ -9,6 +10,19 @@ class ImageUploadHandler
 
     protected $file;
     protected $allowed_extensions = ["png", "jpg", "gif", 'jpeg'];
+
+
+
+    public function avatarPath(){
+
+        return "uploads/avatars/". date("Ym", time());
+    }
+
+    public function imagePath(){
+
+        return 'uploads/images/' . date("Ym", time()) .'/'.date("d", time()) .'/'. Auth::user()->id;
+    }
+
 
     /**
      * @param UploadedFile $file
@@ -20,7 +34,7 @@ class ImageUploadHandler
         $this->file = $file;
         $this->checkAllowedExtensionsOrFail();
         $avatar_name = $user->id . '_' . time() . '.' . $file->getClientOriginalExtension() ?: 'png';
-        $this->saveImageToLocal('avatar', 380, $avatar_name);
+        $this->saveImageToLocal('avatar', 400, $avatar_name);
         return ['filename' => $avatar_name];
     }
     public function uploadImage($file)
@@ -42,8 +56,8 @@ class ImageUploadHandler
     protected function saveImageToLocal($type, $resize, $filename = '')
     {
         $folderName = ($type == 'avatar')
-            ? 'uploads/avatars'
-            : 'uploads/images/' . date("Ym", time()) .'/'.date("d", time()) .'/'. Auth::user()->id;
+            ? $this->avatarPath()
+            : $this->imagePath();
         $destinationPath = public_path() . '/' . $folderName;
         $extension = $this->file->getClientOriginalExtension() ?: 'png';
         $safeName  = $filename ? :str_random(10) . '.' . $extension;

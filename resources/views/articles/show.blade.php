@@ -54,10 +54,17 @@
                     </div>
                 </div>
                 <comments></comments>
+
+
+
             </div>
 
             <div class="col-md-3 hidden-sm hidden-xs">
-                @include('articles.partials.user')
+                <div class="warpper">
+                    @include('articles.partials.user')
+
+                </div>
+
                 @include('layouts.partials.category')
             </div>
 
@@ -66,5 +73,21 @@
     </article-view>
 
 
+
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 450) {
+                $('.warpper').addClass('fixed');
+            } else {
+                $('.warpper').removeClass('fixed');
+            }
+        });
+
+    </script>
 
 @endsection

@@ -12,7 +12,10 @@
                         <div class="media">
 
                             <div class="media-left">
-                                <img class="avatar img-thumbnail" style="max-width: 80px" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/200/h/200" alt="">
+                                <a href="{{ route('users.editAvatar',$user) }}">
+                                    <img class="avatar img-thumbnail" style="max-width: 80px" src="{{ $user->avatar }}" alt="">
+                                </a>
+
                             </div>
                             <div class="media-body">
                                 <h3>{{ $user->name }}</h3>
@@ -23,7 +26,7 @@
                         </div>
 
                         <hr>
-                        <p class="text-center">个新签名:嘻嘻嘻，哈哈哈</p>
+                        <p class="text-center">个新签名:{{ $user->signature }}</p>
                         @can('update',$user)
                             <hr>
                             <a class="btn btn-primary btn-block" href="{{ route('users.edit',$user) }}">编辑个人资料</a>

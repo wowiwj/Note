@@ -2,6 +2,8 @@
 
   padding: 10px;
   .article-intro{
+
+
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -33,6 +35,7 @@
         h4{
           padding: 10px;
           padding-left: 0;
+          margin: 10px;
         }
       }
     }
@@ -42,8 +45,19 @@
     .describe{
       flex: 9;
       margin-left: auto;
-      h4{
-        margin: 0;
+      .title{
+        margin-bottom: 10px;
+        color: #555;
+
+
+
+      }
+
+      a:hover{
+
+        .title{
+          color: #0000cc;
+        }
 
       }
 
@@ -101,7 +115,8 @@
           margin-bottom: 5px;
           i {
             padding-top: 5px;
-            padding-right: 10px;
+            padding-right: 3px;
+            margin-right: 0;
 
           }
         }
@@ -156,11 +171,6 @@
 }
 
 .article{
-
-  img{
-
-    max-width: 100%;
-  }
 
   .infos{
     h1{

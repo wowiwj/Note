@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Helpers\Handler\ImageUploadHandler;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends ApiController
 {
@@ -15,19 +16,29 @@ class UsersController extends ApiController
         $this->middleware('auth:api');
     }
 
-    public function uploadAvatar(User $user,Request $request){
+    public function uploadAvatar(Request $request){
 
-        return $user;
+        $this->validate($request,[
+            'img' => 'required|image'
+
+        ]);
+
+        $user = Auth::user();
+
         $imageHander = new ImageUploadHandler();
 
-        if ($request->hasFile('img')){
 
-            $avatar = $request->file('img');
-            return $imageHander->uploadAvatar($avatar,$user);
+        $avatar = $request->file('img');
+        $result = $imageHander->uploadAvatar($avatar,$user);
 
+        $avatarPath = '/'.$imageHander->avatarPath().'/'.$result['filename'];
 
-        }
-        return $this->respondWithSuccess('哈哈');
+        $user->avatar = $avatarPath;
+        $user->save();
+
+        return $this->respondWithSuccess([
+            'avatar' => $avatarPath
+        ]);
 
     }
 }

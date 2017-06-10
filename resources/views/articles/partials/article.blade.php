@@ -4,7 +4,7 @@
 
         <div class="describe">
             <a href="{{ $article->path() }}">
-                <h4>{{ $article->title }}</h4>
+                <h4 class="title">{{ $article->title }}</h4>
             </a>
             <div class="info">
                 <article-info :info="{{ $article->body }}"></article-info>

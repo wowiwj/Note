@@ -1,12 +1,15 @@
 
 // Body
-$body-bg: #f5f8fa;
+//$body-bg: #f5f8fa;
+$body-bg: #F1F3FA;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
+$list-group-border: #e7eaf1;
+$navbar-default-border: #e7eaf1;
+//$panel-default-border: $laravel-border-color;
+$panel-default-border: #e7eaf1;
+
 $panel-inner-border: $laravel-border-color;
 
 // Brands
@@ -24,7 +27,8 @@ $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
-$navbar-default-bg: #fff;
+//$navbar-default-bg: #fff;
+$navbar-default-bg: rgba(255,255,255,0.9);
 
 // Buttons
 $btn-default-color: $text-color;

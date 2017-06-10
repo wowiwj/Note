@@ -3,8 +3,6 @@
 <div>
     <div class="newComment" v-if="signedIn">
         <div class="form-group" >
-            <!--<textarea v-model="body" placeholder="添加留言" class="form-control" name="body" rows="5" >-->
-            <!--</textarea>-->
             <textarea id="editor"></textarea>
         </div>
 
@@ -55,17 +53,15 @@ export default {
                 flash('添加评论成功');
                 this.$emit('created',data.data);
             });
-        }
-
-    },
-    mounted() {
+        },
+        initmde(){
             this.simplemde = new SimpleMDE({
                 toolbar: [{
                     name: "select image",
                     action: function customFunction(editor){
                         var fileBtn = document.getElementById("btn_file");
                         fileBtn.click();
-                        
+
                         fileBtn.onchange = function () {
                             var formData = new FormData();
                             formData.append("file", fileBtn.files[0]);
@@ -76,9 +72,14 @@ export default {
                                 editor.value(editor.value()+'![]('+data.data.image+')');
                                 console.log(data);
 
+                            },({error})=>{
+
+                                flash('添加失败,请确认上传的为jpg,png,gif格式','danger');
+                                fileBtn.value = '';
+                                return;
                             });
 
-                            console.log(fileBtn.files[0]);
+                            console.log(fileBtn);
 
                             console.log(1);
                         }
@@ -93,6 +94,18 @@ export default {
                 autoDownloadFontAwesome: true,
                 spellChecker: false
             })
+
+        }
+
+    },
+    mounted() {
+        this.initmde()
+
+        window.events.$on('reply',(user)=>{
+            this.simplemde.value('@'+user.name+' ');
+        });
+
+
     },
     computed: {
         signedIn() {

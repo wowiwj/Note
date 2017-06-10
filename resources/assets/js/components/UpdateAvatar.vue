@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <a class="btn" @click="toggleShow">设置头像</a>
+
         <my-upload field="img"
                    @crop-success="cropSuccess"
                    @crop-upload-success="cropUploadSuccess"
@@ -13,7 +13,11 @@
                    :params="params"
                    :headers="headers"
                    img-format="png"></my-upload>
+
         <img :src="imgDataUrl">
+        <p>
+            <a class="btn btn-primary" @click="toggleShow">设置头像</a>
+        </p>
 
     </div>
 
@@ -24,7 +28,7 @@
     import myUpload from 'vue-image-crop-upload/upload-2.vue';
 
     export default{
-        props:['avatarUrl'],
+        props:['avatar'],
         data(){
             return{
                 show: false,
@@ -33,9 +37,11 @@
                     name: 'avatar'
                 },
                 headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRF-TOKEN": window.App.csrfTtoken,
                     smail: '*_~'
                 },
-                imgDataUrl: this.avatarUrl
+                imgDataUrl: this.avatar
             }
 
         },
@@ -83,3 +89,15 @@
 
     }
 </script>
+
+<style scoped>
+
+    img{
+
+        width: 150px;
+        border-radius: 50%;
+    }
+
+
+
+</style>

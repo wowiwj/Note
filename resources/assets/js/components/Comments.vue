@@ -2,11 +2,20 @@
 
     <div class="comment">
 
-        <div v-for="(comment,index) in items">
-            <comment :comment="comment"></comment>
-        </div>
-        <div class="text-center">
-            <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                评论
+            </div>
+            <div class="panel-body comment-contents">
+                <div :id="index" class="comment-content" v-for="(comment,index) in items">
+                    <comment :comment="comment"></comment>
+                </div>
+                <div class="text-center">
+                    <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+                </div>
+            </div>
+
         </div>
         
         <new-comment @created="add"></new-comment>
@@ -43,6 +52,9 @@
         },
         updated(){
             Prism.highlightAll()
+
+            $('[data-toggle="tooltip"]').tooltip()
+
         },
         methods:{
             fetch(page){

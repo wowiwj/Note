@@ -4,17 +4,20 @@
         <div class="media">
 
             <div class="media-left">
-                <img class="avatar img-thumbnail" style="max-width: 80px" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/200/h/200" alt="">
+                <a href="{{ route('users.show',$article->user) }}">
+                    <img class="avatar img-thumbnail" style="max-width: 80px" src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}">
+                </a>
+
             </div>
             <div class="media-body">
                 <h3>{{ $article->user->name }}</h3>
-                <p>嘻嘻嘻，哈哈哈</p>
+                <p> 描述: {{ $article->user->signature }}</p>
             </div>
         </div>
-        {{--@can('update',$user)--}}
-        <hr>
-        <a class="btn btn-primary btn-block" href="#">编辑个人资料</a>
-        {{--@endcan--}}
+        @can('update',$article->user)
+            <hr>
+            <a class="btn btn-primary btn-block" href="{{ route('users.edit',$article->user) }}">编辑个人资料</a>
+        @endcan
 
     </div>
 

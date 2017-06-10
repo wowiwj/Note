@@ -14,8 +14,9 @@
                 </div>
 
                 <div class="panel-body">
-
-                    <upload-avatar></upload-avatar>
+                    <div class="text-center">
+                        <upload-avatar :avatar="'{{  $user->avatar }}'"></upload-avatar>
+                    </div>
 
                 </div>
 

@@ -1,24 +1,38 @@
 <template>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="level">
-                <span class="flex">
-                    <a href="#">{{ comment.user.name }}</a>
-                    发表于 {{ ago }}
-                </span>
-                <a href="#"><i class="ion-reply"></i></a>
-            </div>
 
+        <div class="media">
+            <div class="media-left">
+                <a :href="profile">
+                    <img class="media-object avatar img-thumbnail" :src="comment.user.avatar" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="media-heading">
+                    <div>
+                        <a :href="profile">{{ comment.user.name }}</a>
+                        <span class="pull-right operation">
+
+                            <a href="javascript:;" @click="deleteComment">
+                                <i class="ion-trash-b"></i>
+                            </a>
+                            <a href="javascript:;" @click="replyUser"><i class="ion-reply"></i></a>
+                        </span>
+
+                    </div>
+                    <div class="time">发表于 <span data-toggle="tooltip" data-placement="top" :title="this.comment.created_at">{{ ago }}</span></div>
+
+
+                </div>
+
+
+
+                <div class="comment-body">
+                    <div class="markdown" v-html="body"></div>
+                </div>
+            </div>
         </div>
 
-        <div class="panel-body">
-            <div class="comment">
-                <div class="markdown" v-html="body"></div>
-            </div>
-
-        </div>
-    </div>
 
 </template>
 
@@ -38,7 +52,24 @@
             },
             ago : function(){
 
-                return moment(this.comment.created_at).fromNow()+'...';
+                return moment(this.comment.created_at).fromNow();
+            },
+            profile : function () {
+                return '/users/'+ this.comment.user.id;
+
+            }
+
+        },
+        methods: {
+            replyUser(){
+
+                window.events.$emit('reply',this.comment.user);
+
+            },
+            deleteComment(){
+                alert('deletecommet');
+
+
             }
 
         }

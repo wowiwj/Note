@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Service\Mention;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\Comment;
@@ -22,7 +23,7 @@ class CommentsController extends ApiController
 
     public function index($category,Article $article)
     {
-        $comments = $article->comments()->paginate(15);
+        $comments = $article->comments()->paginate(20);
         return $this->respondWithPaginator($comments,new CommentTransformer);
     }
 
@@ -31,9 +32,16 @@ class CommentsController extends ApiController
         $this->validate($request,[
             'body' => 'required'
         ]);
+
+
+        $mention = new Mention();
+        $parsed_body = $mention->parse($request->body);
+
+
+
         
         $comment = $article->comments()->create([
-            'content' => $request->body,
+            'content' => $parsed_body,
             'user_id' => Auth::user()->id
         ]);
 
