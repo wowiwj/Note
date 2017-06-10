@@ -13,10 +13,10 @@
                         <a :href="profile">{{ comment.user.name }}</a>
                         <span class="pull-right operation">
 
-                            <a href="javascript:;" @click="deleteComment">
+                            <a v-if="canDelete" href="javascript:;" @click="deleteComment">
                                 <i class="ion-trash-b"></i>
                             </a>
-                            <a href="javascript:;" @click="replyUser"><i class="ion-reply"></i></a>
+                            <a v-if="canReplyUser" href="javascript:;" @click="replyUser"><i class="ion-reply"></i></a>
                         </span>
 
                     </div>
@@ -57,8 +57,17 @@
             profile : function () {
                 return '/users/'+ this.comment.user.id;
 
-            }
+            },
+            canReplyUser(){
 
+                return window.App.signedIn;
+
+
+            },
+            canDelete(){
+                return window.App.signedIn && this.comment.user.id == window.App.user.id;
+
+            }
         },
         methods: {
             replyUser(){

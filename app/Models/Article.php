@@ -5,7 +5,7 @@ namespace App\Models;
 
 use App\Helpers\Fitters\ArticleFilters;
 use App\Helpers\Handler\ImageUploadHandler;
-use App\Helpers\Markdowner;
+use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
 

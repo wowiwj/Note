@@ -26,9 +26,12 @@ Route::get('/demo', function () {
     //return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::group(['namespace' => 'Web'], function () {
+
+
+
     Route::get('articles', 'ArticlesController@index');
 
     Route::get('articles/create', 'ArticlesController@create');
@@ -40,13 +43,13 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('articles/{category}/{article}','ArticlesController@show');
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
-    Route::post('register','UsersController@store');
+    Route::post('register','UsersController@store')->name('register');
     Route::get('users/{user}','UsersController@show')->name('users.show');
     Route::get('users/{user}/edit','UsersController@edit')->name('users.edit');
     Route::get('users/{user}/editAvatar','UsersController@editAvatar')->name('users.editAvatar');
     Route::put('users/{user}','UsersController@update')->name('users.update');
 
-    Route::post('login','SessionsController@store');
+    Route::post('login','SessionsController@store')->name('login');
 
     Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'UsersController@verify']);
 
@@ -63,6 +66,10 @@ Route::group(['namespace' => 'Web'], function () {
 
 
 });
+
+
+Auth::routes();
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
