@@ -27,6 +27,8 @@ Route::get('/demo', function () {
 });
 
 
+Auth::routes();
+
 
 Route::group(['namespace' => 'Web'], function () {
 
@@ -68,7 +70,7 @@ Route::group(['namespace' => 'Web'], function () {
 });
 
 
-Auth::routes();
+
 
 
 
