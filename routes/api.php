@@ -32,5 +32,7 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::post('articles/{category}/{article}/comments','CommentsController@store');
 
+    Route::delete('comments/{comment}','CommentsController@destroy');
+
     Route::post('image/upload','FilesController@ImageUpload');
 });

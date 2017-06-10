@@ -9,7 +9,7 @@
             </div>
             <div class="panel-body comment-contents">
                 <div :id="index" class="comment-content" v-for="(comment,index) in items">
-                    <comment :comment="comment"></comment>
+                    <comment :index="index" :comment="comment" @commentDelete="removeComment"></comment>
                 </div>
                 <div class="text-center">
                     <paginator :dataSet="dataSet" @changed="fetch"></paginator>
@@ -78,6 +78,11 @@
             },
             add(data){
                 this.items.push(data);
+
+            },
+            removeComment(index){
+
+                this.items.splice(index, 1);
 
             }
 

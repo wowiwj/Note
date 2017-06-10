@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Helpers\Service\Mention;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\Comment;
@@ -37,8 +38,6 @@ class CommentsController extends ApiController
         $mention = new Mention();
         $parsed_body = $mention->parse($request->body);
 
-
-
         
         $comment = $article->comments()->create([
             'content' => $parsed_body,
@@ -46,5 +45,15 @@ class CommentsController extends ApiController
         ]);
 
         return $this->respondWithItem($comment,new CommentTransformer);
+    }
+
+    public function destroy(Comment $comment){
+
+         $this->authorize('update',$comment);
+
+         $comment->delete();
+
+         return $this->respondWithMessage('删除成功');
+
     }
 }

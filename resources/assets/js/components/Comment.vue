@@ -42,7 +42,7 @@
     moment.locale('zh-cn'); 
 
     export default{
-        props: ['comment'],
+        props: ['comment','index'],
         computed: {
             body : function(){
                 var comment = JSON.parse(this.comment.body)
@@ -67,7 +67,19 @@
 
             },
             deleteComment(){
-                alert('deletecommet');
+
+
+                axios.delete('/api/v1/comments/'+this.comment.id).then(({data})=>{
+
+                    flash('删除成功','success');
+
+                    this.$emit('commentDelete',this.index);
+
+                },({error})=>{
+                    flash('删除失败','danger');
+
+                    console.log(error);
+                });
 
 
             }
