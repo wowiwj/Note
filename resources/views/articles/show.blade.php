@@ -51,6 +51,18 @@
                         <div class="article">
                             <parse :content="{{ $article->body }}"></parse>
                         </div>
+
+
+                        @if($article->is_original)
+                            <hr>
+                            <div class="publishing alert alert-dismissible alert-info alert-important">
+
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                由 <a href="{{ route('users.show',$article->user) }}">{{ $article->user->name }}</a> 创作，采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享 署名-非商业性使用 4.0 国际</a> 许可协议进行许可。
+                                <br>基于 <a href="{{ url('/') }}">{{ url('/') }}</a>上的作品创作。
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <comments></comments>
@@ -79,14 +91,6 @@
 @section('scripts')
 
     <script type="text/javascript">
-
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > 450) {
-                $('.warpper').addClass('fixed');
-            } else {
-                $('.warpper').removeClass('fixed');
-            }
-        });
 
     </script>
 

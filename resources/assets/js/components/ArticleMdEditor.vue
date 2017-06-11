@@ -29,13 +29,15 @@
         </div>
 
         <div class="form-group" v-show="!isUpdate">
-            <div class="col-sm-offset-3 col-sm-9">
-                <button class="btn btn-primary pull-right" id="user-edit-submit" @click="create()">添加</button>
+            <div class=" col-sm-12">
+                原创文章&nbsp;&nbsp; <vue-switch :value="isOriginal" @input="changeOrignalState"></vue-switch>
+                <button class="btn btn-primary pull-right"  @click="create()">添加</button>
             </div>
         </div>
         <div class="form-group" v-show="isUpdate">
-            <div class="col-sm-offset-3 col-sm-9">
-                <button class="btn btn-primary pull-right" id="user-edit-submit" @click="update()">更新</button>
+            <div class=" col-sm-12">
+                原创文章&nbsp;&nbsp;<vue-switch :value="isOriginal" @input="changeOrignalState"></vue-switch>
+                <button class="btn btn-primary pull-right"  @click="update()">更新</button>
             </div>
         </div>
 
@@ -50,12 +52,13 @@
 <script>
 
     import Multiselect from 'vue-multiselect'
+    import VueSwitch from './Switch.vue'
     import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
     require('vue-multiselect/dist/vue-multiselect.min.css')
 
     export default {
-        components: { Multiselect },
+        components: { Multiselect,VueSwitch},
         props:['articleId'],
         data() {
             return {
@@ -64,7 +67,8 @@
                 title:'',
                 article:{},
                 simplemde: '',
-                pageImage: ''
+                pageImage: '',
+                isOriginal: true
             }
         },
         computed:{
@@ -75,6 +79,7 @@
 
         },
         mounted() {
+
 
             this.simplemde = new SimpleMDE({
                 toolbar: [{
@@ -201,6 +206,7 @@
                 formData.append('body', this.simplemde.value())
                 formData.append('title', this.title)
                 formData.append('category_id',this.category.id)
+                formData.append('is_original',this.isOriginal ? 1 : 0)
 
                 console.log(formData)
 
@@ -233,9 +239,9 @@
 
                 var formData = new FormData(event.target);
                 formData.append('content', value)
-    
                 formData.append('title', this.title)
                 formData.append('category_id',this.category.id)
+                formData.append('is_original',this.isOriginal ? 1 : 0)
 
 
                 console.log(value)
@@ -300,13 +306,20 @@
                     this.article = response.data;
                     this.title = this.article.title;
                     this.simplemde.value(JSON.parse(this.article.body).raw);
+                    this.isOriginal = this.article.is_original == 1;
                 },(error)=>{
                     console.log(error);
                 });
 
+            },
+            changeOrignalState(state){
+
+                this.isOriginal = state
+
             }
         },
         created(){
+
 
             this.fetchCategories();
             if(!this.isUpdate){
@@ -315,6 +328,8 @@
             this.fetchArticle();
             
             console.log('created');
+
+
 
 
         }

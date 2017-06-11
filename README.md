@@ -17,5 +17,6 @@ demo地址: https://www.timenotes.me
 - 原创文章 显示 转载声明
 - 后台访客管理
 - 标签功能
+- 文章点赞，打赏功能
 - markdown文章 导入导出 导出
 - more

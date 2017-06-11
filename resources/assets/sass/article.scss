@@ -172,6 +172,20 @@
 
 .article{
 
+
+  .publishing{
+    &.alert-info{
+      background-color: #ecf0f1;
+      border-color: #ecf0f1;
+      color: #666;
+      font-size:14px;
+      a{
+        color: #333;
+      }
+    }
+
+  }
+
   .infos{
     h1{
       font-size: 22px;

@@ -8,7 +8,10 @@
                 评论
             </div>
             <div class="panel-body comment-contents">
-                <div :id="index" class="comment-content" v-for="(comment,index) in items">
+
+                <div class="empty-block" v-if="items.length == 0">评论区空空如也,赶快来评论吧</div>
+
+                <div :id="index" class="comment-content" v-for="(comment,index) in items" v-else>
                     <comment :index="index" :comment="comment" @commentDelete="removeComment"></comment>
                 </div>
                 <div class="text-center">

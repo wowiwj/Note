@@ -29,13 +29,15 @@ class ArticlesController extends ApiController
         $this->validate($request,[
             'category_id' => 'required|exists:categories,id',
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'is_original' => 'required'
         ]);
         $article = Article::create([
             'title' => $request->title,
             'content' => $request->body,
             'user_id' => Auth::user()->id,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'is_original' => $request->is_original
         ]);
 
         return $article->load('category');
@@ -52,11 +54,18 @@ class ArticlesController extends ApiController
         $this->validate($request,[
             'category_id' => 'required|exists:categories,id',
             'title' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'is_original' => 'required'
         ]);
 
+
         $this->authorize('update',$article);
-        $article->update($request->all());
+        $article->update([
+            'title' => $request->title,
+            'content' => $request->get('content'),
+            'category_id' => $request->category_id,
+            'is_original' => $request->is_original
+        ]);
         return $article;
         
     }
