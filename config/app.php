@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Package Service Providers...

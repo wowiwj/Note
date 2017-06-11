@@ -31,7 +31,10 @@
 
         @include('layouts.partials.nav')
 
+
+
         <div class="container">
+            @include('flash::message')
             @yield('content')
         </div>
 
@@ -50,6 +53,8 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+        $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
 
     @yield('scripts')
