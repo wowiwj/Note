@@ -71,13 +71,14 @@
 
             </div>
 
-            <div class="col-md-3 hidden-sm hidden-xs">
-                <div class="warpper">
-                    @include('articles.partials.user')
+            <div class="col-md-3">
 
+                <div id="sticker">
+                    @include('articles.partials.user')
                 </div>
 
                 @include('layouts.partials.category')
+
             </div>
 
 
@@ -91,6 +92,26 @@
 @section('scripts')
 
     <script type="text/javascript">
+
+
+        $(window).scroll(function (event) {
+
+            if ($(window).width() <= 991) {
+                $("#sticker").unstick();
+                return;
+            }
+            var top = $(window).scrollTop();
+
+            if (top > 600){
+                $("#sticker").sticky({topSpacing:60});
+            }else{
+
+                $("#sticker").unstick();
+            }
+
+            console.log(top);
+
+        });
 
     </script>
 

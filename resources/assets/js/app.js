@@ -19,6 +19,7 @@ require('./bootstrap');
 
 require('./libs/prism');
 
+require ('./libs/jquery.sticky');
 
 // var VueQuillEditor = require('vue-quill-editor');
 //

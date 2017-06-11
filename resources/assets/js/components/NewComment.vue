@@ -14,9 +14,8 @@
 
     </div>
 
-    <p class="text-center" v-else>
-            Please <a href="/login">sign in</a> to participate in this
-            discussion.
+    <p class="text-center empty-block white-bg" v-else>
+            请 <a href="/login">登录</a> 后再进行评论
     </p>
 
 </div>
@@ -131,6 +130,8 @@ export default {
 .newComment .editor-toolbar:before {
     margin-bottom: 0;
 }
+
+
 </style>
 
 

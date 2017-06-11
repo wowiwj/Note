@@ -16,7 +16,8 @@
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.16.0",
         "league/html-to-markdown": "^4.4",
-        "naux/sendcloud": "^1.1"
+        "naux/sendcloud": "^1.1",
+        "yzalis/identicon": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

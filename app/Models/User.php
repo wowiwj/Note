@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\SendActivatedEmail;
+use Identicon\Identicon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
@@ -48,6 +49,18 @@ class User extends Authenticatable
     function  sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+
+    public function getAvatarAttribute($value)
+    {
+        if (!$value)
+        {
+            $idention = new Identicon();
+            $imageDataUrl = $idention->getImageDataUri( md5($this->email),400);
+            return $imageDataUrl;
+        }
+        return $value;
     }
 
     public static function boot()
