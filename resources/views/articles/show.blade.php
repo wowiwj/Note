@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title',$article->title)
+
 @section('content')
 
     <article-view inline-template :initial-comments-count="0">

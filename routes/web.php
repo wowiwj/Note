@@ -70,6 +70,12 @@ Route::group(['namespace' => 'Web'], function () {
 });
 
 
+/* Dashboard Index */
+Route::group(['prefix' => 'home','namespace' => 'Web','middleware' => ['auth', 'admin']], function () {
+    Route::get('{path?}', 'HomeController@index')->where('path', '[\/\w\.-]*');
+});
+
+
 
 
 

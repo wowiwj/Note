@@ -1,4 +1,4 @@
-.markdown {
+.markdown,.editor-preview-side, .editor-preview{
 
 
   font-size: 15px;
@@ -6,7 +6,7 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.3;
-  overflow: hidden;
+  //overflow: hidden;
   line-height: 1.6;
   word-wrap: break-word;
 
@@ -39,6 +39,7 @@
 
   img {
     border: 0;
+    max-width: 100%;
   }
 
   hr {

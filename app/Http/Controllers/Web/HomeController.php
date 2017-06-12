@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -24,8 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         alert('欢迎回来','success');
-        return view('home');
+        return view('home.index');
     }
+
+
+
+
 }

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title',config('app.name','Blog'))@hasSection('title') - {{config('app.name','Blog')}}@endif</title>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 

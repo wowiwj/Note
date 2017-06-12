@@ -19,7 +19,9 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                <li class="active"><a href="/articles">文章</a></li>
+                <li><a href="/articles">留言版</a></li>
+                <li><a href="/articles">捐赠</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -33,6 +35,7 @@
                     <li class="">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            &nbsp; <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li class=""><a href="/articles/create">写文章</a></li>
@@ -43,7 +46,13 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+
+                            <span id="nav-avatar-container">
+                                <img class="nav-avatar" src="{{ Auth::user()->avatar }}" alt="">
+                            </span>
+
+                            {{ Auth::user()->name }} 
+                            <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">

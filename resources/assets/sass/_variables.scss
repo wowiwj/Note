@@ -1,7 +1,7 @@
 
 // Body
 //$body-bg: #f5f8fa;
-$body-bg: #F1F3FA;
+$body-bg: #f5f8f9;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -13,7 +13,10 @@ $panel-default-border: #e7eaf1;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #3097D1;
+//$brand-primary: #3097D1;
+$brand-primary: #00b5ad;
+
+
 $brand-info: #8eb4cb;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;

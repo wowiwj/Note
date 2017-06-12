@@ -7,7 +7,8 @@
 
 
 
-window.Vue = require('vue');
+require('./bootstrap');
+
 Vue.prototype.authorize = function(hander){
     let user = window.App.user;
 
@@ -15,7 +16,7 @@ Vue.prototype.authorize = function(hander){
 
 };
 
-require('./bootstrap');
+
 
 require('./libs/prism');
 
