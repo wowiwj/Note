@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Transformers\ArticleTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,20 @@ class ArticlesController extends ApiController
     {
         parent::__construct();
 
-        $this->middleware('auth:api',['except' => 'show']);
+        $this->middleware('auth:api',['except' => ['show','index']]);
 
     }
+
+    public function index(){
+
+
+        $articles = Article::orderBy('created_at', 'desc')->paginate(20);
+
+        return $this->respondWithPaginator($articles,new ArticleTransformer);
+
+    }
+
+
 
     public function show(Article $article)
     {
@@ -41,10 +53,6 @@ class ArticlesController extends ApiController
         ]);
 
         return $article->load('category');
-
-
-        return $this->respondWithMessage('成功');
-
 
     }
 

@@ -2,44 +2,41 @@
 
 
     <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
-        <router-view></router-view>
         <Row type="flex">
             <i-col :span="spanLeft" class="layout-menu-left">
-                <Menu active-name="1" theme="dark" width="auto">
-                    <div class="layout-logo-left"></div>
-                    <Menu-item name="1">
-                        <Icon type="ios-navigate" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 1</span>
-                    </Menu-item>
-                    <Menu-item name="2">
-                        <Icon type="ios-keypad" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 2</span>
-                    </Menu-item>
-                    <Menu-item name="3">
-                        <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
-                    </Menu-item>
+                <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
 
-                    <Menu-item name="3">
-                        <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
-                    </Menu-item>
-                    <Menu-item name="3">
-                        <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
-                    </Menu-item>
-                    <Menu-item name="3">
-                        <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
-                    </Menu-item>
-                    <Menu-item name="3">
-                        <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
-                    </Menu-item>
-                    <Menu-item name="3">
-                        <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
-                    </Menu-item>
+
+                    <div class="layout-logo-left">
+                        Note 后台管理
+                    </div>
+
+
+                    <Submenu name="1">
+                        <template slot="title">
+                            <Icon type="ios-paper"></Icon>
+                            内容管理
+                        </template>
+                        <Menu-item name="1-1">文章管理</Menu-item>
+                        <Menu-item name="1-2">评论管理</Menu-item>
+                        <Menu-item name="1-3">举报管理</Menu-item>
+                    </Submenu>
+                    <Submenu name="2">
+                        <template slot="title">
+                            <Icon type="ios-people"></Icon>
+                            用户管理
+                        </template>
+                        <Menu-item name="2-1">新增用户</Menu-item>
+                        <Menu-item name="2-2">活跃用户</Menu-item>
+                    </Submenu>
+                    <Submenu name="3">
+                        <template slot="title">
+                            <Icon type="ios-analytics"></Icon>
+                            统计分析
+                        </template>
+                        <Menu-item name="3-1">活跃分析</Menu-item>
+                        <Menu-item name="3-2">时段分析</Menu-item>
+                    </Submenu>
                 </Menu>
             </i-col>
             <i-col :span="spanRight">
@@ -58,12 +55,12 @@
                 <div id="content" class="layout-content">
                     <div class="layout-content-main">
 
+                        <router-view></router-view>
 
-                        内容区域
                     </div>
                 </div>
                 <div class="layout-copy">
-                    2011-2016 &copy; TalkingData
+                    2017 &copy; TalkingData
                 </div>
             </i-col>
         </Row>
@@ -98,6 +95,13 @@
             setMinHeight(){
                 var height = document.documentElement.clientHeight - 150;
                 document.getElementById("content").style.minHeight= height+'px';
+            },
+            fetchArticle(){
+
+
+
+
+
             }
         },
         mounted(){
@@ -105,6 +109,9 @@
             this.setMinHeight()
 
             window.onresize = this.setMinHeight
+
+            this.fetchArticle()
+
         }
     }
 </script>
@@ -149,6 +156,10 @@
         background: #5b6270;
         border-radius: 3px;
         margin: 15px auto;
+        text-align: center;
+        font-size: 17px;
+        color: white;
+        line-height: 30px;
     }
     .layout-ceiling-main a{
         color: #9ba7b5;

@@ -1,15 +1,16 @@
 
-import Main from './components/Home/Main.vue'
+import Main from './components/Home.vue'
+import Parent from './components/Home/Parent.vue'
 
 
 export default [
     {
-        path: '/home',
-        component: Main,
+        path: '/',
+        component: Parent,
         children: [
             {
                 path: '/',
-                redirect: '/home/index'
+                redirect: '/home'
             },
             {
                 path: 'home',

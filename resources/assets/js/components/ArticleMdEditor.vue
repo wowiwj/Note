@@ -358,35 +358,6 @@
         z-index: 1032 !important;
     }
 
-     /*.editor-toolbar.fullscreen {*/
-         /*z-index: 1000 !important;*/
-     /*}*/
-     /*.CodeMirror-scroll{*/
-         /*z-index: 1000 !important;*/
-     /*}*/
-
-    /*.CodeMirror-fullscreen {*/
-        /*z-index: 1000 !important;*/
-    /*}*/
-
-    /*.editor-toolbar.fullscreen {*/
-        /*z-index: 1000 !important;*/
-    /*}*/
-    /*.CodeMirror-fullscreen {*/
-        /*z-index: 1000 !important;*/
-    /*}*/
-
-    .editor-preview{
-        z-index: 1001 !important;
-    }
-
-
-
-
-    /*.editor-preview-active-side{*/
-        /*z-index: 1000 !important;*/
-
-    /*}*/
 
     .CodeMirror{
         z-index: 0;

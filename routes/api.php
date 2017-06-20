@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
+
+    Route::get('articles','ArticlesController@index');
     Route::post('articles','ArticlesController@store');
     Route::get('articles/{article}','ArticlesController@show');
     Route::put('articles/{article}','ArticlesController@update');
@@ -35,4 +37,6 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::delete('comments/{comment}','CommentsController@destroy');
 
     Route::post('image/upload','FilesController@ImageUpload');
+
+
 });

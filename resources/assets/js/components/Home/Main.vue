@@ -2,13 +2,7 @@
 
     <div>
 
-        <h1>哈哈哈</h1>
-        <h1>哈哈哈</h1>
-        <h1>哈哈哈</h1>
-        <h1>哈哈哈</h1>
-
-
-        hello world
+        <articles></articles>
 
     </div>
 
@@ -19,9 +13,16 @@
 
 <script>
 
+    import User from './Users/Index.vue'
+    import Articles from './Articles/Index.vue'
+
+
+
     export default{
-
-
+        components:{
+            User,
+            Articles
+        }
 
     }
 </script>
