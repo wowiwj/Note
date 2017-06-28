@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Helpers\Service\Mention;
+use App\Models\SpecialPage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
@@ -18,7 +19,7 @@ class CommentsController extends ApiController
     {
         parent::__construct();
 
-        $this->middleware('auth:api',['except' => 'index']);
+        $this->middleware('auth:api')->except(['index','pageComments']);
 
     }
 
@@ -27,6 +28,35 @@ class CommentsController extends ApiController
         $comments = $article->comments()->paginate(20);
         return $this->respondWithPaginator($comments,new CommentTransformer);
     }
+
+    public function pageComments($name){
+
+        $page = SpecialPage::where('route',$name)->firstOrFail();
+
+        $comments = $page->comments()->paginate(20);
+        return $this->respondWithPaginator($comments,new CommentTransformer);
+
+    }
+
+    public function storePageComment(Request $request,$name){
+        $this->validate($request,[
+            'body' => 'required'
+        ]);
+
+        $mention = new Mention();
+        $parsed_body = $mention->parse($request->body);
+
+        $page = $page = SpecialPage::where('route',$name)->firstOrFail();
+
+        $comment = $page->comments()->create([
+            'content' => $parsed_body,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return $this->respondWithItem($comment,new CommentTransformer);
+
+    }
+
 
     public function store($catrgory_id,Article $article,Request $request)
     {

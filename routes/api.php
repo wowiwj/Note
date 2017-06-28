@@ -39,4 +39,14 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::post('image/upload','FilesController@ImageUpload');
 
 
+    Route::post('special_pages','SpecialPagesController@store');
+
+
+    Route::get('special_pages/{page}','SpecialPagesController@show');
+    Route::put('special_pages/{page}','SpecialPagesController@update');
+
+    Route::get('{name}/comments','CommentsController@pageComments');
+    Route::post('{name}/comments','CommentsController@storePageComment');
+
+
 });

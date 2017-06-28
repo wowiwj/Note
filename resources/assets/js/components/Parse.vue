@@ -5,6 +5,7 @@
 <script>
     export default {
         props: {
+            markdown:String,
             content: {
                 type: Object,
                 default() {
@@ -18,6 +19,14 @@
             }
         },
         created() {
+
+            if (this.markdown){
+
+                this.rawHtml = marked(this.markdown)
+                return
+            }
+
+
             this.rawHtml = marked(this.content.raw)
         }
     }

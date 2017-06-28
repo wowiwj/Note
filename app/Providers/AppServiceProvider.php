@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SpecialPage;
 use Input;
 use App\Models\Category;
 use Carbon\Carbon;
@@ -27,6 +28,18 @@ class AppServiceProvider extends ServiceProvider
             });
             $view->with('popular_categories', $categories);
         });
+
+        \View::composer('*', function ($view) {
+
+            $specialPages = \Cache::remember('special_pages',1, function () {
+                return $pages = SpecialPage::where('show_nav',1)
+                    ->limit(10)
+                    ->get();
+            });
+
+            $view->with('special_pages', $specialPages);
+        });
+
 
         Carbon::setLocale('zh');
         Schema::defaultStringLength(191);

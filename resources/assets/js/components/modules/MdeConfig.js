@@ -1,12 +1,57 @@
-<script>
+
 
 import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
+class MdeImageHelper{
+
+    static selectImage(editor){
+                
+        var fileBtn = document.getElementById("btn_file");
+
+
+        console.log(this);
+       
+
+        fileBtn.onchange = function(){
+
+            MdeImageHelper.uploadImage(editor);
+
+        }.bind(editor);
+
+        fileBtn.click();
+            
+    }
+
+    static uploadImage(editor){
+
+        console.log(editor);
+
+        var fileBtn = document.getElementById("btn_file");
+        var formData = new FormData();
+        formData.append("file", fileBtn.files[0]);
+        axios.post('/api/v1/image/upload',formData).then(({data})=>{
+
+            var pos = editor.codemirror.getCursor();
+            editor.codemirror.setSelection(pos, pos);
+            editor.codemirror.replaceSelection('![]('+data.data.image+')');
+
+            console.log(data);
+
+        });
+        console.log(fileBtn.files[0]);
+        console.log(1);
+            
+    }
+
+
+}
+
+
+
 export default{
 
-    data(){
-        return {
-            mdeOption:[{
+    getToolBarConfig() {
+		return [{
                     name: "bold",
                     action: SimpleMDE.toggleBold,
                     className: "fa fa-bold",
@@ -62,7 +107,7 @@ export default{
                     },
                     {
                         name: "image",
-                        action: this.selectImage,
+                        action: MdeImageHelper.selectImage,
                         className: "fa fa-picture-o",
                         title: "Insert Image",
                     },
@@ -105,10 +150,11 @@ export default{
                         title: "Markdown Guide",
                     }
                 ]
-
-        }
+	
     }
 
-}
+    
 
-</script>
+
+
+}

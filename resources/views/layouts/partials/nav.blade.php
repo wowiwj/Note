@@ -19,9 +19,12 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/articles">文章</a></li>
-                <li><a href="/articles">留言版</a></li>
-                <li><a href="/articles">捐赠</a></li>
+                <li class="{{ Request::is('articles*') ? 'active' : '' }}"><a href="/articles">文章</a></li>
+
+                @foreach($special_pages as $page)
+                    <li class="{{ navIsActive('special_pages.show',$page->route) }}"><a href="/{{ $page->route }}">{{ $page->title }}</a></li>
+                @endforeach
+
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -41,6 +44,7 @@
                             <li class=""><a href="/articles/create">写文章</a></li>
                             <li class=""><a href="/categories/create">添加分类</a></li>
                             <li class=""><a href="/tags/create">添加标签</a></li>
+
                         </ul>
                     </li>
 
@@ -51,11 +55,15 @@
                                 <img class="nav-avatar" src="{{ Auth::user()->avatar }}" alt="">
                             </span>
 
-                            {{ Auth::user()->name }} 
+                            {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+
+                            @if(Auth::user()->is_admin)
+                                <li class=""><a href="{{ route('special_pages.create') }}">添加页面</a></li>
+                            @endif
                             <li><a href="{{ route('users.show',Auth::user()) }}">个人中心</a></li>
                             <li><a href="{{ route('users.edit',Auth::user()) }}">个人设置</a></li>
                             <li>

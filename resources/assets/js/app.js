@@ -22,6 +22,7 @@ require('./libs/prism');
 
 require ('./libs/jquery.sticky');
 
+
 // var VueQuillEditor = require('vue-quill-editor');
 //
 // Vue.use(VueQuillEditor);
@@ -43,6 +44,9 @@ Vue.component('ArticleView',require('./pages/Article.vue'));
 Vue.component('Paginator',require('./components/Paginator.vue'));
 Vue.component('Comments',require('./components/Comments.vue'));
 Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));
+Vue.component('PageMdEditor',require('./components/PageMdEditor.vue'));
+
+
 
 window.marked = require('marked');
 

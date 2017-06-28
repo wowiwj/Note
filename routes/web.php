@@ -15,15 +15,12 @@ Route::get('/', function () {
 
     return redirect('articles');
 
-    //return view('welcome');
 });
 
 
 Route::get('/demo', function () {
 
     return view('demo');
-
-    //return view('welcome');
 });
 
 
@@ -34,11 +31,15 @@ Route::group(['namespace' => 'Web'], function () {
 
 
 
+
     Route::get('articles', 'ArticlesController@index');
 
     Route::get('articles/create', 'ArticlesController@create');
 
     Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
+
+
+
 
     Route::get('articles/{category}', 'ArticlesController@index');
 
@@ -67,6 +68,13 @@ Route::group(['namespace' => 'Web'], function () {
     Route::post('articles/{article}/comments','CommentsController@store')->name('comments.store');
 
 
+    Route::get('special_pages/create','SpecialPagesController@create')->name('special_pages.create');
+    Route::get('special_pages/{page}/edit','SpecialPagesController@edit')->name('special_pages.edit');
+    Route::delete('special_pages/{page}','SpecialPagesController@destroy')->name('special_pages.destroy');
+
+
+    Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
+
 });
 
 
@@ -80,4 +88,4 @@ Route::group(['prefix' => 'home','namespace' => 'Web','middleware' => ['auth', '
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

@@ -7,6 +7,7 @@ use App\Helpers\Fitters\ArticleFilters;
 use App\Helpers\Handler\ImageUploadHandler;
 use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\RecordsActivity;
+use App\Scopes\ArticleFitterScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -17,6 +18,8 @@ class Article extends Model
     protected $guarded = [];
 
     protected $with = ['category','user','tags'];
+
+
 
     public function user()
     {
@@ -53,6 +56,7 @@ class Article extends Model
         $this->body = json_encode($data);
     }
 
+
     public function makeArticleImage($html){
 
         $pattern = "/[img|IMG].*?src=['|\"](.*?(?:[.gif|.jpg]))['|\"].*?[\/]?>/";
@@ -86,7 +90,14 @@ class Article extends Model
     }
 
 
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::addGlobalScope(new ArticleFitterScope);
+
+
+    }
 
 
 }
