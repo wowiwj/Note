@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ArticlesController extends Controller
 {
@@ -21,6 +22,8 @@ class ArticlesController extends Controller
         $articles = $this->getArticles($category,$fitters);
 
 //        return $articles;
+
+        $articles->appends(Input::except('page'));
 
         return view('articles.index',compact('articles'));
     }
