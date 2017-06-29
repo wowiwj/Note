@@ -10,6 +10,13 @@ class ArticlePolicy
 {
     use HandlesAuthorization;
 
+
+
+    public function before($user,$ability){
+
+        return $user->is_admin;
+    }
+
     /**
      * Create a new policy instance.
      *

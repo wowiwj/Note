@@ -9,12 +9,13 @@ use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\RecordsActivity;
 use App\Scopes\ArticleFitterScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
 
 
-    use RecordsActivity;
+    use RecordsActivity,SoftDeletes;
     protected $guarded = [];
 
     protected $with = ['category','user','tags'];

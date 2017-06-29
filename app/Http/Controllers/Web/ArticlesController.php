@@ -20,6 +20,8 @@ class ArticlesController extends Controller
     {
         $articles = $this->getArticles($category,$fitters);
 
+//        return $articles;
+
         return view('articles.index',compact('articles'));
     }
 

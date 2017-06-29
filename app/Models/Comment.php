@@ -6,11 +6,12 @@ use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\Favoritable;
 use App\Helpers\Traits\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
 
-    use Favoritable,RecordsActivity;
+    use Favoritable,RecordsActivity,SoftDeletes;
 
     protected $guarded = [];
 

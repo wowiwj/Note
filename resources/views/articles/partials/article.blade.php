@@ -35,7 +35,9 @@
 
         <div class="info"><i class="ion-person"></i>{{ $article->user->name }}&nbsp;,&nbsp;
             <i class="ion-clock"></i>{{ $article->created_at->diffForHumans() }}&nbsp;,&nbsp;
-            <i class="ion-ios-eye"></i>{{ $article->views_count }}
+            <i class="ion-ios-eye"></i>{{ $article->views_count }} ,&nbsp;
+            <i class="ion-chatbubble-working"></i>{{ $article->comments_count }}
+
             <a href="{{ $article->path() }}" class="pull-right">
                 Read More <i class="ion-ios-arrow-forward"></i></a>
         </div>

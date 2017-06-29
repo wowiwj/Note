@@ -27,6 +27,7 @@ class CreateArticlesTable extends Migration
             // published_at 为空的话默认为草稿
             $table->timestamp('published_at')->nullable();
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
