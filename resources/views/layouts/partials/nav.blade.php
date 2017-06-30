@@ -42,6 +42,9 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li class=""><a href="/articles/create">写文章</a></li>
+                            @if(Auth::user()->is_admin)
+                                <li class=""><a href="{{ route('special_pages.create') }}">添加页面</a></li>
+                            @endif
                             <li class=""><a href="/categories/create">添加分类</a></li>
                             <li class=""><a href="/tags/create">添加标签</a></li>
 
@@ -62,7 +65,7 @@
                         <ul class="dropdown-menu" role="menu">
 
                             @if(Auth::user()->is_admin)
-                                <li class=""><a href="{{ route('special_pages.create') }}">添加页面</a></li>
+                                <li><a href="/admin">后台管理</a></li>
                             @endif
                             <li><a href="{{ route('users.show',Auth::user()) }}">个人中心</a></li>
                             <li><a href="{{ route('users.edit',Auth::user()) }}">个人设置</a></li>

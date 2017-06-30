@@ -28,7 +28,24 @@
     </script>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+    @include('layouts.partials.admin_nav')
+
+
+    <div class="columns">
+
+        <div class="column is-2 slide-menu">
+            @include('admin.partials.slide_menu')
+        </div>
+
+        <div class="column main-content">
+            @yield('content')
+        </div>
+
+    </div>
+
+
+</div>
 
 <script src="{{ mix('js/home.js') }}"></script>
 

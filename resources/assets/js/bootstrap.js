@@ -15,7 +15,6 @@ window.Vue = require('vue');
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
 } catch (e) {}
 
 /**

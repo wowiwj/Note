@@ -1,1 +1,42 @@
 // 后台 管理 的css
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+@import "variables";
+
+@import "node_modules/font-awesome/scss/font-awesome";
+
+@import "node_modules/bulma/bulma";
+
+@import "node_modules/buefy/src/scss/buefy";
+
+.body{
+
+  background-color: #eee;
+}
+
+
+.slide-menu{
+
+  padding-left: 2em;
+  padding-top: 20px;
+
+}
+
+.main-content{
+
+  padding-top: 20px;
+  padding-right: 25px;
+
+  background-color: #ddd;
+
+
+}
+
+li{
+
+
+
+  list-style: none;
+
+}

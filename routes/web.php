@@ -26,11 +26,16 @@ Route::get('/demo', function () {
 
 Auth::routes();
 
+Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth', 'admin']], function () {
+
+    Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('users','UsersController@index')->name('admin.users.index');
+    Route::get('users/{user}/edit','UsersController@edit')->name('admin.users.edit');
+
+});
+
 
 Route::group(['namespace' => 'Web'], function () {
-
-
-
 
     Route::get('articles', 'ArticlesController@index');
 
@@ -76,6 +81,9 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
 
 });
+
+
+
 
 
 /* Dashboard Index */

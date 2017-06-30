@@ -9,6 +9,11 @@
 
 require('./bootstrap');
 
+try {
+    require('bootstrap-sass');
+} catch (e) {}
+
+
 Vue.prototype.authorize = function(hander){
     let user = window.App.user;
 
@@ -34,7 +39,7 @@ require ('./libs/jquery.sticky');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example1', require('./components/Example.vue'));
+// Vue.component('example1', require('./components/Example.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('ArticleEditor', require('./components/ArticleEditor.vue'));
 Vue.component('ArticleMdEditor', require('./components/ArticleMdEditor.vue'));
