@@ -1,5 +1,5 @@
 <nav class="nav has-shadow">
-    <div class="container">
+    {{--<div class="container">--}}
         <div class="nav-left">
             <a class="nav-item">
                 简记后台管理
@@ -37,5 +37,5 @@
 
 
         </div>
-    </div>
+    {{--</div>--}}
 </nav>

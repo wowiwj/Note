@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth'
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('users','UsersController@index')->name('admin.users.index');
     Route::get('users/{user}/edit','UsersController@edit')->name('admin.users.edit');
+    Route::put('users/{user}','UsersController@update')->name('admin.users.update');
+    Route::delete('users/{user}','UsersController@destroy')->name('admin.users.destroy');
 
 });
 

@@ -32,6 +32,7 @@
     @include('layouts.partials.admin_nav')
 
 
+
     <div class="columns">
 
         <div class="column is-2 slide-menu">
@@ -39,6 +40,7 @@
         </div>
 
         <div class="column main-content">
+            @include('flash::buefy_message')
             @yield('content')
         </div>
 
@@ -47,7 +49,23 @@
 
 </div>
 
+
+
+<!-- Scripts -->
 <script src="{{ mix('js/home.js') }}"></script>
+<script>
+
+    var attr = $('.message.b-message').attr('title');
+
+    // For some browsers, `attr` is undefined; for others, `attr` is false. Check for both.
+    if (typeof attr == typeof undefined || attr == false) {
+        // Element has this attribute
+        $('.message.b-message').delay(3000).fadeOut(350);
+    }
+
+</script>
+
+@yield('scripts')
 
 </body>
 </html>

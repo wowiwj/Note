@@ -44,8 +44,20 @@
                             <td>
 
                                 <div class="block">
+
                                     <a href="{{ route('admin.users.edit',$user) }}" class="button is-small is-primary">编辑</a>
-                                    <a class="button is-small is-danger">删除</a>
+                                    
+                                    <a class="button is-small is-danger"  href="{{ route('admin.users.destroy',$user) }}"
+                                       onclick="event.preventDefault();
+               document.getElementById('delete-form-{{$user->id}}').submit();">
+                                        删除
+                                        <form id="delete-form-{{$user->id}}" action="{{ route('admin.users.destroy',$user) }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                        </form>
+                                    </a>
+
+
                                 </div>
 
                             </td>

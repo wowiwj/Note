@@ -17,30 +17,35 @@
         <div class="card-content">
             <div class="content">
 
+                @include('admin.partials.errors')
+
                 <figure class="image is-96x96 embed" style="margin: 0 auto;">
                     <img src="{{ $user->avatar}}">
                 </figure>
 
-                <form action="">
+                <form action="{{ route('admin.users.update',$user) }}" method="post">
+
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
 
                     <div class="field">
                         <label class="label">用户名</label>
                         <p class="control">
-                            <input value="{{ $user->name }}" class="input" type="text" placeholder="请输入用户名">
+                            <input name="name" value="{{ $user->name }}" class="input" type="text" placeholder="请输入用户名">
                         </p>
                     </div>
 
                     <div class="field">
                         <label class="label">邮箱</label>
                         <p class="control">
-                            <input value="{{ $user->email }}" class="input" type="text" placeholder="请输入邮箱">
+                            <input name="email" value="{{ $user->email }}" class="input" type="text" placeholder="请输入邮箱">
                         </p>
                     </div>
 
                     <div class="field">
                         <label class="label">签名</label>
                         <p class="control">
-                            <input value="{{ $user->signature }}" class="input" type="text" placeholder="请输入签名">
+                            <input name="signature" value="{{ $user->signature }}" class="input" type="text" placeholder="请输入签名">
                         </p>
                     </div>
 
@@ -61,6 +66,9 @@
 
             </div>
         </div>
+
+
+
     </div>
 
 

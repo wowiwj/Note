@@ -21,4 +21,32 @@ class UsersController extends Controller
         return view('admin.users.edit',compact('user'));
 
     }
+
+
+    public function update(Request $request,User $user){
+
+        $this->validate($request,[
+            'name' => 'string',
+            'signature' => 'max:26',
+            'email' => 'email'
+        ]);
+
+        $user->update($request->only(['name','signature','email']));
+
+        flash('修改成功')->success();
+
+        return back();
+    }
+
+    public function destroy(User $user){
+
+        $user->delete();
+
+        flash('删除成功')->success();
+
+        return back();
+
+    }
+
+
 }

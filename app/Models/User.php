@@ -71,5 +71,10 @@ class User extends Authenticatable
             $user->activation_token = str_random(30);
         });
 
+
+        static::deleting(function ($user){
+            $user->articles->each->forceDelete();
+        });
+
     }
 }
