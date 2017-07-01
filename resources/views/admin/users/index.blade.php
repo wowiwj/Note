@@ -46,7 +46,7 @@
                                 <div class="block">
 
                                     <a href="{{ route('admin.users.edit',$user) }}" class="button is-small is-primary">编辑</a>
-                                    
+
                                     <a class="button is-small is-danger"  href="{{ route('admin.users.destroy',$user) }}"
                                        onclick="event.preventDefault();
                document.getElementById('delete-form-{{$user->id}}').submit();">
