@@ -5,14 +5,14 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
+        "php": ">=7.0.0",
         "barryvdh/laravel-debugbar": "^2.3",
         "caouecs/laravel-lang": "~3.0",
         "erusev/parsedown": "^1.6",
-        "intervention/image": "^2.3",
+        "intervention/image": "^2.4",
         "laracasts/flash": "^3.0",
-        "laravel/framework": "5.4.*",
-        "laravel/passport": "^2.0",
+        "laravel/framework": "5.5.*",
+        "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.16.0",
         "league/html-to-markdown": "^4.4",
@@ -20,9 +20,10 @@
         "yzalis/identicon": "^1.1"
     },
     "require-dev": {
+        "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [
@@ -38,6 +39,12 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
         }
     },
     "scripts": {
