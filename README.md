@@ -2,11 +2,15 @@
 
 一个简单的博客系统
 
-采用 laravel 5.4 + Vue2.4 + Bootstrap3 开发
+采用 laravel 5.5 + Vue2.4 + Bootstrap3 开发
 
 demo地址: https://www.timenotes.me
 
 欢迎大佬们赏玩
+
+
+打算采用 bulma + buefy重构，新版本敬请期待哦
+
 
 文章的发布和留言采用Markdown，简化写作
 
