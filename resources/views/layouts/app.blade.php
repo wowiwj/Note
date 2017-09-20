@@ -32,9 +32,10 @@
 <body>
     <div id="app">
 
-        @include('layouts.partials.nav')
+
 
         <div class="container">
+            @include('layouts.partials.nav')
             @include('flash::message')
             @yield('content')
         </div>
@@ -51,11 +52,11 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
     <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-        $('#flash-overlay-modal').modal();
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+//        $(function () {
+//            $('[data-toggle="tooltip"]').tooltip()
+//        })
+//        $('#flash-overlay-modal').modal();
+//        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
 
     @yield('scripts')

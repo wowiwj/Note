@@ -9,9 +9,12 @@
 
 require('./bootstrap');
 
-try {
-    require('bootstrap-sass');
-} catch (e) {}
+import Buefy from 'buefy';
+Vue.use(Buefy);
+
+// try {
+//     require('bootstrap-sass');
+// } catch (e) {}
 
 
 Vue.prototype.authorize = function(hander){

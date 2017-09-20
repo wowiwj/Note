@@ -13,6 +13,8 @@
 
 Route::get('/', function () {
 
+//    return view('admin.home.index');
+
     return redirect('articles');
 
 });
