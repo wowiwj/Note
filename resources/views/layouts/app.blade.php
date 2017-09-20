@@ -32,11 +32,18 @@
 <body>
     <div id="app">
 
+        <div class="white-bg">
+            <div class="container">
+                @include('layouts.partials.nav')
+            </div>
 
+        </div>
 
         <div class="container">
-            @include('layouts.partials.nav')
+
             @include('flash::message')
+
+
             @yield('content')
         </div>
 

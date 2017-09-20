@@ -1,0 +1,28 @@
+
+.card{
+  box-shadow:none;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+
+
+
+  .card-header{
+    box-shadow: none;
+    border-bottom: 1px solid hsla(0,0%,59%,.1);
+
+
+    .card-header-title{
+
+      font-weight:500;
+
+      padding: 0.63em;
+    }
+
+    .card-header-icon{
+
+      padding: 0.63em;
+    }
+
+
+
+  }
+}

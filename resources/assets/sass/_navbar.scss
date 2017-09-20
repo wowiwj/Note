@@ -2,7 +2,6 @@
 #nav-avatar-container{
 
 
-
 }
 #nav-avatar-container .nav-avatar{
   width: 26px;
@@ -13,43 +12,12 @@
   margin-right: 5px;
 }
 
+nav{
 
-.navbar-default{
-  .navbar-nav{
-
-    li{
-
-      padding: 0 0.3em;
-
-      &.active{
-        a{
-
-          background-color: transparent;
-
-          border-bottom: 2px solid #00b5ad;
-          box-sizing: border-box;
-
-        }
-
-      }
-
-      a{
-        border-bottom: 2px solid transparent;
-        box-sizing: border-box;
-      }
-
-      a:hover{
-
-        border-bottom: 2px solid #00b5ad;
-        box-sizing: border-box;
-      }
-
-
-    }
-
-  }
+  margin-bottom: 20px;
 
 }
+
 
 
 
