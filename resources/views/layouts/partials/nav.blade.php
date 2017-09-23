@@ -1,7 +1,7 @@
 <nav class="navbar">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox"
+            <img src="/uploads/images/logo.png" alt="Notes logo"
                  width="112" height="28">
         </a>
 

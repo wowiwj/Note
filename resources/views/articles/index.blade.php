@@ -25,7 +25,7 @@
                         <a href="#">零回复</a>
                     </div>
                 </header>
-                <div class="card-content">
+                <div class="card-content nopadding">
                     <div class="content">
                         @forelse($articles as $article)
                             @include('articles.partials.article')
