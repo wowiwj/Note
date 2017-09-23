@@ -105,6 +105,23 @@ i[class*="ion-"]{
 
 }
 
+.round-item{
+
+  margin-right: 12px;
+  margin-bottom: 12px;
+  background-color: #f3f6f3;
+  cursor: pointer;
+  height: 30px;
+  color: inherit;
+  line-height: 30px;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 15px;
+}
+
 
 
 //.pagination>li>a, .pagination>li>span

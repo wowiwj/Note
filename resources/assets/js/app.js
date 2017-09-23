@@ -62,3 +62,14 @@ window.marked = require('marked');
 const app = new Vue({
     el: '#app'
 });
+
+
+// $(document).ready(function() {  
+//     $("div").bind('click', function(event) {  
+//         // alert('外层的div被点击了!');  
+//     });  
+//     $("div").bind('click', function(event) {  
+//         // alert('里面的a点击，但是不想触发外面那个div的事件。');  
+//         event.stopPropagation();  
+//     });  
+// }); 

@@ -1,4 +1,4 @@
-<div class="article-info">
+<div class="article-info" onclick="alert(1)">
 
     <div>
         <div class="meta">
@@ -21,7 +21,7 @@
             </div>
 
 
-            <span class="tags">
+            <span class="tags is-desktop">
                     <span class="tag">标签1</span>
                     <span class="tag">标签1</span>
                     <span class="tag">标签1</span>

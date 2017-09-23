@@ -47,12 +47,63 @@
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title">
-                        Component
+                        热门分类
                     </p>
                     <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
+                        查看全部
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <div class="columns is-multiline is-centered">
+                            <div class="column is-half level-item has-text-centered">
+                                <a href="#" class="round-item">
+                                    编程
+                                </a>
+                                
+                            </div>
+                            <div class="column is-half level-item has-text-centered">
+                                <a href="#" class="round-item">
+                                    编程
+                                </a>
+                                
+                            </div>
+                            <div class="column is-half level-item has-text-centered">
+                                <a href="#" class="round-item">
+                                    编程
+                                </a>
+                                
+                            </div>
+                            <div class="column is-half level-item has-text-centered">
+                                <a href="#" class="round-item">
+                                    编程
+                                </a>
+                                
+                            </div>
+                            <div class="column is-half level-item has-text-centered">
+                                <a href="#" class="round-item">
+                                    编程
+                                </a>
+                                
+                            </div>
+                            <div class="column is-half level-item has-text-centered">
+                                <a href="#" class="round-item">
+                                    编程
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card m-t-20">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        热门标签
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                        查看全部
                     </a>
                 </header>
                 <div class="card-content">
@@ -63,11 +114,6 @@
                         <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                     </div>
                 </div>
-                <footer class="card-footer">
-                    <a href="#" class="card-footer-item">Save</a>
-                    <a href="#" class="card-footer-item">Edit</a>
-                    <a href="#" class="card-footer-item">Delete</a>
-                </footer>
             </div>
 
         </div>
