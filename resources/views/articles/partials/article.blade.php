@@ -1,4 +1,4 @@
-<div class="article-info" onclick="alert(1)">
+<div class="article-info">
 
     <div>
         <div class="meta">

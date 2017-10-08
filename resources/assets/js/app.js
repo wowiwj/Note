@@ -53,7 +53,7 @@ Vue.component('Paginator',require('./components/Paginator.vue'));
 Vue.component('Comments',require('./components/Comments.vue'));
 Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));
 Vue.component('PageMdEditor',require('./components/PageMdEditor.vue'));
-
+Vue.component('LoginView',require('./components/LoginView.vue'))
 
 
 window.marked = require('marked');

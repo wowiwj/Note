@@ -7,7 +7,7 @@
 
   &:hover{
 
-    background-color:#fafafa;
+    background-color:#fdfdfd;
 
   }
 
@@ -184,137 +184,20 @@
 
 }
 
-// .article-info{
+.article-page{
 
-//   padding: 10px;
-//   .article-intro{
 
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: flex-start;
-//     align-items: center;
+  .article-title{
+    font-size: 24px;
 
-//     .placeimage{
-//       padding: 10px;
-//       flex:3;
-//       img{
-//         margin-top: 0;
-//         padding-top: 0;
-//         border-radius: 5px;
-//         max-width: 100%;
-//         margin-bottom: 0;
-//       }
 
-//     }
+  }
 
-//     @media screen and (max-width: 768px) {
-//       display: block;
-//       .placeimage{
-//         padding: 0;
-//         width: 100%;
-//         text-align: center;
-//       }
 
-//       .describe{
+}
 
-//         h4{
-//           padding: 10px;
-//           padding-left: 0;
-//           margin: 10px;
-//         }
-//       }
-//     }
 
-//     .describe{
-//       flex: 9;
-//       margin-left: auto;
-//       .title{
-//         margin-bottom: 10px;
-//         color: #555;
 
-//       }
-
-//       a:hover{
-
-//         .title{
-//           color: #0000cc;
-//         }
-
-//       }
-
-//     }
-
-//   }
-
-//   &:nth-last-child(2){
-
-//     .article-state{
-//       border-bottom: 0;
-
-//     }
-
-//   }
-
-//   .article-state{
-//     display: flex;
-//     //flex-direction: column;
-
-//     border-bottom: 1px solid #ccc;
-
-//     i{
-//       margin-left: .4em;
-//       margin-right: .4em;
-
-//     }
-
-//     .extra{
-
-//       a {
-//         margin: 0 5px;
-//         background-color: #e8e8e8;
-//         color: rgba(0,0,0,.6);
-//         .label{
-//           font-size: 13px;
-//           display: inline-block;
-//           line-height: 1;
-//           vertical-align: baseline;
-//           background-color: #e8e8e8;
-//           background-image: none;
-//           padding: .5833em .833em;
-//           color: rgba(0,0,0,.6);
-//           text-transform: none;
-//           border: 0 solid transparent;
-//           border-radius: .28571429rem;
-//           transition: background .1s ease;
-//           margin-top: 5px;
-//           margin-bottom: 5px;
-//           i {
-//             padding-top: 5px;
-//             padding-right: 3px;
-//             margin-right: 0;
-
-//           }
-//         }
-//       }
-
-//     }
-
-//     .info {
-
-//       line-height: 38px;
-
-//       a {
-//         display: inline-block;
-//         color: #18bc9c;
-//         background-color: transparent;
-//       }
-
-//       display: block;
-//       width: 100%;
-//     }
-
-//   }
-// }
 
 .delete-article {
 

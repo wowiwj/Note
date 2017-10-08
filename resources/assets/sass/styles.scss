@@ -6,7 +6,6 @@
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
   background-color: #f4f5f5;
 }
 
@@ -72,6 +71,29 @@ i[class*="ion-"]{
 
 }
 
+.comments{
+
+  margin: 20px 0;
+
+  .newComment{
+
+    margin-top: 20px;
+
+  }
+
+  .content figure{
+
+    margin-left: 1em;
+    margin-right: 0;
+  }
+
+  .comment-content{
+    padding-top: 15px;
+    border-bottom: 1px solid #eee;
+
+  }
+}
+
 
 //.footer {
 //  position: absolute;
@@ -107,6 +129,12 @@ i[class*="ion-"]{
 
 .round-item{
 
+  &:hover{
+
+    background-color: #FAD5A0;
+
+  }
+
   margin-right: 12px;
   margin-bottom: 12px;
   background-color: #f3f6f3;
@@ -121,6 +149,8 @@ i[class*="ion-"]{
   padding-bottom: 8px;
   font-size: 15px;
 }
+
+
 
 
 

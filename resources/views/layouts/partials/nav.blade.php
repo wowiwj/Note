@@ -66,15 +66,7 @@
                             </a>
 
                         </p>
-                        <p class="control">
-                            <a class="button is-primary" href="{{ route('login') }}">
-                                <span class="icon">
-                                    <i class="fa fa-sign-in"></i>
-                                </span>
-
-                                <span>登录</span>
-                            </a>
-                        </p>
+                        <login-view></login-view>
                     </div>
                 </div>
             @else

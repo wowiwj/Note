@@ -1,16 +1,16 @@
-<footer class="footer navbar-fixed-bottom">
-      <div class="container">
-          <div class="row text-center">
-              <div class="col-md-4 col-md-offset-4">
-                  <div class="links">
-                      <a href="https://github.com/wowiwj/Note">github地址</a>
-                  </div>
-              </div>
-          </div>
-
-          </div>
-          <div class="copy-right text-center">
-            <span>© WJ Notes 2017. Powered By <a href="#">Note</a></span>
-          </div>
-      </div>
+<footer class="footer">
+<div class="container">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Note</strong> by <a href="http://jgthms.com">wowiwj</a>. The source code is licensed
+      <a href="#">MIT</a>. The website content
+      is licensed <a href="#">MIT 4.0</a>.
+    </p>
+    <p>
+      <a class="icon" href="https://github.com/wowiwj">
+        <i class="fa fa-github"></i>
+      </a>
+    </p>
+  </div>
+</div>
 </footer>

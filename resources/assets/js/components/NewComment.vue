@@ -2,12 +2,12 @@
 
 <div>
     <div class="newComment" v-if="signedIn">
-        <div class="form-group" >
+        <div class="field" >
             <textarea id="editor"></textarea>
         </div>
 
-        <div class="form-group">
-            <button class="btn btn-primary pull-right" @click="newComment">提交</button>
+        <div class="field">
+            <button class="button is-primary is-pulled-right" @click="newComment">提交</button>
         </div>
 
         <input type="file" id="btn_file" style="display:none">

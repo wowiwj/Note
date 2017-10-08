@@ -1,8 +1,33 @@
 <template>
 
-    <div class="comment">
+    <div class="comments">
 
-        <div class="panel panel-default">
+
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                评论
+                </p>
+            </header>
+            <div class="card-content nopadding">
+                <div class="content comment-contents">
+                    <div class="empty-block" v-if="items.length == 0">评论区空空如也,赶快来评论吧</div>
+
+                    <div :id="index" class="comment-content" v-for="(comment,index) in items" v-else>
+                    <comment :index="index" :comment="comment" @commentDelete="removeComment"></comment>
+                    </div>
+                    <div class="text-center">
+                        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+                    </div>
+
+                </div>
+            </div>
+  
+        </div>
+        <new-comment @created="add"></new-comment>
+
+
+        <!-- <div class="panel panel-default">
 
             <div class="panel-heading">
                 评论
@@ -21,7 +46,7 @@
 
         </div>
         
-        <new-comment @created="add"></new-comment>
+        <new-comment @created="add"></new-comment> -->
     </div>
 
     
