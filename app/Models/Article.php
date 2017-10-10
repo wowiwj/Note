@@ -91,6 +91,18 @@ class Article extends Model
     }
 
 
+    public function getBriefAttribute(){
+
+        $body = $this->body;
+        $html = json_decode($body,true)['html'];
+
+        $text = strip_tags($html);
+
+        return mb_substr($text,0,150);
+
+    }
+
+
     protected static function boot()
     {
         parent::boot();

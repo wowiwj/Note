@@ -19,10 +19,11 @@
             </header>
             <section class="modal-card-body">
                 <div>
-                    <form role="form" method="post" action="/login">
+                    <form role="form" id="login-form" method="post" action="/login">
+                        <input type="hidden" name="_token" :value="token">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="请输入邮箱">
+                                <input  v-model="email" name="email" class="input" type="email" placeholder="请输入邮箱">
                                 <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                                 </span>
@@ -33,7 +34,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="请输入密码">
+                                <input  v-model="password" name="password" class="input" type="password" placeholder="请输入密码">
                                 <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                                 </span>
@@ -41,10 +42,15 @@
                         </div>
                         <div class="field is-grouped is-grouped-centered">
                             <p class="control is-full-width">
-                                <button class="button is-success is-submit">
+                                <button @click.prevent="login"  :class="['button is-success is-submit',{'is-loading':islogin}]">
                                 登录
                                 </button>
                             </p>
+                        </div>
+                        <div class="control" v-if="errorMessage">
+                            <span class="help is-danger">
+                            {{ errorMessage }}
+                            </span>
                         </div>
 
                         <div class="field level">
@@ -80,10 +86,52 @@
 export default {
     data(){
         return{
-            isLoginFormActive:false
+            isLoginFormActive:false,
+            email:null,
+            password:null,
+            islogin:false,
+            errorMessage:null
         }
 
 
+    },
+    created(){
+        window.events.$on('login',(message)=>{
+             this.isLoginFormActive = true;
+        });
+    },
+    methods:{
+        login:function(){
+            this.islogin = true;
+            axios.post('/api/v1/auth/login',{
+                'email':this.email,
+                'password':this.password
+            }).then((response)=>{
+                this.isLoginFormActive = false;
+                this.$toast.open({
+                    message: '欢迎回来!',
+                    type: 'is-success'
+                })
+                document.getElementById('login-form').submit();
+
+                console.log(response.data);
+            }).catch((error)=>{
+                this.islogin = false;
+                this.errorMessage = error.response.data.message
+
+                console.log(error);
+            })
+
+            console.log('login');
+
+
+        }
+    },
+    computed: {
+        token : function(){
+            return App.csrfTtoken;
+
+        }
     }
 
 

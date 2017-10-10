@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
+
+    Route::post('auth/login','AuthenticateController@login');
+
     Route::get('articles','ArticlesController@index');
     Route::post('articles','ArticlesController@store');
     Route::get('articles/{article}','ArticlesController@show');

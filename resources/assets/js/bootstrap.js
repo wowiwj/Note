@@ -65,3 +65,8 @@ window.flash = function(text,level='success'){
     var message = {'text':text,'level':level};
     window.events.$emit('flash',message);
 };
+
+window.showLogin = function(){
+
+    window.events.$emit('login');
+}

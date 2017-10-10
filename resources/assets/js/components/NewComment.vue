@@ -15,7 +15,7 @@
     </div>
 
     <p class="text-center empty-block white-bg" v-else>
-            请 <a href="/login">登录</a> 后再进行评论
+            请 <a href="javascript:showLogin()">登录</a> 后再进行评论
     </p>
 
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Api\Helpers\Api\ApiResponse;
 use App\Helpers\Api\ApiSerializer;
 use App\Http\Controllers\Controller;
 use League\Fractal\Manager;
@@ -18,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response as Foundationresponse;
  */
 class ApiController extends Controller
 {
+    use ApiResponse;
 
 
     /**
@@ -33,7 +35,7 @@ class ApiController extends Controller
     /**
      * @var int
      */
-    protected $statusCode = Foundationresponse::HTTP_OK;
+//    protected $statusCode = Foundationresponse::HTTP_OK;
 
     /**
      * @return mixed
