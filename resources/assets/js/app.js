@@ -10,7 +10,9 @@
 require('./bootstrap');
 
 import Buefy from 'buefy';
-Vue.use(Buefy);
+Vue.use(Buefy,{
+    defaultIconPack: 'fa'
+});
 
 // try {
 //     require('bootstrap-sass');

@@ -71,6 +71,10 @@ i[class*="ion-"]{
 
 }
 
+.control:not(:last-child) {
+  margin-bottom: .75rem;
+}
+
 .comments{
 
   margin: 20px 0;

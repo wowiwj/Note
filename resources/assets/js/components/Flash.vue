@@ -1,9 +1,17 @@
-<template>
-    <div :class="levelClass" class="alert alert-dismissible alert-flash" role="alert" v-show="show">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>{{ level }}! </strong> {{ body }}
-    </div>
-</template>
+<!--<template>-->
+
+
+
+    <!--<b-notification>-->
+        <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id fermentum quam. Proin sagittis, nibh id hendrerit imperdiet, elit sapien laoreet elit-->
+    <!--</b-notification>-->
+
+
+    <!--&lt;!&ndash;<div :class="levelClass" class="alert alert-dismissible alert-flash" role="alert" v-show="show">&ndash;&gt;-->
+        <!--&lt;!&ndash;<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>&ndash;&gt;-->
+        <!--&lt;!&ndash;<strong>{{ level }}! </strong> {{ body }}&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</template>-->
 
 <script>
     export default {
@@ -33,6 +41,9 @@
         },
         methods:{
             flash(message,level='success'){
+
+                console.log('111')
+
                 this.body = message;
                 this.showLevel = level;
                 this.show = true;
