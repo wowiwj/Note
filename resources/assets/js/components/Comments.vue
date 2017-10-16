@@ -4,6 +4,7 @@
 
 
         <div class="card">
+            
             <header class="card-header">
                 <p class="card-header-title">
                 评论
@@ -73,7 +74,9 @@
         },
         created(){
 
+        
             this.fetch();
+            
             console.log('success');
 
 
@@ -106,7 +109,8 @@
 
             },
             removeComment(index){
-
+                
+            
                 this.items.splice(index, 1);
 
             }

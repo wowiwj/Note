@@ -83,6 +83,7 @@
 
             },
             ago : function(){
+                
 
                 return moment(this.comment.created_at).fromNow();
             },
@@ -91,6 +92,8 @@
 
             },
             canReplyUser(){
+
+                
 
                 return window.App.signedIn;
 

@@ -17,6 +17,9 @@
             }
         },
         created(){
+            
+
+            
 
             console.log(this.message+this.level);
             if (this.message){

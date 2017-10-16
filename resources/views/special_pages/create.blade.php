@@ -2,6 +2,27 @@
 
 @section('content')
 
+
+    <div class="columns">
+        <div class="column is-9">
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="has-text-centered title">
+                        添加页面
+                    </h3>
+                    <hr>
+                    <page-md-editor></page-md-editor>
+                </div>
+
+
+            </div>
+
+
+        
+        </div>
+
+    </div>
+
     <div class="row">
 
         <div class="col-md-9">
@@ -10,10 +31,7 @@
 
                 <div class="panel-body ">
 
-                    <h3 class="text-center">
-                        添加页面
-                    </h3>
-                    <hr>
+                    
 
                     <page-md-editor></page-md-editor>
 
