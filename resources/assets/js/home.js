@@ -8,8 +8,8 @@ import Buefy from 'buefy';
 Vue.use(Buefy);
 
 
-Vue.component('Menus',require('./components/home/Menus.vue'));
-Vue.component('MenuItem',require('./components/home/MenuItem.vue'));
+Vue.component('Menus',require('./components/Home/Menus.vue'));
+Vue.component('MenuItem',require('./components/Home/MenuItem.vue'));
 
 
 

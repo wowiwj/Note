@@ -40,7 +40,7 @@
         </div>
 
         <div class="column main-content">
-            @include('flash::buefy_message')
+            @include('flash::message')
             @yield('content')
         </div>
 

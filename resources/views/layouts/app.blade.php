@@ -65,11 +65,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
     <script>
-//        $(function () {
-//            $('[data-toggle="tooltip"]').tooltip()
-//        })
-//        $('#flash-overlay-modal').modal();
-//        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+
     </script>
 
     @yield('scripts')

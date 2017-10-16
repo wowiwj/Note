@@ -80,9 +80,6 @@
         },
         updated(){
             Prism.highlightAll()
-
-            $('[data-toggle="tooltip"]').tooltip()
-
         },
         methods:{
             fetch(page){

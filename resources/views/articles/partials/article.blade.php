@@ -21,7 +21,7 @@
             </div>
 
 
-            <span class="tags is-desktop">
+            <span class="tags is-hidden-mobile">
                     <span class="tag">标签1</span>
                     <span class="tag">标签1</span>
                     <span class="tag">标签1</span>

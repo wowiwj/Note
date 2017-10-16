@@ -65,6 +65,9 @@ a:hover{
   margin: 0;
 }
 
+.edit-article-title{
+  height: 39px;
+}
 
 
 i[class*="ion-"]{
@@ -73,6 +76,20 @@ i[class*="ion-"]{
 
 .control:not(:last-child) {
   margin-bottom: .75rem;
+}
+
+.page-header {
+  font-weight: 500;
+  font-size: 22px;
+  padding-bottom: 10px;
+  margin: 44px 0 22px;
+  border-bottom: 1px solid #eee;
+}
+.activity-header{
+
+  font-size: 17px;
+  line-height: 35px;
+  font-weight: 500;
 }
 
 .comments{

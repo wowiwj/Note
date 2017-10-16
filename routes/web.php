@@ -60,9 +60,9 @@ Route::group(['namespace' => 'Web'], function () {
 
 
 
-    Route::get('articles/{category}', 'ArticlesController@index');
 
-    Route::get('articles/{category}/{article}','ArticlesController@show');
+
+
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
     Route::post('register','UsersController@store')->name('register');
@@ -86,6 +86,9 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::post('articles/{article}/comments','CommentsController@store')->name('comments.store');
 
+
+    Route::get('articles/{category}', 'ArticlesController@index');
+    Route::get('articles/{category}/{article}','ArticlesController@show');
 
     Route::get('special_pages/create','SpecialPagesController@create')->name('special_pages.create');
     Route::get('special_pages/{page}/edit','SpecialPagesController@edit')->name('special_pages.edit');
