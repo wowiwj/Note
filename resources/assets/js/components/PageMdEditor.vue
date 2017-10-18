@@ -2,37 +2,65 @@
 
     <div>
 
-        <div class="form-group">
-            <div class="col-md-3 no-right-padding">
-                <input v-model="route" class="form-control" name="name" type="text" placeholder="请输入页面路由">
+        <div class="field">
+
+            <div class="columns">
+
+                <div class="column is-3">
+
+                    <p class="control">
+                        <input v-model="route" class="input" name="name" type="text" placeholder="请输入页面路由">
+                    </p>
+
+                </div>
+
+                <div class="column">
+
+                    <p class="control">
+                        <input v-model="title" class="input" name="name" type="text" placeholder="请输入页面标题">
+                    </p>
+
+                </div>
+
             </div>
-            <div class="col-md-9 no-left-padding">
-                <input v-model="title" class="form-control" name="name" type="text" placeholder="请输入页面标题">
-            </div>
+
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-12">
+        <div class="field">
+            <div class="control">
                 <textarea id="editor"></textarea>
             </div>
-
         </div>
 
-        <div class="form-group" v-show="!isUpdate">
-            <div class=" col-sm-12">
-                导航条显示&nbsp;&nbsp; <vue-switch :value="isShowNav" @input="changeShowNavState"></vue-switch>
-                <button class="btn btn-primary pull-right"  @click="create()">添加</button>
+        <div class="field" v-show="!isUpdate">
+            <div class="control">
+                <div class="columns">
+
+                    <div class="column is-12">
+                        导航条显示&nbsp;&nbsp;
+                        <vue-switch :value="isShowNav" @input="changeShowNavState"></vue-switch>
+                        <button class="button is-primary is-pulled-right" @click="create()">添加</button>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="form-group" v-show="isUpdate">
-            <div class=" col-sm-12">
-                导航条显示&nbsp;&nbsp;<vue-switch :value="isShowNav" @input="changeShowNavState"></vue-switch>
-                <button class="btn btn-primary pull-right"  @click="update()">更新</button>
+
+        <div class="field" v-show="isUpdate">
+            <div class="control">
+                <div class="columns">
+
+                    <div class="column is-12">
+                        导航条显示&nbsp;&nbsp;
+                        <vue-switch :value="isShowNav" @input="changeShowNavState"></vue-switch>
+                        <button class="button is-primary is-pulled-right" @click="update()">更新</button>
+                    </div>
+
+                </div>
             </div>
         </div>
 
         <input type="file" id="btn_file" style="display:none">
-       
 
     </div>
 
