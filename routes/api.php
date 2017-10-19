@@ -33,6 +33,10 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('categories','CategoriesController@index');
     Route::get('categories/all','CategoriesController@all');
 
+
+    Route::get('tags','TagsController@index');
+
+
     Route::get('articles/{category}/{article}/comments','CommentsController@index');
 
     Route::post('articles/{category}/{article}/comments','CommentsController@store');

@@ -56,13 +56,13 @@ $factory->define(App\Models\Reply::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'slug' => $faker->name,
-        'message' => $faker->sentence
-    ];
-});
+//$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
+//    return [
+//        'name' => $faker->name,
+//        'slug' => $faker->name,
+//        'message' => $faker->sentence
+//    ];
+//});
 
 
 $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {

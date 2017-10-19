@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
 
 
          $this->call(SpecialPageTableSeeder::class);
+         $this->call(TagsTableSeeder::class);
     }
 }

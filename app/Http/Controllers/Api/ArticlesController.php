@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Transformers\ArticleTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,8 +43,22 @@ class ArticlesController extends ApiController
             'category_id' => 'required|exists:categories,id',
             'title' => 'required',
             'body' => 'required',
-            'is_original' => 'required'
+            'is_original' => 'required',
+            'tags' => ''
         ]);
+
+        $tags = json_decode($request->tags,true);
+
+        $tags = collect($tags)->map(function ($tag){
+            
+            $tag = Tag::where('id',$tag['id'])
+                ->orWhere('name',$tag['name'])
+                ->firstOrCreate([
+                    'name' => $tag['name']
+                ]);
+            return $tag->id;
+        });
+
         $article = Article::create([
             'title' => $request->title,
             'content' => $request->body,
@@ -51,6 +66,8 @@ class ArticlesController extends ApiController
             'category_id' => $request->category_id,
             'is_original' => $request->is_original
         ]);
+
+        $article->tags()->sync($tags);
 
         return $article->load('category');
 

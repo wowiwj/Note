@@ -40,6 +40,24 @@
             </div>
         </div>
 
+        <div class="field">
+            <div class="control">
+                <multiselect
+                        v-model="selectedTags"
+                        tag-placeholder="添加标签"
+                        placeholder="搜索或添加标签"
+                        label="name"
+                        track-by="name"
+                        :options="tags"
+                        :multiple="true"
+                        :taggable="true"
+                        @tag="addTag"
+                        @search-change="queryTag"
+                        >
+                </multiselect>
+            </div>
+        </div>
+
         <div class="field" v-show="!isUpdate">
             <div class="control">
                 <div class="columns">
@@ -95,7 +113,9 @@
                 article: {},
                 simplemde: '',
                 pageImage: '',
-                isOriginal: true
+                isOriginal: true,
+                tags:[],
+                selectedTags:[]
             }
         },
         computed: {
@@ -234,6 +254,7 @@
                 formData.append('title', this.title)
                 formData.append('category_id', this.category.id)
                 formData.append('is_original', this.isOriginal ? 1 : 0)
+                formData.append('tags', JSON.stringify(this.selectedTags));
 
                 console.log(formData)
 
@@ -342,7 +363,32 @@
 
                 this.isOriginal = state
 
+            },
+            addTag (newTag) {
+                const tag = {
+                    name: newTag,
+                    id: 0
+                }
+                this.tags.push(tag)
+                this.selectedTags.push(tag)
+            },
+            queryTag(qw){
+
+                axios.get('/api/v1/tags',{
+                    params: {
+                        q: qw
+                    }
+                }).then((response)=>{
+                    this.tags = response.data.data
+
+                    console.log(response.data);
+
+                });
+                console.log(qw);
+
+
             }
+
         },
         created() {
 

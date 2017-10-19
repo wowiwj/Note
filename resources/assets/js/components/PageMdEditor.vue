@@ -32,6 +32,8 @@
             </div>
         </div>
 
+
+
         <div class="field" v-show="!isUpdate">
             <div class="control">
                 <div class="columns">
