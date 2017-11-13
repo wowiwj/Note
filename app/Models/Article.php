@@ -90,6 +90,21 @@ class Article extends Model
         return $filters->apply($query);
     }
 
+    public function syncTags($tags){
+        $tags = collect($tags)->map(function ($tag){
+
+            $tag = Tag::where('id',$tag['id'])
+                ->orWhere('name',$tag['name'])
+                ->firstOrCreate([
+                    'name' => $tag['name']
+                ]);
+            return $tag->id;
+        });
+        $this->tags()->sync($tags);
+        return $this;
+
+    }
+
 
     public function getBriefAttribute(){
 

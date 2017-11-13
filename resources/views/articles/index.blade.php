@@ -56,6 +56,9 @@
                 <div class="card-content">
                     <div class="content">
                         <div class="columns is-multiline is-centered">
+
+
+
                             <div class="column is-half level-item has-text-centered">
                                 <a href="#" class="round-item">
                                     编程

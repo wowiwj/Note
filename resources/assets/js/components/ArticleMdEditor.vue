@@ -290,6 +290,7 @@
                 formData.append('title', this.title)
                 formData.append('category_id', this.category.id)
                 formData.append('is_original', this.isOriginal ? 1 : 0)
+                formData.append('tags', JSON.stringify(this.selectedTags));
 
 
                 console.log(value)
@@ -349,11 +350,13 @@
             fetchArticle() {
                 axios.get('/api/v1/articles/' + this.articleId).then((response) => {
                     console.log(response.data);
-                    this.category = response.data.category;
-                    this.article = response.data;
+                    let article = response.data.data;
+                    this.category = article.category;
+                    this.article = article;
                     this.title = this.article.title;
                     this.simplemde.value(JSON.parse(this.article.body).raw);
                     this.isOriginal = this.article.is_original == 1;
+                    this.selectedTags = this.article.tags;
                 }, (error) => {
                     console.log(error);
                 });
