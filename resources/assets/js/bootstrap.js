@@ -70,3 +70,6 @@ window.showLogin = function(){
 
     window.events.$emit('login');
 }
+
+
+

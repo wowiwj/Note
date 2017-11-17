@@ -33,17 +33,7 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
 
-    $user_id = App\Models\User::pluck('id')->random();
-    $category_id = App\Models\Category::pluck('id')->random();
-    return [
-        'user_id' => $user_id,
-        'category_id' => $category_id,
-        'title' => $faker->sentence,
-        'content' => $faker->paragraph
-    ];
-});
 
 $factory->define(App\Models\Reply::class, function (Faker\Generator $faker) {
 

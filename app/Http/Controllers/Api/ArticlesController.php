@@ -89,4 +89,16 @@ class ArticlesController extends ApiController
         return $article->syncTags($tags);
         
     }
+
+
+    // 删除文章
+    public function destroy(Article $article){
+
+        $this->authorize('update',$article);
+
+        $article->delete();
+
+        return $this->message('删除成功');
+
+    }
 }

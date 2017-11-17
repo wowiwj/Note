@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <article-view inline-template :initial-comments-count="0">
+    <article-view inline-template :initial-comments-count="0" :article-id="{{ $article->id }}">
         
         <div class="columns article-page">
 
@@ -45,7 +45,7 @@
 
                                 <div class="is-pulled-right m-l-20">
                                     <b-tooltip label="删除">
-                                        <a class="popover-with-html" href="{{ route('articles.edit',$article) }}">
+                                        <a class="popover-with-html" @click="confirmDelete()">
                                             <i class="fa fa-trash"></i> <span></span>
                                         </a>
                                     </b-tooltip>

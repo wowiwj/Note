@@ -28,6 +28,8 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('articles/{article}','ArticlesController@show');
     Route::put('articles/{article}','ArticlesController@update');
 
+    Route::delete('articles/{article}','ArticlesController@destroy');
+
     Route::post('uploadAvatar','UsersController@uploadAvatar');
 
     Route::get('categories','CategoriesController@index');
