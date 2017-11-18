@@ -35,6 +35,7 @@
                             <div class="column is-4" style="line-height: 30px">
 
 
+                                @can('update',$article)
                                 <div class="is-pulled-right m-l-20">
                                     <b-tooltip label="编辑">
                                         <a class="popover-with-html" href="{{ route('articles.edit',$article) }}">
@@ -43,6 +44,7 @@
                                     </b-tooltip>
                                 </div>
 
+
                                 <div class="is-pulled-right m-l-20">
                                     <b-tooltip label="删除">
                                         <a class="popover-with-html" @click="confirmDelete()">
@@ -50,6 +52,7 @@
                                         </a>
                                     </b-tooltip>
                                 </div>
+                                @endcan
 
                                 <div class="is-pulled-right m-l-20">
                                     <b-tooltip label="订阅">
