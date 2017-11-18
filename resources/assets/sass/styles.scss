@@ -66,6 +66,17 @@ a:hover{
   margin: 0;
 }
 
+.column.is-faded{
+  padding-left: 50px;
+}
+
+@media screen and (min-width: 769px) {
+  .column.is-faded {
+    padding-top: 50px;
+    background: linear-gradient(90deg, #f9f9f9, #fff 20px);
+  }
+}
+
 .edit-article-title{
   height: 39px;
 }
