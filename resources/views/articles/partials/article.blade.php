@@ -24,7 +24,10 @@
             <span class="tags is-hidden-mobile">
 
                 @foreach($article->tags as $tag)
-                    <span class="tag">{{ $tag->name }}</span>
+                    <a class="tag" href="{{ $tag->path() }}">
+                        <span >{{ $tag->name }}</span>
+                    </a>
+
                 @endforeach
 
             </span>
@@ -53,8 +56,8 @@
 
         <div class="article-state">
 
-            <div class="extra">
-                <a href="#">
+            <div class="extra is-hidden-mobile">
+                <a href="{{ $article->category->path() }}">
                     <div class="label">
                         {{ $article->category->name }}
                     </div>

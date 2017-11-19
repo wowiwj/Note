@@ -16,13 +16,15 @@
                     </p>
 
                     <div class="card-header-icon articles-sort">
-                        <a href="#">最新</a>
+                        <a href="/articles">最新</a>
                         ·
-                        <a href="#">我的</a>
+                        @auth
+                        <a href="/articles?by={{ Auth::user()->name }}">我的</a>
+                        @endauth
                         ·
-                        <a href="#">热门</a>
+                        <a href="/articles?popular=1">热门</a>
                         ·
-                        <a href="#">零回复</a>
+                        <a href="/articles?uncommented=1">零回复</a>
                     </div>
                 </header>
                 <div class="card-content nopadding">
@@ -44,61 +46,8 @@
 
 
         <div class="column">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        热门分类
-                    </p>
-                    <a href="#" class="card-header-icon" aria-label="more options">
-                        查看全部
-                    </a>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <div class="columns is-multiline is-centered">
 
-
-
-                            <div class="column is-half level-item has-text-centered">
-                                <a href="#" class="round-item">
-                                    编程
-                                </a>
-                                
-                            </div>
-                            <div class="column is-half level-item has-text-centered">
-                                <a href="#" class="round-item">
-                                    编程
-                                </a>
-                                
-                            </div>
-                            <div class="column is-half level-item has-text-centered">
-                                <a href="#" class="round-item">
-                                    编程
-                                </a>
-                                
-                            </div>
-                            <div class="column is-half level-item has-text-centered">
-                                <a href="#" class="round-item">
-                                    编程
-                                </a>
-                                
-                            </div>
-                            <div class="column is-half level-item has-text-centered">
-                                <a href="#" class="round-item">
-                                    编程
-                                </a>
-                                
-                            </div>
-                            <div class="column is-half level-item has-text-centered">
-                                <a href="#" class="round-item">
-                                    编程
-                                </a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.partials.category')
 
             <div class="card m-t-20">
                 <header class="card-header">

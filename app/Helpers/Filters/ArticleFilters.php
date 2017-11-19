@@ -13,7 +13,12 @@ use App\Models\User;
 
 class ArticleFilters extends Filters
 {
-    protected $filters = ['by','popular','uncommented',''];
+    protected $filters = [
+        'by',
+        'popular',
+        'uncommented',
+        'tag'
+    ];
 
     protected function by($username)
     {
@@ -35,6 +40,13 @@ class ArticleFilters extends Filters
         $this->builder->getQuery()->orders = [];
         return $this->builder
             ->has('comments','=',0);
+    }
+
+    public function tag($name){
+
+        return $this->builder->whereHas('tags',function ($query) use ($name){
+            $query->where('slug',$name)->orWhere('name',$name);
+        });
     }
 
 }

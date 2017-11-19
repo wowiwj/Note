@@ -21,6 +21,23 @@ class Category extends Model
         return 'slug';
     }
 
+    public function path(){
+
+        return '/articles/'.$this->slug;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($category){
+
+            $category->slug = str_slug($category->name);
+
+        });
+
+    }
+
 //    public function getArticlesCountAttribute()
 //    {
 ////        return 1;
