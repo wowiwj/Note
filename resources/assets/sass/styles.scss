@@ -186,6 +186,8 @@ i[class*="ion-"]{
 
 .comment-contents{
 
+
+
   .comment-content{
 
     .media{
@@ -194,6 +196,17 @@ i[class*="ion-"]{
 
         margin-bottom: 1em;
         margin-right: 0;
+        &:hover img{
+          -webkit-transform: rotateZ(360deg);
+          -moz-transcform: rotateZ(360deg);
+          transform: rotateZ(360deg);
+        }
+
+        .avatar{
+          transition: -webkit-transform .6s ease-in;
+          transition: transform .6s ease-in;
+          transition: transform .6s ease-in,-webkit-transform .6s ease-in;
+        }
 
       }
 
@@ -211,7 +224,9 @@ i[class*="ion-"]{
             padding-top: 2px;
           }
 
+
           img{
+
             margin-top:8px;
             border-radius: 5px;
           }

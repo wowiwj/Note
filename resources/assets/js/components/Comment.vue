@@ -13,12 +13,19 @@
                 <strong>{{ comment.user.name }}</strong> <small>{{ ago }}</small>
               </span>
 
-              <a class="comment-option">
-                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+
+              <a v-if="canDelete" class="comment-option" @click="confirmDeleteComment">
+                <span class="icon is-small"><i class="fa fa-trash"></i></span>
               </a>
+
               <a class="comment-option">
                 <span class="icon is-small"><i class="fa fa-heart"></i></span>
               </a>
+
+              <a v-if="canReplyUser" class="comment-option" @click="replyUser" href="#newComment">
+                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+              </a>
+
             </p>
             <div class="comment-body">
               <div class="markdown" v-html="body"></div>
@@ -106,17 +113,35 @@
                 window.events.$emit('reply',this.comment.user);
 
             },
+            confirmDeleteComment() {
+                this.$dialog.confirm({
+                    message: '确定删除这条评论么?',
+                    confirmText:'删除',
+                    cancelText:'取消',
+                    onConfirm: () => this.deleteComment()
+                })
+            },
             deleteComment(){
 
 
                 axios.delete('/api/v1/comments/'+this.comment.id).then(({data})=>{
 
-                    flash('删除成功','success');
+                    this.$toast.open({
+                        duration: 5000,
+                        message: `评论删除成功`,
+                        position: 'is-bottom',
+                        type: 'is-success'
+                    })
 
                     this.$emit('commentDelete',this.index);
 
                 },({error})=>{
-                    flash('删除失败','danger');
+                    this.$toast.open({
+                        duration: 5000,
+                        message: `评论删除失败`,
+                        position: 'is-bottom',
+                        type: 'is-danger'
+                    })
 
                     console.log(error);
                 });

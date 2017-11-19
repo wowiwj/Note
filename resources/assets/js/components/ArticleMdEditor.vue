@@ -364,37 +364,6 @@
         padding-top: calc(0.375em - 1px);
     }
 
-    /*.input, .textarea {*/
-        /*-moz-appearance: none;*/
-        /*-webkit-appearance: none;*/
-        /*-webkit-box-align: center;*/
-        /*-ms-flex-align: center;*/
-        /*align-items: center;*/
-        /*border: 1px solid transparent;*/
-        /*border-radius: 3px;*/
-        /*box-shadow: none;*/
-        /*display: -webkit-inline-box;*/
-        /*display: -ms-inline-flexbox;*/
-        /*display: inline-flex;*/
-        /*font-size: 1rem;*/
-        /*height: 2.25em;*/
-        /*-webkit-box-pack: start;*/
-        /*-ms-flex-pack: start;*/
-        /*justify-content: flex-start;*/
-        /*line-height: 1.5;*/
-        /*padding-bottom: calc(0.375em - 1px);*/
-        /*padding-left: calc(0.625em - 1px);*/
-        /*padding-right: calc(0.625em - 1px);*/
-        /*padding-top: calc(0.375em - 1px);*/
-        /*position: relative;*/
-        /*vertical-align: top;*/
-        /*background-color: white;*/
-        /*border-color: #dbdbdb;*/
-        /*color: #363638;*/
-        /*box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);*/
-        /*max-width: 100%;*/
-        /*width: 100%;*/
-
 </style>
 
 

@@ -1,7 +1,7 @@
 <template>
 
 <div>
-    <div class="newComment" v-if="signedIn">
+    <div class="newComment" v-if="signedIn" id="newComment">
         <div class="field" >
             <textarea id="editor"></textarea>
         </div>
@@ -100,6 +100,7 @@ export default {
 
         window.events.$on('reply',(user)=>{
             this.simplemde.value('@'+user.name+' ');
+            this.simplemde.codemirror.focus()
         });
 
 
