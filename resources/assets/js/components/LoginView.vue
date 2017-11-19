@@ -1,14 +1,6 @@
 <template>
     <div>
-        <p class="control login">
-        <a class="button is-primary" @click="isLoginFormActive = true">
-            <span class="icon">
-                <i class="fa fa-sign-in"></i>
-            </span>
 
-            <span>登录</span>
-        </a>
-        </p>
         <b-modal :active.sync="isLoginFormActive" has-modal-card :can-cancel='true'>
             <div class="modal-card">
             <header class="modal-card-head">
@@ -160,9 +152,5 @@ export default {
     .is-full-width{
         width:100%;
     }
-
-    
-    
-
 
 </style>

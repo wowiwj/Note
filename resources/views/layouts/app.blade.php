@@ -16,15 +16,12 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <script>
-        window.App = {!!
-            json_encode([
-                'user' => Auth()->user(),
-                'csrfTtoken' => csrf_token(),
-                'signedIn' => Auth::check()
+        window.App = @json([
+            'user' => Auth()->user(),
+            'csrfTtoken' => csrf_token(),
+            'signedIn' => Auth::check()
 
-            ]);
-
-        !!};
+        ])
     </script>
 
     @yield('styles')
@@ -32,31 +29,26 @@
 <body>
     <div id="app">
 
-        <div class="white-bg">
-            <div class="container">
-                @include('layouts.partials.nav')
-            </div>
 
-        </div>
+        @include('layouts.partials.nav')
+
 
         <div class="container">
 
             @include('flash::message')
 
-
             @yield('content')
 
-            
-
         </div>
-
-
-        
 
 
         <flash message='{{ session('flash.text') }}'
                 level="{{ session('flash.level') }}" >
         </flash>
+
+        @guest
+            <login-view></login-view>>
+        @endguest
 
         @include('layouts.partials.footer')
 

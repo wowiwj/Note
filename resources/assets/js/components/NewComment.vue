@@ -82,8 +82,6 @@ export default {
 
                             console.log(1);
                         }
-
-                        // Add your own code
                     },
                     className: "fa fa-image",
                     title: "select image",

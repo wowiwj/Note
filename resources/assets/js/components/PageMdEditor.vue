@@ -40,7 +40,7 @@
 
                     <div class="column is-12">
                         导航条显示&nbsp;&nbsp;
-                        <vue-switch :value="isShowNav" @input="changeShowNavState"></vue-switch>
+                        <b-switch size="is-small" v-model="isShowNav"></b-switch>
                         <button class="button is-primary is-pulled-right" @click="create()">添加</button>
                     </div>
 
@@ -54,7 +54,7 @@
 
                     <div class="column is-12">
                         导航条显示&nbsp;&nbsp;
-                        <vue-switch :value="isShowNav" @input="changeShowNavState"></vue-switch>
+                        <b-switch size="is-small" v-model="isShowNav"></b-switch>
                         <button class="button is-primary is-pulled-right" @click="update()">更新</button>
                     </div>
 
@@ -72,15 +72,13 @@
 <script>
 
     import Multiselect from 'vue-multiselect'
-    import VueSwitch from './Switch.vue'
+
     import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
     import MdeOption from './modules/MdeConfig.js'
-    require('vue-multiselect/dist/vue-multiselect.min.css')
-
 
     export default {
-        components: { Multiselect,VueSwitch},
+        components: { Multiselect},
         props:['pageId'],
         data() {
             return {
@@ -190,11 +188,6 @@
                 },(error)=>{
                     console.log(error);
                 });
-
-            },
-            changeShowNavState(state){
-
-                this.isShowNav = state
 
             }
         },
