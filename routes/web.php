@@ -81,9 +81,6 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::get('categories/create', 'CategoriesController@create');
     Route::post('categories/store', 'CategoriesController@store')->name('categories.store');
-    Route::get('tags/create', 'TagsController@create');
-
-    Route::post('tags/store', 'TagsController@store')->name('tags.store');
 
     Route::post('articles/{article}/comments','CommentsController@store')->name('comments.store');
 

@@ -95,6 +95,7 @@
                             </span>
                                 写文章
                             </a>
+                            <hr class="navbar-divider">
                             @if(Auth::user()->is_admin)
                                 <a class="navbar-item" href="{{ route('special_pages.create') }}">
                                 <span class="icon">
@@ -109,13 +110,8 @@
                             </span>
                                 添加分类
                             </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item" href="/tags/create">
-                            <span class="icon">
-                                <i class="fa fa-fw fa-tags m-r-5"></i>
-                            </span>
-                                添加标签
-                            </a>
+
+
                         </div>
                     </div>
 
