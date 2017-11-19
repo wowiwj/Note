@@ -41,15 +41,15 @@
   font-size: inherit;
 }
 
-//.social-share .social-share-icon {
-//  position: relative;
-//  display: inline-block;
-//  width: 24px;
-//  height: 24px;
-//  font-size: 17px;
-//  border-radius: 50%;
-//  line-height: 20px;
-//  text-align: center;
-//  vertical-align: middle;
-//  transition: background 0.6s ease-out 0s;
-//}
+.social-share .social-share-icon {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  transition: background 0.6s ease-out 0s;
+}

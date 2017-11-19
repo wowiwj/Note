@@ -8,27 +8,23 @@
         </div>
         <div class="media-content">
           <div class="content">
-            <p>
-              <strong>{{ comment.user.name }}</strong> <small>@{{ comment.user.name }}</small> <small>{{ ago }}</small>
-              <br>
-              <div class="comment-body">
-                <div class="markdown" v-html="body"></div>
-              </div>
-            </p>
-          </div>
-          <nav class="level">
-            <div class="level-left">
-              <a class="level-item">
+            <p class="level">
+              <span class="flex">
+                <strong>{{ comment.user.name }}</strong> <small>{{ ago }}</small>
+              </span>
+
+              <a class="comment-option">
                 <span class="icon is-small"><i class="fa fa-reply"></i></span>
               </a>
-              <a class="level-item">
-                <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-              </a>
-              <a class="level-item">
+              <a class="comment-option">
                 <span class="icon is-small"><i class="fa fa-heart"></i></span>
               </a>
+            </p>
+            <div class="comment-body">
+              <div class="markdown" v-html="body"></div>
             </div>
-          </nav>
+
+          </div>
         </div>
       </article>
 

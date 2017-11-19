@@ -26,7 +26,7 @@
 
 
                         <div class="columns">
-                            <div class="column is-8">
+                            <div class="column is-8 is-hidden-mobile">
                                 <div class="social-share-container">
                                     <div class="social-share" data-disabled="google" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"></div>
                                 </div>

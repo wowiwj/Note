@@ -184,6 +184,53 @@ i[class*="ion-"]{
 }
 
 
+.comment-contents{
+
+  .comment-content{
+
+    .media{
+
+      .media-left{
+
+        margin-bottom: 1em;
+        margin-right: 0;
+
+      }
+
+      .media-content{
+
+        .comment-option{
+          margin-right:1em;
+        }
+
+        .content{
+
+          .comment-body{
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+          }
+
+          img{
+            border-radius: 5px;
+          }
+
+          p{
+
+            margin-bottom: 0;
+          }
+
+        }
+      }
+
+    }
+
+
+  }
+
+
+}
+
 
 
 
