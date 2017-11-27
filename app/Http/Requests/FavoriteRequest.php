@@ -55,12 +55,14 @@ class FavoriteRequest extends FormRequest
         
     }
 
+    // 用户点赞
     public function store()
     {
         $model = $this->getModel();
         return $model->favorite();
     }
 
+    // 用户取消点赞
     public function destroy()
     {
         $model = $this->getModel();

@@ -4,10 +4,11 @@
 
 <script>
 export default {
+    props:['comment'],
     data(){
         return {
-            'isFavorite':false,
-            'favoriteCount':23223,
+            'isFavorite':this.comment.id,
+            'favoriteCount':this.comment.favorite_count,
             'favoriteClass':'favorite',
             'unFavoriteClass':'un-favorite'
         }

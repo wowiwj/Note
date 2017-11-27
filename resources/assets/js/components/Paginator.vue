@@ -25,9 +25,9 @@ export default {
   },
   watch:{
         dataSet() {
-                this.page = this.dataSet.pagination.current_page;
-                this.prevUrl = this.dataSet.pagination.links.previous;
-                this.nextUrl = this.dataSet.pagination.links.next;
+                this.page = this.dataSet.meta.current_page;
+                this.prevUrl = this.dataSet.links.prev;
+                this.nextUrl = this.dataSet.links.next;
         },
         page() {
             this.broadcast().updateUrl();

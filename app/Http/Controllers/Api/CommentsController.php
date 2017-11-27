@@ -11,6 +11,7 @@ use App\Models\Comment;
 use App\Transformers\CommentTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Comment as CommentCollection;
 
 class CommentsController extends ApiController
 {
@@ -26,7 +27,8 @@ class CommentsController extends ApiController
     public function index($category,Article $article)
     {
         $comments = $article->comments()->paginate(20);
-        return $this->respondWithPaginator($comments,new CommentTransformer);
+
+        return CommentCollection::collection($comments);
     }
 
     public function pageComments($name){

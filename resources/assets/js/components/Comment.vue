@@ -5,7 +5,7 @@
           <figure class="image is-64x64">
             <img class="avatar img-thumbnail" :src="comment.user.avatar" alt="Image">
           </figure>
-          <favorite-comment></favorite-comment>  
+          <favorite-comment :comment="comment"></favorite-comment>  
         </div>
         <div class="media-content">
           <div class="content">
