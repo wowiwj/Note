@@ -13,16 +13,16 @@ export default {
         }
     },
     methods:{
+       
         favorite(){
+            alert(1);
             axios.post('/api/v1/favorites',{
                 'type':'comment',
-                'comment_id':123
+                'type_id':1333
             }).then((data)=>{
-                console
-
-
+                console.log(data.data);
             }).catch((err)=>{
-
+                console.log(err.response.data);
 
             });
 
@@ -30,10 +30,11 @@ export default {
         },
         unFavorite(){
 
+            alert(2);
 
         },
         togoFavorite(){
-            this.favorite ? this.unFavorite() : this.favorite();
+            this.isFavorite ? this.unFavorite() : this.favorite();
         }
     }
   

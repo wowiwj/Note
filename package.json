@@ -28,12 +28,10 @@
     "vue-router": "^2.5.3"
   },
   "dependencies": {
-    "iview": "^2.0.0-rc.16",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
     "simplemde": "^1.11.2",
     "vue-multiselect": "^2.0.0-beta.15",
-    "vue-quill-editor": "^2.2.1",
     "social-share.js": "^1.0.16"
   }
 }

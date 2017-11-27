@@ -80,9 +80,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::delete('special_pages/{page}','SpecialPagesController@destroy')->name('special_pages.destroy');
 
 
-    Route::post('favorites','FavoriteController@store');
-
-    Route::delete('favorite','FavoriteController@destroy');
+    
 
     Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
 

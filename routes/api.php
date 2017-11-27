@@ -47,6 +47,10 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::post('image/upload','FilesController@ImageUpload');
 
+    Route::post('favorites','FavoriteController@store');
+    
+    Route::delete('favorite','FavoriteController@destroy');
+
 
     Route::post('special_pages','SpecialPagesController@store');
 

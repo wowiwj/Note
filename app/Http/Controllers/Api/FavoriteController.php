@@ -19,7 +19,13 @@ class FavoriteController extends ApiController
     // 用户点赞
     public function store(FavoriteRequest $request)
     {
-        $this->authorize('');
+        try{
+            $request->store();
+        }catch(\Exception $e){
+            return $this->failed($e->getMessage(),$e->getCode());
+        }
+        
+        return $this->message('点赞成功');
         
     }
 
