@@ -57,6 +57,7 @@ Vue.component('PageMdEditor',require('./components/PageMdEditor.vue'));
 Vue.component('LoginView',require('./components/LoginView.vue'))
 
 
+
 window.marked = require('marked');
 
 

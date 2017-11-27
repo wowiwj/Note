@@ -42,14 +42,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth'
 
 Route::group(['namespace' => 'Web'], function () {
 
-
-
-//    Route::get('login',function (){
-//        return '1';
-//    });
-
-
-
     Route::post('login','SessionsController@store')->name('login');
 
     Route::get('articles', 'ArticlesController@index');
@@ -57,11 +49,6 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('articles/create', 'ArticlesController@create');
 
     Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
-
-
-
-
-
 
 
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
@@ -93,7 +80,9 @@ Route::group(['namespace' => 'Web'], function () {
     Route::delete('special_pages/{page}','SpecialPagesController@destroy')->name('special_pages.destroy');
 
 
+    Route::post('favorites','FavoriteController@store');
 
+    Route::delete('favorite','FavoriteController@destroy');
 
     Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
 

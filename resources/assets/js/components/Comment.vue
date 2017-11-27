@@ -5,6 +5,7 @@
           <figure class="image is-64x64">
             <img class="avatar img-thumbnail" :src="comment.user.avatar" alt="Image">
           </figure>
+          <favorite-comment></favorite-comment>  
         </div>
         <div class="media-content">
           <div class="content">
@@ -13,13 +14,8 @@
                 <strong>{{ comment.user.name }}</strong> <small>{{ ago }}</small>
               </span>
 
-
               <a v-if="canDelete" class="comment-option" @click="confirmDeleteComment">
                 <span class="icon is-small"><i class="fa fa-trash"></i></span>
-              </a>
-
-              <a class="comment-option">
-                <span class="icon is-small"><i class="fa fa-heart"></i></span>
               </a>
 
               <a v-if="canReplyUser" class="comment-option" @click="replyUser" href="#newComment">
@@ -74,16 +70,17 @@
 <script>
 
     import moment from 'moment'
+    import FavoriteComment from './FavoriteComment'
     moment.locale('zh-cn'); 
 
     export default{
+        components:{FavoriteComment},
         props: ['comment','index'],
         computed: {
             body : function(){
                 var comment = JSON.parse(this.comment.body)
 
                 return marked(comment.raw)
-
             },
             ago : function(){
                 

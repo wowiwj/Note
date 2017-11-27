@@ -195,11 +195,17 @@ i[class*="ion-"]{
       .media-left{
 
         margin-bottom: 1em;
-        margin-right: 0;
+        margin-right: 1em;
+        text-align: center;
         &:hover img{
           -webkit-transform: rotateZ(360deg);
           -moz-transcform: rotateZ(360deg);
           transform: rotateZ(360deg);
+        }
+        .image{
+
+          margin-bottom: 0;
+
         }
 
         .avatar{
