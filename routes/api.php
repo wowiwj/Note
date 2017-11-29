@@ -49,7 +49,7 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::post('favorites','FavoriteController@store');
     
-    Route::delete('favorite','FavoriteController@destroy');
+    Route::delete('favorites','FavoriteController@destroy');
 
 
     Route::post('special_pages','SpecialPagesController@store');

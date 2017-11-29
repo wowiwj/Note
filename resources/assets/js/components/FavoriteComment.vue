@@ -7,7 +7,7 @@ export default {
     props:['comment'],
     data(){
         return {
-            'isFavorite':this.comment.id,
+            'isFavorite':this.comment.is_favorite,
             'favoriteCount':this.comment.favorite_count,
             'favoriteClass':'favorite',
             'unFavoriteClass':'un-favorite'
@@ -16,11 +16,13 @@ export default {
     methods:{
        
         favorite(){
-            alert(1);
+         
             axios.post('/api/v1/favorites',{
                 'type':'comment',
-                'type_id':1333
+                'type_id':this.comment.id
             }).then((data)=>{
+                this.isFavorite = true
+                this.favoriteCount++;
                 console.log(data.data);
             }).catch((err)=>{
                 console.log(err.response.data);
@@ -30,9 +32,14 @@ export default {
 
         },
         unFavorite(){
-
-            alert(2);
-
+            axios.post('/api/v1/favorites?_method=delete',{
+                'type':'comment',
+                'type_id':this.comment.id
+            }).then((data)=>{
+                this.isFavorite = false;
+                this.favoriteCount--;
+            }).catch((err)=>{
+            });
         },
         togoFavorite(){
             this.isFavorite ? this.unFavorite() : this.favorite();

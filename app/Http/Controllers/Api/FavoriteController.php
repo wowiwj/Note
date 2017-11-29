@@ -30,9 +30,15 @@ class FavoriteController extends ApiController
     }
 
     // 用户取消点赞
-    public function destroy(){
+    public function destroy(FavoriteRequest $request){
 
-
+        try{
+            $request->destroy();
+        }catch(\Exception $e){
+            return $this->failed($e->getMessage(),$e->getCode());
+        }
+        
+        return $this->message('取消点赞成功');
     }
 
 
