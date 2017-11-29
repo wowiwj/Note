@@ -75,8 +75,7 @@ class CommentsController extends ApiController
             'content' => $parsed_body,
             'user_id' => Auth::user()->id
         ]);
-
-        return $this->respondWithItem($comment,new CommentTransformer);
+        return new CommentCollection($comment);
     }
 
     public function destroy(Comment $comment){
