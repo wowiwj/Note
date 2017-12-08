@@ -380,6 +380,19 @@
     border: 0;
   }
 
+  .number{
+
+    background-color: transparent;
+    font-size: 0.9em;
+    align-items: inherit;
+    min-width: 0;
+    height: 1em;
+    margin-right: 0;
+    vertical-align: baseline;
+    padding: 0;
+    font-weight: bold;
+  }
+
   .highlight {
     margin-bottom: 16px;
   }
