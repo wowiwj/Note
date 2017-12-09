@@ -34,9 +34,13 @@ class Markdowner{
      */
     public function convertMarkdownToHtml($markdown)
     {
-        return $this->markdownConverter
+        $convertedHmtl = $this->markdownConverter
             ->setBreaksEnabled(true)
             ->text($markdown);
+    
+        $convertedHmtl = str_replace("<pre><code>", '<pre><code class=" language-php">', $convertedHmtl);
+        return $convertedHmtl;
+
     }
 
     /**

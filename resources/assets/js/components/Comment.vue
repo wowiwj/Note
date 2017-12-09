@@ -80,7 +80,7 @@
             body : function(){
                 var comment = JSON.parse(this.comment.body)
 
-                return marked(comment.raw)
+                return marked(comment.raw).replace(/<pre><code>/g, '<pre><code class=" language-php">')
             },
             ago : function(){
                 
