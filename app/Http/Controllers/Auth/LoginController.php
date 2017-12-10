@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Api\Helpers\OAuth\OAuthManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -35,5 +37,29 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    public function redirectToProvider($driver)
+    {
+
+        if (!in_array($driver,['qq','github'])){
+
+            throw new NotFoundHttpException;
+        }
+
+        return Socialite::driver($driver)->redirect();
+    }
+
+
+    public function handleProviderCallback($driver)
+    {
+
+        $user = Socialite::driver($driver)->user();
+        $manager = new OAuthManager($driver);
+        $manager->auth($user);
+
+        return redirect('/');
+        // $user->token;
     }
 }

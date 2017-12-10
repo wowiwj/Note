@@ -18,7 +18,7 @@
                 </a>
             </p>
             <p class="control">
-                <a href="#" class="button is-fullwidth">
+                <a href="{{ route('oauth.redirect','github') }}" class="button is-fullwidth">
                     <span class="icon">
                         <i class="fa fa-github">
                         </i></span>

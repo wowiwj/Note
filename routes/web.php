@@ -40,6 +40,14 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth'
 });
 
 
+Route::group(['namespace' => 'Auth'],function (){
+
+    // note.dev/oauth/redirect/driver/github
+    Route::get('oauth/callback/driver/{driver}', 'LoginController@handleProviderCallback');
+    Route::get('oauth/redirect/driver/{driver}', 'LoginController@redirectToProvider')->name('oauth.redirect');
+});
+
+
 Route::group(['namespace' => 'Web'], function () {
 
     Route::post('login','SessionsController@store')->name('login');
@@ -80,7 +88,6 @@ Route::group(['namespace' => 'Web'], function () {
     Route::delete('special_pages/{page}','SpecialPagesController@destroy')->name('special_pages.destroy');
 
 
-    
 
     Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
 

@@ -13,6 +13,7 @@
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.16.0",
         "league/html-to-markdown": "^4.4",

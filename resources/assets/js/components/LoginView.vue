@@ -63,8 +63,12 @@
             <footer class="modal-card-foot">
                 <div class="third-login">
                     第三方登录:
-                    <i class="fa fa-github"></i>
-                    <i class="fa fa-qq"></i>
+                    <a :href="githubAuthUrl">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa fa-qq"></i>
+                    </a>
                 </div> 
             </footer>
         </div>
@@ -76,6 +80,7 @@
 
 <script>
 export default {
+    props:['githubAuthUrl'],
     data(){
         return{
             isLoginFormActive:false,
