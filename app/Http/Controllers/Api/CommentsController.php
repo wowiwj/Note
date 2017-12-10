@@ -36,7 +36,7 @@ class CommentsController extends ApiController
         $page = SpecialPage::where('route',$name)->firstOrFail();
 
         $comments = $page->comments()->paginate(20);
-        return $this->respondWithPaginator($comments,new CommentTransformer);
+        return CommentCollection::collection($comments);
 
     }
 
@@ -54,8 +54,7 @@ class CommentsController extends ApiController
             'content' => $parsed_body,
             'user_id' => Auth::user()->id
         ]);
-
-        return $this->respondWithItem($comment,new CommentTransformer);
+        return new CommentCollection($comment);
 
     }
 
