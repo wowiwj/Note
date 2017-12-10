@@ -15,5 +15,11 @@ const { mix } = require('laravel-mix');
     .sass('resources/assets/sass/app.scss', 'public/css')
     .js('resources/assets/js/home.js', 'public/js')
     .sass('resources/assets/sass/home.scss', 'public/css')
-    .version();
+    .extract(['vue','buefy','vue-multiselect','moment']);
+
+if (mix.inProduction) {
+    mix.version();
+}
+
+mix.browserSync('note.dev');
 
