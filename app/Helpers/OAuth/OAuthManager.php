@@ -24,7 +24,36 @@ class OAuthManager
 
     }
 
-    protected function storeWithQq($user){
+    protected function authWithQq($user){
+
+        // 如果已经存在 -> 登录
+        $current_user = User::where('qq_openid',$user->id)->first();
+        if ($current_user){
+            Auth::login($current_user);
+            return $current_user;
+        }
+        // 创建用户
+        // 判断有重复昵称则拼接随机字符串
+
+        $username = $user->nickname;
+        if (User::query()->where('name',$user->nickname)->first()){
+            $username = $username.'_'.str_random(5);
+        }
+
+        $current_user = User::create([
+            'qq_openid' =>$user->id,
+            'name' => $username,
+            'email' => $user->email ?? 'null@null.com',
+            'activated' => 1,
+            'avatar' => $user->avatar,
+            'password' => ''
+
+        ]);
+
+        $current_user->activated = true;
+        $current_user->save();
+        Auth::login($current_user);
+        return $current_user;
 
 
     }
@@ -38,9 +67,14 @@ class OAuthManager
             Auth::login($current_user);
             return $current_user;
         }
+
+        $username = $user->nickname;
+        if (User::query()->where('name',$user->nickname)->first()){
+            $username = $username.'_'.str_random(5);
+        }
         // 创建用户
         $current_user = User::create([
-            'name' => $user->nickname,
+            'name' => $username,
             'email' => $user->email,
             'activated' => 1,
             'avatar' => $user->avatar,

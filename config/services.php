@@ -38,6 +38,11 @@ return [
         'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
         'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
         'redirect' => env('APP_URL').'/oauth/callback/driver/github',
-    ]
+    ],
+    'qq' => [
+        'client_id' => env('QQ_CLIENT_ID','client_id'),
+        'client_secret' => env('QQ_CLIENT_SECRET','client_secret'),
+        'redirect' => env('APP_URL').'/oauth/callback/driver/qq'
+    ],
 
 ];
