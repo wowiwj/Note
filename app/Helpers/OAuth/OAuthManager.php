@@ -43,7 +43,7 @@ class OAuthManager
         $current_user = User::create([
             'qq_openid' =>$user->id,
             'name' => $username,
-            'email' => $user->email ?? 'null@null.com',
+            'email' => $user->email,
             'activated' => 1,
             'avatar' => $user->avatar,
             'password' => ''

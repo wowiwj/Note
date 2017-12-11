@@ -26,7 +26,8 @@ class User extends Authenticatable
         'avatar',
         'github_id',
         'github_name',
-        'github_url'
+        'github_url',
+        'qq_openid'
     ];
 
     /**
