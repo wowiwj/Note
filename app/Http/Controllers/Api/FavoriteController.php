@@ -19,26 +19,19 @@ class FavoriteController extends ApiController
     // 用户点赞
     public function store(FavoriteRequest $request)
     {
-        try{
-            $request->store();
-        }catch(\Exception $e){
-            return $this->failed($e->getMessage(),$e->getCode());
-        }
-        
-        return $this->message('点赞成功');
+        return $this->tryOptionToResponse(function () use ($request) {
+                $request->store();
+                }, '点赞成功');
         
     }
 
     // 用户取消点赞
     public function destroy(FavoriteRequest $request){
 
-        try{
-            $request->destroy();
-        }catch(\Exception $e){
-            return $this->failed($e->getMessage(),$e->getCode());
-        }
-        
-        return $this->message('取消点赞成功');
+        return $this->tryOptionToResponse(function () use ($request) {
+                $request->destroy();
+                }, '取消点赞成功');
+
     }
 
 

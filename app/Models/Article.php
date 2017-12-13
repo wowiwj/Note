@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-
 use App\Helpers\Fitters\ArticleFilters;
 use App\Helpers\Handler\ImageUploadHandler;
 use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\RecordsActivity;
+use App\Helpers\Traits\Subscribable;
 use App\Scopes\ArticleFitterScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,11 +15,10 @@ class Article extends Model
 {
 
 
-    use RecordsActivity,SoftDeletes;
+    use RecordsActivity,Subscribable,SoftDeletes;
     protected $guarded = [];
 
     protected $with = ['category','user','tags'];
-
 
 
     public function user()

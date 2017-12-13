@@ -22,6 +22,20 @@ class ApiController extends Controller
     use ApiResponse;
 
 
+
+    protected function tryOptionToResponse(callable $method,$message='success'){
+
+        try{
+            $method();
+        }catch(\Exception $e){
+            return $this->failed($e->getMessage(),$e->getCode());
+        }
+
+        return $this->message($method);
+
+    }
+
+
     /**
      * ApiController constructor.
      */

@@ -3,17 +3,17 @@
 namespace App\Http\Requests;
 
 use App\Helpers\Traits\GetModelByMorpType;
+use App\Http\Resources\Article;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Comment;
 
-class FavoriteRequest extends FormRequest
+class SubscribeRequest extends FormRequest
 {
-
     use GetModelByMorpType;
 
     protected $map = [
-        'comment' => Comment::class
+        'article' => Article::class
     ];
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,20 +24,20 @@ class FavoriteRequest extends FormRequest
         return true;
     }
 
+
     // 用户点赞
-    public function store()
+    public function subscribe()
     {
         $model = $this->getModel();
-        return $model->favorite();
+        return $model->subscribe();
     }
 
     // 用户取消点赞
-    public function destroy()
+    public function unsubscribe()
     {
         $model = $this->getModel();
-        if($model->isFavorited){
-            $model->unfavorite();
+        if($model->isSubscribed){
+            $model->unsubscribe();
         }
     }
-
 }
