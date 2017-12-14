@@ -66,7 +66,7 @@
                     <a :href="githubAuthUrl">
                         <i class="fa fa-github"></i>
                     </a>
-                    <a href="qqAuthUrl">
+                    <a :href="qqAuthUrl">
                         <i class="fa fa-qq"></i>
                     </a>
                 </div> 
