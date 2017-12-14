@@ -47,7 +47,7 @@
 
                         <div class="field level">
                             <p class="control flex">
-                                <a href="#">没有账号?注册</a>
+                                <a href="/register">没有账号?注册</a>
                             </p>
                             <a>
                                 忘记密码?
