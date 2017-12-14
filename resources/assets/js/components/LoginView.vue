@@ -66,7 +66,7 @@
                     <a :href="githubAuthUrl">
                         <i class="fa fa-github"></i>
                     </a>
-                    <a href="">
+                    <a href="qqAuthUrl">
                         <i class="fa fa-qq"></i>
                     </a>
                 </div> 
@@ -80,7 +80,7 @@
 
 <script>
 export default {
-    props:['githubAuthUrl'],
+    props:['githubAuthUrl','qqAuthUrl'],
     data(){
         return{
             isLoginFormActive:false,
