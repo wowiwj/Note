@@ -52,7 +52,7 @@
                     this.$toast.open({
                         duration: 5000,
                         message: `订阅成功`,
-                        position: 'is-bottom',
+                        position: 'is-top',
                         type: 'is-success'
                     })
                 }).catch((err)=>{
@@ -73,7 +73,7 @@
                     this.$toast.open({
                         duration: 5000,
                         message: `取消订阅成功`,
-                        position: 'is-bottom',
+                        position: 'is-top',
                         type: 'is-success'
                     })
                 }).catch((err)=>{

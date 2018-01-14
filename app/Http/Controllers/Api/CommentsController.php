@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Helpers\Service\Mention;
 use App\Models\SpecialPage;
 use App\Models\User;
+use App\Notifications\ArticleWasUpdated;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\Comment;
@@ -65,15 +66,18 @@ class CommentsController extends ApiController
             'body' => 'required'
         ]);
 
+        $parsed_body = app(Mention::class)->parse($request->body);
 
-        $mention = new Mention();
-        $parsed_body = $mention->parse($request->body);
-
-        
         $comment = $article->comments()->create([
             'content' => $parsed_body,
             'user_id' => Auth::user()->id
         ]);
+
+        $article->subscriptions->filter(function ($subscribe) use ($comment){
+            return $subscribe->user->id != $comment->user->id;
+        })->each->notify($comment);
+
+
         return new CommentCollection($comment);
     }
 

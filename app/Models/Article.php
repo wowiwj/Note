@@ -20,6 +20,10 @@ class Article extends Model
 
     protected $with = ['category','user','tags'];
 
+    protected $appends = [
+        'isSubscribed'
+    ];
+
 
     public function user()
     {

@@ -44072,7 +44072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.$toast.open({
                     duration: 5000,
                     message: '\u8BA2\u9605\u6210\u529F',
-                    position: 'is-bottom',
+                    position: 'is-top',
                     type: 'is-success'
                 });
             }).catch(function (err) {
@@ -44091,7 +44091,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.$toast.open({
                     duration: 5000,
                     message: '\u53D6\u6D88\u8BA2\u9605\u6210\u529F',
-                    position: 'is-bottom',
+                    position: 'is-top',
                     type: 'is-success'
                 });
             }).catch(function (err) {});

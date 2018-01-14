@@ -37,7 +37,7 @@ trait Subscribable
      */
     public function getIsSubscribedAttribute()
     {
-        return $this->isSubscribed();
+        return $this->subscriptions()->where('user_id', auth()->id())->exists();
     }
 
     /**
