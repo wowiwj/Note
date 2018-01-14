@@ -1,8 +1,6 @@
 @component('users.activities.activity')
     @slot('heading')
 
-
-
         @if($activity->subject->commentable instanceof \App\Models\SpecialPage)
             {{ $user->name }} 评论页面
             <a href="/{{ $activity->subject->commentable['route'] }}">

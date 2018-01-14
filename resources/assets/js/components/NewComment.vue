@@ -1,13 +1,13 @@
 <template>
 
 <div>
-    <div class="newComment" v-if="signedIn">
-        <div class="form-group" >
+    <div class="newComment" v-if="signedIn" id="newComment">
+        <div class="field" >
             <textarea id="editor"></textarea>
         </div>
 
-        <div class="form-group">
-            <button class="btn btn-primary pull-right" @click="newComment">提交</button>
+        <div class="field">
+            <button class="button is-primary is-pulled-right" @click="newComment">提交</button>
         </div>
 
         <input type="file" id="btn_file" style="display:none">
@@ -15,7 +15,7 @@
     </div>
 
     <p class="text-center empty-block white-bg" v-else>
-            请 <a href="/login">登录</a> 后再进行评论
+            请 <a href="javascript:showLogin()">登录</a> 后再进行评论
     </p>
 
 </div>
@@ -82,8 +82,6 @@ export default {
 
                             console.log(1);
                         }
-
-                        // Add your own code
                     },
                     className: "fa fa-image",
                     title: "select image",
@@ -102,6 +100,7 @@ export default {
 
         window.events.$on('reply',(user)=>{
             this.simplemde.value('@'+user.name+' ');
+            this.simplemde.codemirror.focus()
         });
 
 

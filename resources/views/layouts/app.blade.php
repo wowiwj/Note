@@ -16,15 +16,12 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <script>
-        window.App = {!!
-            json_encode([
-                'user' => Auth()->user(),
-                'csrfTtoken' => csrf_token(),
-                'signedIn' => Auth::check()
+        window.App = @json([
+            'user' => Auth()->user(),
+            'csrfTtoken' => csrf_token(),
+            'signedIn' => Auth::check()
 
-            ]);
-
-        !!};
+        ])
     </script>
 
     @yield('styles')
@@ -32,11 +29,16 @@
 <body>
     <div id="app">
 
+
         @include('layouts.partials.nav')
 
+
         <div class="container">
+
             @include('flash::message')
+
             @yield('content')
+
         </div>
 
 
@@ -44,18 +46,20 @@
                 level="{{ session('flash.level') }}" >
         </flash>
 
+        @guest
+            <login-view github-auth-url="{{ route('oauth.redirect','github') }}" qq-auth-url="{{ route('oauth.redirect','qq') }}"></login-view>>
+        @endguest
+
         @include('layouts.partials.footer')
 
     </div>
 
     <!-- Scripts -->
+    <script src="{{ mix('js/manifest.js') }}"></script>
+    <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
     <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-        $('#flash-overlay-modal').modal();
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+
     </script>
 
     @yield('scripts')

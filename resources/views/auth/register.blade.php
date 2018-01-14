@@ -1,76 +1,98 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">注册</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">用户名</label>
+    <div class="columns">
+        <div class="column is-3 has-text-centered">
+            <p class="subtitle">
+                第三方登录
+            </p>
+            <p class="control">
+                <a href="#" class="button is-fullwidth">
+                    <span class="icon">
+                        <i class="fa fa-qq">
+                        </i></span>
+                    <span>
+                        <strong>QQ登录</strong>
+                    </span>
+                </a>
+            </p>
+            <p class="control">
+                <a href="{{ route('oauth.redirect','github') }}" class="button is-fullwidth">
+                    <span class="icon">
+                        <i class="fa fa-github">
+                        </i></span>
+                    <span>
+                        <strong>GitHub登录</strong>
+                    </span>
+                </a>
+            </p>
+        </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+        <div class="column is-2">
+            <p class="subtitle has-text-centered">
+                或
+            </p>
+        </div>
+        <div class="column is-7">
+            <div class="box">
+                <form role="form" method="POST" action="{{ route('register') }}">
+                    {{ csrf_field() }}
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <div class="field">
+                        <label class="label bigger-font-label">用户名</label>
+                        <p class="control">
+                            <input class="input {{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name" value="{{ old('name') }}" placeholder="请输入用户名">
+                        </p>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">邮箱</label>
+                        @if ($errors->has('name'))
+                            <p class="help is-danger">{{ $errors->first('name') }}</p>
+                        @endif
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    </div>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <div class="field">
+                        <label class="label">邮箱</label>
+                        <p class="control">
+                            <input type="text" name="email" value="{{ old('email') }}" placeholder="请输入您的邮箱"
+                                   class="input {{ $errors->has('email') ? ' is-danger' : '' }}  "
+                            >
+                        </p>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">密码</label>
+                        @if ($errors->has('email'))
+                            <p class="help is-danger">{{ $errors->first('email') }}</p>
+                        @endif
+                    </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                    <div class="field">
+                        <label class="label">请输入密码</label>
+                        <p class="control">
+                            <input type="password" name="password" placeholder="请输入不少于6位的密码" class="input {{ $errors->has('password') ? ' is-danger' : '' }}">
+                        </p>
+                        @if ($errors->has('password'))
+                            <p class="help is-danger">{{ $errors->first('password') }}</p>
+                        @endif
+                    </div>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
+                    <label class="label">确认密码</label>
+                    <p class="control">
+                        <input type="password" name="password_confirmation" placeholder="再次输入密码" class="input">
+                    </p>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
+                    <div class="control m-t-30">
+                        <p class="control">
+                            <button type="submit" name="register"
+                                    class="button is-primary is-outlined is-fullwidth">
+                                <strong>注册</strong>
+                            </button>
+                        </p>
+                    </div>
+                </form>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    注册
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
+
         </div>
     </div>
-</div>
+
 @endsection

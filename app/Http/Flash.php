@@ -4,7 +4,7 @@ class Flash{
 
     public function create($message,$level,$key="flash")
     {
-
+        
 
         session()->flash($key,[
             'text'=>$message,

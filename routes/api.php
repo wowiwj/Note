@@ -20,15 +20,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
+
+    Route::post('auth/login','AuthenticateController@login');
+
     Route::get('articles','ArticlesController@index');
     Route::post('articles','ArticlesController@store');
     Route::get('articles/{article}','ArticlesController@show');
     Route::put('articles/{article}','ArticlesController@update');
 
+    Route::delete('articles/{article}','ArticlesController@destroy');
+
     Route::post('uploadAvatar','UsersController@uploadAvatar');
 
     Route::get('categories','CategoriesController@index');
     Route::get('categories/all','CategoriesController@all');
+
+
+    Route::get('tags','TagsController@index');
+
 
     Route::get('articles/{category}/{article}/comments','CommentsController@index');
 
@@ -37,6 +46,10 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::delete('comments/{comment}','CommentsController@destroy');
 
     Route::post('image/upload','FilesController@ImageUpload');
+
+    Route::post('favorites','FavoriteController@store');
+    
+    Route::delete('favorites','FavoriteController@destroy');
 
 
     Route::post('special_pages','SpecialPagesController@store');

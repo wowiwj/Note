@@ -11,7 +11,10 @@
 |
 */
 
+
 Route::get('/', function () {
+
+//    return view('admin.home.index');
 
     return redirect('articles');
 
@@ -37,7 +40,17 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth'
 });
 
 
+Route::group(['namespace' => 'Auth'],function (){
+
+    // note.dev/oauth/redirect/driver/github
+    Route::get('oauth/callback/driver/{driver}', 'LoginController@handleProviderCallback');
+    Route::get('oauth/redirect/driver/{driver}', 'LoginController@redirectToProvider')->name('oauth.redirect');
+});
+
+
 Route::group(['namespace' => 'Web'], function () {
+
+    Route::post('login','SessionsController@store')->name('login');
 
     Route::get('articles', 'ArticlesController@index');
 
@@ -46,11 +59,6 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
 
 
-
-
-    Route::get('articles/{category}', 'ArticlesController@index');
-
-    Route::get('articles/{category}/{article}','ArticlesController@show');
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
     Route::post('register','UsersController@store')->name('register');
@@ -59,7 +67,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('users/{user}/editAvatar','UsersController@editAvatar')->name('users.editAvatar');
     Route::put('users/{user}','UsersController@update')->name('users.update');
 
-    Route::post('login','SessionsController@store')->name('login');
+
 
     Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'UsersController@verify']);
 
@@ -68,19 +76,23 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::get('categories/create', 'CategoriesController@create');
     Route::post('categories/store', 'CategoriesController@store')->name('categories.store');
-    Route::get('tags/create', 'TagsController@create');
-
-    Route::post('tags/store', 'TagsController@store')->name('tags.store');
 
     Route::post('articles/{article}/comments','CommentsController@store')->name('comments.store');
 
+
+    Route::get('articles/{category}', 'ArticlesController@index');
+    Route::get('articles/{category}/{article}','ArticlesController@show');
 
     Route::get('special_pages/create','SpecialPagesController@create')->name('special_pages.create');
     Route::get('special_pages/{page}/edit','SpecialPagesController@edit')->name('special_pages.edit');
     Route::delete('special_pages/{page}','SpecialPagesController@destroy')->name('special_pages.destroy');
 
 
+
     Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
+
+
+
 
 });
 
@@ -89,13 +101,14 @@ Route::group(['namespace' => 'Web'], function () {
 
 
 /* Dashboard Index */
-Route::group(['prefix' => 'home','namespace' => 'Web','middleware' => ['auth', 'admin']], function () {
-    Route::get('{path?}', 'HomeController@index')->where('path', '[\/\w\.-]*');
-});
 
 
 
 
 
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+//Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

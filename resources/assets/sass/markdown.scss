@@ -1,7 +1,7 @@
 .markdown,.editor-preview-side, .editor-preview{
 
 
-  font-size: 15px;
+  font-size: 16px;
 
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -378,6 +378,19 @@
     white-space: pre;
     background: transparent;
     border: 0;
+  }
+
+  .number{
+
+    background-color: transparent;
+    font-size: 0.9em;
+    align-items: inherit;
+    min-width: 0;
+    height: 1em;
+    margin-right: 0;
+    vertical-align: baseline;
+    padding: 0;
+    font-weight: bold;
   }
 
   .highlight {

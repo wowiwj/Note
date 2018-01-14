@@ -21,8 +21,6 @@ class ArticlesController extends Controller
     {
         $articles = $this->getArticles($category,$fitters);
 
-//        return $articles;
-
         // https://stackoverflow.com/questions/17159273/laravel-pagination-links-not-including-other-get-parameters
         $articles->appends(Input::except('page'));
 
@@ -32,6 +30,8 @@ class ArticlesController extends Controller
     protected function getArticles(Category $category, ArticleFilters $fitters)
     {
         $article = Article::withCount('comments')->latest()->filter($fitters);
+
+//        return $article;
 
         if ($category->exists){
             $article->where('category_id',$category->id);

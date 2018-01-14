@@ -22,12 +22,13 @@
 
             if (this.markdown){
 
-                this.rawHtml = marked(this.markdown)
+                this.rawHtml = marked(this.markdown).replace(/<pre><code>/g, '<pre><code class=" language-php">')
                 return
             }
 
 
-            this.rawHtml = marked(this.content.raw)
+            this.rawHtml = marked(this.content.raw).replace(/<pre><code>/g, '<pre><code class=" language-php">')
+            
         }
     }
 </script>

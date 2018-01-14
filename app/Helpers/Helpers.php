@@ -21,13 +21,8 @@ function alert($message=null,$level='success')
 function navIsActive($name,$route=null)
 {
     if ($route == null){
-        return Route::currentRouteName() == $name ? 'active' : '';
+        return Route::currentRouteName() == $name ? 'is-active' : '';
     }
-
-//    echo request()->url();
-//    echo '--';
-//    echo route($name,$route);
-
     return request()->url() == route($name,$route) ? 'active' : '';
 
 }

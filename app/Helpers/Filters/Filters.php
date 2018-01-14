@@ -29,7 +29,7 @@ abstract class Filters{
 
     public function getFitters()
     {
-        return $this->request->intersect($this->filters);
+        return $this->request->only($this->filters);
     }
 
 

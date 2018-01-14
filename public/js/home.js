@@ -29,11 +29,35 @@ __webpack_require__(94);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy__["default"]);
 
-Vue.component('Menus', __webpack_require__(559));
-Vue.component('MenuItem', __webpack_require__(558));
+Vue.component('Menus', __webpack_require__(493));
+Vue.component('MenuItem', __webpack_require__(492));
 
 var app = new Vue({
     el: '#app'
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Get all "navbar-burger" elements
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+
+                // Get the target from the "data-target" attribute
+                var target = $el.dataset.target;
+                var $target = document.getElementById(target);
+
+                // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                $el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+            });
+        });
+    }
 });
 
 $(document).ready(function () {
@@ -56,15 +80,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 527:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(269);
-
-
-/***/ }),
-
-/***/ 548:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -159,7 +175,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 549:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -206,20 +222,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 558:
+/***/ 492:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(11)(
   /* script */
-  __webpack_require__(548),
+  __webpack_require__(279),
   /* template */
-  __webpack_require__(561),
+  __webpack_require__(511),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/wangju/Desktop/Code/PHP/Note/resources/assets/js/components/home/MenuItem.vue"
+Component.options.__file = "/Users/wangju/Desktop/Code/PHP/Note/resources/assets/js/components/Home/MenuItem.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MenuItem.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -230,9 +246,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-65b04de8", Component.options)
+    hotAPI.createRecord("data-v-9027ce28", Component.options)
   } else {
-    hotAPI.reload("data-v-65b04de8", Component.options)
+    hotAPI.reload("data-v-9027ce28", Component.options)
   }
 })()}
 
@@ -241,20 +257,20 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 559:
+/***/ 493:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(11)(
   /* script */
-  __webpack_require__(549),
+  __webpack_require__(280),
   /* template */
-  __webpack_require__(560),
+  __webpack_require__(514),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/wangju/Desktop/Code/PHP/Note/resources/assets/js/components/home/Menus.vue"
+Component.options.__file = "/Users/wangju/Desktop/Code/PHP/Note/resources/assets/js/components/Home/Menus.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Menus.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -265,9 +281,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-43dc4f2c", Component.options)
+    hotAPI.createRecord("data-v-bb4eb6ec", Component.options)
   } else {
-    hotAPI.reload("data-v-43dc4f2c", Component.options)
+    hotAPI.reload("data-v-bb4eb6ec", Component.options)
   }
 })()}
 
@@ -276,28 +292,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 560:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.label) ? _c('p', {
-    staticClass: "menu-label"
-  }, [_vm._v(_vm._s(_vm.label))]) : _vm._e(), _vm._v(" "), _c('ul', {
-    staticClass: "menu-list",
-    class: _vm.type
-  }, [_vm._t("default")], 2)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-43dc4f2c", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 561:
+/***/ 511:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -355,9 +350,38 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-65b04de8", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-9027ce28", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 514:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [(_vm.label) ? _c('p', {
+    staticClass: "menu-label"
+  }, [_vm._v(_vm._s(_vm.label))]) : _vm._e(), _vm._v(" "), _c('ul', {
+    staticClass: "menu-list",
+    class: _vm.type
+  }, [_vm._t("default")], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-bb4eb6ec", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 527:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(269);
+
 
 /***/ }),
 
@@ -390,7 +414,7 @@ window.Vue = __webpack_require__(75);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(71);
+    window.$ = window.jQuery = __webpack_require__(71);
 } catch (e) {}
 
 /**
@@ -412,9 +436,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -436,11 +460,16 @@ if (token) {
 window.events = new Vue();
 
 window.flash = function (text) {
-  var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
+    var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
 
 
-  var message = { 'text': text, 'level': level };
-  window.events.$emit('flash', message);
+    var message = { 'text': text, 'level': level };
+    window.events.$emit('flash', message);
+};
+
+window.showLogin = function () {
+
+    window.events.$emit('login');
 };
 
 /***/ })

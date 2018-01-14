@@ -23,7 +23,10 @@ class User extends Authenticatable
         'email',
         'password',
         'signature',
-        'avatar'
+        'avatar',
+        'github_id',
+        'github_name',
+        'github_url'
     ];
 
     /**

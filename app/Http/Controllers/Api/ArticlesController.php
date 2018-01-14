@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Transformers\ArticleTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\Article as ArticleCollection;
 
 class ArticlesController extends ApiController
 {
@@ -33,7 +35,8 @@ class ArticlesController extends ApiController
 
     public function show(Article $article)
     {
-        return $article;
+        return new ArticleCollection($article);
+//        return $article;
     }
 
     public function store(Request $request)
@@ -42,8 +45,12 @@ class ArticlesController extends ApiController
             'category_id' => 'required|exists:categories,id',
             'title' => 'required',
             'body' => 'required',
-            'is_original' => 'required'
+            'is_original' => 'required',
+            'tags' => ''
         ]);
+
+        $tags = json_decode($request->tags,true);
+
         $article = Article::create([
             'title' => $request->title,
             'content' => $request->body,
@@ -52,9 +59,11 @@ class ArticlesController extends ApiController
             'is_original' => $request->is_original
         ]);
 
-        return $article->load('category');
+        return $article->syncTags($tags)->load('category');
 
     }
+
+
 
 
     public function update(Article $article,Request $request)
@@ -63,8 +72,11 @@ class ArticlesController extends ApiController
             'category_id' => 'required|exists:categories,id',
             'title' => 'required',
             'content' => 'required',
-            'is_original' => 'required'
+            'is_original' => 'required',
+            'tags' => ''
         ]);
+
+        $tags = json_decode($request->tags,true);
 
 
         $this->authorize('update',$article);
@@ -74,7 +86,19 @@ class ArticlesController extends ApiController
             'category_id' => $request->category_id,
             'is_original' => $request->is_original
         ]);
-        return $article;
+        return $article->syncTags($tags);
         
+    }
+
+
+    // 删除文章
+    public function destroy(Article $article){
+
+        $this->authorize('update',$article);
+
+        $article->delete();
+
+        return $this->message('删除成功');
+
     }
 }

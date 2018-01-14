@@ -3,37 +3,42 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="columns">
 
-        <div class="col-md-9">
+        <div class="column is-9">
+            <div class="card">
 
-            <div class="panel panel-default padding-md">
-
-                <div class="panel-body ">
-
-                    <h3 class="text-center">
+                <div class="card-header">
+                    <div class="card-header-title">
                         写文章
-                    </h3>
-                    <hr>
+                    </div>
 
+                </div>
+
+                <div class="card-content">
                     <article-md-editor></article-md-editor>
 
                 </div>
 
             </div>
+
         </div>
 
+        <div class="column is-3">
+            <div class="card">
 
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">提示信息</div>
+                <div class="card-header">
+                    <div class="card-header-title">
+                        提示信息
+                    </div>
+                </div>
 
-                <div class="panel-body">
+                <div class="card-content">
                     这是奥克兰发还发爱古法卡法咖啡馆花费
                 </div>
+
             </div>
         </div>
-
 
     </div>
 

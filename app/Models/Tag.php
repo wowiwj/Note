@@ -12,4 +12,23 @@ class Tag extends Model
     {
         return $this->morphedByMany(Article::class,'taggable');
     }
+
+    public function path(){
+
+        return '?tag='.$this->name;
+
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($tag){
+            if ($tag->slug == null){
+                $tag->slug = $tag->name;
+            }
+
+
+        });
+    }
 }

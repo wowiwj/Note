@@ -15,8 +15,8 @@
                    img-format="png"></my-upload>
 
         <img :src="imgDataUrl">
-        <p>
-            <a class="btn btn-primary" @click="toggleShow">设置头像</a>
+        <p class="m-t-50">
+            <a class="button is-primary" @click="toggleShow">设置头像</a>
         </p>
 
     </div>
