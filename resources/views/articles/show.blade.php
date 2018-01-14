@@ -54,14 +54,7 @@
                                 </div>
                                 @endcan
 
-                                <div class="is-pulled-right m-l-20">
-                                    <b-tooltip label="订阅">
-                                        <a class="popover-with-html">
-                                            <i class="fa fa-eye"></i> <span></span>
-                                        </a>
-                                    </b-tooltip>
-                                </div>
-
+                                <article-subscribe :initial-subscribed="{{ (int)$article->isSubscribed }}" :article-id = {{ $article->id }}></article-subscribe>
 
                             </div>
                         </div>

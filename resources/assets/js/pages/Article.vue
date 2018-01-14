@@ -1,7 +1,12 @@
 <script>
 
+    import ArticleSubscribe from '../components/ArticleSubscribe.vue'
+
     export default{
         props:['initialCommentsCount','articleId'],
+        components:{
+          'article-subscribe': ArticleSubscribe
+        },
         data(){
             return {
                 commentsCount:this.initialCommentsCount

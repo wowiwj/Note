@@ -55,6 +55,10 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     
     Route::delete('favorites','FavoriteController@destroy');
 
+    Route::post('subscribes','SubscriptionsController@store');
+
+    Route::delete('subscribes','SubscriptionsController@destroy');
+
 
     Route::post('special_pages','SpecialPagesController@store');
 

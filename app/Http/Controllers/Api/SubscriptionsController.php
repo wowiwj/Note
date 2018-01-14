@@ -25,6 +25,7 @@ class SubscriptionsController extends ApiController
         }catch(SubscribeException $e){
             return $e->response();
         }
+        return $this->message('点赞成功');
     }
 
 
@@ -35,5 +36,6 @@ class SubscriptionsController extends ApiController
         }catch(SubscribeException $e){
             return $e->response();
         }
+        return $this->message('取消点赞成功');
     }
 }

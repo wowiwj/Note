@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Helpers\Traits\GetModelByMorpType;
-use App\Http\Resources\Article;
+use App\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SubscribeRequest extends FormRequest
