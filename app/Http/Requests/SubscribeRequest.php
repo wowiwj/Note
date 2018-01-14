@@ -10,9 +10,13 @@ class SubscribeRequest extends FormRequest
 {
     use GetModelByMorpType;
 
-    protected $map = [
-        'article' => Article::class
-    ];
+
+    protected function map()
+    {
+        return [
+            'article' => Article::class
+        ];
+    }
 
     /**
      * Determine if the user is authorized to make this request.

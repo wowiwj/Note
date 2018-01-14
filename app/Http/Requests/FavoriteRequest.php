@@ -11,9 +11,13 @@ class FavoriteRequest extends FormRequest
 
     use GetModelByMorpType;
 
-    protected $map = [
-        'comment' => Comment::class
-    ];
+    protected function map()
+    {
+        return [
+            'comment' => Comment::class
+        ];
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *

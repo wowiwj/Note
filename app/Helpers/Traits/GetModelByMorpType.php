@@ -1,5 +1,7 @@
 <?php
 namespace App\Helpers\Traits;
+use App\Helpers\Exceptions\FavoriteException;
+
 trait GetModelByMorpType
 {
     /**
@@ -15,22 +17,27 @@ trait GetModelByMorpType
         ];
     }
 
+    protected function map(){
+
+        return [];
+    }
 
     protected function getModelClass()
     {
-        return $this->map[$this->get('type')];
+        $type = $this->get('type');
+        return $this->map()[$type];
     }
 
     protected function getModel()
     {
         $modelClass = $this->getModelClass();
         if(! $modelClass){
-            throw new \Exception('type参数有误',400);
+            throw new FavoriteException('type参数有误',400);
         }
         $model = $modelClass::find($this->type_id);
 
         if(! $model){
-            throw new \Exception('模型未找到',404);
+            throw new FavoriteException('模型未找到',404);
         }
         return $model;
 
