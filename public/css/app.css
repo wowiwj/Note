@@ -17682,6 +17682,7 @@ a:hover {
 }
 
 #notification .message-count {
+  text-align: center;
   background-color: rgba(0, 181, 173, 0.9);
   border-radius: 50%;
   font-weight: bold;
