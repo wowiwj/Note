@@ -42,7 +42,7 @@
             </div>
 
             <div class="navbar-end">
-                <a id="notification" class="navbar-item" href="https://github.com/jgthms/bulma" target="_blank">
+                <a id="notification" class="navbar-item" href="{{ route('notifications.index') }}">
                     <span class="icon">
                         <i class="fa fa-lg fa-bell"></i>
                         <div class="message-count">12</div>
