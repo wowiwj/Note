@@ -140,12 +140,51 @@ i[class*="ion-"]{
 
       }
     }
-    
-
   }
-  
+}
+
+#notification{
+
+  .icon{
+    color: #71777c;
+    font-size: 1.2rem
+  }
+  .message-count{
+    background-color: rgba(0,181,173,0.9);
+    border-radius: 50%;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+    color: #fff
+  }
 
 }
+.navbar-item{
+
+  .notification{
+    &.icon{
+      color: #71777c;font-size: 1.2rem;
+    }
+    .message-count{
+      background-color: rgba(223,120,120,0.9);
+      border-radius: 50%;
+      font-weight: bold;
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+      position: absolute;
+      right: 10px;
+      bottom: 12px;
+      color: #fff
+    }
+
+  }
+}
+
 
 
 //.footer {

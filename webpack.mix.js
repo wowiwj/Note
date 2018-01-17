@@ -21,5 +21,5 @@ if (mix.inProduction) {
     mix.version();
 }
 
-mix.browserSync('note.com');
+// mix.browserSync('note.com');
 
