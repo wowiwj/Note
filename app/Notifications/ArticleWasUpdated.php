@@ -44,8 +44,17 @@ class ArticleWasUpdated extends Notification
      */
     public function toArray($notifiable)
     {
+
+        $fromUser = $this->comment->user;
+
         return [
-            'dadad' => 'dad'
+            'type' => snake_case(class_basename($this)),
+            'from_type' => 'user',
+            'from_id' => $fromUser->id,
+            'message' => $fromUser->name .'评论了文章'.$this->comment->commentable->title,
+            'object_type' => 'comment',
+            'object_id' => $this->comment->id,
+            'link' => $this->comment->path()
         ];
     }
 }

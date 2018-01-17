@@ -40,6 +40,16 @@ class Comment extends Model
         $this->body = json_encode($data);
     }
 
+    public function getContentHtmlAttribute(){
+
+
+    }
+
+    public function path()
+    {
+        return $this->commentable->path() . "#comment-{$this->id}";
+    }
+
 
 
 }
