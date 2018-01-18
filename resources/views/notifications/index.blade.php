@@ -19,7 +19,7 @@
             @forelse ($notifications as $notification)
 
                 @if (view()->exists("notifications.partials.{$notification->data['type']}"))
-                    @include ("notifications.partials.{$notification->data['type']}", ['message' => $notification->data])
+                    @include ("notifications.partials.{$notification->data['type']}", ['message' => notificationParser($notification->data)])
                 @endif
             @empty
                 <p class="empty-block">暂时没有任何消息哦</p>

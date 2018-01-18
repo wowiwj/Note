@@ -60,7 +60,7 @@ class NotificationHandler
 
         $message = $this->data['message'];
 
-        $message = "@<a href=''>{$this->from->name}</a> $message <a href=''>{$this->object->commentable->title}</a>";
+        $message = "$message <a href=''>{$this->object->commentable->title}</a>";
 
         $this->message = $message;
     }

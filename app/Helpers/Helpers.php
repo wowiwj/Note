@@ -35,3 +35,11 @@ function menuIsActive($name,$route=null)
     return request()->url() == route($name,$route) ? 'is-active' : '';
 
 }
+
+function notificationParser($data){
+
+    $handler = app(\App\Helpers\Handler\NotificationHandler::class);
+
+    return $handler->make($data);
+
+}
