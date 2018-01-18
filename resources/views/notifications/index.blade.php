@@ -11,9 +11,21 @@
         </div>
         <div class="column is-faded">
 
+
             <h4 class="title is-5">
                 我的提醒
             </h4>
+
+            @forelse ($notifications as $notification)
+
+                @if (view()->exists("notifications.partials.{$notification->data['type']}"))
+                    @include ("notifications.partials.{$notification->data['type']}", ['message' => $notification->data])
+                @endif
+            @empty
+                <p class="empty-block">暂时没有任何消息哦</p>
+            @endforelse
+
+            <h1>ASFSPFS</h1>
 
             <article class="media">
                 <div class="media-left">
@@ -27,6 +39,8 @@
                             <strong>John Smith</strong> 评论了文章 <a href="#">PHP安全不完全指北</a>
                             <br>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                            •
+                            <span style="color: #888;font-size: 0.8rem">1小时前</span>
                         </p>
                     </div>
                 </div>
@@ -42,6 +56,8 @@
                     <div class="content">
                         <p>
                             <strong>John Smith</strong> 赞了迷得评论 <a href="#">我来划水了哈哈哈</a>
+                            •
+                            <span style="color: #888;font-size: 0.8rem">1小时前</span>
                         </p>
                     </div>
                 </div>
@@ -59,6 +75,8 @@
                             <strong>John Smith</strong> 评论了文章 <a href="#">PHP安全不完全指北</a>
                             <br>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                            •
+                            <span style="color: #888;font-size: 0.8rem">1小时前</span>
                         </p>
                     </div>
                 </div>
