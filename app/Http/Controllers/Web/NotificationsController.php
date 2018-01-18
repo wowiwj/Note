@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class NotificationsController extends Controller
 {
@@ -16,10 +17,16 @@ class NotificationsController extends Controller
 
     public function index(){
 
+        $type = Input::get('type');
+        $notifications = [];
         $user = Auth::user();
+        if ($type == 'unread'){
+            $notifications = $user->unreadNotifications;
+            $notifications->markAsRead();
+        }else{
+            $notifications = $user->notifications;
+        }
 
-        $notifications = $user->unreadNotifications;
-//        return $notifications;
         return view('notifications.index',compact('notifications'));
     }
 }

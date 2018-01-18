@@ -72,10 +72,12 @@
                     </div>
                 @else
 
-                    <a id="notification" class="navbar-item" href="{{ route('notifications.index') }}">
+                    <a id="notification" class="navbar-item" href="{{ route('notifications.index') }}?type=unread">
                         <span class="icon">
                             <i class="fa fa-lg fa-bell"></i>
-                            <div class="message-count">34</div>
+                            @if(Auth::user()->unreadNotifications->count() > 0)
+                            <div class="message-count">{{ Auth::user()->unreadNotifications->count() }}</div>
+                            @endif
                         </span>
                     </a>
                     <div class="navbar-item has-dropdown is-hoverable">

@@ -7,7 +7,7 @@
     <div class="media-content">
         <div class="content">
             <p>
-                <strong> {{ $message->from->name }} </strong> {!! $message->message !!}
+                <strong> <a href="{{ route('users.show',$message->from->id) }}">{{ $message->from->name }}</a> </strong> {!! $message->message !!}
                 •
                 <span style="color: #888;font-size: 0.8rem">1小时前</span>
                 <br>
