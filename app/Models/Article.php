@@ -144,6 +144,7 @@ class Article extends Model
 
 
     public function hasUpdatesFor($user){
+        if (empty($user)) return true;
 
         $key = $user->visitedArticleCacheKey($this);
         return $this->updated_at > cache($key);
