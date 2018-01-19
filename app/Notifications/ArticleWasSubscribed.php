@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleWasSubscribed extends Notification implements NotificationMappable
 {
@@ -22,10 +23,9 @@ class ArticleWasSubscribed extends Notification implements NotificationMappable
      *
      * @return void
      */
-    public function __construct(Article $article,User $user)
+    public function __construct(Article $article)
     {
         $this->article = $article;
-        $this->user = $user;
     }
 
     /**
@@ -48,9 +48,10 @@ class ArticleWasSubscribed extends Notification implements NotificationMappable
      */
     public function toArray($notifiable)
     {
+        $user = Auth::user();
         return [
             'article_id' => $this->article->id,
-            'user_id' => $this->user->id
+            'user_id' => $user->id
         ];
     }
 

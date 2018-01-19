@@ -8,23 +8,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Auth;
 
 class CommentWasFavorited extends Notification implements NotificationMappable
 {
     use Queueable;
 
     protected $comment;
-    protected $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Comment $comment,User $user)
+    public function __construct(Comment $comment)
     {
         $this->comment = $comment;
-        $this->user = $user;
     }
 
     /**
@@ -47,9 +46,10 @@ class CommentWasFavorited extends Notification implements NotificationMappable
      */
     public function toArray($notifiable)
     {
+        $user = Auth::user();
         return [
             'comment_id' => $this->comment->id,
-            'user_id' => $this->user->id
+            'user_id' => $user->id
         ];
     }
 

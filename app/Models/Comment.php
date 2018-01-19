@@ -59,7 +59,7 @@ class Comment extends Model
             return;
         }
 
-        $user->notify(new CommentWasFavorited($this,$user));
+        $user->notify(new CommentWasFavorited($this));
 
     }
 

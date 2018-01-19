@@ -139,7 +139,7 @@ class Article extends Model
             return;
         }
 
-        $user->notify(new ArticleWasSubscribed($this,$user));
+        $user->notify(new ArticleWasSubscribed($this));
     }
 
 
