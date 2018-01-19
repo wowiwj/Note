@@ -27,6 +27,8 @@ class FavoriteController extends ApiController
             return $e->response();
         }
 
+        $request->getModel()->notifyFavorited();
+
         return $this->message('点赞成功');
         
     }

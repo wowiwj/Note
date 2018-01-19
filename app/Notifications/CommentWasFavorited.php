@@ -3,26 +3,28 @@
 namespace App\Notifications;
 
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ArticleWasUpdated extends Notification implements NotificationMappable
+class CommentWasFavorited extends Notification implements NotificationMappable
 {
     use Queueable;
 
     protected $comment;
-
+    protected $user;
 
     /**
-     * ArticleWasUpdated constructor.
-     * @param $article
-     * @param $comment
+     * Create a new notification instance.
+     *
+     * @return void
      */
-    public function __construct($comment)
+    public function __construct(Comment $comment,User $user)
     {
         $this->comment = $comment;
+        $this->user = $user;
     }
 
     /**
@@ -45,26 +47,22 @@ class ArticleWasUpdated extends Notification implements NotificationMappable
      */
     public function toArray($notifiable)
     {
-
-        $fromUser = $this->comment->user;
-
         return [
-            'type' => snake_case(class_basename($this)),
-            'object_type' => 'comment',
-            'object_id' => $this->comment->id
+            'comment_id' => $this->comment->id,
+            'user_id' => $this->user->id
         ];
     }
 
-    public static function map($data){
+    public static function map($data)
+    {
 
-        $objectType = $data['object_type'];
-        $objectId = $data['object_id'];
+        $comment = Comment::query()->find($data['comment_id']);
+        $user = User::query()->find($data['user_id']);
 
-        $classMap = [
-            'comment' => Comment::class
+        return (object)[
+            'comment' => $comment,
+            'user' => $user
         ];
-
-        return $classMap[$objectType]::find($objectId);
 
     }
 }

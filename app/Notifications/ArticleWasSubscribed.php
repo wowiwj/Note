@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Notifications;
+
+use App\Models\Article;
+use App\Models\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+
+class ArticleWasSubscribed extends Notification implements NotificationMappable
+{
+    use Queueable;
+
+
+    protected $user;
+    protected $article;
+
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct(Article $article,User $user)
+    {
+        $this->article = $article;
+        $this->user = $user;
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return ['database'];
+    }
+
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return [
+            'article_id' => $this->article->id,
+            'user_id' => $this->user->id
+        ];
+    }
+
+    public static function map($data)
+    {
+
+        $article = Article::query()->find($data['article_id']);
+        $user = User::query()->find($data['user_id']);
+
+        return (object)[
+            'article' => $article,
+            'user' => $user
+        ];
+
+    }
+
+
+}

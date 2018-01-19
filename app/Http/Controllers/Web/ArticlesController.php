@@ -81,8 +81,8 @@ class ArticlesController extends Controller
 
         return redirect('/');
 
-        dd($article);
-
     }
+
+
 
 }

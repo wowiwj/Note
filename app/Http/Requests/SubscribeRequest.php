@@ -29,14 +29,15 @@ class SubscribeRequest extends FormRequest
     }
 
 
-    // 用户点赞
+    // 用户订阅
     public function subscribe()
     {
         $model = $this->getModel();
         return $model->subscribe();
+
     }
 
-    // 用户取消点赞
+    // 用户取消订阅
     public function unsubscribe()
     {
         $model = $this->getModel();

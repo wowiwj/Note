@@ -5,32 +5,32 @@ namespace App\Helpers\Handler;
 
 use App\Models\Comment;
 use App\Models\User;
+use App\Notifications\NotificationMappable;
 
 class NotificationHandler
 {
 
-    protected $data;
-
-    public $type;
+    protected $notification;
 
     public $object;
 
 
-    public function make($data){
-        $this->data = $data;
+    public function make($notification){
+        $this->notification = $notification;
 
-        $this->mapObject();
-        return $this;
+        return $this->mapObject();
+
     }
 
     private function mapObject(){
-        $objectType = $this->data['object_type'];
-        $objectId = $this->data['object_id'];
 
-        $classMap = [
-            'comment' => Comment::class
-        ];
-        $this->object = $classMap[$objectType]::find($objectId);
+        $type = $this->notification->type;
+        $class = new \ReflectionClass($type);
+        if ($class->implementsInterface(NotificationMappable::class)){
+            return $type::map($this->notification->data);
+        }
+
+        return null;
     }
 
 }

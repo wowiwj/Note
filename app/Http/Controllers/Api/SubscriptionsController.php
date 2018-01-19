@@ -25,6 +25,9 @@ class SubscriptionsController extends ApiController
         }catch(SubscribeException $e){
             return $e->response();
         }
+
+        $request->getModel()->notify();
+
         return $this->message('点赞成功');
     }
 

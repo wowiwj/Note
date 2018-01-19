@@ -7,9 +7,11 @@ use App\Helpers\Handler\ImageUploadHandler;
 use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\RecordsActivity;
 use App\Helpers\Traits\Subscribable;
+use App\Notifications\ArticleWasSubscribed;
 use App\Scopes\ArticleFitterScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
 {
@@ -128,6 +130,16 @@ class Article extends Model
         static::addGlobalScope(new ArticleFitterScope);
 
 
+    }
+
+    public function notify(){
+
+        $user = $this->user;
+        if (Auth::user()->id == $user->id){
+            return;
+        }
+
+        $user->notify(new ArticleWasSubscribed($this,$user));
     }
 
 

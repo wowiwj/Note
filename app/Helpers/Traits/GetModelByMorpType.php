@@ -28,7 +28,7 @@ trait GetModelByMorpType
         return $this->map()[$type];
     }
 
-    protected function getModel()
+    public function getModel()
     {
         $modelClass = $this->getModelClass();
         if(! $modelClass){
