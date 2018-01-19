@@ -74,36 +74,4 @@
     </div>
 
 
-
-
-    
-
-
-
-    {{--</div>--}}
-
-    {{--<div class="panel-body">--}}
-
-    {{--@forelse($articles as $article)--}}
-    {{--@include('articles.partials.article')--}}
-    {{--@empty--}}
-    {{--<div class="empty-block">没有文章数据</div>--}}
-    {{--@endforelse--}}
-
-    {{--<div class="text-center">--}}
-    {{--{{ $articles->links() }}--}}
-    {{--</div>--}}
-
-
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="col-md-3 hidden-sm hidden-xs">--}}
-    {{--@include('layouts.partials.category')--}}
-    {{--</div>--}}
-
-
-    {{--</div>--}}
-
 @endsection

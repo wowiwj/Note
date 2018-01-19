@@ -143,4 +143,11 @@ class Article extends Model
     }
 
 
+    public function hasUpdatesFor($user){
+
+        $key = $user->visitedArticleCacheKey($this);
+        return $this->updated_at > cache($key);
+
+    }
+
 }

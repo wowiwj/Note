@@ -10,6 +10,7 @@
                     <img class="avatar" src="{{ $article->user->avatar }}" alt="">
 
                 </a>
+
                 <a href="#" class="nickname m-l-5">
                     {{ $article->user->name }}
                 </a>
@@ -38,7 +39,11 @@
 
             <div class="describe">
                 <a href="{{ $article->path() }}">
-                    <h4 class="title">{{ $article->title }}</h4>
+                    @if($article->hasUpdatesFor(auth()->user()))
+                        <h5 class="title">{{ $article->title }}</h5>
+                    @else
+                        <h4 style="color: #aaa" class="title">{{ $article->title }}</h4>
+                    @endif
                 </a>
                 <div class="info">
                     {{ $article->brief }}

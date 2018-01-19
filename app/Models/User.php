@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\SendActivatedEmail;
+use Carbon\Carbon;
 use Identicon\Identicon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -66,6 +67,22 @@ class User extends Authenticatable
         }
         return $value;
     }
+
+    public function read($article){
+
+        $article->increment('views_count');
+        cache()->forever(
+            $this->visitedArticleCacheKey($article),
+            Carbon::now()
+        );
+
+    }
+
+    public function visitedArticleCacheKey($article){
+
+        return sprintf("users.%s.visits.%s",auth()->id(),$article->id);
+    }
+
 
     public static function boot()
     {

@@ -6,7 +6,9 @@ use App\Helpers\Fitters\ArticleFilters;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class ArticlesController extends Controller
@@ -44,7 +46,10 @@ class ArticlesController extends Controller
     {
 
         $article->load('comments');
-        $article->increment('views_count');
+
+        if (auth()->check()){
+            auth()->user()->read($article);
+        }
 
         return view('articles.show',compact('article'));
 
