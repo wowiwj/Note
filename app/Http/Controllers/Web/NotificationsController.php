@@ -17,15 +17,19 @@ class NotificationsController extends Controller
 
     public function index(){
 
+        $limit = Input::get('limit') ?: 30;
+
         $type = Input::get('type');
         $notifications = [];
         $user = Auth::user();
         if ($type == 'unread'){
-            $notifications = $user->unreadNotifications;
+            $notifications = $user->unreadNotifications()->paginate($limit);
             $notifications->markAsRead();
         }else{
-            $notifications = $user->notifications;
+            $notifications = $user->notifications()->paginate($limit);
         }
+
+        $notifications->appends(Input::except('page'));
 
         return view('notifications.index',compact('notifications'));
     }

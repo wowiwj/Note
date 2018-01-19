@@ -49,12 +49,8 @@ class ArticleWasUpdated extends Notification
 
         return [
             'type' => snake_case(class_basename($this)),
-            'from_type' => 'user',
-            'from_id' => $fromUser->id,
-            'message' => '评论了文章',
             'object_type' => 'comment',
-            'object_id' => $this->comment->id,
-            'link' => $this->comment->path()
+            'object_id' => $this->comment->id
         ];
     }
 }

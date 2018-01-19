@@ -13,37 +13,14 @@ class NotificationHandler
 
     public $type;
 
-    public $from;
-
-    public $message;
-
     public $object;
 
-    public $link;
-
-    public $content;
 
     public function make($data){
         $this->data = $data;
 
-        $this->mapFrom();
         $this->mapObject();
-        $this->setMessage();
-        $this->setContent();
-        $this->setLink();
-
         return $this;
-    }
-
-    private function mapFrom(){
-
-        $fromType = $this->data['from_type'];
-        $fromId = $this->data['from_id'];
-        $classMap = [
-            'user' => User::class
-        ];
-
-        $this->from = $classMap[$fromType]::find($fromId);
     }
 
     private function mapObject(){
@@ -55,30 +32,5 @@ class NotificationHandler
         ];
         $this->object = $classMap[$objectType]::find($objectId);
     }
-
-    private function setMessage(){
-
-        $message = $this->data['message'];
-
-        $message = "$message <a href='".$this->object->path()."'>{$this->object->commentable->title}</a>";
-
-        $this->message = $message;
-    }
-
-    private function setContent(){
-        if (empty($this->data['content']))
-        {
-            return;
-        }
-
-        $content = $this->data['content'];
-        $this->content = $content;
-    }
-
-    private function setLink(){
-        $link = $this->data['link'];
-        $this->link = $link;
-    }
-
 
 }
