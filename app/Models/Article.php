@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Helpers\Fitters\ArticleFilters;
 use App\Helpers\Handler\ImageUploadHandler;
 use App\Helpers\Service\Markdowner;
+use App\Helpers\Traits\Favoritable;
 use App\Helpers\Traits\RecordsActivity;
 use App\Helpers\Traits\Subscribable;
 use App\Notifications\ArticleWasSubscribed;
@@ -17,13 +18,15 @@ class Article extends Model
 {
 
 
-    use RecordsActivity,Subscribable,SoftDeletes;
+    use RecordsActivity,Subscribable,Favoritable,SoftDeletes;
     protected $guarded = [];
 
     protected $with = ['category','user','tags'];
 
     protected $appends = [
-        'isSubscribed'
+        'isSubscribed',
+        'favoritesCount' => 'favorites_count',
+        'isFavorited' => 'is_favorited'
     ];
 
 
@@ -67,16 +70,11 @@ class Article extends Model
 
         $pattern = "/[img|IMG].*?src=['|\"](.*?(?:[.gif|.jpg]))['|\"].*?[\/]?>/";
         preg_match($pattern,$html,$match);
-
-        // 压缩缩略图
-        // todo
         if (empty($match) || is_null($match[1])){
             return;
         }
-
         $article_image = (new ImageUploadHandler())
                         ->makeArticleImage($match[1],'');
-
         $this->page_image = $article_image;
     }
 
@@ -148,6 +146,11 @@ class Article extends Model
 
         $key = $user->visitedArticleCacheKey($this);
         return $this->updated_at > cache($key);
+
+    }
+
+    public function notifyFavorited(){
+
 
     }
 

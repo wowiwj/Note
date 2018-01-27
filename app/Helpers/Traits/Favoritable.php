@@ -81,4 +81,13 @@ trait Favoritable
     {
         return $this->favorites->count();
     }
+
+
+    /**
+     * notify user if favorite
+     */
+    public function notifyFavorited(){
+
+    }
+
 }

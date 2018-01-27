@@ -16,8 +16,7 @@
   font-style: normal;
 }
 
-.fa,
-.icon .mdi {
+.fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -91,13 +90,11 @@
   float: right;
 }
 
-.fa.fa-pull-left,
-.icon .fa-pull-left.mdi {
+.fa.fa-pull-left {
   margin-right: .3em;
 }
 
-.fa.fa-pull-right,
-.icon .fa-pull-right.mdi {
+.fa.fa-pull-right {
   margin-left: .3em;
 }
 
@@ -111,13 +108,11 @@
   float: left;
 }
 
-.fa.pull-left,
-.icon .pull-left.mdi {
+.fa.pull-left {
   margin-right: .3em;
 }
 
-.fa.pull-right,
-.icon .pull-right.mdi {
+.fa.pull-right {
   margin-left: .3em;
 }
 
@@ -5724,6 +5719,7 @@ a.box:active {
 }
 
 .input,
+.taginput .taginput-container.is-focusable,
 .textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -5759,9 +5755,13 @@ a.box:active {
 }
 
 .input:focus,
+.taginput .taginput-container.is-focusable:focus,
 .input.is-focused,
+.taginput .is-focused.taginput-container.is-focusable,
 .input:active,
+.taginput .taginput-container.is-focusable:active,
 .input.is-active,
+.taginput .is-active.taginput-container.is-focusable,
 .textarea:focus,
 .textarea.is-focused,
 .textarea:active,
@@ -5770,21 +5770,28 @@ a.box:active {
 }
 
 .input[disabled],
+.taginput [disabled].taginput-container.is-focusable,
 .textarea[disabled] {
   cursor: not-allowed;
 }
 
 .input:hover,
+.taginput .taginput-container.is-focusable:hover,
 .input.is-hovered,
+.taginput .is-hovered.taginput-container.is-focusable,
 .textarea:hover,
 .textarea.is-hovered {
   border-color: #b5b5b5;
 }
 
 .input:focus,
+.taginput .taginput-container.is-focusable:focus,
 .input.is-focused,
+.taginput .is-focused.taginput-container.is-focusable,
 .input:active,
+.taginput .taginput-container.is-focusable:active,
 .input.is-active,
+.taginput .is-active.taginput-container.is-focusable,
 .textarea:focus,
 .textarea.is-focused,
 .textarea:active,
@@ -5795,6 +5802,7 @@ a.box:active {
 }
 
 .input[disabled],
+.taginput [disabled].taginput-container.is-focusable,
 .textarea[disabled] {
   background-color: whitesmoke;
   border-color: whitesmoke;
@@ -5804,45 +5812,56 @@ a.box:active {
 }
 
 .input[disabled]::-moz-placeholder,
+.taginput [disabled].taginput-container.is-focusable::-moz-placeholder,
 .textarea[disabled]::-moz-placeholder {
   color: rgba(122, 122, 122, 0.3);
 }
 
 .input[disabled]::-webkit-input-placeholder,
+.taginput [disabled].taginput-container.is-focusable::-webkit-input-placeholder,
 .textarea[disabled]::-webkit-input-placeholder {
   color: rgba(122, 122, 122, 0.3);
 }
 
 .input[disabled]:-moz-placeholder,
+.taginput [disabled].taginput-container.is-focusable:-moz-placeholder,
 .textarea[disabled]:-moz-placeholder {
   color: rgba(122, 122, 122, 0.3);
 }
 
 .input[disabled]:-ms-input-placeholder,
+.taginput [disabled].taginput-container.is-focusable:-ms-input-placeholder,
 .textarea[disabled]:-ms-input-placeholder {
   color: rgba(122, 122, 122, 0.3);
 }
 
 .input[type="search"],
+.taginput [type="search"].taginput-container.is-focusable,
 .textarea[type="search"] {
   border-radius: 290486px;
 }
 
 .input[readonly],
+.taginput [readonly].taginput-container.is-focusable,
 .textarea[readonly] {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 .input.is-white,
+.taginput .is-white.taginput-container.is-focusable,
 .textarea.is-white {
   border-color: white;
 }
 
 .input.is-white:focus,
+.taginput .is-white.taginput-container.is-focusable:focus,
 .input.is-white.is-focused,
+.taginput .is-white.is-focused.taginput-container.is-focusable,
 .input.is-white:active,
+.taginput .is-white.taginput-container.is-focusable:active,
 .input.is-white.is-active,
+.taginput .is-white.is-active.taginput-container.is-focusable,
 .textarea.is-white:focus,
 .textarea.is-white.is-focused,
 .textarea.is-white:active,
@@ -5852,14 +5871,19 @@ a.box:active {
 }
 
 .input.is-black,
+.taginput .is-black.taginput-container.is-focusable,
 .textarea.is-black {
   border-color: #0a0a0a;
 }
 
 .input.is-black:focus,
+.taginput .is-black.taginput-container.is-focusable:focus,
 .input.is-black.is-focused,
+.taginput .is-black.is-focused.taginput-container.is-focusable,
 .input.is-black:active,
+.taginput .is-black.taginput-container.is-focusable:active,
 .input.is-black.is-active,
+.taginput .is-black.is-active.taginput-container.is-focusable,
 .textarea.is-black:focus,
 .textarea.is-black.is-focused,
 .textarea.is-black:active,
@@ -5869,14 +5893,19 @@ a.box:active {
 }
 
 .input.is-light,
+.taginput .is-light.taginput-container.is-focusable,
 .textarea.is-light {
   border-color: whitesmoke;
 }
 
 .input.is-light:focus,
+.taginput .is-light.taginput-container.is-focusable:focus,
 .input.is-light.is-focused,
+.taginput .is-light.is-focused.taginput-container.is-focusable,
 .input.is-light:active,
+.taginput .is-light.taginput-container.is-focusable:active,
 .input.is-light.is-active,
+.taginput .is-light.is-active.taginput-container.is-focusable,
 .textarea.is-light:focus,
 .textarea.is-light.is-focused,
 .textarea.is-light:active,
@@ -5886,14 +5915,19 @@ a.box:active {
 }
 
 .input.is-dark,
+.taginput .is-dark.taginput-container.is-focusable,
 .textarea.is-dark {
   border-color: #363636;
 }
 
 .input.is-dark:focus,
+.taginput .is-dark.taginput-container.is-focusable:focus,
 .input.is-dark.is-focused,
+.taginput .is-dark.is-focused.taginput-container.is-focusable,
 .input.is-dark:active,
+.taginput .is-dark.taginput-container.is-focusable:active,
 .input.is-dark.is-active,
+.taginput .is-dark.is-active.taginput-container.is-focusable,
 .textarea.is-dark:focus,
 .textarea.is-dark.is-focused,
 .textarea.is-dark:active,
@@ -5903,14 +5937,19 @@ a.box:active {
 }
 
 .input.is-primary,
+.taginput .is-primary.taginput-container.is-focusable,
 .textarea.is-primary {
   border-color: #00d1b2;
 }
 
 .input.is-primary:focus,
+.taginput .is-primary.taginput-container.is-focusable:focus,
 .input.is-primary.is-focused,
+.taginput .is-primary.is-focused.taginput-container.is-focusable,
 .input.is-primary:active,
+.taginput .is-primary.taginput-container.is-focusable:active,
 .input.is-primary.is-active,
+.taginput .is-primary.is-active.taginput-container.is-focusable,
 .textarea.is-primary:focus,
 .textarea.is-primary.is-focused,
 .textarea.is-primary:active,
@@ -5920,14 +5959,19 @@ a.box:active {
 }
 
 .input.is-info,
+.taginput .is-info.taginput-container.is-focusable,
 .textarea.is-info {
   border-color: #3273dc;
 }
 
 .input.is-info:focus,
+.taginput .is-info.taginput-container.is-focusable:focus,
 .input.is-info.is-focused,
+.taginput .is-info.is-focused.taginput-container.is-focusable,
 .input.is-info:active,
+.taginput .is-info.taginput-container.is-focusable:active,
 .input.is-info.is-active,
+.taginput .is-info.is-active.taginput-container.is-focusable,
 .textarea.is-info:focus,
 .textarea.is-info.is-focused,
 .textarea.is-info:active,
@@ -5937,14 +5981,19 @@ a.box:active {
 }
 
 .input.is-success,
+.taginput .is-success.taginput-container.is-focusable,
 .textarea.is-success {
   border-color: #23d160;
 }
 
 .input.is-success:focus,
+.taginput .is-success.taginput-container.is-focusable:focus,
 .input.is-success.is-focused,
+.taginput .is-success.is-focused.taginput-container.is-focusable,
 .input.is-success:active,
+.taginput .is-success.taginput-container.is-focusable:active,
 .input.is-success.is-active,
+.taginput .is-success.is-active.taginput-container.is-focusable,
 .textarea.is-success:focus,
 .textarea.is-success.is-focused,
 .textarea.is-success:active,
@@ -5954,14 +6003,19 @@ a.box:active {
 }
 
 .input.is-warning,
+.taginput .is-warning.taginput-container.is-focusable,
 .textarea.is-warning {
   border-color: #ffdd57;
 }
 
 .input.is-warning:focus,
+.taginput .is-warning.taginput-container.is-focusable:focus,
 .input.is-warning.is-focused,
+.taginput .is-warning.is-focused.taginput-container.is-focusable,
 .input.is-warning:active,
+.taginput .is-warning.taginput-container.is-focusable:active,
 .input.is-warning.is-active,
+.taginput .is-warning.is-active.taginput-container.is-focusable,
 .textarea.is-warning:focus,
 .textarea.is-warning.is-focused,
 .textarea.is-warning:active,
@@ -5971,14 +6025,19 @@ a.box:active {
 }
 
 .input.is-danger,
+.taginput .is-danger.taginput-container.is-focusable,
 .textarea.is-danger {
   border-color: #ff3860;
 }
 
 .input.is-danger:focus,
+.taginput .is-danger.taginput-container.is-focusable:focus,
 .input.is-danger.is-focused,
+.taginput .is-danger.is-focused.taginput-container.is-focusable,
 .input.is-danger:active,
+.taginput .is-danger.taginput-container.is-focusable:active,
 .input.is-danger.is-active,
+.taginput .is-danger.is-active.taginput-container.is-focusable,
 .textarea.is-danger:focus,
 .textarea.is-danger.is-focused,
 .textarea.is-danger:active,
@@ -5988,34 +6047,40 @@ a.box:active {
 }
 
 .input.is-small,
+.taginput .is-small.taginput-container.is-focusable,
 .textarea.is-small {
   border-radius: 2px;
   font-size: 0.75rem;
 }
 
 .input.is-medium,
+.taginput .is-medium.taginput-container.is-focusable,
 .textarea.is-medium {
   font-size: 1.25rem;
 }
 
 .input.is-large,
+.taginput .is-large.taginput-container.is-focusable,
 .textarea.is-large {
   font-size: 1.5rem;
 }
 
 .input.is-fullwidth,
+.taginput .is-fullwidth.taginput-container.is-focusable,
 .textarea.is-fullwidth {
   display: block;
   width: 100%;
 }
 
 .input.is-inline,
+.taginput .is-inline.taginput-container.is-focusable,
 .textarea.is-inline {
   display: inline;
   width: auto;
 }
 
-.input.is-static {
+.input.is-static,
+.taginput .is-static.taginput-container.is-focusable {
   background-color: transparent;
   border-color: transparent;
   -webkit-box-shadow: none;
@@ -6654,9 +6719,7 @@ a.box:active {
   font-size: 1.25rem;
 }
 
-.file.is-medium .file-icon .fa,
-.file.is-medium .file-icon .icon .mdi,
-.icon .file.is-medium .file-icon .mdi {
+.file.is-medium .file-icon .fa {
   font-size: 21px;
 }
 
@@ -6664,9 +6727,7 @@ a.box:active {
   font-size: 1.5rem;
 }
 
-.file.is-large .file-icon .fa,
-.file.is-large .file-icon .icon .mdi,
-.icon .file.is-large .file-icon .mdi {
+.file.is-large .file-icon .fa {
   font-size: 28px;
 }
 
@@ -6717,27 +6778,19 @@ a.box:active {
   width: 1.5em;
 }
 
-.file.is-boxed .file-icon .fa,
-.file.is-boxed .file-icon .icon .mdi,
-.icon .file.is-boxed .file-icon .mdi {
+.file.is-boxed .file-icon .fa {
   font-size: 21px;
 }
 
-.file.is-boxed.is-small .file-icon .fa,
-.file.is-boxed.is-small .file-icon .icon .mdi,
-.icon .file.is-boxed.is-small .file-icon .mdi {
+.file.is-boxed.is-small .file-icon .fa {
   font-size: 14px;
 }
 
-.file.is-boxed.is-medium .file-icon .fa,
-.file.is-boxed.is-medium .file-icon .icon .mdi,
-.icon .file.is-boxed.is-medium .file-icon .mdi {
+.file.is-boxed.is-medium .file-icon .fa {
   font-size: 28px;
 }
 
-.file.is-boxed.is-large .file-icon .fa,
-.file.is-boxed.is-large .file-icon .icon .mdi,
-.icon .file.is-boxed.is-large .file-icon .mdi {
+.file.is-boxed.is-large .file-icon .fa {
   font-size: 35px;
 }
 
@@ -6896,9 +6949,7 @@ a.box:active {
   width: 1em;
 }
 
-.file-icon .fa,
-.file-icon .icon .mdi,
-.icon .file-icon .mdi {
+.file-icon .fa {
   font-size: 14px;
 }
 
@@ -6986,6 +7037,9 @@ a.box:active {
 
 .field.has-addons .control:first-child .button,
 .field.has-addons .control:first-child .input,
+.field.has-addons .control:first-child .taginput .taginput-container.is-focusable,
+.taginput
+.field.has-addons .control:first-child .taginput-container.is-focusable,
 .field.has-addons .control:first-child .select select {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -6993,6 +7047,9 @@ a.box:active {
 
 .field.has-addons .control:last-child .button,
 .field.has-addons .control:last-child .input,
+.field.has-addons .control:last-child .taginput .taginput-container.is-focusable,
+.taginput
+.field.has-addons .control:last-child .taginput-container.is-focusable,
 .field.has-addons .control:last-child .select select {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -7000,6 +7057,9 @@ a.box:active {
 
 .field.has-addons .control .button,
 .field.has-addons .control .input,
+.field.has-addons .control .taginput .taginput-container.is-focusable,
+.taginput
+.field.has-addons .control .taginput-container.is-focusable,
 .field.has-addons .control .select select {
   border-radius: 0;
 }
@@ -7007,7 +7067,13 @@ a.box:active {
 .field.has-addons .control .button:hover,
 .field.has-addons .control .button.is-hovered,
 .field.has-addons .control .input:hover,
+.field.has-addons .control .taginput .taginput-container.is-focusable:hover,
+.taginput
+.field.has-addons .control .taginput-container.is-focusable:hover,
 .field.has-addons .control .input.is-hovered,
+.field.has-addons .control .taginput .is-hovered.taginput-container.is-focusable,
+.taginput
+.field.has-addons .control .is-hovered.taginput-container.is-focusable,
 .field.has-addons .control .select select:hover,
 .field.has-addons .control .select select.is-hovered {
   z-index: 2;
@@ -7018,9 +7084,21 @@ a.box:active {
 .field.has-addons .control .button:active,
 .field.has-addons .control .button.is-active,
 .field.has-addons .control .input:focus,
+.field.has-addons .control .taginput .taginput-container.is-focusable:focus,
+.taginput
+.field.has-addons .control .taginput-container.is-focusable:focus,
 .field.has-addons .control .input.is-focused,
+.field.has-addons .control .taginput .is-focused.taginput-container.is-focusable,
+.taginput
+.field.has-addons .control .is-focused.taginput-container.is-focusable,
 .field.has-addons .control .input:active,
+.field.has-addons .control .taginput .taginput-container.is-focusable:active,
+.taginput
+.field.has-addons .control .taginput-container.is-focusable:active,
 .field.has-addons .control .input.is-active,
+.field.has-addons .control .taginput .is-active.taginput-container.is-focusable,
+.taginput
+.field.has-addons .control .is-active.taginput-container.is-focusable,
 .field.has-addons .control .select select:focus,
 .field.has-addons .control .select select.is-focused,
 .field.has-addons .control .select select:active,
@@ -7033,9 +7111,21 @@ a.box:active {
 .field.has-addons .control .button:active:hover,
 .field.has-addons .control .button.is-active:hover,
 .field.has-addons .control .input:focus:hover,
+.field.has-addons .control .taginput .taginput-container.is-focusable:focus:hover,
+.taginput
+.field.has-addons .control .taginput-container.is-focusable:focus:hover,
 .field.has-addons .control .input.is-focused:hover,
+.field.has-addons .control .taginput .is-focused.taginput-container.is-focusable:hover,
+.taginput
+.field.has-addons .control .is-focused.taginput-container.is-focusable:hover,
 .field.has-addons .control .input:active:hover,
+.field.has-addons .control .taginput .taginput-container.is-focusable:active:hover,
+.taginput
+.field.has-addons .control .taginput-container.is-focusable:active:hover,
 .field.has-addons .control .input.is-active:hover,
+.field.has-addons .control .taginput .is-active.taginput-container.is-focusable:hover,
+.taginput
+.field.has-addons .control .is-active.taginput-container.is-focusable:hover,
 .field.has-addons .control .select select:focus:hover,
 .field.has-addons .control .select select.is-focused:hover,
 .field.has-addons .control .select select:active:hover,
@@ -7231,19 +7321,27 @@ a.box:active {
   z-index: 4;
 }
 
-.control.has-icon .input:focus + .icon {
+.control.has-icon .input:focus + .icon,
+.control.has-icon .taginput .taginput-container.is-focusable:focus + .icon,
+.taginput .control.has-icon .taginput-container.is-focusable:focus + .icon {
   color: #7a7a7a;
 }
 
-.control.has-icon .input.is-small + .icon {
+.control.has-icon .input.is-small + .icon,
+.control.has-icon .taginput .is-small.taginput-container.is-focusable + .icon,
+.taginput .control.has-icon .is-small.taginput-container.is-focusable + .icon {
   font-size: 0.75rem;
 }
 
-.control.has-icon .input.is-medium + .icon {
+.control.has-icon .input.is-medium + .icon,
+.control.has-icon .taginput .is-medium.taginput-container.is-focusable + .icon,
+.taginput .control.has-icon .is-medium.taginput-container.is-focusable + .icon {
   font-size: 1.25rem;
 }
 
-.control.has-icon .input.is-large + .icon {
+.control.has-icon .input.is-large + .icon,
+.control.has-icon .taginput .is-large.taginput-container.is-focusable + .icon,
+.taginput .control.has-icon .is-large.taginput-container.is-focusable + .icon {
   font-size: 1.5rem;
 }
 
@@ -7251,7 +7349,9 @@ a.box:active {
   left: 0;
 }
 
-.control.has-icon:not(.has-icon-right) .input {
+.control.has-icon:not(.has-icon-right) .input,
+.control.has-icon:not(.has-icon-right) .taginput .taginput-container.is-focusable,
+.taginput .control.has-icon:not(.has-icon-right) .taginput-container.is-focusable {
   padding-left: 2.25em;
 }
 
@@ -7259,34 +7359,52 @@ a.box:active {
   right: 0;
 }
 
-.control.has-icon.has-icon-right .input {
+.control.has-icon.has-icon-right .input,
+.control.has-icon.has-icon-right .taginput .taginput-container.is-focusable,
+.taginput .control.has-icon.has-icon-right .taginput-container.is-focusable {
   padding-right: 2.25em;
 }
 
 .control.has-icons-left .input:focus ~ .icon,
+.control.has-icons-left .taginput .taginput-container.is-focusable:focus ~ .icon,
+.taginput .control.has-icons-left .taginput-container.is-focusable:focus ~ .icon,
 .control.has-icons-left .select:focus ~ .icon,
 .control.has-icons-right .input:focus ~ .icon,
+.control.has-icons-right .taginput .taginput-container.is-focusable:focus ~ .icon,
+.taginput .control.has-icons-right .taginput-container.is-focusable:focus ~ .icon,
 .control.has-icons-right .select:focus ~ .icon {
   color: #7a7a7a;
 }
 
 .control.has-icons-left .input.is-small ~ .icon,
+.control.has-icons-left .taginput .is-small.taginput-container.is-focusable ~ .icon,
+.taginput .control.has-icons-left .is-small.taginput-container.is-focusable ~ .icon,
 .control.has-icons-left .select.is-small ~ .icon,
 .control.has-icons-right .input.is-small ~ .icon,
+.control.has-icons-right .taginput .is-small.taginput-container.is-focusable ~ .icon,
+.taginput .control.has-icons-right .is-small.taginput-container.is-focusable ~ .icon,
 .control.has-icons-right .select.is-small ~ .icon {
   font-size: 0.75rem;
 }
 
 .control.has-icons-left .input.is-medium ~ .icon,
+.control.has-icons-left .taginput .is-medium.taginput-container.is-focusable ~ .icon,
+.taginput .control.has-icons-left .is-medium.taginput-container.is-focusable ~ .icon,
 .control.has-icons-left .select.is-medium ~ .icon,
 .control.has-icons-right .input.is-medium ~ .icon,
+.control.has-icons-right .taginput .is-medium.taginput-container.is-focusable ~ .icon,
+.taginput .control.has-icons-right .is-medium.taginput-container.is-focusable ~ .icon,
 .control.has-icons-right .select.is-medium ~ .icon {
   font-size: 1.25rem;
 }
 
 .control.has-icons-left .input.is-large ~ .icon,
+.control.has-icons-left .taginput .is-large.taginput-container.is-focusable ~ .icon,
+.taginput .control.has-icons-left .is-large.taginput-container.is-focusable ~ .icon,
 .control.has-icons-left .select.is-large ~ .icon,
 .control.has-icons-right .input.is-large ~ .icon,
+.control.has-icons-right .taginput .is-large.taginput-container.is-focusable ~ .icon,
+.taginput .control.has-icons-right .is-large.taginput-container.is-focusable ~ .icon,
 .control.has-icons-right .select.is-large ~ .icon {
   font-size: 1.5rem;
 }
@@ -7303,6 +7421,8 @@ a.box:active {
 }
 
 .control.has-icons-left .input,
+.control.has-icons-left .taginput .taginput-container.is-focusable,
+.taginput .control.has-icons-left .taginput-container.is-focusable,
 .control.has-icons-left .select select {
   padding-left: 2.25em;
 }
@@ -7312,6 +7432,8 @@ a.box:active {
 }
 
 .control.has-icons-right .input,
+.control.has-icons-right .taginput .taginput-container.is-focusable,
+.taginput .control.has-icons-right .taginput-container.is-focusable,
 .control.has-icons-right .select select {
   padding-right: 2.25em;
 }
@@ -10875,9 +10997,7 @@ label.panel-block:hover {
   margin-right: 0.75em;
 }
 
-.panel-icon .fa,
-.panel-icon .icon .mdi,
-.icon .panel-icon .mdi {
+.panel-icon .fa {
   font-size: inherit;
   line-height: inherit;
 }
@@ -13920,8 +14040,11 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
-.is-clipped {
-  overflow: hidden;
+.is-noscroll {
+  position: fixed;
+  overflow-y: hidden;
+  width: 100%;
+  bottom: 0;
 }
 
 @-webkit-keyframes fadeOut {
@@ -14299,6 +14422,19 @@ label.panel-block:hover {
           box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.8);
 }
 
+.b-checkbox.checkbox.is-small {
+  border-radius: 2px;
+  font-size: 0.75rem;
+}
+
+.b-checkbox.checkbox.is-medium {
+  font-size: 1.25rem;
+}
+
+.b-checkbox.checkbox.is-large {
+  font-size: 1.5rem;
+}
+
 .collapse .collapse-trigger {
   display: inline;
   cursor: pointer;
@@ -14388,6 +14524,84 @@ label.panel-block:hover {
   color: #fff;
 }
 
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell {
+  padding: 0.3rem 0.75rem 0.75rem;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event {
+  position: relative;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events {
+  bottom: .425rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 0;
+  padding: 0 .35rem;
+  position: absolute;
+  width: 100%;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-white {
+  background-color: white;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-black {
+  background-color: #0a0a0a;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-light {
+  background-color: whitesmoke;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-dark {
+  background-color: #363636;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-primary {
+  background-color: #00d1b2;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-info {
+  background-color: #3273dc;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-success {
+  background-color: #23d160;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-warning {
+  background-color: #ffdd57;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event .events .event.is-danger {
+  background-color: #ff3860;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event.dots .event {
+  border-radius: 50%;
+  height: .35em;
+  margin: 0 .1em;
+  width: .35em;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.has-event.bars .event {
+  height: .25em;
+  width: 100%;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.is-selected {
+  overflow: hidden;
+}
+
+.datepicker .datepicker-table .datepicker-body.has-events .datepicker-cell.is-selected .events .event.is-primary {
+  background-color: #1fffdd;
+}
+
 .datepicker.is-small {
   border-radius: 2px;
   font-size: 0.75rem;
@@ -14448,6 +14662,34 @@ label.panel-block:hover {
   .dialog .modal-card {
     min-width: 320px;
   }
+}
+
+.dialog.is-small .modal-card,
+.dialog.is-small .input,
+.dialog.is-small .taginput .taginput-container.is-focusable,
+.taginput
+.dialog.is-small .taginput-container.is-focusable,
+.dialog.is-small .button {
+  border-radius: 2px;
+  font-size: 0.75rem;
+}
+
+.dialog.is-medium .modal-card,
+.dialog.is-medium .input,
+.dialog.is-medium .taginput .taginput-container.is-focusable,
+.taginput
+.dialog.is-medium .taginput-container.is-focusable,
+.dialog.is-medium .button {
+  font-size: 1.25rem;
+}
+
+.dialog.is-large .modal-card,
+.dialog.is-large .input,
+.dialog.is-large .taginput .taginput-container.is-focusable,
+.taginput
+.dialog.is-large .taginput-container.is-focusable,
+.dialog.is-large .button {
+  font-size: 1.5rem;
 }
 
 .dropdown + .dropdown {
@@ -14526,21 +14768,23 @@ label.panel-block:hover {
 }
 
 @media screen and (max-width: 1023px) {
-  .dropdown:not(.is-hoverable):not(.is-inline) .dropdown-menu {
+  .dropdown.is-mobile-modal .dropdown-menu {
     position: fixed;
     width: calc(100vw - 40px);
     max-width: 460px;
     max-height: calc(100vh - 120px);
     top: 25% !important;
     left: 50% !important;
+    bottom: auto !important;
+    right: auto !important;
     -webkit-transform: translate3d(-50%, -25%, 0);
             transform: translate3d(-50%, -25%, 0);
     white-space: normal;
     overflow-y: auto;
   }
 
-  .dropdown:not(.is-hoverable):not(.is-inline) .dropdown-menu .dropdown-item,
-  .dropdown:not(.is-hoverable):not(.is-inline) .dropdown-menu .has-link a {
+  .dropdown.is-mobile-modal .dropdown-menu .dropdown-item,
+  .dropdown.is-mobile-modal .dropdown-menu .has-link a {
     padding: 1rem 1.5rem;
   }
 }
@@ -14568,6 +14812,9 @@ label.panel-block:hover {
 
 .field.has-addons .control:first-child .control .button,
 .field.has-addons .control:first-child .control .input,
+.field.has-addons .control:first-child .control .taginput .taginput-container.is-focusable,
+.taginput
+.field.has-addons .control:first-child .control .taginput-container.is-focusable,
 .field.has-addons .control:first-child .control .select select {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -14575,6 +14822,9 @@ label.panel-block:hover {
 
 .field.has-addons .control:last-child .control .button,
 .field.has-addons .control:last-child .control .input,
+.field.has-addons .control:last-child .control .taginput .taginput-container.is-focusable,
+.taginput
+.field.has-addons .control:last-child .control .taginput-container.is-focusable,
 .field.has-addons .control:last-child .control .select select {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -14582,6 +14832,9 @@ label.panel-block:hover {
 
 .field.has-addons .control .control .button,
 .field.has-addons .control .control .input,
+.field.has-addons .control .control .taginput .taginput-container.is-focusable,
+.taginput
+.field.has-addons .control .control .taginput-container.is-focusable,
 .field.has-addons .control .control .select select {
   border-radius: 0;
 }
@@ -14603,22 +14856,6 @@ label.panel-block:hover {
   -ms-user-select: none;
   user-select: none;
   cursor: inherit;
-  vertical-align: middle;
-}
-
-.icon .mdi {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  display: inline-block;
-  -webkit-font-feature-settings: 'liga';
-          font-feature-settings: 'liga';
-}
-
-.icon .fa,
-.icon .mdi {
-  font-size: 21px;
 }
 
 .icon svg {
@@ -14629,84 +14866,6 @@ label.panel-block:hover {
   pointer-events: none;
   width: 1.5rem;
   height: 1.5rem;
-}
-
-.icon.is-small {
-  height: 1rem;
-  width: 1rem;
-}
-
-.icon.is-small .mdi {
-  font-size: 16px;
-}
-
-.icon.is-small .fa,
-.icon.is-small .mdi {
-  font-size: 14px;
-}
-
-.icon.is-medium {
-  height: 2rem;
-  width: 2rem;
-}
-
-.icon.is-medium .mdi {
-  font-size: 32px;
-}
-
-.icon.is-medium .fa,
-.icon.is-medium .mdi {
-  font-size: 28px;
-}
-
-.icon.is-large {
-  height: 3rem;
-  width: 3rem;
-}
-
-.icon.is-large .mdi {
-  font-size: 48px;
-}
-
-.icon.is-large .fa,
-.icon.is-large .mdi {
-  font-size: 42px;
-}
-
-.icon.is-white {
-  color: white !important;
-}
-
-.icon.is-black {
-  color: #0a0a0a !important;
-}
-
-.icon.is-light {
-  color: whitesmoke !important;
-}
-
-.icon.is-dark {
-  color: #363636 !important;
-}
-
-.icon.is-primary {
-  color: #00d1b2 !important;
-}
-
-.icon.is-info {
-  color: #3273dc !important;
-}
-
-.icon.is-success {
-  color: #23d160 !important;
-}
-
-.icon.is-warning {
-  color: #ffdd57 !important;
-}
-
-.icon.is-danger {
-  color: #ff3860 !important;
 }
 
 .loading-overlay {
@@ -14773,6 +14932,11 @@ label.panel-block:hover {
   border: 0;
 }
 
+.notification > .delete {
+  right: 0.5rem !important;
+  top: 0.5rem !important;
+}
+
 .modal .animation-content {
   margin: 0 20px;
 }
@@ -14793,8 +14957,11 @@ label.panel-block:hover {
   display: -ms-flexbox;
   display: flex;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
+  padding: 2em;
+  overflow: hidden;
   z-index: 1000;
   pointer-events: none;
 }
@@ -14805,13 +14972,14 @@ label.panel-block:hover {
   display: inline-flex;
   -webkit-animation-duration: 150ms;
           animation-duration: 150ms;
-  margin: 1.5em 0.5em;
+  margin: 0.5em 0;
   text-align: center;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   border-radius: 2em;
   padding: 0.75em 1.5em;
   pointer-events: auto;
+  opacity: 0.92;
 }
 
 .notices .toast.is-white {
@@ -14860,9 +15028,9 @@ label.panel-block:hover {
 }
 
 .notices .snackbar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -14870,10 +15038,10 @@ label.panel-block:hover {
       justify-content: space-around;
   -webkit-animation-duration: 150ms;
           animation-duration: 150ms;
-  margin: 0.5em;
+  margin: 0.5em 0;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-  border-radius: 2px;
+  border-radius: 3px;
   pointer-events: auto;
   background: #363636;
   color: whitesmoke;
@@ -14947,41 +15115,58 @@ label.panel-block:hover {
   }
 }
 
-.notices.is-top {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.notices .toast.is-top,
+.notices .snackbar.is-top {
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
-.notices.is-top-right {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+.notices .toast.is-top-right,
+.notices .snackbar.is-top-right {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.notices .toast.is-bottom,
+.notices .snackbar.is-bottom {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.notices .toast.is-bottom-right,
+.notices .snackbar.is-bottom-right {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.notices .toast.is-toast,
+.notices .snackbar.is-toast {
+  opacity: 0.92;
+}
+
+.notices.is-top {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .notices.is-bottom {
-  top: auto;
-  bottom: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 
-.notices.is-bottom-left {
-  top: auto;
-  bottom: 0;
+.notices.has-custom-container {
+  position: absolute;
 }
 
-.notices.is-bottom-right {
-  top: auto;
-  bottom: 0;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.notices.is-toast {
-  opacity: 0.92;
+@media screen and (max-width: 768px) {
+  .notices {
+    padding: 0;
+    position: fixed !important;
+  }
 }
 
 .pagination .pagination-next,
@@ -15100,6 +15285,19 @@ label.panel-block:hover {
 .b-radio.radio:focus input[type=radio]:checked + .check {
   -webkit-box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.8);
           box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.8);
+}
+
+.b-radio.radio.is-small {
+  border-radius: 2px;
+  font-size: 0.75rem;
+}
+
+.b-radio.radio.is-medium {
+  font-size: 1.25rem;
+}
+
+.b-radio.radio.is-large {
+  font-size: 1.5rem;
 }
 
 .select select {
@@ -15380,6 +15578,12 @@ label.panel-block:hover {
   transition: opacity 86ms ease-out;
 }
 
+@media screen and (min-width: 769px), print {
+  .b-table .table-mobile-sort {
+    display: none;
+  }
+}
+
 .b-table .icon {
   -webkit-transition: opacity 86ms ease-out, -webkit-transform 150ms ease-out;
   transition: opacity 86ms ease-out, -webkit-transform 150ms ease-out;
@@ -15399,7 +15603,7 @@ label.panel-block:hover {
 
 .b-table .table {
   width: 100%;
-  border: 0.125em solid transparent;
+  border: 1px solid transparent;
   border-radius: 3px;
   border-collapse: separate;
 }
@@ -15469,10 +15673,6 @@ label.panel-block:hover {
   background-color: transparent;
 }
 
-.b-table .table tr:not(.is-selected).is-hovered {
-  background: rgba(181, 181, 181, 0.35) !important;
-}
-
 .b-table .table .checkbox-cell {
   width: 40px;
 }
@@ -15486,18 +15686,20 @@ label.panel-block:hover {
   transition: none;
 }
 
-.b-table .table .detail td {
+.b-table .table tr.detail {
   -webkit-box-shadow: inset 0 1px 3px #dbdbdb;
           box-shadow: inset 0 1px 3px #dbdbdb;
   background: #fafafa;
 }
 
-.b-table .table .detail td .detail-container {
+.b-table .table tr.detail .detail-container {
   padding: 1rem;
 }
 
 .b-table .table:focus {
-  border: 0.125em solid rgba(0, 209, 178, 0.5);
+  border-color: #00d1b2;
+  -webkit-box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
+          box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
 }
 
 .b-table .table.is-bordered th.is-current-sort,
@@ -15522,7 +15724,6 @@ label.panel-block:hover {
     max-width: 100%;
     position: relative;
     display: block;
-    margin: 0.25em;
   }
 
   .b-table .table.has-mobile-cards tr td {
@@ -15603,6 +15804,14 @@ label.panel-block:hover {
 
 .b-tabs .tabs {
   margin-bottom: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.b-tabs .is-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .b-tabs .tab-content {
@@ -15615,6 +15824,7 @@ label.panel-block:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 1rem;
 }
 
 .b-tabs .tab-content .tab-item {
@@ -15628,6 +15838,144 @@ label.panel-block:hover {
   margin-bottom: 1.5rem;
 }
 
+.b-tabs.is-fullwidth {
+  width: 100%;
+}
+
+.tag .delete {
+  margin-left: 0.25rem !important;
+  margin-right: -0.25rem !important;
+}
+
+.tag .delete[disabled] {
+  pointer-events: none;
+}
+
+.taginput .taginput-container.is-focusable {
+  padding-bottom: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: auto;
+  cursor: text;
+}
+
+.taginput .taginput-container > .tag,
+.taginput .taginput-container > .tags {
+  margin-bottom: calc(0.375em - 1px);
+  font-size: 0.9em;
+  height: 2.25em;
+}
+
+.taginput .taginput-container > .tag .tag,
+.taginput .taginput-container > .tags .tag {
+  margin-bottom: 0;
+  font-size: 0.9em;
+  height: 2.25em;
+}
+
+.taginput .taginput-container > .tag:not(:last-child),
+.taginput .taginput-container > .tags:not(:last-child) {
+  margin-right: 0.375rem;
+}
+
+.taginput .taginput-container .autocomplete {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.taginput .taginput-container .autocomplete input {
+  height: 2em;
+  margin-bottom: calc(0.375em - 1px);
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.taginput .taginput-container .autocomplete input:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.timepicker .dropdown,
+.timepicker .dropdown-trigger {
+  width: 100%;
+}
+
+.timepicker .dropdown-item,
+.timepicker .dropdown .dropdown-menu .has-link a,
+.dropdown .dropdown-menu .has-link .timepicker a {
+  font-size: inherit;
+}
+
+.timepicker .timepicker-footer {
+  padding-top: 0.875rem;
+}
+
+.timepicker .control .select {
+  font-size: 2.5rem;
+}
+
+.timepicker .control .select select {
+  font-weight: 600;
+  padding-right: calc(0.625em - 1px);
+}
+
+.timepicker .control .select select option {
+  font-size: 1.5rem;
+}
+
+.timepicker .control .select select option:disabled {
+  color: rgba(122, 122, 122, 0.7);
+}
+
+.timepicker .control .select:after {
+  display: none;
+}
+
+.timepicker .control:nth-child(1) .select select {
+  border-right: none;
+}
+
+.timepicker .control:nth-child(1) .select:before {
+  content: ":";
+  color: #b5b5b5;
+  display: inline-block;
+  position: absolute;
+  z-index: 6;
+  font-size: 3rem;
+  right: -0.325rem;
+  top: 0.25rem;
+}
+
+.timepicker .control:nth-child(2) .select select {
+  border-left: none;
+}
+
+.timepicker.is-small {
+  border-radius: 2px;
+  font-size: 0.75rem;
+}
+
+.timepicker.is-medium {
+  font-size: 1.25rem;
+}
+
+.timepicker.is-large {
+  font-size: 1.5rem;
+}
+
 .tooltip {
   position: relative;
   display: -webkit-inline-box;
@@ -15639,72 +15987,72 @@ label.panel-block:hover {
 .tooltip.is-top:after {
   top: auto;
   right: auto;
-  bottom: calc(100% + 6px + 2px);
+  bottom: calc(100% + 5px + 2px);
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
 
 .tooltip.is-top.is-white:before {
-  border-top: 6px solid white;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid white;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-black:before {
-  border-top: 6px solid #0a0a0a;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #0a0a0a;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-light:before {
-  border-top: 6px solid whitesmoke;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid whitesmoke;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-dark:before {
-  border-top: 6px solid #363636;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #363636;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-primary:before {
-  border-top: 6px solid #00d1b2;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #00d1b2;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-info:before {
-  border-top: 6px solid #3273dc;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #3273dc;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-success:before {
-  border-top: 6px solid #23d160;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #23d160;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-warning:before {
-  border-top: 6px solid #ffdd57;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #ffdd57;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
 .tooltip.is-top.is-danger:before {
-  border-top: 6px solid #ff3860;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
+  border-top: 5px solid #ff3860;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
   bottom: calc(100% + 2px);
 }
 
@@ -15725,71 +16073,71 @@ label.panel-block:hover {
   top: 50%;
   right: auto;
   bottom: auto;
-  left: calc(100% + 6px + 2px);
+  left: calc(100% + 5px + 2px);
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
 
 .tooltip.is-right.is-white:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid white;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid white;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-black:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #0a0a0a;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #0a0a0a;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-light:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid whitesmoke;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid whitesmoke;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-dark:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #363636;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #363636;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-primary:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #00d1b2;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #00d1b2;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-info:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #3273dc;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #3273dc;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-success:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #23d160;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #23d160;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-warning:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #ffdd57;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #ffdd57;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
 .tooltip.is-right.is-danger:before {
-  border-top: 6px solid transparent;
-  border-right: 6px solid #ff3860;
-  border-bottom: 6px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid #ff3860;
+  border-bottom: 5px solid transparent;
   left: calc(100% + 2px);
 }
 
@@ -15807,7 +16155,7 @@ label.panel-block:hover {
 
 .tooltip.is-bottom:before,
 .tooltip.is-bottom:after {
-  top: calc(100% + 6px + 2px);
+  top: calc(100% + 5px + 2px);
   right: auto;
   bottom: auto;
   left: 50%;
@@ -15816,65 +16164,65 @@ label.panel-block:hover {
 }
 
 .tooltip.is-bottom.is-white:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid white;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid white;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-black:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #0a0a0a;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #0a0a0a;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-light:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid whitesmoke;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid whitesmoke;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-dark:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #363636;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #363636;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-primary:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #00d1b2;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #00d1b2;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-info:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #3273dc;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #3273dc;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-success:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #23d160;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #23d160;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-warning:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #ffdd57;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #ffdd57;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
 .tooltip.is-bottom.is-danger:before {
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #ff3860;
-  border-left: 6px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #ff3860;
+  border-left: 5px solid transparent;
   top: calc(100% + 2px);
 }
 
@@ -15893,7 +16241,7 @@ label.panel-block:hover {
 .tooltip.is-left:before,
 .tooltip.is-left:after {
   top: 50%;
-  right: calc(100% + 6px + 2px);
+  right: calc(100% + 5px + 2px);
   bottom: auto;
   left: auto;
   -webkit-transform: translateY(-50%);
@@ -15901,65 +16249,65 @@ label.panel-block:hover {
 }
 
 .tooltip.is-left.is-white:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid white;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid white;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-black:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #0a0a0a;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #0a0a0a;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-light:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid whitesmoke;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid whitesmoke;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-dark:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #363636;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #363636;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-primary:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #00d1b2;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #00d1b2;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-info:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #3273dc;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #3273dc;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-success:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #23d160;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #23d160;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-warning:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #ffdd57;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #ffdd57;
   right: calc(100% + 2px);
 }
 
 .tooltip.is-left.is-danger:before {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #ff3860;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #ff3860;
   right: calc(100% + 2px);
 }
 
@@ -15991,12 +16339,10 @@ label.panel-block:hover {
 .tooltip:after {
   content: attr(data-label);
   width: auto;
-  padding: 4px 8px;
-  background: #00d1b2;
-  border-radius: 2px;
-  font-size: 12px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
   font-weight: 400;
-  color: #fff;
   -webkit-box-shadow: 0px 1px 2px 1px rgba(0, 1, 0, 0.2);
           box-shadow: 0px 1px 2px 1px rgba(0, 1, 0, 0.2);
   z-index: 888;
@@ -16081,10 +16427,17 @@ label.panel-block:hover {
   transition: opacity 86ms ease-out, visibility 86ms ease-out;
 }
 
+.upload {
+  position: relative;
+}
+
 .upload input[type=file] {
-  display: inline-block;
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   opacity: 0;
+  outline: none;
 }
 
 .upload .upload-draggable {

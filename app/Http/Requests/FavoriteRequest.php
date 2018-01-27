@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Helpers\Traits\GetModelByMorpType;
+use App\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Comment;
 
@@ -14,7 +15,8 @@ class FavoriteRequest extends FormRequest
     protected function map()
     {
         return [
-            'comment' => Comment::class
+            'comment' => Comment::class,
+            'article' => Article::class
         ];
     }
 

@@ -31,40 +31,6 @@
         </div>
       </article>
 
-
-        <!-- <div class="media">
-            <div class="media-left">
-                <a :href="profile">
-                    <img class="media-object avatar img-thumbnail" :src="comment.user.avatar" alt="...">
-                </a>
-            </div>
-            <div class="media-body">
-                <div class="media-heading">
-                    <div>
-                        <a :href="profile">{{ comment.user.name }}</a>
-                        <span class="pull-right operation">
-
-                            <a v-if="canDelete" href="javascript:;" @click="deleteComment">
-                                <i class="ion-trash-b"></i>
-                            </a>
-                            <a v-if="canReplyUser" href="javascript:;" @click="replyUser"><i class="ion-reply"></i></a>
-                        </span>
-
-                    </div>
-                    <div class="time">发表于 <span data-toggle="tooltip" data-placement="top" :title="this.comment.created_at">{{ ago }}</span></div>
-
-
-                </div>
-
-
-
-                <div class="comment-body">
-                    <div class="markdown" v-html="body"></div>
-                </div>
-            </div>
-        </div> -->
-
-
 </template>
 
 <script>

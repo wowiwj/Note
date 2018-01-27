@@ -193,6 +193,30 @@
 
   }
 
+  .favorite-article{
+    color: #ff763b;
+    font-size: 2rem;
+    .favorite-count{
+      font-size: 1.2rem;
+      color: #666
+    }
+
+    .favorite-users{
+      display: flex;
+      font-weight: 600;
+      flex-wrap: wrap;
+      font-size: 0;
+      .favorite-user{
+        img{
+          border-radius: 50%;
+          padding-bottom:6px;
+          margin:0 3px;
+          width: 22px;
+        }
+      }
+    }
+  }
+
 
 }
 
