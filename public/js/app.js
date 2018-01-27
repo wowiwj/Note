@@ -3181,11 +3181,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['favorites', 'favorites_count', 'is_favorited', 'article_id'],
+    props: ['favorites_count', 'is_favorited', 'article_id'],
     data: function data() {
         return {
             isFavorited: this.is_favorited,
-            favoritesList: this.favorites,
+            favoritesList: [],
             favoritesCount: this.favorites_count
         };
     },
@@ -3218,9 +3218,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.isFavorited = false;
                 _this2.favoritesCount--;
             }).catch(function (err) {});
+        },
+        fetchFavorites: function fetchFavorites() {
+            alert(1);
+            console.log('1');
         }
+    },
+    created: function created() {
+        this.fetchFavorites();
     }
-
 });
 
 /***/ }),
@@ -3239,10 +3245,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['comment'],
     data: function data() {
         return {
-            'isFavorite': this.comment.is_favorite,
-            'favoriteCount': this.comment.favorite_count,
-            'favoriteClass': 'favorite',
-            'unFavoriteClass': 'un-favorite'
+            isFavorite: this.comment.is_favorite,
+            favoriteCount: this.comment.favorite_count,
+            favoriteClass: 'favorite',
+            unFavoriteClass: 'un-favorite'
         };
     },
 
@@ -44114,7 +44120,7 @@ var render = function() {
         }),
     _vm._v(" "),
     _c("span", { staticClass: "favorite-count" }, [
-      _vm._v(_vm._s(_vm.favorites_count))
+      _vm._v(_vm._s(_vm.favoritesCount))
     ]),
     _vm._v(" "),
     _vm._m(0)

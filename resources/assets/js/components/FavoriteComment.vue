@@ -7,14 +7,14 @@ export default {
     props:['comment'],
     data(){
         return {
-            'isFavorite':this.comment.is_favorite,
-            'favoriteCount':this.comment.favorite_count,
-            'favoriteClass':'favorite',
-            'unFavoriteClass':'un-favorite'
+            isFavorite:this.comment.is_favorite,
+            favoriteCount:this.comment.favorite_count,
+            favoriteClass:'favorite',
+            unFavoriteClass:'un-favorite'
         }
     },
     methods:{
-       
+
         favorite(){
          
             axios.post('/api/v1/favorites',{

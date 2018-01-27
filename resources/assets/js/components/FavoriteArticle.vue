@@ -3,7 +3,7 @@
     <div class="favorite-article">
         <i @click="toggleFavorite" v-if="isFavorited" class="fa fa-heart" aria-hidden="true"></i>
         <i @click="toggleFavorite" v-else="isFavorited"  class="fa fa-heart-o" aria-hidden="true"></i>
-        <span class="favorite-count">{{ favorites_count }}</span>
+        <span class="favorite-count">{{ favoritesCount }}</span>
 
         <div class="favorite-users">
             <div class="favorite-user">
@@ -38,11 +38,11 @@
 
 <script>
     export default {
-        props:['favorites','favorites_count','is_favorited','article_id'],
+        props:['favorites_count','is_favorited','article_id'],
         data(){
             return {
                 isFavorited: this.is_favorited,
-                favoritesList: this.favorites,
+                favoritesList: [],
                 favoritesCount: this.favorites_count
             }
         },
@@ -77,7 +77,15 @@
                 }).catch((err)=>{
                 });
             },
+            fetchFavorites(){
+                alert(1)
+                console.log('1')
 
+            }
+
+        },
+        created(){
+            this.fetchFavorites()
         }
 
     }

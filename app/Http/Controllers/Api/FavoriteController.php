@@ -16,6 +16,11 @@ class FavoriteController extends ApiController
         $this->middleware('auth:api');
 
     }
+
+    public function index(){
+
+
+    }
     
     // 用户点赞
     public function store(FavoriteRequest $request)

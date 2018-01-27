@@ -10,4 +10,8 @@ class Favorite extends Model
     use RecordsActivity;
 
     protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

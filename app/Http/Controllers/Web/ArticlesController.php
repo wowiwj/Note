@@ -45,9 +45,7 @@ class ArticlesController extends Controller
     public function show($category,Article $article)
     {
 
-        $article->load(['comments','favorites' => function($query){
-            $query->orderBy('created_at', 'desc')->limit(10);
-        }]);
+        $article->load(['comments']);
 
 //        return $article;
 

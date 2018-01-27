@@ -29,7 +29,6 @@
                             <div class="column">
 
                                 <favorite-article
-                                    :favorites="{{ $article->favorites }}"
                                     :favorites_count="{{ $article->favorites_count }}"
                                     :is_favorited="{{ (int)$article->is_favorited }}"
                                     :article_id="{{$article->id}}"
