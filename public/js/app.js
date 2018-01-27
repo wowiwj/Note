@@ -3160,25 +3160,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['favorites_count', 'is_favorited', 'article_id'],
@@ -3200,10 +3181,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/api/v1/favorites', {
                 'type': 'article',
                 'type_id': this.article_id
-            }).then(function (data) {
+            }).then(function (res) {
+
+                var data = res.data;
+                console.log(data);
+                _this.favoritesList.prepend(data);
+
                 _this.isFavorited = true;
                 _this.favoritesCount++;
-                console.log(data.data);
+
+                console.log(res.data);
             }).catch(function (err) {
                 console.log(err.response.data);
             });
@@ -3220,7 +3207,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (err) {});
         },
         fetchFavorites: function fetchFavorites() {
-            alert(1);
+            var _this3 = this;
+
+            var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+            axios.get('/api/v1/article/' + this.article_id + '/favorites?page=' + page).then(function (res) {
+
+                var data = res.data.data;
+
+                if (page === 1) {
+                    _this3.favoritesList = data;
+                    return;
+                }
+
+                _this3.favoritesList.push.apply(data);
+
+                console.log(res.data);
+            });
+
             console.log('1');
         }
     },
@@ -44123,77 +44127,20 @@ var render = function() {
       _vm._v(_vm._s(_vm.favoritesCount))
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "div",
+      { staticClass: "favorite-users" },
+      _vm._l(_vm.favoritesList, function(favorite) {
+        return _c("div", { staticClass: "favorite-user" }, [
+          _c("img", {
+            attrs: { src: favorite.user.avatar, alt: favorite.user.name }
+          })
+        ])
+      })
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "favorite-users" }, [
-      _c("div", { staticClass: "favorite-user" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0",
-            alt: "sdsd"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "favorite-user" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0",
-            alt: "sdsd"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "favorite-user" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0",
-            alt: "sdsd"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "favorite-user" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0",
-            alt: "sdsd"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "favorite-user" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0",
-            alt: "sdsd"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "favorite-user" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0",
-            alt: "sdsd"
-          }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

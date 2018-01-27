@@ -47,8 +47,6 @@ class ArticlesController extends Controller
 
         $article->load(['comments']);
 
-//        return $article;
-
         if (auth()->check()){
             auth()->user()->read($article);
         }

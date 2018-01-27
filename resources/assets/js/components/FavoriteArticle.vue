@@ -6,28 +6,9 @@
         <span class="favorite-count">{{ favoritesCount }}</span>
 
         <div class="favorite-users">
-            <div class="favorite-user">
-                <img src="http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0" alt="sdsd">
-            </div>
 
-            <div class="favorite-user">
-                <img src="http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0" alt="sdsd">
-            </div>
-
-            <div class="favorite-user">
-                <img src="http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0" alt="sdsd">
-            </div>
-
-            <div class="favorite-user">
-                <img src="http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0" alt="sdsd">
-            </div>
-
-            <div class="favorite-user">
-                <img src="http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0" alt="sdsd">
-            </div>
-
-            <div class="favorite-user">
-                <img src="http://wx.qlogo.cn/mmopen/s9lI61bpfShs1eVDgnqEiaq5bRpEXMayfHacSoFghmhp5wH9x6ibCCA5nM6wdDeurofc6VJribBPu4r0gPI2ick0aniadIHiapeY5E/0" alt="sdsd">
+            <div v-for="favorite in favoritesList" class="favorite-user">
+                <img :src="favorite.user.avatar" :alt="favorite.user.name">
             </div>
 
         </div>
@@ -56,10 +37,16 @@
                 axios.post('/api/v1/favorites',{
                     'type':'article',
                     'type_id':this.article_id
-                }).then((data)=>{
+                }).then((res)=>{
+
+                    let data = res.data
+                    console.log(data)
+                    this.favoritesList.prepend(data)
+
                     this.isFavorited = true
                     this.favoritesCount++;
-                    console.log(data.data);
+
+                    console.log(res.data);
                 }).catch((err)=>{
                     console.log(err.response.data);
 
@@ -77,8 +64,22 @@
                 }).catch((err)=>{
                 });
             },
-            fetchFavorites(){
-                alert(1)
+            fetchFavorites(page = 1){
+                axios.get('/api/v1/article/'+ this.article_id +'/favorites?page='+page).then((res)=>{
+
+                    let data = res.data.data
+
+                    if (page === 1){
+                        this.favoritesList = data
+                        return
+                    }
+
+                    this.favoritesList.push.apply(data);
+
+                    console.log(res.data);
+
+                });
+
                 console.log('1')
 
             }

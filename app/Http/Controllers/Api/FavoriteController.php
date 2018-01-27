@@ -3,23 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Helpers\Exceptions\FavoriteException;
+use App\Http\Resources\FavoriteResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\FavoriteRequest;
+use Illuminate\Support\Facades\Input;
 
 class FavoriteController extends ApiController
 {
 
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api')->except('index');
 
     }
 
-    public function index(){
+    public function index($type,$type_id,FavoriteRequest $request){
 
+        $limit = Input::get('limit') ?: 10;
+        $model = $request->getModel($type,$type_id);
 
+        $favorites = $model->favorites()->with('user')->paginate($limit);
+        return FavoriteResource::collection($favorites);
     }
     
     // 用户点赞
@@ -27,14 +33,14 @@ class FavoriteController extends ApiController
     {
 
         try{
-            $request->store();
+            $favorite = $request->store();
         }catch(FavoriteException $e){
             return $e->response();
         }
 
         $request->getModel()->notifyFavorited();
 
-        return $this->message('点赞成功');
+        return new FavoriteResource($favorite->load('user'));
         
     }
 
