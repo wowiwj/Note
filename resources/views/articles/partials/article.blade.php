@@ -89,7 +89,11 @@
                 <span class="icon">
                         <i class="fa fa-fw fa-heart "></i>
                     </span>
-                喜欢
+                @if($article->favorites_count > 0)
+                    {{ $article->favorites_count }}
+                @else
+                    喜欢
+                @endif
                 <span class="icon">
                         <i class="fa fa-fw fa-usd"></i>
                     </span>

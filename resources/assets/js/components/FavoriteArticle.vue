@@ -39,9 +39,9 @@
                     'type_id':this.article_id
                 }).then((res)=>{
 
-                    let data = res.data
+                    let data = res.data.data
                     console.log(data)
-                    this.favoritesList.prepend(data)
+                    this.favoritesList.unshift(data)
 
                     this.isFavorited = true
                     this.favoritesCount++;
@@ -60,6 +60,16 @@
                     'type_id':this.article_id
                 }).then((data)=>{
                     this.isFavorited = false;
+                    let userItem = this.favoritesList.filter((item)=>{
+                        return item.user.id === window.App.user.id
+                    }).pop()
+
+                    let index = this.favoritesList.indexOf(userItem)
+
+                    console.log(index)
+                    this.favoritesList.splice(index,1)
+
+
                     this.favoritesCount--;
                 }).catch((err)=>{
                 });
