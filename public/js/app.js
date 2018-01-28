@@ -3160,6 +3160,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['favorites_count', 'is_favorited', 'article_id'],
@@ -3167,7 +3169,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             isFavorited: this.is_favorited,
             favoritesList: [],
-            favoritesCount: this.favorites_count
+            favoritesCount: this.favorites_count,
+            links: [],
+            meta: []
         };
     },
 
@@ -3220,16 +3224,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+            console.log('---' + page);
             axios.get('/api/v1/article/' + this.article_id + '/favorites?page=' + page).then(function (res) {
 
-                var data = res.data.data;
+                var result = res.data;
+
+                var data = result.data;
+
+                _this3.links = result.links;
+                _this3.meta = result.meta;
+
+                console.log(res.data);
 
                 if (page === 1) {
                     _this3.favoritesList = data;
                     return;
                 }
 
-                _this3.favoritesList.push.apply(data);
+                _this3.favoritesList.push.apply(_this3.favoritesList, data);
 
                 console.log(res.data);
             });
@@ -3239,7 +3251,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.fetchFavorites();
+    },
+
+    computed: {
+        shouldLoadMore: function shouldLoadMore() {
+            if (!this.meta) {
+                return false;
+            }
+            return this.meta.current_page < this.meta.last_page;
+        }
     }
+
 });
 
 /***/ }),
@@ -42756,13 +42778,37 @@ var render = function() {
     _c(
       "div",
       { staticClass: "favorite-users" },
-      _vm._l(_vm.favoritesList, function(favorite) {
-        return _c("div", { staticClass: "favorite-user" }, [
-          _c("img", {
-            attrs: { src: favorite.user.avatar, alt: favorite.user.name }
-          })
-        ])
-      })
+      [
+        _vm._l(_vm.favoritesList, function(favorite) {
+          return _c("div", { staticClass: "favorite-user" }, [
+            _c("img", {
+              attrs: { src: favorite.user.avatar, alt: favorite.user.name }
+            })
+          ])
+        }),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.shouldLoadMore,
+                expression: "shouldLoadMore"
+              }
+            ],
+            staticClass: "button is-white is-small is-rounded",
+            on: {
+              click: function($event) {
+                _vm.fetchFavorites(++_vm.meta.current_page)
+              }
+            }
+          },
+          [_vm._v("...")]
+        )
+      ],
+      2
     )
   ])
 }

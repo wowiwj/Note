@@ -8,6 +8,7 @@ use App\Helpers\Service\Markdowner;
 use App\Helpers\Traits\Favoritable;
 use App\Helpers\Traits\RecordsActivity;
 use App\Helpers\Traits\Subscribable;
+use App\Notifications\ArticleWasFavorited;
 use App\Notifications\ArticleWasSubscribed;
 use App\Scopes\ArticleFitterScope;
 use Illuminate\Database\Eloquent\Model;
@@ -151,6 +152,12 @@ class Article extends Model
 
     public function notifyFavorited(){
 
+        $user = $this->user;
+        if (Auth::user()->id == $user->id){
+            return;
+        }
+
+        $user->notify(new ArticleWasFavorited($this));
 
     }
 

@@ -38,6 +38,15 @@
                                 
 
                             </div>
+                            <div class="column is-4">
+                                <div style="display: flex;flex-direction: row-reverse;width: 100%;height: 100%">
+                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
+                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
+                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
+                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
+                                </div>
+
+                            </div>
 
                         </div>
 

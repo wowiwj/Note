@@ -21,7 +21,7 @@ class FavoriteController extends ApiController
 
     public function index($type,$type_id,FavoriteRequest $request){
 
-        $limit = Input::get('limit') ?: 10;
+        $limit = Input::get('limit') ?: 20;
         $model = $request->getModel($type,$type_id);
 
         $favorites = $model->favorites()->with('user')->paginate($limit);

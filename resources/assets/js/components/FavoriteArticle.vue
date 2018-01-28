@@ -11,7 +11,9 @@
                 <img :src="favorite.user.avatar" :alt="favorite.user.name">
             </div>
 
+            <a @click="fetchFavorites(++meta.current_page)" v-show="shouldLoadMore" class="button is-white is-small is-rounded">...</a>
         </div>
+
 
     </div>
 
@@ -24,7 +26,9 @@
             return {
                 isFavorited: this.is_favorited,
                 favoritesList: [],
-                favoritesCount: this.favorites_count
+                favoritesCount: this.favorites_count,
+                links:[],
+                meta:[]
             }
         },
         methods:{
@@ -75,16 +79,24 @@
                 });
             },
             fetchFavorites(page = 1){
+                console.log('---'+page)
                 axios.get('/api/v1/article/'+ this.article_id +'/favorites?page='+page).then((res)=>{
 
-                    let data = res.data.data
+                    let result = res.data
+
+                    let data = result.data
+
+                    this.links = result.links
+                    this.meta = result.meta
+
+                    console.log(res.data)
 
                     if (page === 1){
                         this.favoritesList = data
                         return
                     }
 
-                    this.favoritesList.push.apply(data);
+                    this.favoritesList.push.apply(this.favoritesList,data);
 
                     console.log(res.data);
 
@@ -97,6 +109,15 @@
         },
         created(){
             this.fetchFavorites()
+        },
+        computed:{
+            shouldLoadMore(){
+                if (! this.meta ){
+                    return false
+                }
+                return this.meta.current_page < this.meta.last_page
+            }
+
         }
 
     }
