@@ -52,7 +52,7 @@
                             <div class="column is-4">
                                 <div style="display: flex;flex-direction: row-reverse;width: 100%;height: 100%">
                                     @foreach($article->tags as $tag)
-                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">{{ $tag->name }}</span>
+                                    <span style="align-self: flex-end;margin: 5px" class="tag is-medium is-light">{{ $tag->name }}</span>
                                     @endforeach
                                 </div>
 
