@@ -47,7 +47,11 @@
         </flash>
 
         @guest
+<<<<<<< HEAD
             <login-view github-auth-url="{{ route('oauth.redirect','github') }}" qq-auth-url="{{ route('oauth.redirect','qq') }}"></login-view>>
+=======
+            <login-view github-auth-url="{{ route('oauth.redirect','github') }}"></login-view>
+>>>>>>> dev
         @endguest
 
         @include('layouts.partials.footer')

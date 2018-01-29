@@ -2,30 +2,45 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Exceptions\FavoriteException;
+use App\Http\Resources\FavoriteResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\FavoriteRequest;
+use Illuminate\Support\Facades\Input;
 
 class FavoriteController extends ApiController
 {
 
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api')->except('index');
 
+    }
+
+    public function index($type,$type_id,FavoriteRequest $request){
+
+        $limit = Input::get('limit') ?: 20;
+        $model = $request->getModel($type,$type_id);
+
+        $favorites = $model->favorites()->with('user')->paginate($limit);
+        return FavoriteResource::collection($favorites);
     }
     
     // 用户点赞
     public function store(FavoriteRequest $request)
     {
+
         try{
-            $request->store();
-        }catch(\Exception $e){
-            return $this->failed($e->getMessage(),$e->getCode());
+            $favorite = $request->store();
+        }catch(FavoriteException $e){
+            return $e->response();
         }
-        
-        return $this->message('点赞成功');
+
+        $request->getModel()->notifyFavorited();
+
+        return new FavoriteResource($favorite->load('user'));
         
     }
 
@@ -34,11 +49,12 @@ class FavoriteController extends ApiController
 
         try{
             $request->destroy();
-        }catch(\Exception $e){
-            return $this->failed($e->getMessage(),$e->getCode());
+        }catch(FavoriteException $e){
+            return $e->response();
         }
-        
+
         return $this->message('取消点赞成功');
+
     }
 
 

@@ -170,6 +170,8 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
 
+        App\Providers\OAuthServiceProvider::class,
+
         /*
          * Package Service Providers...
          */

@@ -45,11 +45,22 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::delete('comments/{comment}','CommentsController@destroy');
 
+
+    Route::post('subscriptions','SubscriptionsController@store');
+    Route::delete('subscriptions/{subscription}','SubscriptionsController@destroy');
+
     Route::post('image/upload','FilesController@ImageUpload');
+
+
+    Route::get('{type}/{type_id}/favorites','FavoriteController@index');
 
     Route::post('favorites','FavoriteController@store');
     
     Route::delete('favorites','FavoriteController@destroy');
+
+    Route::post('subscribes','SubscriptionsController@store');
+
+    Route::delete('subscribes','SubscriptionsController@destroy');
 
 
     Route::post('special_pages','SpecialPagesController@store');

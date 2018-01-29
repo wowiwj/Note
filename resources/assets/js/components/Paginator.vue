@@ -1,16 +1,8 @@
 <template>
-  <ul class="pagination" v-if="shouldPaginate">
-        <li v-show="prevUrl">
-            <a href="#" aria-label="Previous" rel="prev" @click.prevent="page--">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li v-show="nextUrl">
-            <a href="#" aria-label="Next" rel="next" @click.prevent="page++">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
+  <nav style="padding: 20px;" class="pagination is-rounded is-small" v-if="shouldPaginate">
+      <a @click.prevent="page--" class="pagination-previous" title="This is the first page" :disabled="!prevUrl">&laquo;</a>
+      <a @click.prevent="page++" class="pagination-next" :disabled="!nextUrl">&raquo;</a>
+    </nav>
 </template>
 
 <script>

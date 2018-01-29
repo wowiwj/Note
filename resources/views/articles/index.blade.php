@@ -20,8 +20,9 @@
                         ·
                         @auth
                         <a href="/articles?by={{ Auth::user()->name }}">我的</a>
-                        @endauth
                         ·
+                        @endauth
+
                         <a href="/articles?popular=1">热门</a>
                         ·
                         <a href="/articles?uncommented=1">零回复</a>
@@ -73,37 +74,5 @@
 
     </div>
 
-
-
-
-    
-
-
-
-    {{--</div>--}}
-
-    {{--<div class="panel-body">--}}
-
-    {{--@forelse($articles as $article)--}}
-    {{--@include('articles.partials.article')--}}
-    {{--@empty--}}
-    {{--<div class="empty-block">没有文章数据</div>--}}
-    {{--@endforelse--}}
-
-    {{--<div class="text-center">--}}
-    {{--{{ $articles->links() }}--}}
-    {{--</div>--}}
-
-
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="col-md-3 hidden-sm hidden-xs">--}}
-    {{--@include('layouts.partials.category')--}}
-    {{--</div>--}}
-
-
-    {{--</div>--}}
 
 @endsection

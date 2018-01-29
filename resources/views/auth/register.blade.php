@@ -8,7 +8,7 @@
                 第三方登录
             </p>
             <p class="control">
-                <a href="#" class="button is-fullwidth">
+                <a href="{{ route('oauth.redirect','qq') }}" class="button is-fullwidth">
                     <span class="icon">
                         <i class="fa fa-qq">
                         </i></span>

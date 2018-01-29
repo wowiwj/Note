@@ -13,8 +13,8 @@
     "axios": "^0.17",
     "babel-polyfill": "^6.23.0",
     "bootstrap-sass": "^3.3.7",
-    "buefy": "^0.5.2",
-    "bulma": "^0.5.3",
+    "buefy": "^0.6.2",
+    "bulma": "^0.6.2",
     "cross-env": "^5.1",
     "fine-uploader": "^5.14.4",
     "font-awesome": "^4.7.0",
@@ -30,7 +30,7 @@
     "marked": "^0.3.6",
     "moment": "^2.18.1",
     "simplemde": "^1.11.2",
-    "vue-multiselect": "^2.0.0-beta.15",
-    "social-share.js": "^1.0.16"
+    "social-share.js": "^1.0.16",
+    "vue-multiselect": "^2.0.0-beta.15"
   }
 }

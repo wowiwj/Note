@@ -6,7 +6,9 @@ use App\Helpers\Fitters\ArticleFilters;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class ArticlesController extends Controller
@@ -23,6 +25,8 @@ class ArticlesController extends Controller
 
         // https://stackoverflow.com/questions/17159273/laravel-pagination-links-not-including-other-get-parameters
         $articles->appends(Input::except('page'));
+
+//        return $articles;
 
         return view('articles.index',compact('articles'));
     }
@@ -43,8 +47,12 @@ class ArticlesController extends Controller
     public function show($category,Article $article)
     {
 
-        $article->load('comments');
-        $article->increment('views_count');
+        $article->load(['comments']);
+//        return $article;
+
+        if (auth()->check()){
+            auth()->user()->read($article);
+        }
 
         return view('articles.show',compact('article'));
 
@@ -81,8 +89,8 @@ class ArticlesController extends Controller
 
         return redirect('/');
 
-        dd($article);
-
     }
+
+
 
 }

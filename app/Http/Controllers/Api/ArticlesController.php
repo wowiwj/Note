@@ -36,7 +36,6 @@ class ArticlesController extends ApiController
     public function show(Article $article)
     {
         return new ArticleCollection($article);
-//        return $article;
     }
 
     public function store(Request $request)
@@ -51,19 +50,21 @@ class ArticlesController extends ApiController
 
         $tags = json_decode($request->tags,true);
 
+        $user = Auth::user();
+
         $article = Article::create([
             'title' => $request->title,
             'content' => $request->body,
-            'user_id' => Auth::user()->id,
+            'user_id' => $user->id,
             'category_id' => $request->category_id,
             'is_original' => $request->is_original
         ]);
 
+        $article->subscribe();
+
         return $article->syncTags($tags)->load('category');
 
     }
-
-
 
 
     public function update(Article $article,Request $request)

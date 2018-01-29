@@ -68,6 +68,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::put('users/{user}','UsersController@update')->name('users.update');
 
 
+    Route::get('notifications','NotificationsController@index')->name('notifications.index');
 
     Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'UsersController@verify']);
 
@@ -90,6 +91,7 @@ Route::group(['namespace' => 'Web'], function () {
 
 
     Route::get('{name}','SpecialPagesController@show')->name('special_pages.show');
+
 
 
 

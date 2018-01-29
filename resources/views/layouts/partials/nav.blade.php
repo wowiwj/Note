@@ -42,16 +42,6 @@
             </div>
 
             <div class="navbar-end">
-                <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
-                <span class="icon" style="color: #333;">
-                    <i class="fa fa-lg fa-github"></i>
-                </span>
-                </a>
-                <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms" target="_blank">
-                <span class="icon" style="color: #55acee;">
-                    <i class="fa fa-lg fa-twitter"></i>
-                </span>
-                </a>
 
                 @guest
                     <div class="navbar-item">
@@ -82,7 +72,14 @@
                     </div>
                 @else
 
-
+                    <a id="notification" class="navbar-item" href="{{ route('notifications.index') }}?type=unread">
+                        <span class="icon">
+                            <i class="fa fa-lg fa-bell"></i>
+                            @if(Auth::user()->unreadNotifications->count() > 0)
+                            <div class="message-count">{{ Auth::user()->unreadNotifications->count() }}</div>
+                            @endif
+                        </span>
+                    </a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             <i class="fa fa-plus"></i>
