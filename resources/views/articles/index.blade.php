@@ -20,8 +20,9 @@
                         ·
                         @auth
                         <a href="/articles?by={{ Auth::user()->name }}">我的</a>
-                        @endauth
                         ·
+                        @endauth
+
                         <a href="/articles?popular=1">热门</a>
                         ·
                         <a href="/articles?uncommented=1">零回复</a>

@@ -87,13 +87,3 @@
 
 
 </script>
-
-<style lang="scss">
-    .un-subscribe{
-        color: #999;
-    }
-
-    .subscribed{
-        color:#00d1b2;
-    }
-</style>
