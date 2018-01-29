@@ -3162,6 +3162,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['favorites_count', 'is_favorited', 'article_id'],
@@ -3247,6 +3267,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             console.log('1');
+        },
+        userLink: function userLink(userID) {
+            return '/users/' + userID;
         }
     },
     created: function created() {
@@ -44230,13 +44253,15 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "favorite-users" },
+      { staticClass: "favorite-users", staticStyle: { position: "relative" } },
       [
         _vm._l(_vm.favoritesList, function(favorite) {
           return _c("div", { staticClass: "favorite-user" }, [
-            _c("img", {
-              attrs: { src: favorite.user.avatar, alt: favorite.user.name }
-            })
+            _c("a", { attrs: { href: _vm.userLink(favorite.user.id) } }, [
+              _c("img", {
+                attrs: { src: favorite.user.avatar, alt: favorite.user.name }
+              })
+            ])
           ])
         }),
         _vm._v(" "),

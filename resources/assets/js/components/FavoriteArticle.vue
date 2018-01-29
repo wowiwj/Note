@@ -5,10 +5,30 @@
         <i @click="toggleFavorite" v-else="isFavorited"  class="fa fa-heart-o" aria-hidden="true"></i>
         <span class="favorite-count">{{ favoritesCount }}</span>
 
-        <div class="favorite-users">
+        <div class="favorite-users" style="position: relative">
 
             <div v-for="favorite in favoritesList" class="favorite-user">
-                <img :src="favorite.user.avatar" :alt="favorite.user.name">
+                <!--<div style="position:absolute;overflow: visible;top: -110px;width: 200px" class="user-info-card box">-->
+                    <!--<article class="media">-->
+                        <!--<div class="media-left">-->
+                            <!--<figure class="image is-64x64">-->
+                                <!--<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
+                            <!--</figure>-->
+                        <!--</div>-->
+                        <!--<div class="media-content">-->
+                            <!--<div class="content">-->
+                                <!--<p>-->
+                                    <!--<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>-->
+                                    <!--<br>-->
+                                    <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.-->
+                                <!--</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</article>-->
+                <!--</div>-->
+                <a :href="userLink(favorite.user.id)">
+                    <img :src="favorite.user.avatar" :alt="favorite.user.name">
+                </a>
             </div>
 
             <a @click="fetchFavorites(++meta.current_page)" v-show="shouldLoadMore" class="button is-white is-small is-rounded">...</a>
@@ -104,6 +124,9 @@
 
                 console.log('1')
 
+            },
+            userLink(userID){
+                return '/users/'+userID;
             }
 
         },
