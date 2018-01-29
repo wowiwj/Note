@@ -19801,6 +19801,37 @@ a:hover {
   font-size: 24px;
 }
 
+.article-page .favorite-article {
+  color: #ff763b;
+  font-size: 2rem;
+}
+
+.article-page .favorite-article .favorite-count {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.article-page .favorite-article .favorite-users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 0;
+}
+
+.article-page .favorite-article .favorite-users .favorite-user {
+  padding-bottom: 6px;
+  margin: 0 3px;
+}
+
+.article-page .favorite-article .favorite-users .favorite-user img {
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+}
+
 .delete-article {
   background: transparent;
   border: 0;
@@ -19853,6 +19884,14 @@ a:hover {
 
 .article .meta .published_time {
   margin: 0px 10px;
+}
+
+.un-subscribe {
+  color: #999;
+}
+
+.subscribed {
+  color: #3273dc;
 }
 
 .card {

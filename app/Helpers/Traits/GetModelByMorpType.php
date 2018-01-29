@@ -11,10 +11,15 @@ trait GetModelByMorpType
      */
     public function rules()
     {
-        return [
-            'type' => 'required',
-            'type_id' => 'required'
-        ];
+        switch ($this->method()){
+            case 'GET':
+                return [];
+            default:
+                return [
+                    'type' => 'required',
+                    'type_id' => 'required'
+                ];
+        }
     }
 
     protected function map(){
@@ -22,19 +27,23 @@ trait GetModelByMorpType
         return [];
     }
 
-    protected function getModelClass()
+    protected function getModelClass($type = null)
     {
-        $type = $this->get('type');
+        if ($type == null){
+            $type = $this->get('type');
+        }
         return $this->map()[$type];
     }
 
-    public function getModel()
+    public function getModel($type = null,$type_id = null)
     {
-        $modelClass = $this->getModelClass();
+
+
+        $modelClass =  $this->getModelClass($type);
         if(! $modelClass){
             throw new FavoriteException('type参数有误',400);
         }
-        $model = $modelClass::find($this->type_id);
+        $model = $modelClass::find($type_id ?? $this->type_id);
 
         if(! $model){
             throw new FavoriteException('模型未找到',404);

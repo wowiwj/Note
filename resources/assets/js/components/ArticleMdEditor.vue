@@ -349,7 +349,7 @@
     .multiselect__tags {
 
         display: block;
-        padding: 8px 40px 0 8px;
+        padding: 7px 26px 4px 10px;
         border-radius: 3px;
 
         font-size: 1rem;
@@ -358,10 +358,11 @@
         border-color: #dbdbdb;
         color: #363638;
         box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
-        padding-bottom: calc(0.375em - 1px);
-        padding-left: calc(0.625em - 1px);
-        padding-right: calc(0.625em - 1px);
-        padding-top: calc(0.375em - 1px);
+    }
+
+    .multiselect__input, .multiselect__single{
+
+        padding: 5px 0 0 5px;
     }
 
 </style>

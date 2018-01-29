@@ -23,7 +23,7 @@ function navIsActive($name,$route=null)
     if ($route == null){
         return Route::currentRouteName() == $name ? 'is-active' : '';
     }
-    return request()->url() == route($name,$route) ? 'active' : '';
+    return request()->url() == route($name,$route) ? 'is-active' : '';
 
 }
 

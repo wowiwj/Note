@@ -26,6 +26,8 @@ class ArticlesController extends Controller
         // https://stackoverflow.com/questions/17159273/laravel-pagination-links-not-including-other-get-parameters
         $articles->appends(Input::except('page'));
 
+//        return $articles;
+
         return view('articles.index',compact('articles'));
     }
 
@@ -45,7 +47,8 @@ class ArticlesController extends Controller
     public function show($category,Article $article)
     {
 
-        $article->load('comments');
+        $article->load(['comments']);
+//        return $article;
 
         if (auth()->check()){
             auth()->user()->read($article);

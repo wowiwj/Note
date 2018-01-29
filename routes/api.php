@@ -50,6 +50,9 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::post('image/upload','FilesController@ImageUpload');
 
+
+    Route::get('{type}/{type_id}/favorites','FavoriteController@index');
+
     Route::post('favorites','FavoriteController@store');
     
     Route::delete('favorites','FavoriteController@destroy');

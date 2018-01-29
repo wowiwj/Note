@@ -14,10 +14,6 @@ Vue.use(Buefy,{
     defaultIconPack: 'fa'
 });
 
-// try {
-//     require('bootstrap-sass');
-// } catch (e) {}
-
 
 Vue.prototype.authorize = function(hander){
     let user = window.App.user;
@@ -25,6 +21,8 @@ Vue.prototype.authorize = function(hander){
     return user ? hander(user) : false;
 
 };
+
+require('./global');
 
 
 require('social-share.js/dist/js/social-share.min.js');
@@ -34,9 +32,6 @@ require('./libs/prism');
 require ('./libs/jquery.sticky');
 
 
-// var VueQuillEditor = require('vue-quill-editor');
-//
-// Vue.use(VueQuillEditor);
 
 
 /**
@@ -93,12 +88,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// $(document).ready(function() {  
-//     $("div").bind('click', function(event) {  
-//         // alert('外层的div被点击了!');  
-//     });  
-//     $("div").bind('click', function(event) {  
-//         // alert('里面的a点击，但是不想触发外面那个div的事件。');  
-//         event.stopPropagation();  
-//     });  
-// }); 

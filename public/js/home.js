@@ -29357,7 +29357,7 @@ window.Vue = __webpack_require__("./node_modules/_vue@2.5.13@vue/dist/vue.common
  */
 
 try {
-    window.$ = window.jQuery = __webpack_require__("./node_modules/_jquery@3.2.1@jquery/dist/jquery.js");
+  window.$ = window.jQuery = __webpack_require__("./node_modules/_jquery@3.2.1@jquery/dist/jquery.js");
 } catch (e) {}
 
 /**
@@ -29379,9 +29379,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -29398,22 +29398,6 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
-
-
-window.events = new Vue();
-
-window.flash = function (text) {
-    var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
-
-
-    var message = { 'text': text, 'level': level };
-    window.events.$emit('flash', message);
-};
-
-window.showLogin = function () {
-
-    window.events.$emit('login');
-};
 
 /***/ }),
 

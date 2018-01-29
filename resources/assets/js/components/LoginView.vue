@@ -47,7 +47,7 @@
 
                         <div class="field level">
                             <p class="control flex">
-                                <a href="#">没有账号?注册</a>
+                                <a href="/register">没有账号?注册</a>
                             </p>
                             <a>
                                 忘记密码?
@@ -66,7 +66,7 @@
                     <a :href="githubAuthUrl">
                         <i class="fa fa-github"></i>
                     </a>
-                    <a href="">
+                    <a :href="qqAuthUrl">
                         <i class="fa fa-qq"></i>
                     </a>
                 </div> 
@@ -80,7 +80,7 @@
 
 <script>
 export default {
-    props:['githubAuthUrl'],
+    props:['githubAuthUrl','qqAuthUrl'],
     data(){
         return{
             isLoginFormActive:false,
