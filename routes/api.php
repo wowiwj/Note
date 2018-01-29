@@ -45,7 +45,6 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::delete('comments/{comment}','CommentsController@destroy');
 
-
     Route::post('subscriptions','SubscriptionsController@store');
     Route::delete('subscriptions/{subscription}','SubscriptionsController@destroy');
 

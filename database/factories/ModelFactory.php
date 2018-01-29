@@ -58,13 +58,17 @@ $factory->define(App\Models\Reply::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
 
     $user_id = App\Models\User::pluck('id')->random();
-    $article_id = App\Models\Article::pluck('id')->random();
 
-    $type = "App\Models\Article";
+    $types = [
+        \App\Models\Article::class,
+        \App\Models\Discussion::class
+    ];
 
+    $type = $types[random_int(0,1)];
+    $type_id = $type::pluck('id')->random();
     return [
         'user_id' => $user_id,
-        'commentable_id' => $article_id,
+        'commentable_id' => $type_id,
         'commentable_type' => $type,
         'content' => $faker->paragraph
     ];

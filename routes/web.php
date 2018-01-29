@@ -84,6 +84,9 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('articles/{category}', 'ArticlesController@index');
     Route::get('articles/{category}/{article}','ArticlesController@show');
 
+    Route::get('discussions','DiscussionsController@index');
+
+
     Route::get('special_pages/create','SpecialPagesController@create')->name('special_pages.create');
     Route::get('special_pages/{page}/edit','SpecialPagesController@edit')->name('special_pages.edit');
     Route::delete('special_pages/{page}','SpecialPagesController@destroy')->name('special_pages.destroy');

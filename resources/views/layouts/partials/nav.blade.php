@@ -34,6 +34,10 @@
                     文章
                 </a>
 
+                <a class="navbar-item {{ Request::is('discussions*') ? 'is-active' : '' }}" href="/discussions">
+                    讨论
+                </a>
+
                 @foreach($special_pages as $page)
                     <a class="navbar-item {{ navIsActive('special_pages.show',$page->route) }}" href="/{{ $page->route }}">
                         {{ $page->title }}
