@@ -23,6 +23,9 @@
                             </div>
                         </div>
 
+                        <br/>
+
+
                         @if( $article->is_original )
                             <div class="notification">
                                 <label class="info-title">版权声明：</label><i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
@@ -45,15 +48,16 @@
                                 
 
                             </div>
+                            @if(count($article->tags) > 0)
                             <div class="column is-4">
                                 <div style="display: flex;flex-direction: row-reverse;width: 100%;height: 100%">
-                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
-                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
-                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
-                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">Light</span>
+                                    @foreach($article->tags as $tag)
+                                    <span style="align-self: flex-end;margin: 5px" class="tag is-light">{{ $tag->name }}</span>
+                                    @endforeach
                                 </div>
 
                             </div>
+                            @endif
 
                         </div>
 
