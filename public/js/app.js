@@ -2576,10 +2576,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.simplemde.toggleFullScreen();
         this.simplemde.toggleSideBySide();
+        this.simplemde.toggleBold();
     },
     created: function created() {
 
         console.log('created');
+    },
+
+    methods: {
+        trigger: function trigger(action) {
+
+            var functionName = 'this.simplemde.' + action + '()';
+
+            if (typeof eval(functionName) === "function") {
+                throw functionName + '没有改函数';
+            }
+        }
     }
 });
 
@@ -44073,141 +44085,228 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "sim-mde" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "bottom-toolbar fullscreen" }, [
+      _c("div", { staticClass: "bottom-tool" }, [
+        _c("a", {
+          staticClass: "fa fa-bold",
+          attrs: { title: "Bold (Cmd-B)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleBold")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-italic",
+          attrs: { title: "Italic (Cmd-I)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleItalic")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-strikethrough",
+          attrs: { title: "Strikethrough", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleStrikethrough")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-header",
+          attrs: { title: "Heading (Cmd-H)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleHeadingSmaller")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-code",
+          attrs: { title: "Code (Cmd-⌥-C)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleCodeBlock")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-quote-left",
+          attrs: { title: "Quote (Cmd-')", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleBlockquote")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-list-ul",
+          attrs: { title: "Generic List (Cmd-L)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleUnorderedList")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-list-ol",
+          attrs: { title: "Numbered List (Cmd-⌥-L)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleOrderedList")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-link",
+          attrs: { title: "Create Link (Cmd-K)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("drawLink")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-picture-o",
+          attrs: { title: "Insert Image", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("drawImage")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-table",
+          attrs: { title: "Insert Table", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("drawTable")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-minus",
+          attrs: { title: "Insert Horizontal Line", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("drawHorizontalRule")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-eye no-disable",
+          attrs: { title: "Toggle Preview (Cmd-P)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("togglePreview")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-columns no-disable no-mobile",
+          attrs: { title: "Toggle Side by Side (F9)", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleSideBySide")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "fa fa-question-circle",
+          attrs: { title: "Markdown Guide", tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.trigger("toggleBold")
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ]),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "sim-mde" } }, [
-      _c("div", { staticClass: "field" }, [
-        _c("div", { staticClass: "control" }, [
-          _c("textarea", { attrs: { id: "editor" } })
-        ])
-      ]),
+    return _c("div", { staticClass: "field" }, [
+      _c("div", { staticClass: "control" }, [
+        _c("textarea", { attrs: { id: "editor" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "right-box p-r-10" }, [
+      _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
       _vm._v(" "),
-      _c("div", { staticClass: "bottom-toolbar fullscreen" }, [
-        _c("div", { staticClass: "bottom-tool" }, [
-          _c("a", {
-            staticClass: "fa fa-bold",
-            attrs: { title: "Bold (Cmd-B)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-italic",
-            attrs: { title: "Italic (Cmd-I)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-strikethrough",
-            attrs: { title: "Strikethrough", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-header",
-            attrs: { title: "Heading (Cmd-H)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-code",
-            attrs: { title: "Code (Cmd-⌥-C)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-quote-left",
-            attrs: { title: "Quote (Cmd-')", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-list-ul",
-            attrs: { title: "Generic List (Cmd-L)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-list-ol",
-            attrs: { title: "Numbered List (Cmd-⌥-L)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-link",
-            attrs: { title: "Create Link (Cmd-K)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-picture-o",
-            attrs: { title: "Insert Image", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-table",
-            attrs: { title: "Insert Table", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-minus",
-            attrs: { title: "Insert Horizontal Line", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-eye no-disable",
-            attrs: { title: "Toggle Preview (Cmd-P)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-columns no-disable no-mobile",
-            attrs: { title: "Toggle Side by Side (F9)", tabindex: "-1" }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "fa fa-question-circle",
-            attrs: { title: "Markdown Guide", tabindex: "-1" }
-          })
+      _c("button", { staticClass: "button is-warning m-r-20" }, [
+        _vm._v("返回")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "top-toolbar fullscreen" }, [
+      _c("input", {
+        staticClass: "title-input",
+        attrs: { type: "text", placeholder: "请输入文章标题" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "right-box p-r-20" }, [
+        _c("a", { staticClass: "button is-white" }, [_vm._v("文章已保存")]),
+        _vm._v(" "),
+        _c("button", { staticClass: "button is-primary m-r-20" }, [
+          _vm._v("发表")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "right-box p-r-10" }, [
-          _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
-          _vm._v(" "),
-          _c("button", { staticClass: "button is-warning m-r-20" }, [
-            _vm._v("返回")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "top-toolbar fullscreen" }, [
-        _c("input", {
-          staticClass: "title-input",
-          attrs: { type: "text", placeholder: "请输入文章标题" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "right-box p-r-20" }, [
-          _c("a", { staticClass: "button is-white" }, [_vm._v("文章已保存")]),
-          _vm._v(" "),
-          _c("button", { staticClass: "button is-primary m-r-20" }, [
-            _vm._v("发表")
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "image is-45x45 is-white m-r-30",
-              staticStyle: {
-                "align-items": "center",
-                "justify-content": "center",
-                display: "inline-flex"
+        _c(
+          "a",
+          {
+            staticClass: "image is-45x45 is-white m-r-30",
+            staticStyle: {
+              "align-items": "center",
+              "justify-content": "center",
+              display: "inline-flex"
+            }
+          },
+          [
+            _c("img", {
+              staticClass: "avatar img-thumbnail",
+              attrs: {
+                src: "https://lorempixel.com/200/200/?72701",
+                alt: "Jermaine Terry"
               }
-            },
-            [
-              _c("img", {
-                staticClass: "avatar img-thumbnail",
-                attrs: {
-                  src: "https://lorempixel.com/200/200/?72701",
-                  alt: "Jermaine Terry"
-                }
-              })
-            ]
-          )
-        ])
+            })
+          ]
+        )
       ])
     ])
   }

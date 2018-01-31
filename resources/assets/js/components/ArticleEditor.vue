@@ -10,21 +10,21 @@
 
             <div class="bottom-tool">
 
-                <a title="Bold (Cmd-B)" tabindex="-1" class="fa fa-bold"></a>
-                <a title="Italic (Cmd-I)" tabindex="-1" class="fa fa-italic"></a>
-                <a title="Strikethrough" tabindex="-1" class="fa fa-strikethrough"></a>
-                <a title="Heading (Cmd-H)" tabindex="-1" class="fa fa-header"></a>
-                <a title="Code (Cmd-⌥-C)" tabindex="-1" class="fa fa-code"></a>
-                <a title="Quote (Cmd-')" tabindex="-1" class="fa fa-quote-left"></a>
-                <a title="Generic List (Cmd-L)" tabindex="-1" class="fa fa-list-ul"></a>
-                <a title="Numbered List (Cmd-⌥-L)" tabindex="-1" class="fa fa-list-ol"></a>
-                <a title="Create Link (Cmd-K)" tabindex="-1" class="fa fa-link"></a>
-                <a title="Insert Image" tabindex="-1" class="fa fa-picture-o"></a>
-                <a title="Insert Table" tabindex="-1" class="fa fa-table"></a>
-                <a title="Insert Horizontal Line" tabindex="-1" class="fa fa-minus"></a>
-                <a title="Toggle Preview (Cmd-P)" tabindex="-1" class="fa fa-eye no-disable"></a>
-                <a title="Toggle Side by Side (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a>
-                <a title="Markdown Guide" tabindex="-1" class="fa fa-question-circle"></a>
+                <a @click="trigger('toggleBold')" title="Bold (Cmd-B)" tabindex="-1" class="fa fa-bold"></a>
+                <a @click="trigger('toggleItalic')" title="Italic (Cmd-I)" tabindex="-1" class="fa fa-italic"></a>
+                <a @click="trigger('toggleStrikethrough')" title="Strikethrough" tabindex="-1" class="fa fa-strikethrough"></a>
+                <a @click="trigger('toggleHeadingSmaller')" title="Heading (Cmd-H)" tabindex="-1" class="fa fa-header"></a>
+                <a @click="trigger('toggleCodeBlock')" title="Code (Cmd-⌥-C)" tabindex="-1" class="fa fa-code"></a>
+                <a @click="trigger('toggleBlockquote')" title="Quote (Cmd-')" tabindex="-1" class="fa fa-quote-left"></a>
+                <a @click="trigger('toggleUnorderedList')" title="Generic List (Cmd-L)" tabindex="-1" class="fa fa-list-ul"></a>
+                <a @click="trigger('toggleOrderedList')" title="Numbered List (Cmd-⌥-L)" tabindex="-1" class="fa fa-list-ol"></a>
+                <a @click="trigger('drawLink')" title="Create Link (Cmd-K)" tabindex="-1" class="fa fa-link"></a>
+                <a @click="trigger('drawImage')" title="Insert Image" tabindex="-1" class="fa fa-picture-o"></a>
+                <a @click="trigger('drawTable')" title="Insert Table" tabindex="-1" class="fa fa-table"></a>
+                <a @click="trigger('drawHorizontalRule')" title="Insert Horizontal Line" tabindex="-1" class="fa fa-minus"></a>
+                <a @click="trigger('togglePreview')" title="Toggle Preview (Cmd-P)" tabindex="-1" class="fa fa-eye no-disable"></a>
+                <a @click="trigger('toggleSideBySide')" title="Toggle Side by Side (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a>
+                <a @click="trigger('toggleBold')" title="Markdown Guide" tabindex="-1" class="fa fa-question-circle"></a>
 
             </div>
 
@@ -82,10 +82,26 @@
 
             this.simplemde.toggleFullScreen()
             this.simplemde.toggleSideBySide()
+            this.simplemde.toggleBold()
         },
         created() {
 
             console.log('created');
+        },
+        methods:{
+            trigger(action){
+
+                let functionName = 'this.simplemde.'+action+'()';
+
+                if(typeof(eval(functionName)) === "function"){
+                    throw functionName + '没有改函数';
+                }
+
+
+            }
+
+
+
         }
     }
 
