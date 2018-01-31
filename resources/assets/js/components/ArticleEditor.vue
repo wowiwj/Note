@@ -8,11 +8,47 @@
         </div>
         <div class="bottom-toolbar fullscreen">
 
+            <div class="bottom-tool">
+
+                <a title="Bold (Cmd-B)" tabindex="-1" class="fa fa-bold"></a>
+                <a title="Italic (Cmd-I)" tabindex="-1" class="fa fa-italic"></a>
+                <a title="Strikethrough" tabindex="-1" class="fa fa-strikethrough"></a>
+                <a title="Heading (Cmd-H)" tabindex="-1" class="fa fa-header"></a>
+                <a title="Code (Cmd-⌥-C)" tabindex="-1" class="fa fa-code"></a>
+                <a title="Quote (Cmd-')" tabindex="-1" class="fa fa-quote-left"></a>
+                <a title="Generic List (Cmd-L)" tabindex="-1" class="fa fa-list-ul"></a>
+                <a title="Numbered List (Cmd-⌥-L)" tabindex="-1" class="fa fa-list-ol"></a>
+                <a title="Create Link (Cmd-K)" tabindex="-1" class="fa fa-link"></a>
+                <a title="Insert Image" tabindex="-1" class="fa fa-picture-o"></a>
+                <a title="Insert Table" tabindex="-1" class="fa fa-table"></a>
+                <a title="Insert Horizontal Line" tabindex="-1" class="fa fa-minus"></a>
+                <a title="Toggle Preview (Cmd-P)" tabindex="-1" class="fa fa-eye no-disable"></a>
+                <a title="Toggle Side by Side (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a>
+                <a title="Markdown Guide" tabindex="-1" class="fa fa-question-circle"></a>
+
+            </div>
+
+            <div class="right-box p-r-10">
+
+                <button class="button m-r-20">保存</button>
+                <button class="button is-warning m-r-20">返回</button>
+
+            </div>
+
         </div>
 
         <div class="top-toolbar fullscreen">
 
             <input type="text" class="title-input" placeholder="请输入文章标题">
+            <div class="right-box p-r-20">
+
+                <a class="button is-white">文章已保存</a>
+
+                <button class="button is-primary m-r-20">发表</button>
+                <a style="align-items: center;justify-content: center;display: inline-flex;" class="image is-45x45 is-white m-r-30">
+                    <img src="https://lorempixel.com/200/200/?72701" alt="Jermaine Terry" class="avatar img-thumbnail">
+                </a>
+            </div>
             
         </div>
 
@@ -31,7 +67,6 @@
         data() {
             return {
                 simplemde: '',
-
             }
         },
         mounted() {
@@ -64,6 +99,12 @@
 
     #sim-mde {
 
+        .is-45x45{
+            width: 45px;
+            height: 45px;
+
+        }
+
         .title-input{
             margin: 0;
             padding: 20px;
@@ -85,6 +126,11 @@
         .CodeMirror{
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            .CodeMirror-lines{
+                /*padding-left: 20px;*/
+                /*padding-right: 20px;*/
+            }
+
         }
         .editor-preview-side{
             bottom: $editor-bottom-height;
@@ -112,6 +158,7 @@
             left: 0;
             opacity: 1;
             z-index: 9;
+            display: flex;
 
         }
 
@@ -136,6 +183,37 @@
             z-index: 9;
             display: flex;
 
+        }
+
+        .bottom-tool{
+            flex: 1;
+            padding: 0 20px;
+            font-size: 20px;
+            a{
+
+                color: #555;
+                padding: 0 5px;
+            }
+
+        }
+
+        .right-box{
+
+            display: flex;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .left-box{
+
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
         }
     }
 

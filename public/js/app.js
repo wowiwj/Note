@@ -2518,6 +2518,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2526,7 +2562,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             simplemde: ''
-
         };
     },
     mounted: function mounted() {
@@ -12813,7 +12848,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n#sim-mde .title-input {\n  margin: 0;\n  padding: 20px;\n  font-size: 2rem;\n  font-weight: 700;\n  color: #000;\n  border: none;\n  outline: none;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  height: 100%;\n}\n#sim-mde .CodeMirror-fullscreen {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .CodeMirror {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n#sim-mde .editor-preview-side {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .editor-toolbar.fullscreen {\n  display: none;\n}\n#sim-mde .bottom-toolbar.fullscreen {\n  width: 100%;\n  height: 50px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n}\n#sim-mde .top-toolbar.fullscreen {\n  width: 100%;\n  height: 60px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n", ""]);
+exports.push([module.i, "\n#sim-mde .is-45x45 {\n  width: 45px;\n  height: 45px;\n}\n#sim-mde .title-input {\n  margin: 0;\n  padding: 20px;\n  font-size: 2rem;\n  font-weight: 700;\n  color: #000;\n  border: none;\n  outline: none;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  height: 100%;\n}\n#sim-mde .CodeMirror-fullscreen {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .CodeMirror {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n#sim-mde .CodeMirror .CodeMirror-lines {\n    /*padding-left: 20px;*/\n    /*padding-right: 20px;*/\n}\n#sim-mde .editor-preview-side {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .editor-toolbar.fullscreen {\n  display: none;\n}\n#sim-mde .bottom-toolbar.fullscreen {\n  width: 100%;\n  height: 50px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n#sim-mde .top-toolbar.fullscreen {\n  width: 100%;\n  height: 60px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n#sim-mde .bottom-tool {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding: 0 20px;\n  font-size: 20px;\n}\n#sim-mde .bottom-tool a {\n    color: #555;\n    padding: 0 5px;\n}\n#sim-mde .right-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n  -ms-flex-pack: end;\n  justify-content: flex-end;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n#sim-mde .left-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n", ""]);
 
 // exports
 
@@ -44052,13 +44087,127 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "bottom-toolbar fullscreen" }),
+      _c("div", { staticClass: "bottom-toolbar fullscreen" }, [
+        _c("div", { staticClass: "bottom-tool" }, [
+          _c("a", {
+            staticClass: "fa fa-bold",
+            attrs: { title: "Bold (Cmd-B)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-italic",
+            attrs: { title: "Italic (Cmd-I)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-strikethrough",
+            attrs: { title: "Strikethrough", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-header",
+            attrs: { title: "Heading (Cmd-H)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-code",
+            attrs: { title: "Code (Cmd-⌥-C)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-quote-left",
+            attrs: { title: "Quote (Cmd-')", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-list-ul",
+            attrs: { title: "Generic List (Cmd-L)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-list-ol",
+            attrs: { title: "Numbered List (Cmd-⌥-L)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-link",
+            attrs: { title: "Create Link (Cmd-K)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-picture-o",
+            attrs: { title: "Insert Image", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-table",
+            attrs: { title: "Insert Table", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-minus",
+            attrs: { title: "Insert Horizontal Line", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-eye no-disable",
+            attrs: { title: "Toggle Preview (Cmd-P)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-columns no-disable no-mobile",
+            attrs: { title: "Toggle Side by Side (F9)", tabindex: "-1" }
+          }),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "fa fa-question-circle",
+            attrs: { title: "Markdown Guide", tabindex: "-1" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "right-box p-r-10" }, [
+          _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
+          _vm._v(" "),
+          _c("button", { staticClass: "button is-warning m-r-20" }, [
+            _vm._v("返回")
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "top-toolbar fullscreen" }, [
         _c("input", {
           staticClass: "title-input",
           attrs: { type: "text", placeholder: "请输入文章标题" }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "right-box p-r-20" }, [
+          _c("a", { staticClass: "button is-white" }, [_vm._v("文章已保存")]),
+          _vm._v(" "),
+          _c("button", { staticClass: "button is-primary m-r-20" }, [
+            _vm._v("发表")
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "image is-45x45 is-white m-r-30",
+              staticStyle: {
+                "align-items": "center",
+                "justify-content": "center",
+                display: "inline-flex"
+              }
+            },
+            [
+              _c("img", {
+                staticClass: "avatar img-thumbnail",
+                attrs: {
+                  src: "https://lorempixel.com/200/200/?72701",
+                  alt: "Jermaine Terry"
+                }
+              })
+            ]
+          )
+        ])
       ])
     ])
   }
