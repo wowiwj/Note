@@ -18,6 +18,7 @@
         "league/fractal": "^0.16.0",
         "league/html-to-markdown": "^4.4",
         "naux/sendcloud": "^1.1",
+        "symfony/dom-crawler": "^4.0",
         "yzalis/identicon": "^1.1"
     },
     "require-dev": {

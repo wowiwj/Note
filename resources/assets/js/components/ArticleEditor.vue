@@ -24,7 +24,7 @@
                 <a @click="trigger('drawHorizontalRule')" title="Insert Horizontal Line" tabindex="-1" class="fa fa-minus"></a>
                 <a @click="trigger('togglePreview')" title="Toggle Preview (Cmd-P)" tabindex="-1" class="fa fa-eye no-disable"></a>
                 <a @click="trigger('toggleSideBySide')" title="Toggle Side by Side (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a>
-                <a @click="trigger('toggleBold')" title="Markdown Guide" tabindex="-1" class="fa fa-question-circle"></a>
+                <a href="https://simplemde.com/markdown-guide" target="_blank" title="Markdown Guide" tabindex="-1" class="fa fa-question-circle"></a>
 
             </div>
 
@@ -82,25 +82,63 @@
 
             this.simplemde.toggleFullScreen()
             this.simplemde.toggleSideBySide()
-            this.simplemde.toggleBold()
         },
         created() {
 
             console.log('created');
+            window.onresize = this.adjustPreviewWidth
         },
         methods:{
             trigger(action){
 
                 let functionName = 'this.simplemde.'+action+'()';
 
-                if(typeof(eval(functionName)) === "function"){
-                    throw functionName + '没有改函数';
+                eval(functionName)
+
+                if (action === 'togglePreview' || action === 'toggleSideBySide'){
+                    console.log(action)
+                    setTimeout(this.adjustPreviewWidth,100)
                 }
+            },
+            adjustPreviewWidth(){
 
+                let simMde = document.getElementById('sim-mde');
 
+                let cmCode = simMde.getElementsByClassName('CodeMirror-code')[0];
+                let leftDistance = (window.innerWidth - cmCode.offsetWidth) * 0.5;
+
+                let isSideBySide = this.simplemde.isSideBySideActive();
+
+                this.setInputPosition(isSideBySide,leftDistance)
+
+                this.setPreviewPosition(cmCode.offsetWidth,leftDistance)
+
+            },
+            setInputPosition(isSideActive,leftDistance){
+                let simMde = document.getElementById('sim-mde');
+                let inputField = simMde.getElementsByClassName('title-input')[0]
+
+                if (isSideActive){
+
+                    inputField.style.paddingLeft = 20 + 'px';
+                    inputField.style.marginLeft = 0;
+                    return;
+                }
+                inputField.style.paddingLeft = 0;
+
+                inputField.style.marginLeft = leftDistance + 'px';
+            },
+            setPreviewPosition(width,paddingLeft){
+
+                let simMde = document.getElementById('sim-mde');
+                let previewDom = simMde.getElementsByClassName('editor-preview-active')[0]
+                if (!previewDom){
+                    return
+                }
+                console.log(previewDom)
+                previewDom.style.width = (width + 20) + 'px';
+                previewDom.style.marginLeft = (paddingLeft - 10) + 'px';
             }
-
-
 
         }
     }
@@ -146,6 +184,23 @@
                 /*padding-left: 20px;*/
                 /*padding-right: 20px;*/
             }
+
+        }
+
+
+
+        @media screen and (min-width: 992px) {
+            .editor-preview.editor-preview-active{
+                /*margin-left: 10%;*/
+                /*width: 80%;*/
+            }
+            .CodeMirror-lines{
+                margin: 0 auto;
+                max-width: 1000px;
+
+            }
+
+
 
         }
         .editor-preview-side{

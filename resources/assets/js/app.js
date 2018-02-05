@@ -22,6 +22,7 @@ Vue.prototype.authorize = function(hander){
 
 };
 
+
 require('./global');
 
 
