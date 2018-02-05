@@ -29,10 +29,7 @@
             </div>
 
             <div class="right-box p-r-10">
-
-                <button class="button m-r-20">保存</button>
-                <button class="button is-warning m-r-20">返回</button>
-
+                <slot name="bottom-right"></slot>
             </div>
 
         </div>
@@ -42,19 +39,13 @@
             <input type="text" class="title-input" placeholder="请输入文章标题">
             <div class="right-box p-r-20">
 
-                <a class="button is-white">文章已保存</a>
+                <slot></slot>
 
-                <button class="button is-primary m-r-20">发表</button>
-                <a style="align-items: center;justify-content: center;display: inline-flex;" class="image is-45x45 is-white m-r-30">
-                    <img src="https://lorempixel.com/200/200/?72701" alt="Jermaine Terry" class="avatar img-thumbnail">
-                </a>
             </div>
             
         </div>
 
     </div>
-
-
 
 </template>
 
@@ -180,28 +171,16 @@
         .CodeMirror{
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            .CodeMirror-lines{
-                /*padding-left: 20px;*/
-                /*padding-right: 20px;*/
-            }
 
         }
 
-
-
         @media screen and (min-width: 992px) {
-            .editor-preview.editor-preview-active{
-                /*margin-left: 10%;*/
-                /*width: 80%;*/
-            }
+
             .CodeMirror-lines{
                 margin: 0 auto;
                 max-width: 1000px;
 
             }
-
-
-
         }
         .editor-preview-side{
             bottom: $editor-bottom-height;
@@ -261,7 +240,6 @@
             padding: 0 20px;
             font-size: 20px;
             a{
-
                 color: #555;
                 padding: 0 5px;
             }
@@ -287,10 +265,5 @@
             align-items: center;
         }
     }
-
-
-
-
-
 
 </style>

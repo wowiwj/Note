@@ -3,8 +3,8 @@
 
 @section('content')
 
-    <article-editor>
+    <article-md-editor>
 
-    </article-editor>
+    </article-md-editor>
 
 @endsection

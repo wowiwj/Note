@@ -2545,15 +2545,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2645,9 +2636,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__("./node_modules/_vue-multiselect@2.0.8@vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_simplemde_dist_simplemde_min_js__ = __webpack_require__("./node_modules/_simplemde@1.11.2@simplemde/dist/simplemde.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_simplemde_dist_simplemde_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_simplemde_dist_simplemde_min_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_MdeConfig_js__ = __webpack_require__("./resources/assets/js/components/modules/MdeConfig.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ArticleEditor_vue__ = __webpack_require__("./resources/assets/js/components/ArticleEditor.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ArticleEditor_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ArticleEditor_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_simplemde_dist_simplemde_min_js__ = __webpack_require__("./node_modules/_simplemde@1.11.2@simplemde/dist/simplemde.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_simplemde_dist_simplemde_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_simplemde_dist_simplemde_min_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_MdeConfig_js__ = __webpack_require__("./resources/assets/js/components/modules/MdeConfig.js");
 //
 //
 //
@@ -2745,6 +2738,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2752,7 +2761,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
+    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a, ArticleEditor: __WEBPACK_IMPORTED_MODULE_1__ArticleEditor_vue___default.a },
     props: ['articleId'],
     data: function data() {
         return {
@@ -2776,8 +2785,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
 
-        this.simplemde = new __WEBPACK_IMPORTED_MODULE_1_simplemde_dist_simplemde_min_js___default.a({
-            toolbar: __WEBPACK_IMPORTED_MODULE_2__modules_MdeConfig_js__["a" /* default */].getToolBarConfig(),
+        this.simplemde = new __WEBPACK_IMPORTED_MODULE_2_simplemde_dist_simplemde_min_js___default.a({
+            toolbar: __WEBPACK_IMPORTED_MODULE_3__modules_MdeConfig_js__["a" /* default */].getToolBarConfig(),
             element: document.getElementById("editor"),
             placeholder: '请输入文章内容.',
             autoDownloadFontAwesome: true,
@@ -12811,7 +12820,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n.form-control {\n  height: 38px;\n}\n.editor-toolbar.fullscreen {\n  z-index: 1031 !important;\n}\n.CodeMirror-fullscreen {\n  z-index: 1031 !important;\n}\n.CodeMirror {\n  z-index: 0;\n  height: 500px;\n}\n.editor-preview-side {\n  z-index: 1032 !important;\n}\n.CodeMirror {\n  z-index: 0;\n  height: 500px;\n}\n@media screen and (min-width: 992px) {\n.no-left-padding {\n    padding-left: 0;\n}\n.no-right-padding {\n    padding-right: 0;\n}\n}\n.multiselect__tags {\n  display: block;\n  padding: 7px 26px 4px 10px;\n  border-radius: 3px;\n  font-size: 1rem;\n  height: 2.25em;\n  background-color: white;\n  border-color: #dbdbdb;\n  color: #363638;\n  -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);\n          box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);\n}\n.multiselect__input, .multiselect__single {\n  padding: 5px 0 0 5px;\n}\n", ""]);
+exports.push([module.i, "\n.form-control {\n  height: 38px;\n}\n@media screen and (min-width: 992px) {\n.no-left-padding {\n    padding-left: 0;\n}\n.no-right-padding {\n    padding-right: 0;\n}\n}\n", ""]);
 
 // exports
 
@@ -12901,7 +12910,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n#sim-mde .is-45x45 {\n  width: 45px;\n  height: 45px;\n}\n#sim-mde .title-input {\n  margin: 0;\n  padding: 20px;\n  font-size: 2rem;\n  font-weight: 700;\n  color: #000;\n  border: none;\n  outline: none;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  height: 100%;\n}\n#sim-mde .CodeMirror-fullscreen {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .CodeMirror {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n#sim-mde .CodeMirror .CodeMirror-lines {\n    /*padding-left: 20px;*/\n    /*padding-right: 20px;*/\n}\n@media screen and (min-width: 992px) {\n#sim-mde .editor-preview.editor-preview-active {\n    /*margin-left: 10%;*/\n    /*width: 80%;*/\n}\n#sim-mde .CodeMirror-lines {\n    margin: 0 auto;\n    max-width: 1000px;\n}\n}\n#sim-mde .editor-preview-side {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .editor-toolbar.fullscreen {\n  display: none;\n}\n#sim-mde .bottom-toolbar.fullscreen {\n  width: 100%;\n  height: 50px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n#sim-mde .top-toolbar.fullscreen {\n  width: 100%;\n  height: 60px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n#sim-mde .bottom-tool {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding: 0 20px;\n  font-size: 20px;\n}\n#sim-mde .bottom-tool a {\n    color: #555;\n    padding: 0 5px;\n}\n#sim-mde .right-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n  -ms-flex-pack: end;\n  justify-content: flex-end;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n#sim-mde .left-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n", ""]);
+exports.push([module.i, "\n#sim-mde .is-45x45 {\n  width: 45px;\n  height: 45px;\n}\n#sim-mde .title-input {\n  margin: 0;\n  padding: 20px;\n  font-size: 2rem;\n  font-weight: 700;\n  color: #000;\n  border: none;\n  outline: none;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  height: 100%;\n}\n#sim-mde .CodeMirror-fullscreen {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .CodeMirror {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n@media screen and (min-width: 992px) {\n#sim-mde .CodeMirror-lines {\n    margin: 0 auto;\n    max-width: 1000px;\n}\n}\n#sim-mde .editor-preview-side {\n  bottom: 50px;\n  top: 60px;\n}\n#sim-mde .editor-toolbar.fullscreen {\n  display: none;\n}\n#sim-mde .bottom-toolbar.fullscreen {\n  width: 100%;\n  height: 50px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n#sim-mde .top-toolbar.fullscreen {\n  width: 100%;\n  height: 60px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  white-space: nowrap;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  background: #fff;\n  border: 0;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n#sim-mde .bottom-tool {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding: 0 20px;\n  font-size: 20px;\n}\n#sim-mde .bottom-tool a {\n    color: #555;\n    padding: 0 5px;\n}\n#sim-mde .right-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n  -ms-flex-pack: end;\n  justify-content: flex-end;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n#sim-mde .left-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n", ""]);
 
 // exports
 
@@ -42784,228 +42793,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "field" }, [
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column is-3" }, [
-          _c(
-            "p",
-            { staticClass: "control" },
-            [
-              _c(
-                "multiselect",
-                {
-                  attrs: {
-                    options: _vm.categories,
-                    placeholder: "选择文章分类",
-                    limit: 5,
-                    label: "name",
-                    "track-by": "name"
-                  },
-                  model: {
-                    value: _vm.category,
-                    callback: function($$v) {
-                      _vm.category = $$v
-                    },
-                    expression: "category"
-                  }
-                },
-                [_vm._v("\n                        >\n                    ")]
-              )
-            ],
-            1
-          )
+  return _c(
+    "div",
+    [
+      _c("article-editor", [
+        _c("div", { attrs: { slot: "bottom-right" }, slot: "bottom-right" }, [
+          _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
+          _vm._v(" "),
+          _c("button", { staticClass: "button is-warning m-r-20" }, [
+            _vm._v("返回")
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "column" }, [
-          _c("p", { staticClass: "control" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title"
-                }
-              ],
-              staticClass: "input edit-article-title",
+        _c("a", { staticClass: "button is-white" }, [_vm._v("文章已保存")]),
+        _vm._v(" "),
+        _c("button", { staticClass: "button is-primary m-r-20" }, [
+          _vm._v("发表")
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "image is-45x45 is-white m-r-30",
+            staticStyle: {
+              "align-items": "center",
+              "justify-content": "center",
+              display: "inline-flex"
+            }
+          },
+          [
+            _c("img", {
+              staticClass: "avatar img-thumbnail",
               attrs: {
-                name: "name",
-                type: "text",
-                placeholder: "请输入文章标题"
-              },
-              domProps: { value: _vm.title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
-                }
+                src: "https://lorempixel.com/200/200/?72701",
+                alt: "Jermaine Terry"
               }
             })
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "field" }, [
-      _c(
-        "div",
-        { staticClass: "control" },
-        [
-          _c("multiselect", {
-            attrs: {
-              "tag-placeholder": "添加标签",
-              placeholder: "搜索或添加标签",
-              label: "name",
-              "track-by": "name",
-              options: _vm.tags,
-              multiple: true,
-              taggable: true
-            },
-            on: { tag: _vm.addTag, "search-change": _vm.queryTag },
-            model: {
-              value: _vm.selectedTags,
-              callback: function($$v) {
-                _vm.selectedTags = $$v
-              },
-              expression: "selectedTags"
-            }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.isUpdate,
-            expression: "!isUpdate"
-          }
-        ],
-        staticClass: "field"
-      },
-      [
-        _c("div", { staticClass: "control" }, [
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              { staticClass: "column is-12" },
-              [
-                _vm._v(
-                  "\n                    原创文章  \n                    "
-                ),
-                _c("b-switch", {
-                  attrs: { size: "is-small" },
-                  model: {
-                    value: _vm.isOriginal,
-                    callback: function($$v) {
-                      _vm.isOriginal = $$v
-                    },
-                    expression: "isOriginal"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "button is-primary is-pulled-right",
-                    on: {
-                      click: function($event) {
-                        _vm.create()
-                      }
-                    }
-                  },
-                  [_vm._v("添加")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.isUpdate,
-            expression: "isUpdate"
-          }
-        ],
-        staticClass: "field"
-      },
-      [
-        _c("div", { staticClass: "control" }, [
-          _c("div", { staticClass: "columns" }, [
-            _c(
-              "div",
-              { staticClass: "column is-12" },
-              [
-                _vm._v(
-                  "\n                    原创文章  \n                    "
-                ),
-                _c("b-switch", {
-                  attrs: { size: "is-small" },
-                  model: {
-                    value: _vm.isOriginal,
-                    callback: function($$v) {
-                      _vm.isOriginal = $$v
-                    },
-                    expression: "isOriginal"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "button is-primary is-pulled-right",
-                    on: {
-                      click: function($event) {
-                        _vm.update()
-                      }
-                    }
-                  },
-                  [_vm._v("更新")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("input", {
-      staticStyle: { display: "none" },
-      attrs: { type: "file", id: "btn_file" }
-    })
-  ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticStyle: { display: "none" },
+        attrs: { type: "file", id: "btn_file" }
+      })
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "field" }, [
-      _c("div", { staticClass: "control" }, [
-        _c("textarea", { attrs: { id: "editor" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -44282,10 +44118,22 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c(
+        "div",
+        { staticClass: "right-box p-r-10" },
+        [_vm._t("bottom-right")],
+        2
+      )
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _c("div", { staticClass: "top-toolbar fullscreen" }, [
+      _c("input", {
+        staticClass: "title-input",
+        attrs: { type: "text", placeholder: "请输入文章标题" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "right-box p-r-20" }, [_vm._t("default")], 2)
+    ])
   ])
 }
 var staticRenderFns = [
@@ -44296,58 +44144,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "field" }, [
       _c("div", { staticClass: "control" }, [
         _c("textarea", { attrs: { id: "editor" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "right-box p-r-10" }, [
-      _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "button is-warning m-r-20" }, [
-        _vm._v("返回")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "top-toolbar fullscreen" }, [
-      _c("input", {
-        staticClass: "title-input",
-        attrs: { type: "text", placeholder: "请输入文章标题" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "right-box p-r-20" }, [
-        _c("a", { staticClass: "button is-white" }, [_vm._v("文章已保存")]),
-        _vm._v(" "),
-        _c("button", { staticClass: "button is-primary m-r-20" }, [
-          _vm._v("发表")
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "image is-45x45 is-white m-r-30",
-            staticStyle: {
-              "align-items": "center",
-              "justify-content": "center",
-              display: "inline-flex"
-            }
-          },
-          [
-            _c("img", {
-              staticClass: "avatar img-thumbnail",
-              attrs: {
-                src: "https://lorempixel.com/200/200/?72701",
-                alt: "Jermaine Terry"
-              }
-            })
-          ]
-        )
       ])
     ])
   }
