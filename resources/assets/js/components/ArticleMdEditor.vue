@@ -2,13 +2,15 @@
 
     <div>
 
-        <article-editor>
+        <article-editor
+        @edit-change="editorChange"
+        >
             <div slot="bottom-right">
                 <button class="button m-r-20">保存</button>
                 <button class="button is-warning m-r-20">返回</button>
             </div>
 
-            <a class="button is-white">文章已保存</a>
+            <a class="button is-white">{{ updateStatusLabel }}</a>
 
             <button @click="isModalPublishActive = !isModalPublishActive" class="button is-primary m-r-20">发表</button>
             <a style="align-items: center;justify-content: center;display: inline-flex;" class="image is-45x45 is-white m-r-30">
@@ -24,89 +26,39 @@
                 </header>
 
 
-
-
                 <section class="modal-card-body">
 
                     <div class="article-categories">
-                        <p>选择文章分类</p>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
+                        <p>选择文章分类(*)</p>
+
+                        <a v-for="item in categories" class="button is-light">{{ item.name }}</a>
 
                     </div>
 
                     <div class="article-tags">
-                        <p>选择文章标签</p>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-                        <a class="button is-light">Light</a>
-
+                        <p>选择或搜索文章标签</p>
                     </div>
                     <section>
-                        <b-field label="Add some tags">
-                            <b-taginput
-                                    v-model="tags"
-                                    icon="label"
-                                    placeholder="Add a tag">
-                            </b-taginput>
-                        </b-field>
+                        <div class="field" style="margin: 2px;padding: 5px;padding-bottom: 10px">
+                            <div class="control">
+                                <multiselect
+                                        v-model="selectedTags"
+                                        tag-placeholder="添加标签"
+                                        placeholder="搜索或添加标签"
+                                        label="name"
+                                        track-by="name"
+                                        :options="tags"
+                                        :multiple="true"
+                                        :taggable="true"
+                                        @tag="addTag"
+                                        @search-change="queryTag"
+                                >
+                                </multiselect>
+                            </div>
+                        </div>
                     </section>
 
-                    <!--<b-field label="Email">-->
-                        <!--<b-input-->
-                                <!--type="email"-->
-                                <!--:value="email"-->
-                                <!--placeholder="Your email"-->
-                                <!--required>-->
-                        <!--</b-input>-->
-                    <!--</b-field>-->
-
-                    <!--<b-field label="Password">-->
-                        <!--<b-input-->
-                                <!--type="password"-->
-                                <!--:value="password"-->
-                                <!--password-reveal-->
-                                <!--placeholder="Your password"-->
-                                <!--required>-->
-                        <!--</b-input>-->
-                    <!--</b-field>-->
-
-                    <b-checkbox>原创文章</b-checkbox>
+                    <b-checkbox>原创文章(*)</b-checkbox>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button" type="button" @click="isModalPublishActive = !isModalPublishActive">取消</button>
@@ -155,23 +107,7 @@
             <!--</div>-->
         <!--</div>-->
 
-        <!--<div class="field">-->
-            <!--<div class="control">-->
-                <!--<multiselect-->
-                        <!--v-model="selectedTags"-->
-                        <!--tag-placeholder="添加标签"-->
-                        <!--placeholder="搜索或添加标签"-->
-                        <!--label="name"-->
-                        <!--track-by="name"-->
-                        <!--:options="tags"-->
-                        <!--:multiple="true"-->
-                        <!--:taggable="true"-->
-                        <!--@tag="addTag"-->
-                        <!--@search-change="queryTag"-->
-                        <!--&gt;-->
-                <!--</multiselect>-->
-            <!--</div>-->
-        <!--</div>-->
+
 
         <!--<div class="field" v-show="!isUpdate">-->
             <!--<div class="control">-->
@@ -224,6 +160,7 @@
         props: ['articleId'],
         data() {
             return {
+                updateStatusLabel:'',
                 categories: [],
                 category: null,
                 title: '',
@@ -246,25 +183,15 @@
 
 
         },
-        mounted() {
-
-            this.simplemde = new SimpleMDE({
-                toolbar: MdeOption.getToolBarConfig(),
-                element: document.getElementById("editor"),
-                placeholder: '请输入文章内容.',
-                autoDownloadFontAwesome: true,
-                spellChecker: false
-            })
-        },
         methods: {
-            getFilteredTags(text) {
-                this.filteredTags = data.filter((option) => {
-                    return option.user.first_name
-                        .toString()
-                        .toLowerCase()
-                        .indexOf(text.toLowerCase()) >= 0
-                })
+
+            editorChange(mde){
+                this.updateStatusLabel = '文章已更新';
+                this.updateArticle(mde)
             },
+            updateArticle:_.debounce(function (mde) {
+                this.updateStatusLabel = '文章已保存';
+            },3000),
             create() {
 
                 if (!this.category) {
@@ -444,6 +371,7 @@
     .article-categories{
         .button{
             margin: 5px;
+            padding: 5px;
 
         }
 
@@ -452,6 +380,7 @@
     .article-tags{
         .button{
             margin: 5px;
+            padding: 5px;
 
         }
 

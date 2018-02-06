@@ -73,6 +73,10 @@
 
             this.simplemde.toggleFullScreen()
             this.simplemde.toggleSideBySide()
+
+            this.simplemde.codemirror.on("change", function(){
+                this.$emit('edit-change',this.simplemde);
+            }.bind(this));
         },
         created() {
 

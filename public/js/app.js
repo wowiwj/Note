@@ -2567,6 +2567,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.simplemde.toggleFullScreen();
         this.simplemde.toggleSideBySide();
+
+        this.simplemde.codemirror.on("change", function () {
+            this.$emit('edit-change', this.simplemde);
+        }.bind(this));
     },
     created: function created() {
 
@@ -2790,70 +2794,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2866,6 +2806,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['articleId'],
     data: function data() {
         return {
+            updateStatusLabel: '',
             categories: [],
             category: null,
             title: '',
@@ -2888,23 +2829,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
 
     },
-    mounted: function mounted() {
-
-        this.simplemde = new __WEBPACK_IMPORTED_MODULE_2_simplemde_dist_simplemde_min_js___default.a({
-            toolbar: __WEBPACK_IMPORTED_MODULE_3__modules_MdeConfig_js__["a" /* default */].getToolBarConfig(),
-            element: document.getElementById("editor"),
-            placeholder: '请输入文章内容.',
-            autoDownloadFontAwesome: true,
-            spellChecker: false
-        });
-    },
-
     methods: {
-        getFilteredTags: function getFilteredTags(text) {
-            this.filteredTags = data.filter(function (option) {
-                return option.user.first_name.toString().toLowerCase().indexOf(text.toLowerCase()) >= 0;
-            });
+        editorChange: function editorChange(mde) {
+            this.updateStatusLabel = '文章已更新';
+            this.updateArticle(mde);
         },
+
+        updateArticle: _.debounce(function (mde) {
+            this.updateStatusLabel = '文章已保存';
+        }, 3000),
         create: function create() {
 
             if (!this.category) {
@@ -12930,7 +12863,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n.form-control {\n  height: 38px;\n}\n.article-categories .button {\n  margin: 5px;\n}\n.article-tags .button {\n  margin: 5px;\n}\n@media screen and (min-width: 992px) {\n.no-left-padding {\n    padding-left: 0;\n}\n.no-right-padding {\n    padding-right: 0;\n}\n}\n", ""]);
+exports.push([module.i, "\n.form-control {\n  height: 38px;\n}\n.article-categories .button {\n  margin: 5px;\n  padding: 5px;\n}\n.article-tags .button {\n  margin: 5px;\n  padding: 5px;\n}\n@media screen and (min-width: 992px) {\n.no-left-padding {\n    padding-left: 0;\n}\n.no-right-padding {\n    padding-right: 0;\n}\n}\n", ""]);
 
 // exports
 
@@ -42919,7 +42852,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("article-editor", [
+      _c("article-editor", { on: { "edit-change": _vm.editorChange } }, [
         _c("div", { attrs: { slot: "bottom-right" }, slot: "bottom-right" }, [
           _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
           _vm._v(" "),
@@ -42928,7 +42861,9 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("a", { staticClass: "button is-white" }, [_vm._v("文章已保存")]),
+        _c("a", { staticClass: "button is-white" }, [
+          _vm._v(_vm._s(_vm.updateStatusLabel))
+        ]),
         _vm._v(" "),
         _c(
           "button",
@@ -42990,199 +42925,71 @@ var render = function() {
                 "section",
                 { staticClass: "modal-card-body" },
                 [
-                  _c("div", { staticClass: "article-categories" }, [
-                    _c("p", [_vm._v("选择文章分类")]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "article-tags" }, [
-                    _c("p", [_vm._v("选择文章标签")]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "button is-light" }, [
-                      _vm._v("Light")
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c(
-                    "section",
+                    "div",
+                    { staticClass: "article-categories" },
                     [
-                      _c(
-                        "b-field",
-                        { attrs: { label: "Add some tags" } },
-                        [
-                          _c("b-taginput", {
-                            attrs: { icon: "label", placeholder: "Add a tag" },
-                            model: {
-                              value: _vm.tags,
-                              callback: function($$v) {
-                                _vm.tags = $$v
-                              },
-                              expression: "tags"
-                            }
-                          })
-                        ],
-                        1
-                      )
+                      _c("p", [_vm._v("选择文章分类(*)")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.categories, function(item) {
+                        return _c("a", { staticClass: "button is-light" }, [
+                          _vm._v(_vm._s(item.name))
+                        ])
+                      })
                     ],
-                    1
+                    2
                   ),
                   _vm._v(" "),
-                  _c("b-checkbox", [_vm._v("原创文章")])
+                  _c("div", { staticClass: "article-tags" }, [
+                    _c("p", [_vm._v("选择或搜索文章标签")])
+                  ]),
+                  _vm._v(" "),
+                  _c("section", [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "field",
+                        staticStyle: {
+                          margin: "2px",
+                          padding: "5px",
+                          "padding-bottom": "10px"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "control" },
+                          [
+                            _c("multiselect", {
+                              attrs: {
+                                "tag-placeholder": "添加标签",
+                                placeholder: "搜索或添加标签",
+                                label: "name",
+                                "track-by": "name",
+                                options: _vm.tags,
+                                multiple: true,
+                                taggable: true
+                              },
+                              on: {
+                                tag: _vm.addTag,
+                                "search-change": _vm.queryTag
+                              },
+                              model: {
+                                value: _vm.selectedTags,
+                                callback: function($$v) {
+                                  _vm.selectedTags = $$v
+                                },
+                                expression: "selectedTags"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("b-checkbox", [_vm._v("原创文章(*)")])
                 ],
                 1
               ),
