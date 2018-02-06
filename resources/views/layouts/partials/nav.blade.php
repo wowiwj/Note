@@ -39,7 +39,7 @@
                                 <a class="bd-tw-button button"
                                    href="{{ route('register') }}">
                                 <span class="icon">
-                                    <i class="fa fa-registered"></i>
+                                    <i class="fas fa-registered"></i>
                                 </span>
                                     <span>
                                     注册
@@ -50,7 +50,7 @@
                             <p class="control login">
                                 <a class="button is-primary" href="javascript:showLogin()">
                                     <span class="icon">
-                                        <i class="fa fa-sign-in"></i>
+                                        <i class="fas fa-sign-in-alt"></i>
                                     </span>
 
                                     <span>登录</span>

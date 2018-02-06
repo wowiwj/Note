@@ -6,12 +6,11 @@
  */
 
 
-
 require('./bootstrap');
 
 import Buefy from 'buefy';
 Vue.use(Buefy,{
-    defaultIconPack: 'fa'
+    defaultIconPack: 'fas'
 });
 
 

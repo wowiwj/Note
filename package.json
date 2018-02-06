@@ -17,7 +17,6 @@
     "bulma": "^0.6.2",
     "cross-env": "^5.1",
     "fine-uploader": "^5.14.4",
-    "font-awesome": "^4.7.0",
     "ionicons": "^2.0.1",
     "jquery": "^3.2",
     "laravel-mix": "^1.0",
@@ -27,6 +26,7 @@
     "vue-router": "^2.5.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.3",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
     "simplemde": "^1.11.2",

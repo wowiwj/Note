@@ -10,12 +10,113 @@
 
             <a class="button is-white">文章已保存</a>
 
-            <button class="button is-primary m-r-20">发表</button>
+            <button @click="isModalPublishActive = !isModalPublishActive" class="button is-primary m-r-20">发表</button>
             <a style="align-items: center;justify-content: center;display: inline-flex;" class="image is-45x45 is-white m-r-30">
                 <img src="https://lorempixel.com/200/200/?72701" alt="Jermaine Terry" class="avatar img-thumbnail">
             </a>
 
         </article-editor>
+
+        <b-modal :active.sync="isModalPublishActive" has-modal-card>
+            <div class="modal-card" style="width: 800px">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">发表文章</p>
+                </header>
+
+
+
+
+                <section class="modal-card-body">
+
+                    <div class="article-categories">
+                        <p>选择文章分类</p>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+
+                    </div>
+
+                    <div class="article-tags">
+                        <p>选择文章标签</p>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+                        <a class="button is-light">Light</a>
+
+                    </div>
+                    <section>
+                        <b-field label="Add some tags">
+                            <b-taginput
+                                    v-model="tags"
+                                    icon="label"
+                                    placeholder="Add a tag">
+                            </b-taginput>
+                        </b-field>
+                    </section>
+
+                    <!--<b-field label="Email">-->
+                        <!--<b-input-->
+                                <!--type="email"-->
+                                <!--:value="email"-->
+                                <!--placeholder="Your email"-->
+                                <!--required>-->
+                        <!--</b-input>-->
+                    <!--</b-field>-->
+
+                    <!--<b-field label="Password">-->
+                        <!--<b-input-->
+                                <!--type="password"-->
+                                <!--:value="password"-->
+                                <!--password-reveal-->
+                                <!--placeholder="Your password"-->
+                                <!--required>-->
+                        <!--</b-input>-->
+                    <!--</b-field>-->
+
+                    <b-checkbox>原创文章</b-checkbox>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" type="button" @click="isModalPublishActive = !isModalPublishActive">取消</button>
+                    <button class="button is-primary">发表</button>
+                </footer>
+            </div>
+
+        </b-modal>
+
+
         <!--<div class="field">-->
 
             <!--<div class="columns">-->
@@ -131,7 +232,11 @@
                 pageImage: '',
                 isOriginal: true,
                 tags:[],
-                selectedTags:[]
+                selectedTags:[],
+                isModalPublishActive:false,
+                filteredTags: [],
+                isSelectOnly: false,
+                allowNew: false
             }
         },
         computed: {
@@ -152,6 +257,14 @@
             })
         },
         methods: {
+            getFilteredTags(text) {
+                this.filteredTags = data.filter((option) => {
+                    return option.user.first_name
+                        .toString()
+                        .toLowerCase()
+                        .indexOf(text.toLowerCase()) >= 0
+                })
+            },
             create() {
 
                 if (!this.category) {
@@ -326,6 +439,22 @@
 
     .form-control {
         height: 38px;
+    }
+
+    .article-categories{
+        .button{
+            margin: 5px;
+
+        }
+
+    }
+
+    .article-tags{
+        .button{
+            margin: 5px;
+
+        }
+
     }
 
     @media screen and (min-width: 992px) {
