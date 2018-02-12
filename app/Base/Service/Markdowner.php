@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Service;
+namespace App\Base\Service;
 use Parsedown;
 use League\HTMLToMarkdown\HtmlConverter;
 

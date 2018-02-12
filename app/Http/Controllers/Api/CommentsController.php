@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Service\Mention;
+use App\Base\Service\Mention;
 use App\Models\SpecialPage;
 use App\Models\User;
 use App\Notifications\ArticleWasUpdated;

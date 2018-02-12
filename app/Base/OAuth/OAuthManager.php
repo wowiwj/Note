@@ -1,5 +1,5 @@
 <?php
-namespace App\Api\Helpers\OAuth;
+namespace App\Base\OAuth;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 

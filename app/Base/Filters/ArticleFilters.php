@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wangju
- * Date: 2017/6/4
- * Time: 下午10:31
- */
 
-namespace App\Helpers\Fitters;
+namespace App\Base\Fitters;
 
 
 use App\Models\User;

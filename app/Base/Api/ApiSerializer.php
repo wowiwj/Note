@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Helpers\Api;
+namespace App\Base\Api;
 
 use League\Fractal\Serializer\SerializerAbstract;
 

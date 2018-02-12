@@ -1,10 +1,12 @@
 <?php
-namespace App\Helpers\Exceptions;
+
+namespace App\Base\Exceptions;
+
 use App\Api\Helpers\Api\ApiResponse;
 use Exception;
 use Throwable;
 
-class SubscribeException extends Exception
+class FavoriteException extends Exception
 {
     use ApiResponse;
 
@@ -18,4 +20,6 @@ class SubscribeException extends Exception
         return $this->failed($this->message,$this->code);
 
     }
+
+
 }

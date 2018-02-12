@@ -38,7 +38,7 @@ function menuIsActive($name,$route=null)
 
 function notificationParser($data){
 
-    $handler = app(\App\Helpers\Handler\NotificationHandler::class);
+    $handler = app(\App\Base\Handler\NotificationHandler::class);
 
     return $handler->make($data);
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Helpers\Traits\GetModelByMorpType;
+use App\Base\Traits\GetModelByMorpType;
 use App\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Helpers\OAuth;
+namespace App\Base\OAuth;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
 use Laravel\Socialite\Two\User;

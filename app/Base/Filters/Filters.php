@@ -1,5 +1,5 @@
 <?php
-namespace App\Helpers\Fitters;
+namespace App\Base\Fitters;
 
 use Illuminate\Http\Request;
 

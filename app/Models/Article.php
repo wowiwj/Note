@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Helpers\Fitters\ArticleFilters;
-use App\Helpers\Handler\ImageUploadHandler;
-use App\Helpers\Service\Markdowner;
-use App\Helpers\Traits\Favoritable;
-use App\Helpers\Traits\RecordsActivity;
-use App\Helpers\Traits\Subscribable;
+use App\Base\Fitters\ArticleFilters;
+use App\Base\Handler\ImageUploadHandler;
+use App\Base\Service\Markdowner;
+use App\Base\Traits\Favoritable;
+use App\Base\Traits\RecordsActivity;
+use App\Base\Traits\Subscribable;
 use App\Notifications\ArticleWasFavorited;
 use App\Notifications\ArticleWasSubscribed;
 use App\Scopes\ArticleFitterScope;

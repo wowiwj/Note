@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Handler\ImageUploadHandler;
+use App\Base\Handler\ImageUploadHandler;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

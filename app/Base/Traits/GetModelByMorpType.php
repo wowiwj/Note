@@ -1,6 +1,6 @@
 <?php
-namespace App\Helpers\Traits;
-use App\Helpers\Exceptions\FavoriteException;
+namespace App\Base\Traits;
+use App\Base\Exceptions\FavoriteException;
 
 trait GetModelByMorpType
 {

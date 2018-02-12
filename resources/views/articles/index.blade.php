@@ -37,7 +37,7 @@
                         @endforelse
 
                         <div class="center-block">
-                            {{ $articles->links() }}
+                            {{ $articles->links('vendor.pagination.default') }}
                         </div>
                     </div>
                 </div>

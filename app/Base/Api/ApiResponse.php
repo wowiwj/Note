@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Api\Helpers\Api;
+namespace App\Base\Api;
 use Symfony\Component\HttpFoundation\Response as FoundationResponse;
 use Response;
 

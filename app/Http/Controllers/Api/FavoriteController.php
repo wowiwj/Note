@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Exceptions\FavoriteException;
+use App\Base\Exceptions\FavoriteException;
 use App\Http\Resources\FavoriteResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

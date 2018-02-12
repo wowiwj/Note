@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Traits;
+namespace App\Base\Traits;
 
 
 use App\Models\Favorite;

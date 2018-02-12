@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Handler;
+namespace App\Base\Handler;
 use App\Models\User;
 use Image;
 use Auth;
