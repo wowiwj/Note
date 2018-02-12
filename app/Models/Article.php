@@ -47,6 +47,12 @@ class Article extends Model
         return $this->morphToMany(Tag::class,'taggable');
     }
 
+    public function drafts()
+    {
+        return $this->morphMany(Draft::class,'relation');
+    }
+
+
     public function path()
     {
         return '/articles/'.$this->category->slug.'/'.$this->id;

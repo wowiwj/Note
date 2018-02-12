@@ -6,10 +6,12 @@ use App\Helpers\Fitters\ArticleFilters;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Draft;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Ramsey\Uuid\Uuid;
 
 class ArticlesController extends Controller
 {
@@ -59,9 +61,27 @@ class ArticlesController extends Controller
     }
 
 
-
+    /**
+     *
+     * @var \App\Models\User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
+
+        //$user
+        $draft = Auth::user()->drafts()->create([
+            'title' => Carbon::now()->toDateTimeString(),
+            'body' => ''
+        ]);
+
+
+        return redirect()->route('drafts.edit',$draft);
+
+
+
+
+
         return view('articles.create_new');
     }
 

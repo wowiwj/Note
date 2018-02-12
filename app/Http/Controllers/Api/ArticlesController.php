@@ -38,6 +38,7 @@ class ArticlesController extends ApiController
         return new ArticleCollection($article);
     }
 
+
     public function store(Request $request)
     {
         $this->validate($request,[

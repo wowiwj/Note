@@ -175,7 +175,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
         Naux\Mail\ SendCloudServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 

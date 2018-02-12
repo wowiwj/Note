@@ -68,12 +68,15 @@ Route::group(['namespace' => 'Web'], function () {
     Route::put('users/{user}','UsersController@update')->name('users.update');
 
 
+    Route::get('note/draft/{draft}','DraftsController@show')->name('drafts.show');
+    Route::get('note/draft/{draft}/edit','DraftsController@edit')->name('drafts.edit');
+
     Route::get('notifications','NotificationsController@index')->name('notifications.index');
 
     Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'UsersController@verify']);
 
 
-    Route::get('categories', 'CategoriesController@index');
+    Route::get('categories', 'CategoriesController@show');
 
     Route::get('categories/create', 'CategoriesController@create');
     Route::post('categories/store', 'CategoriesController@store')->name('categories.store');
