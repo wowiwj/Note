@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
-use App\Http\Resources\User as UserCollection;
+use App\Http\Resources\UserResource as UserCollection;
 use App\Http\Resources\Category as CategoryCollection;
 use App\Http\Resources\Tag as TagCollection;
 

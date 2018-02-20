@@ -51,6 +51,7 @@ Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));
 Vue.component('PageMdEditor',require('./components/PageMdEditor.vue'));
 Vue.component('LoginView',require('./components/LoginView.vue'))
 Vue.component('ArticleEditor',require('./components/ArticleEditor.vue'))
+Vue.component('DraftEditor',require('./components/DraftEdit.vue'))
 
 
 

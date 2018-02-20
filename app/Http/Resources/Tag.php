@@ -20,6 +20,6 @@ class Tag extends Resource
             'slug' => $this->slug
 
         ];
-        return parent::toArray($request);
+
     }
 }

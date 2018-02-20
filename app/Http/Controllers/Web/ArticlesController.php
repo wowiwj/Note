@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Ramsey\Uuid\Uuid;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ArticlesController extends Controller
 {
@@ -68,21 +69,13 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-
         //$user
         $draft = Auth::user()->drafts()->create([
             'title' => Carbon::now()->toDateTimeString(),
             'body' => ''
         ]);
 
-
-        return redirect()->route('drafts.edit',$draft);
-
-
-
-
-
-        return view('articles.create_new');
+        return redirect()->route('drafts.edit',$draft->ref);
     }
 
 

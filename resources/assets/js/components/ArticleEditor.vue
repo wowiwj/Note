@@ -36,7 +36,7 @@
 
         <div class="top-toolbar fullscreen">
 
-            <input type="text" class="title-input" placeholder="请输入文章标题">
+            <input v-model="title" type="text" class="title-input" :placeholder="placeHolderTitle">
             <div class="right-box p-r-20">
 
                 <slot></slot>
@@ -54,18 +54,26 @@
     import {default as SimpleMDE} from 'simplemde/dist/simplemde.min.js'
     import MdeOption from './modules/MdeConfig.js'
     export default {
-        props: ['articleId'],
+        props: [
+            'titleText',
+            'bodyText',
+            'placeHolderTitle',
+            'placeHolderBody'
+        ],
         data() {
             return {
                 simplemde: '',
+                title:''
             }
         },
         mounted() {
 
+            let placeHolder = this.placeHolderBody
+
             this.simplemde = new SimpleMDE({
                 toolbar: MdeOption.getToolBarConfig(),
                 element: document.getElementById("editor"),
-                placeholder: '请输入文章内容.',
+                placeholder: placeHolder,
                 autoDownloadFontAwesome: true,
                 spellChecker: false
             })
@@ -77,11 +85,18 @@
             this.simplemde.codemirror.on("change", function(){
                 this.$emit('edit-change',this.simplemde);
             }.bind(this));
+
         },
         created() {
 
             console.log('created');
             window.onresize = this.adjustPreviewWidth
+        },
+        watch:{
+            titleText:function (value) {
+                this.title = value
+            }
+
         },
         methods:{
             trigger(action){

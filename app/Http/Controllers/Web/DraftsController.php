@@ -14,13 +14,15 @@ class DraftsController extends Controller
         $this->middleware('auth');
     }
 
-    public function show(Draft $draft){
+    public function show($draft){
 
-        return $draft;
+//        return $draft;
         return view('drafts.show');
     }
 
     public function edit(Draft $draft){
+
+        return view('drafts.edit',compact('draft'));
 
         return $draft;
 
