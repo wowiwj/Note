@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\SpecialPageResource;
 use App\Models\SpecialPage;
-use App\Transformers\SpecialPageTransformer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class SpecialPagesController extends ApiController
 {
     public function __construct()
     {
-        parent::__construct();
-
         $this->middleware(['auth:api','admin'],['except' => ['show','index']]);
 
     }
 
     public function show(SpecialPage $page){
 
-        return $this->respondWithItem($page,new SpecialPageTransformer);
-
+        return new SpecialPageResource($page);
     }
 
 
@@ -41,10 +36,7 @@ class SpecialPagesController extends ApiController
             'body' => $request->body,
             'route' => $request->route
         ]);
-
-
-        return $this->respondWithItem($page,new SpecialPageTransformer);
-
+        return new SpecialPageResource($page);
     }
 
     public function update(Request $request,SpecialPage $page){
@@ -63,8 +55,7 @@ class SpecialPagesController extends ApiController
             'show_nav' => $request->isShowNav
         ]);
 
-        return $this->respondWithItem($page,new SpecialPageTransformer);
-
+        return new SpecialPageResource($page);
 
     }
 

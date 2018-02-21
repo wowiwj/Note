@@ -3475,6 +3475,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -3525,20 +3527,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var draft = response.data.data;
                 console.log(draft);
                 _this.updateStatusLabel = '文章已保存';
-                //                    this.draft = draft;
-                //                    this.user = draft.user;
             }, function (error) {
                 console.log(error);
             });
         }, 3000),
-        update: function update() {},
+        fetchCategories: function fetchCategories() {
+            var _this2 = this;
+
+            axios.get('/api/v1/categories/all').then(function (response) {
+                console.log(response.data);
+                _this2.categories = response.data.data;
+            }, function (error) {
+                console.log(error);
+            });
+        },
         selectImage: function selectImage(editor) {
             var fileBtn = document.getElementById("btn_file");
             fileBtn.onchange = this.uploadImage;
             fileBtn.click();
         },
         uploadImage: function uploadImage() {
-            var _this2 = this;
+            var _this3 = this;
 
             var fileBtn = document.getElementById("btn_file");
             var formData = new FormData();
@@ -3547,24 +3556,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = _ref.data;
 
 
-                var pos = _this2.simplemde.codemirror.getCursor();
-                _this2.simplemde.codemirror.setSelection(pos, pos);
-                _this2.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
+                var pos = _this3.simplemde.codemirror.getCursor();
+                _this3.simplemde.codemirror.setSelection(pos, pos);
+                _this3.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
 
                 console.log(data);
             });
             console.log(fileBtn.files[0]);
             console.log(1);
         },
+        selectCategory: function selectCategory(item) {
+
+            console.log(item);
+        },
         fetchDraft: function fetchDraft() {
-            var _this3 = this;
+            var _this4 = this;
 
             axios.get('/api/v1/drafts/' + this.draftRef).then(function (response) {
                 console.log(response.data);
                 var draft = response.data.data;
-                _this3.draft = draft;
-                _this3.user = draft.user;
-                _this3.firstFetch = false;
+                _this4.draft = draft;
+                _this4.user = draft.user;
+                _this4.firstFetch = false;
             }, function (error) {
                 console.log(error);
             });
@@ -3582,14 +3595,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.selectedTags.push(tag);
         },
         queryTag: function queryTag(qw) {
-            var _this4 = this;
+            var _this5 = this;
 
             axios.get('/api/v1/tags', {
                 params: {
                     q: qw
                 }
             }).then(function (response) {
-                _this4.tags = response.data.data;
+                _this5.tags = response.data.data;
 
                 console.log(response.data);
             });
@@ -3599,6 +3612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
 
         this.fetchDraft();
+        this.fetchCategories();
 
         console.log('created');
     }
@@ -44050,9 +44064,26 @@ var render = function() {
                       _c("p", [_vm._v("选择文章分类(*)")]),
                       _vm._v(" "),
                       _vm._l(_vm.categories, function(item) {
-                        return _c("a", { staticClass: "button is-light" }, [
-                          _vm._v(_vm._s(item.name))
-                        ])
+                        return _c(
+                          "a",
+                          {
+                            staticClass: "button is-light",
+                            on: {
+                              click: function($event) {
+                                _vm.selectCategory(item)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(item.name))]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.categories, function(item) {
+                        return _c(
+                          "a",
+                          { staticClass: "button is-success is-outlined" },
+                          [_vm._v(_vm._s(item.name))]
+                        )
                       })
                     ],
                     2
@@ -44124,7 +44155,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("取消")]
+                  [_vm._v("取消\n                ")]
                 ),
                 _vm._v(" "),
                 _c("button", { staticClass: "button is-primary" }, [

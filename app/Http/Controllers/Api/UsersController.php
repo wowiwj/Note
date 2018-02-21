@@ -11,8 +11,6 @@ class UsersController extends ApiController
 {
     public function __construct()
     {
-        parent::__construct();
-
         $this->middleware('auth:api');
     }
 
@@ -36,7 +34,7 @@ class UsersController extends ApiController
         $user->avatar = $avatarPath;
         $user->save();
 
-        return $this->respondWithSuccess([
+        return $this->success([
             'avatar' => $avatarPath
         ]);
 

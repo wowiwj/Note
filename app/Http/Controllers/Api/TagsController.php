@@ -6,7 +6,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-use App\Http\Resources\Tag as TagCollection;
+use App\Http\Resources\TagResource as TagCollection;
 
 class TagsController extends Controller
 {

@@ -11,7 +11,6 @@ class FilesController extends ApiController
 
     public function __construct()
     {
-        parent::__construct();
         $this->middleware('auth:api');
     }
 
@@ -19,7 +18,7 @@ class FilesController extends ApiController
     {
 
         if (!$request->hasFile('file')){
-            return $this->respondWithError('上传文件不能为空');
+            return $this->failed('上传文件不能为空');
         }
 
 
@@ -28,7 +27,7 @@ class FilesController extends ApiController
         $imageHander = new ImageUploadHandler();
         $result = $imageHander->uploadImage($file);
 
-        return $this->respondWithSuccess([
+        return $this->success([
             'image' => '/'.$result['filename']
         ]);
     }

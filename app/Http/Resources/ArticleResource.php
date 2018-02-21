@@ -4,10 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\UserResource as UserCollection;
-use App\Http\Resources\Category as CategoryCollection;
-use App\Http\Resources\Tag as TagCollection;
+use App\Http\Resources\CategoryResource as CategoryCollection;
+use App\Http\Resources\TagResource as TagCollection;
 
-class Article extends Resource
+class ArticleResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -20,8 +20,6 @@ class Article extends Resource
 
 
         return [
-
-
             'id' => $this->id,
             'title' => $this->title,
             'page_image' => $this->page_image,

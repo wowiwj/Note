@@ -18,7 +18,8 @@
             <a class="button is-white">{{ updateStatusLabel }}</a>
 
             <button @click="isModalPublishActive = !isModalPublishActive" class="button is-primary m-r-20">发表</button>
-            <a style="align-items: center;justify-content: center;display: inline-flex;" class="image is-45x45 is-white m-r-30">
+            <a style="align-items: center;justify-content: center;display: inline-flex;"
+               class="image is-45x45 is-white m-r-30">
                 <img src="https://lorempixel.com/200/200/?72701" alt="Jermaine Terry" class="avatar img-thumbnail">
             </a>
 
@@ -36,7 +37,8 @@
                     <div class="article-categories">
                         <p>选择文章分类(*)</p>
 
-                        <a v-for="item in categories" class="button is-light">{{ item.name }}</a>
+                        <a @click="selectCategory(item)" v-for="item in categories" class="button is-light">{{ item.name }}</a>
+                        <a v-for="item in categories" class="button is-success is-outlined">{{ item.name }}</a>
 
                     </div>
 
@@ -66,7 +68,8 @@
                     <b-checkbox>原创文章(*)</b-checkbox>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button" type="button" @click="isModalPublishActive = !isModalPublishActive">取消</button>
+                    <button class="button" type="button" @click="isModalPublishActive = !isModalPublishActive">取消
+                    </button>
                     <button class="button is-primary">发表</button>
                 </footer>
             </div>
@@ -74,7 +77,6 @@
         </b-modal>
 
         <input type="file" id="btn_file" style="display:none">
-
 
 
     </div>
@@ -91,55 +93,58 @@
 
 
     export default {
-        components: {Multiselect,ArticleEditor},
+        components: {Multiselect, ArticleEditor},
         props: ['draftRef'],
         data() {
             return {
-                updateStatusLabel:'',
+                updateStatusLabel: '',
                 categories: [],
                 category: null,
                 draft: {},
-                user:{},
+                user: {},
                 simplemde: '',
                 pageImage: '',
                 isOriginal: true,
-                tags:[],
-                selectedTags:[],
-                isModalPublishActive:false,
+                tags: [],
+                selectedTags: [],
+                isModalPublishActive: false,
                 filteredTags: [],
                 isSelectOnly: false,
                 allowNew: false,
-                firstFetch:true
+                firstFetch: true
             }
         },
         methods: {
 
-            editorChange(articleEditor){
+            editorChange(articleEditor) {
                 this.updateStatusLabel = '文章已更新';
                 this.updateDraft(articleEditor)
             },
-            updateDraft:_.debounce(function (articleEditor) {
+            updateDraft: _.debounce(function (articleEditor) {
                 let formData = new FormData();
                 console.log(articleEditor);
                 let mde = articleEditor.mde;
                 console.log(mde)
                 formData.append('body', mde.value())
                 formData.append('title', articleEditor.title)
-                axios.post('/api/v1/drafts/' + this.draftRef+ '?_method=put',formData).then((response) => {
+                axios.post('/api/v1/drafts/' + this.draftRef + '?_method=put', formData).then((response) => {
                     console.log(response.data);
                     let draft = response.data.data;
                     console.log(draft);
                     this.updateStatusLabel = '文章已保存';
-//                    this.draft = draft;
-//                    this.user = draft.user;
                 }, (error) => {
                     console.log(error);
                 });
 
 
-            },3000),
-            update() {
-
+            }, 3000),
+            fetchCategories() {
+                axios.get('/api/v1/categories/all').then((response) => {
+                    console.log(response.data);
+                    this.categories = response.data.data;
+                }, (error) => {
+                    console.log(error);
+                });
             },
             selectImage(editor) {
                 var fileBtn = document.getElementById("btn_file");
@@ -162,6 +167,11 @@
                 console.log(fileBtn.files[0]);
                 console.log(1);
             },
+            selectCategory(item){
+
+                console.log(item);
+
+            },
             fetchDraft() {
                 axios.get('/api/v1/drafts/' + this.draftRef).then((response) => {
                     console.log(response.data);
@@ -179,7 +189,7 @@
                 this.isOriginal = state
 
             },
-            addTag (newTag) {
+            addTag(newTag) {
                 const tag = {
                     name: newTag,
                     id: 0
@@ -187,13 +197,13 @@
                 this.tags.push(tag)
                 this.selectedTags.push(tag)
             },
-            queryTag(qw){
+            queryTag(qw) {
 
-                axios.get('/api/v1/tags',{
+                axios.get('/api/v1/tags', {
                     params: {
                         q: qw
                     }
-                }).then((response)=>{
+                }).then((response) => {
                     this.tags = response.data.data
 
                     console.log(response.data);
@@ -208,6 +218,7 @@
         created() {
 
             this.fetchDraft();
+            this.fetchCategories();
 
             console.log('created');
 
@@ -223,8 +234,8 @@
         height: 38px;
     }
 
-    .article-categories{
-        .button{
+    .article-categories {
+        .button {
             margin: 5px;
             padding: 5px;
 
@@ -232,8 +243,8 @@
 
     }
 
-    .article-tags{
-        .button{
+    .article-tags {
+        .button {
             margin: 5px;
             padding: 5px;
 

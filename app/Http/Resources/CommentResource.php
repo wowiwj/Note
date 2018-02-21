@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\UserResource as UserCollection;
 
-class Comment extends Resource
+class CommentResource extends Resource
 {
     /**
      * Transform the resource into an array.

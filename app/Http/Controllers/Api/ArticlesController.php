@@ -3,39 +3,30 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
-use App\Models\Category;
-use App\Models\Tag;
-use App\Transformers\ArticleTransformer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\Article as ArticleCollection;
+use App\Http\Resources\ArticleResource;
 
 class ArticlesController extends ApiController
 {
 
     public function __construct()
     {
-        parent::__construct();
-
         $this->middleware('auth:api',['except' => ['show','index']]);
 
     }
 
     public function index(){
 
-
         $articles = Article::orderBy('created_at', 'desc')->paginate(20);
-
-        return $this->respondWithPaginator($articles,new ArticleTransformer);
-
+        return ArticleResource::collection($articles);
     }
 
 
 
     public function show(Article $article)
     {
-        return new ArticleCollection($article);
+        return new ArticleResource($article);
     }
 
 
@@ -63,7 +54,8 @@ class ArticlesController extends ApiController
 
         $article->subscribe();
 
-        return $article->syncTags($tags)->load('category');
+        $article = $article->syncTags($tags)->load('category');
+        return new ArticleResource($article);
 
     }
 

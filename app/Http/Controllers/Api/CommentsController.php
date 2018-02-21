@@ -12,15 +12,13 @@ use App\Models\Comment;
 use App\Transformers\CommentTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Comment as CommentCollection;
+use App\Http\Resources\CommentResource as CommentCollection;
 
 class CommentsController extends ApiController
 {
 
      public function __construct()
     {
-        parent::__construct();
-
         $this->middleware('auth:api')->except(['index','pageComments']);
 
     }
@@ -87,7 +85,7 @@ class CommentsController extends ApiController
 
          $comment->delete();
 
-         return $this->respondWithMessage('删除成功');
+         return $this->message('删除成功');
 
     }
 }
