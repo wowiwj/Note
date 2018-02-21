@@ -16,7 +16,7 @@ class CreateDraftsTable extends Migration
         Schema::create('drafts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('parent')->nullable();
+            $table->unsignedInteger('parent_id')->nullable();
             $table->unsignedInteger('relation_id')->nullable();
             $table->string('relation_type')->nullable();
             $table->string('title');

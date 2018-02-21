@@ -12,19 +12,28 @@
 
                 <a @click="trigger('toggleBold')" title="Bold (Cmd-B)" tabindex="-1" class="fa fa-bold"></a>
                 <a @click="trigger('toggleItalic')" title="Italic (Cmd-I)" tabindex="-1" class="fa fa-italic"></a>
-                <a @click="trigger('toggleStrikethrough')" title="Strikethrough" tabindex="-1" class="fa fa-strikethrough"></a>
-                <a @click="trigger('toggleHeadingSmaller')" title="Heading (Cmd-H)" tabindex="-1" class="fa fa-header"></a>
+                <a @click="trigger('toggleStrikethrough')" title="Strikethrough" tabindex="-1"
+                   class="fa fa-strikethrough"></a>
+                <a @click="trigger('toggleHeadingSmaller')" title="Heading (Cmd-H)" tabindex="-1"
+                   class="fa fa-header"></a>
                 <a @click="trigger('toggleCodeBlock')" title="Code (Cmd-⌥-C)" tabindex="-1" class="fa fa-code"></a>
-                <a @click="trigger('toggleBlockquote')" title="Quote (Cmd-')" tabindex="-1" class="fa fa-quote-left"></a>
-                <a @click="trigger('toggleUnorderedList')" title="Generic List (Cmd-L)" tabindex="-1" class="fa fa-list-ul"></a>
-                <a @click="trigger('toggleOrderedList')" title="Numbered List (Cmd-⌥-L)" tabindex="-1" class="fa fa-list-ol"></a>
+                <a @click="trigger('toggleBlockquote')" title="Quote (Cmd-')" tabindex="-1"
+                   class="fa fa-quote-left"></a>
+                <a @click="trigger('toggleUnorderedList')" title="Generic List (Cmd-L)" tabindex="-1"
+                   class="fa fa-list-ul"></a>
+                <a @click="trigger('toggleOrderedList')" title="Numbered List (Cmd-⌥-L)" tabindex="-1"
+                   class="fa fa-list-ol"></a>
                 <a @click="trigger('drawLink')" title="Create Link (Cmd-K)" tabindex="-1" class="fa fa-link"></a>
                 <a @click="trigger('drawImage')" title="Insert Image" tabindex="-1" class="fa fa-picture-o"></a>
                 <a @click="trigger('drawTable')" title="Insert Table" tabindex="-1" class="fa fa-table"></a>
-                <a @click="trigger('drawHorizontalRule')" title="Insert Horizontal Line" tabindex="-1" class="fa fa-minus"></a>
-                <a @click="trigger('togglePreview')" title="Toggle Preview (Cmd-P)" tabindex="-1" class="fa fa-eye no-disable"></a>
-                <a @click="trigger('toggleSideBySide')" title="Toggle Side by Side (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a>
-                <a href="https://simplemde.com/markdown-guide" target="_blank" title="Markdown Guide" tabindex="-1" class="fa fa-question-circle"></a>
+                <a @click="trigger('drawHorizontalRule')" title="Insert Horizontal Line" tabindex="-1"
+                   class="fa fa-minus"></a>
+                <a @click="trigger('togglePreview')" title="Toggle Preview (Cmd-P)" tabindex="-1"
+                   class="fa fa-eye no-disable"></a>
+                <a @click="trigger('toggleSideBySide')" title="Toggle Side by Side (F9)" tabindex="-1"
+                   class="fa fa-columns no-disable no-mobile"></a>
+                <a href="https://simplemde.com/markdown-guide" target="_blank" title="Markdown Guide" tabindex="-1"
+                   class="fa fa-question-circle"></a>
 
             </div>
 
@@ -42,7 +51,7 @@
                 <slot></slot>
 
             </div>
-            
+
         </div>
 
     </div>
@@ -53,6 +62,7 @@
 <script>
     import {default as SimpleMDE} from 'simplemde/dist/simplemde.min.js'
     import MdeOption from './modules/MdeConfig.js'
+
     export default {
         props: [
             'titleText',
@@ -63,7 +73,8 @@
         data() {
             return {
                 simplemde: '',
-                title:''
+                title: '',
+                shouldEmit:false
             }
         },
         mounted() {
@@ -82,35 +93,56 @@
             this.simplemde.toggleFullScreen()
             this.simplemde.toggleSideBySide()
 
-            this.simplemde.codemirror.on("change", function(){
-                this.$emit('edit-change',this.simplemde);
+            this.simplemde.codemirror.on("change", function () {
+                this.$emit('edit-change', {
+                    mde: this.simplemde,
+                    title: this.title
+                });
             }.bind(this));
 
         },
+
         created() {
 
             console.log('created');
             window.onresize = this.adjustPreviewWidth
         },
-        watch:{
-            titleText:function (value) {
+        watch: {
+            titleText: function (value) {
+                this.shouldEmit = false
                 this.title = value
+
+            },
+            bodyText: function (value) {
+                this.shouldEmit = false
+                this.simplemde.value(value);
+
+            },
+            title:function (value) {
+                if (this.shouldEmit === false){
+                    this.shouldEmit = true
+                    return
+                }
+                this.$emit('edit-change', {
+                    mde: this.simplemde,
+                    title: value
+                });
             }
 
         },
-        methods:{
-            trigger(action){
+        methods: {
+            trigger(action) {
 
-                let functionName = 'this.simplemde.'+action+'()';
+                let functionName = 'this.simplemde.' + action + '()';
 
                 eval(functionName)
 
-                if (action === 'togglePreview' || action === 'toggleSideBySide'){
+                if (action === 'togglePreview' || action === 'toggleSideBySide') {
                     console.log(action)
-                    setTimeout(this.adjustPreviewWidth,100)
+                    setTimeout(this.adjustPreviewWidth, 100)
                 }
             },
-            adjustPreviewWidth(){
+            adjustPreviewWidth() {
 
                 let simMde = document.getElementById('sim-mde');
 
@@ -119,16 +151,16 @@
 
                 let isSideBySide = this.simplemde.isSideBySideActive();
 
-                this.setInputPosition(isSideBySide,leftDistance)
+                this.setInputPosition(isSideBySide, leftDistance)
 
-                this.setPreviewPosition(cmCode.offsetWidth,leftDistance)
+                this.setPreviewPosition(cmCode.offsetWidth, leftDistance)
 
             },
-            setInputPosition(isSideActive,leftDistance){
+            setInputPosition(isSideActive, leftDistance) {
                 let simMde = document.getElementById('sim-mde');
                 let inputField = simMde.getElementsByClassName('title-input')[0]
 
-                if (isSideActive){
+                if (isSideActive) {
 
                     inputField.style.paddingLeft = 20 + 'px';
                     inputField.style.marginLeft = 0;
@@ -138,11 +170,11 @@
 
                 inputField.style.marginLeft = leftDistance + 'px';
             },
-            setPreviewPosition(width,paddingLeft){
+            setPreviewPosition(width, paddingLeft) {
 
                 let simMde = document.getElementById('sim-mde');
                 let previewDom = simMde.getElementsByClassName('editor-preview-active')[0]
-                if (!previewDom){
+                if (!previewDom) {
                     return
                 }
                 console.log(previewDom)
@@ -154,7 +186,6 @@
     }
 
 
-
 </script>
 
 <style lang="scss">
@@ -163,13 +194,13 @@
 
     #sim-mde {
 
-        .is-45x45{
+        .is-45x45 {
             width: 45px;
             height: 45px;
 
         }
 
-        .title-input{
+        .title-input {
             margin: 0;
             padding: 20px;
             font-size: 2rem;
@@ -187,7 +218,7 @@
             bottom: $editor-bottom-height;
             top: $editor-top-height;
         }
-        .CodeMirror{
+        .CodeMirror {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
 
@@ -195,21 +226,21 @@
 
         @media screen and (min-width: 992px) {
 
-            .CodeMirror-lines{
+            .CodeMirror-lines {
                 margin: 0 auto;
                 max-width: 1000px;
 
             }
         }
-        .editor-preview-side{
+        .editor-preview-side {
             bottom: $editor-bottom-height;
             top: $editor-top-height;
         }
-        .editor-toolbar.fullscreen{
+        .editor-toolbar.fullscreen {
             display: none;
         }
 
-        .bottom-toolbar.fullscreen{
+        .bottom-toolbar.fullscreen {
 
             width: 100%;
             height: 50px;
@@ -231,7 +262,7 @@
 
         }
 
-        .top-toolbar.fullscreen{
+        .top-toolbar.fullscreen {
 
             width: 100%;
             height: $editor-top-height;
@@ -245,7 +276,7 @@
             background: #fff;
             border: 0;
             position: fixed;
-            top:0;
+            top: 0;
             bottom: 0;
             left: 0;
             opacity: 1;
@@ -254,18 +285,18 @@
 
         }
 
-        .bottom-tool{
+        .bottom-tool {
             flex: 1;
             padding: 0 20px;
             font-size: 20px;
-            a{
+            a {
                 color: #555;
                 padding: 0 5px;
             }
 
         }
 
-        .right-box{
+        .right-box {
 
             display: flex;
             -webkit-box-pack: end;
@@ -274,7 +305,7 @@
             align-items: center;
         }
 
-        .left-box{
+        .left-box {
 
             display: -webkit-box;
             display: -ms-flexbox;

@@ -2545,6 +2545,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2553,7 +2563,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             simplemde: '',
-            title: ''
+            title: '',
+            shouldEmit: false
         };
     },
     mounted: function mounted() {
@@ -2572,7 +2583,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.simplemde.toggleSideBySide();
 
         this.simplemde.codemirror.on("change", function () {
-            this.$emit('edit-change', this.simplemde);
+            this.$emit('edit-change', {
+                mde: this.simplemde,
+                title: this.title
+            });
         }.bind(this));
     },
     created: function created() {
@@ -2583,7 +2597,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         titleText: function titleText(value) {
+            this.shouldEmit = false;
             this.title = value;
+        },
+        bodyText: function bodyText(value) {
+            this.shouldEmit = false;
+            this.simplemde.value(value);
+        },
+        title: function title(value) {
+            if (this.shouldEmit === false) {
+                this.shouldEmit = true;
+                return;
+            }
+            this.$emit('edit-change', {
+                mde: this.simplemde,
+                title: value
+            });
         }
 
     },
@@ -3471,24 +3500,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             isModalPublishActive: false,
             filteredTags: [],
             isSelectOnly: false,
-            allowNew: false
+            allowNew: false,
+            firstFetch: true
         };
     },
 
-    computed: {
-        isUpdate: function isUpdate() {
-            return this.articleId != null;
-        }
-
-    },
     methods: {
-        editorChange: function editorChange(mde) {
+        editorChange: function editorChange(articleEditor) {
             this.updateStatusLabel = '文章已更新';
-            this.updateArticle(mde);
+            this.updateDraft(articleEditor);
         },
 
-        updateArticle: _.debounce(function (mde) {
-            this.updateStatusLabel = '文章已保存';
+        updateDraft: _.debounce(function (articleEditor) {
+            var _this = this;
+
+            var formData = new FormData();
+            console.log(articleEditor);
+            var mde = articleEditor.mde;
+            console.log(mde);
+            formData.append('body', mde.value());
+            formData.append('title', articleEditor.title);
+            axios.post('/api/v1/drafts/' + this.draftRef + '?_method=put', formData).then(function (response) {
+                console.log(response.data);
+                var draft = response.data.data;
+                console.log(draft);
+                _this.updateStatusLabel = '文章已保存';
+                //                    this.draft = draft;
+                //                    this.user = draft.user;
+            }, function (error) {
+                console.log(error);
+            });
         }, 3000),
         update: function update() {},
         selectImage: function selectImage(editor) {
@@ -3497,7 +3538,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             fileBtn.click();
         },
         uploadImage: function uploadImage() {
-            var _this = this;
+            var _this2 = this;
 
             var fileBtn = document.getElementById("btn_file");
             var formData = new FormData();
@@ -3506,9 +3547,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = _ref.data;
 
 
-                var pos = _this.simplemde.codemirror.getCursor();
-                _this.simplemde.codemirror.setSelection(pos, pos);
-                _this.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
+                var pos = _this2.simplemde.codemirror.getCursor();
+                _this2.simplemde.codemirror.setSelection(pos, pos);
+                _this2.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
 
                 console.log(data);
             });
@@ -3516,13 +3557,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(1);
         },
         fetchDraft: function fetchDraft() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.get('/api/v1/drafts/' + this.draftRef).then(function (response) {
                 console.log(response.data);
                 var draft = response.data.data;
-                _this2.draft = draft;
-                _this2.user = draft.user;
+                _this3.draft = draft;
+                _this3.user = draft.user;
+                _this3.firstFetch = false;
             }, function (error) {
                 console.log(error);
             });
@@ -3540,14 +3582,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.selectedTags.push(tag);
         },
         queryTag: function queryTag(qw) {
-            var _this3 = this;
+            var _this4 = this;
 
             axios.get('/api/v1/tags', {
                 params: {
                     q: qw
                 }
             }).then(function (response) {
-                _this3.tags = response.data.data;
+                _this4.tags = response.data.data;
 
                 console.log(response.data);
             });
@@ -43925,7 +43967,11 @@ var render = function() {
         },
         [
           _c("div", { attrs: { slot: "bottom-right" }, slot: "bottom-right" }, [
-            _c("button", { staticClass: "button m-r-20" }, [_vm._v("保存")]),
+            _c(
+              "button",
+              { staticClass: "button m-r-20", on: { click: _vm.updateDraft } },
+              [_vm._v("保存")]
+            ),
             _vm._v(" "),
             _c("button", { staticClass: "button is-warning m-r-20" }, [
               _vm._v("返回")

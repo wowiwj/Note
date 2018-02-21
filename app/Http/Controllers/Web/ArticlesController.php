@@ -69,11 +69,12 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //$user
         $draft = Auth::user()->drafts()->create([
             'title' => Carbon::now()->toDateTimeString(),
-            'body' => ''
+            'body' => '',
+            'relation_type' => Article::class
         ]);
+
 
         return redirect()->route('drafts.edit',$draft->ref);
     }

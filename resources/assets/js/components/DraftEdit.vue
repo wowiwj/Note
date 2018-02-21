@@ -11,7 +11,7 @@
 
         >
             <div slot="bottom-right">
-                <button class="button m-r-20">保存</button>
+                <button @click="updateDraft" class="button m-r-20">保存</button>
                 <button class="button is-warning m-r-20">返回</button>
             </div>
 
@@ -108,24 +108,35 @@
                 isModalPublishActive:false,
                 filteredTags: [],
                 isSelectOnly: false,
-                allowNew: false
+                allowNew: false,
+                firstFetch:true
             }
-        },
-        computed: {
-            isUpdate: function () {
-                return this.articleId != null
-            }
-
-
         },
         methods: {
 
-            editorChange(mde){
+            editorChange(articleEditor){
                 this.updateStatusLabel = '文章已更新';
-                this.updateArticle(mde)
+                this.updateDraft(articleEditor)
             },
-            updateArticle:_.debounce(function (mde) {
-                this.updateStatusLabel = '文章已保存';
+            updateDraft:_.debounce(function (articleEditor) {
+                let formData = new FormData();
+                console.log(articleEditor);
+                let mde = articleEditor.mde;
+                console.log(mde)
+                formData.append('body', mde.value())
+                formData.append('title', articleEditor.title)
+                axios.post('/api/v1/drafts/' + this.draftRef+ '?_method=put',formData).then((response) => {
+                    console.log(response.data);
+                    let draft = response.data.data;
+                    console.log(draft);
+                    this.updateStatusLabel = '文章已保存';
+//                    this.draft = draft;
+//                    this.user = draft.user;
+                }, (error) => {
+                    console.log(error);
+                });
+
+
             },3000),
             update() {
 
@@ -157,6 +168,7 @@
                     let draft = response.data.data;
                     this.draft = draft;
                     this.user = draft.user;
+                    this.firstFetch = false
                 }, (error) => {
                     console.log(error);
                 });

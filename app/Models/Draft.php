@@ -18,10 +18,9 @@ class Draft extends Model
         return $this->morphTo();
     }
 
+    public function children(){
 
-    public function relations()
-    {
-        return $this->morphMany(Draft::class, 'relation');
+        return $this->hasMany(Draft::class,'parent_id','id');
     }
 
     public function user(){
@@ -36,6 +35,11 @@ class Draft extends Model
 
     public function getRefAttribute(){
         return Hashids::encode($this->id);
+    }
+
+    public static function getWithRef($ref){
+        $id = Hashids::decode($ref);
+        return static::query()->find($id);
     }
 
 
