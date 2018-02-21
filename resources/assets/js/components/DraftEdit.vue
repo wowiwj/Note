@@ -37,8 +37,7 @@
                     <div class="article-categories">
                         <p>选择文章分类(*)</p>
 
-                        <a @click="selectCategory(item)" v-for="item in categories" class="button is-light">{{ item.name }}</a>
-                        <a v-for="item in categories" class="button is-success is-outlined">{{ item.name }}</a>
+                        <a @click="selectCategory(item)" v-for="item in categories" :class="categoryStyles(item)">{{ item.name }}</a>
 
                     </div>
 
@@ -65,7 +64,7 @@
                         </div>
                     </section>
 
-                    <b-checkbox>原创文章(*)</b-checkbox>
+                    <b-checkbox v-model="isOriginal">原创文章(*)</b-checkbox>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button" type="button" @click="isModalPublishActive = !isModalPublishActive">取消
@@ -172,9 +171,17 @@
                 console.log(1);
             },
             selectCategory(item){
+                this.category = item
+            },
+            categoryStyles(item){
 
-                console.log(item);
-
+                let selected = this.category ? this.category.id === item.id : false;
+                return {
+                    'button':true,
+                    'is-success': selected,
+                    'is-outlined': selected,
+                    'is-light' : !selected
+                }
             },
             fetchDraft() {
                 axios.get('/api/v1/drafts/' + this.draftRef).then((response) => {
@@ -223,6 +230,7 @@
 
             this.fetchDraft();
             this.fetchCategories();
+            this.queryTag();
 
             console.log('created');
 

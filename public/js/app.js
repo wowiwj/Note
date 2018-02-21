@@ -3479,7 +3479,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -3573,8 +3572,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(1);
         },
         selectCategory: function selectCategory(item) {
+            this.category = item;
+        },
+        categoryStyles: function categoryStyles(item) {
 
-            console.log(item);
+            var selected = this.category ? this.category.id === item.id : false;
+            return {
+                'button': true,
+                'is-success': selected,
+                'is-outlined': selected,
+                'is-light': !selected
+            };
         },
         fetchDraft: function fetchDraft() {
             var _this4 = this;
@@ -3620,6 +3628,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.fetchDraft();
         this.fetchCategories();
+        this.queryTag();
 
         console.log('created');
     }
@@ -44074,21 +44083,13 @@ var render = function() {
                         return _c(
                           "a",
                           {
-                            staticClass: "button is-light",
+                            class: _vm.categoryStyles(item),
                             on: {
                               click: function($event) {
                                 _vm.selectCategory(item)
                               }
                             }
                           },
-                          [_vm._v(_vm._s(item.name))]
-                        )
-                      }),
-                      _vm._v(" "),
-                      _vm._l(_vm.categories, function(item) {
-                        return _c(
-                          "a",
-                          { staticClass: "button is-success is-outlined" },
                           [_vm._v(_vm._s(item.name))]
                         )
                       })
@@ -44145,7 +44146,19 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("b-checkbox", [_vm._v("原创文章(*)")])
+                  _c(
+                    "b-checkbox",
+                    {
+                      model: {
+                        value: _vm.isOriginal,
+                        callback: function($$v) {
+                          _vm.isOriginal = $$v
+                        },
+                        expression: "isOriginal"
+                      }
+                    },
+                    [_vm._v("原创文章(*)")]
+                  )
                 ],
                 1
               ),
