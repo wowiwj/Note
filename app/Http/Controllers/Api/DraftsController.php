@@ -42,7 +42,7 @@ class DraftsController extends ApiController
         $newDraft->relation_id = $draft->relation_id;
         $newDraft->relation_type = $draft->relation_type;
         $newDraft->save();
-        return $this->success('保存成功');
+        return $this->message('保存成功');
 
     }
 }

@@ -94,6 +94,9 @@
             this.simplemde.toggleSideBySide()
 
             this.simplemde.codemirror.on("change", function () {
+                if (!this.shouldEmit){
+                    return
+                }
                 this.$emit('edit-change', {
                     mde: this.simplemde,
                     title: this.title

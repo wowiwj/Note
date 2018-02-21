@@ -117,6 +117,10 @@
         methods: {
 
             editorChange(articleEditor) {
+                if (this.firstFetch){
+                    this.firstFetch = false
+                    return
+                }
                 this.updateStatusLabel = '文章已更新';
                 this.updateDraft(articleEditor)
             },

@@ -2583,6 +2583,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.simplemde.toggleSideBySide();
 
         this.simplemde.codemirror.on("change", function () {
+            if (!this.shouldEmit) {
+                return;
+            }
             this.$emit('edit-change', {
                 mde: this.simplemde,
                 title: this.title
@@ -3509,6 +3512,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         editorChange: function editorChange(articleEditor) {
+            if (this.firstFetch) {
+                this.firstFetch = false;
+                return;
+            }
             this.updateStatusLabel = '文章已更新';
             this.updateDraft(articleEditor);
         },
