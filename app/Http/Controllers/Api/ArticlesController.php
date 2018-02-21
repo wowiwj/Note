@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
+use App\Models\Draft;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ArticleResource;
@@ -30,27 +31,35 @@ class ArticlesController extends ApiController
     }
 
 
+
+
     public function store(Request $request)
     {
         $this->validate($request,[
             'category_id' => 'required|exists:categories,id',
-            'title' => 'required',
-            'body' => 'required',
+            'draft_ref' => 'required',
             'is_original' => 'required',
             'tags' => ''
         ]);
+
+        $ref = $request->get('draft_ref');
+        $draft = Draft::getWithRef($ref);
+        $draft = $draft->getLastUpdate();
 
         $tags = json_decode($request->tags,true);
 
         $user = Auth::user();
 
         $article = Article::create([
-            'title' => $request->title,
-            'content' => $request->body,
+            'title' => $draft->title,
+            'content' => $draft->body,
+            'draft_id' => $draft->id,
             'user_id' => $user->id,
             'category_id' => $request->category_id,
             'is_original' => $request->is_original
         ]);
+
+        Draft::relationIdWithRef($ref,$article->id);
 
         $article->subscribe();
 
@@ -64,24 +73,27 @@ class ArticlesController extends ApiController
     {
         $this->validate($request,[
             'category_id' => 'required|exists:categories,id',
-            'title' => 'required',
-            'content' => 'required',
+            'draft_ref' => 'required',
             'is_original' => 'required',
             'tags' => ''
         ]);
 
         $tags = json_decode($request->tags,true);
 
+        $ref = $request->get('draft_ref');
+        $draft = Draft::getWithRef($ref);
+        $draft = $draft->getLastUpdate();
 
         $this->authorize('update',$article);
         $article->update([
-            'title' => $request->title,
-            'content' => $request->get('content'),
+            'title' => $draft->title,
+            'content' => $draft->body,
             'category_id' => $request->category_id,
-            'is_original' => $request->is_original
+            'is_original' => $request->is_original,
+            'draft_id' => $draft->id
         ]);
-        return $article->syncTags($tags);
-        
+        $article = $article->syncTags($tags);
+        return new ArticleResource($article);
     }
 
 

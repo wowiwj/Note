@@ -11,8 +11,8 @@
 
         >
             <div slot="bottom-right">
-                <button @click="updateDraft" class="button m-r-20">保存</button>
-                <button class="button is-warning m-r-20">返回</button>
+
+                <a href="/" class="button is-warning m-r-20">返回</a>
             </div>
 
             <a class="button is-white">{{ updateStatusLabel }}</a>
@@ -69,7 +69,9 @@
                 <footer class="modal-card-foot">
                     <button class="button" type="button" @click="isModalPublishActive = !isModalPublishActive">取消
                     </button>
-                    <button class="button is-primary">发表</button>
+                    <button v-if="isUpdate" @click="updateArticle" class="button is-primary">更新</button>
+                    <button v-else="isUpdate" @click="createArticle" class="button is-primary">发表</button>
+
                 </footer>
             </div>
 
@@ -110,7 +112,8 @@
                 filteredTags: [],
                 isSelectOnly: false,
                 allowNew: false,
-                firstFetch: true
+                firstFetch: true,
+                article:{}
             }
         },
         methods: {
@@ -190,6 +193,7 @@
                     this.draft = draft;
                     this.user = draft.user;
                     this.firstFetch = false
+                    this.article = draft.relation
                 }, (error) => {
                     console.log(error);
                 });
@@ -223,6 +227,89 @@
                 console.log(qw);
 
 
+            },
+            createArticle(){
+
+                if (!this.category) {
+                    this.$toast.open({
+                        duration: 5000,
+                        message: `必须要选择一个分类`,
+                        position: 'is-bottom',
+                        type: 'is-danger'
+                    })
+                    return;
+                }
+
+                var formData = new FormData(event.target);
+                formData.append('draft_ref', this.draftRef)
+                formData.append('category_id', this.category.id)
+                formData.append('is_original', this.isOriginal ? 1 : 0)
+                formData.append('tags', JSON.stringify(this.selectedTags));
+
+                console.log(formData)
+
+
+                axios.post('/api/v1/articles', formData).then((response) => {
+
+                    flash('添加成功', 'success');
+
+                    var article = response.data.data;
+                    console.log(article)
+
+                    var path = 'articles' + '/' + article.category.name + '/' + article.id;
+
+
+                    window.location.href = '/' + path;
+                    console.log(path);
+
+                }, (error) => {
+                    console.log(error);
+                });
+
+            },
+            updateArticle(){
+
+                if (!this.category) {
+                    this.$toast.open({
+                        duration: 5000,
+                        message: `必须要选择一个分类`,
+                        position: 'is-bottom',
+                        type: 'is-danger'
+                    })
+                    return;
+                }
+
+                var formData = new FormData(event.target);
+                formData.append('draft_ref', this.draftRef)
+                formData.append('category_id', this.category.id)
+                formData.append('is_original', this.isOriginal ? 1 : 0)
+                formData.append('tags', JSON.stringify(this.selectedTags));
+
+                console.log(formData)
+
+
+                axios.post('/api/v1/articles/' + this.article.id + '?_method=put', formData).then((response) => {
+
+                    this.$toast.open({
+                        duration: 5000,
+                        message: `更新成功`,
+                        position: 'is-top',
+                        type: 'is-success'
+                    })
+
+                    var article = response.data.data;
+                    console.log(article)
+
+                    var path = 'articles' + '/' + article.category.name + '/' + article.id;
+
+
+                    window.location.href = '/' + path;
+                    console.log(path);
+
+                }, (error) => {
+                    console.log(error);
+                });
+
             }
 
         },
@@ -231,9 +318,19 @@
             this.fetchDraft();
             this.fetchCategories();
             this.queryTag();
+        },
+        computed:{
+            isUpdate:function () {
+                return this.article !== null;
+            }
 
-            console.log('created');
-
+        },
+        watch:{
+            article:function (value) {
+                this.category = value.category
+                this.selectedTags = value.tags
+                this.isOriginal = !!value.is_original
+            }
 
         }
     }

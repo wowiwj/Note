@@ -23,10 +23,9 @@ class CreateArticlesTable extends Migration
             $table->string('page_image')->nullable();
             $table->text('body');
             $table->boolean('is_original')->default(false)->comment('是否为原创');
+            $table->boolean('is_secret')->default(false)->comment('是否为私密文章');
 
-            // published_at 为空的话默认为草稿
-            $table->timestamp('published_at')->nullable();
-
+            $table->unsignedInteger('draft_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

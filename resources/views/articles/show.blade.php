@@ -74,7 +74,7 @@
                                 @can('update',$article)
                                 <div class="is-pulled-right m-l-20">
                                     <b-tooltip label="编辑">
-                                        <a class="popover-with-html" href="{{ route('articles.edit',$article) }}">
+                                        <a class="popover-with-html" href="{{ route('drafts.edit',$article->currentDraft->ref) }}">
                                             <i class="fa fa-edit"></i> <span></span>
                                         </a>
                                     </b-tooltip>

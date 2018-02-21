@@ -53,6 +53,10 @@ class Article extends Model
         return $this->morphMany(Draft::class,'relation');
     }
 
+    public function currentDraft(){
+        return $this->belongsTo(Draft::class,'draft_id','id');
+    }
+
 
     public function path()
     {

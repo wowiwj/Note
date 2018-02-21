@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use function foo\func;
 use Illuminate\Database\Eloquent\Model;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -9,7 +10,7 @@ class Draft extends Model
 {
     protected $guarded = [];
 
-    protected $hidden = ['id'];
+//    protected $hidden = ['id'];
 
     protected $appends = ['ref'];
 
@@ -39,7 +40,25 @@ class Draft extends Model
 
     public static function getWithRef($ref){
         $id = Hashids::decode($ref);
-        return static::query()->find($id);
+        return Draft::query()->find($id)->first();
+    }
+
+    public static function relationIdWithRef($ref,$refId){
+        $draft = self::getWithRef($ref);
+        $draft->relation_id = $refId;
+        $draft->save();
+        $draft->children()->each(function ($draft) use ($refId) {
+            $draft->relation_id = $refId;
+            $draft->save();
+        });
+    }
+
+    public function getLastUpdate(){
+        $draft = $this;
+        if ($this->children()->count() > 0){
+            $draft = $this->children()->latest()->first();
+        }
+        return $draft;
     }
 
 

@@ -21,7 +21,7 @@ class DraftsController extends ApiController
         if ($draft->children()->count() > 0){
             $lastUpdate = $draft->children()->latest()->first();
         }
-        return new DraftResource($lastUpdate->load('user'));
+        return new DraftResource($lastUpdate->load(['user','relation']));
     }
 
     public function update(Request $request,Draft $draft){

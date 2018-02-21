@@ -3479,6 +3479,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -3505,7 +3507,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filteredTags: [],
             isSelectOnly: false,
             allowNew: false,
-            firstFetch: true
+            firstFetch: true,
+            article: {}
         };
     },
 
@@ -3593,6 +3596,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this4.draft = draft;
                 _this4.user = draft.user;
                 _this4.firstFetch = false;
+                _this4.article = draft.relation;
             }, function (error) {
                 console.log(error);
             });
@@ -3622,6 +3626,82 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(response.data);
             });
             console.log(qw);
+        },
+        createArticle: function createArticle() {
+
+            if (!this.category) {
+                this.$toast.open({
+                    duration: 5000,
+                    message: '\u5FC5\u987B\u8981\u9009\u62E9\u4E00\u4E2A\u5206\u7C7B',
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                });
+                return;
+            }
+
+            var formData = new FormData(event.target);
+            formData.append('draft_ref', this.draftRef);
+            formData.append('category_id', this.category.id);
+            formData.append('is_original', this.isOriginal ? 1 : 0);
+            formData.append('tags', JSON.stringify(this.selectedTags));
+
+            console.log(formData);
+
+            axios.post('/api/v1/articles', formData).then(function (response) {
+
+                flash('添加成功', 'success');
+
+                var article = response.data.data;
+                console.log(article);
+
+                var path = 'articles' + '/' + article.category.name + '/' + article.id;
+
+                window.location.href = '/' + path;
+                console.log(path);
+            }, function (error) {
+                console.log(error);
+            });
+        },
+        updateArticle: function updateArticle() {
+            var _this6 = this;
+
+            if (!this.category) {
+                this.$toast.open({
+                    duration: 5000,
+                    message: '\u5FC5\u987B\u8981\u9009\u62E9\u4E00\u4E2A\u5206\u7C7B',
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                });
+                return;
+            }
+
+            var formData = new FormData(event.target);
+            formData.append('draft_ref', this.draftRef);
+            formData.append('category_id', this.category.id);
+            formData.append('is_original', this.isOriginal ? 1 : 0);
+            formData.append('tags', JSON.stringify(this.selectedTags));
+
+            console.log(formData);
+
+            axios.post('/api/v1/articles/' + this.article.id + '?_method=put', formData).then(function (response) {
+
+                _this6.$toast.open({
+                    duration: 5000,
+                    message: '\u66F4\u65B0\u6210\u529F',
+                    position: 'is-top',
+                    type: 'is-success'
+                });
+
+                var article = response.data.data;
+                console.log(article);
+
+                var path = 'articles' + '/' + article.category.name + '/' + article.id;
+
+                window.location.href = '/' + path;
+                console.log(path);
+            }, function (error) {
+                console.log(error);
+            });
         }
     },
     created: function created() {
@@ -3629,8 +3709,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.fetchDraft();
         this.fetchCategories();
         this.queryTag();
+    },
 
-        console.log('created');
+    computed: {
+        isUpdate: function isUpdate() {
+            return this.article !== null;
+        }
+
+    },
+    watch: {
+        article: function article(value) {
+            this.category = value.category;
+            this.selectedTags = value.tags;
+            this.isOriginal = !!value.is_original;
+        }
+
     }
 });
 
@@ -43998,14 +44091,10 @@ var render = function() {
         [
           _c("div", { attrs: { slot: "bottom-right" }, slot: "bottom-right" }, [
             _c(
-              "button",
-              { staticClass: "button m-r-20", on: { click: _vm.updateDraft } },
-              [_vm._v("保存")]
-            ),
-            _vm._v(" "),
-            _c("button", { staticClass: "button is-warning m-r-20" }, [
-              _vm._v("返回")
-            ])
+              "a",
+              { staticClass: "button is-warning m-r-20", attrs: { href: "/" } },
+              [_vm._v("返回")]
+            )
           ]),
           _vm._v(" "),
           _c("a", { staticClass: "button is-white" }, [
@@ -44178,9 +44267,23 @@ var render = function() {
                   [_vm._v("取消\n                ")]
                 ),
                 _vm._v(" "),
-                _c("button", { staticClass: "button is-primary" }, [
-                  _vm._v("发表")
-                ])
+                _vm.isUpdate
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "button is-primary",
+                        on: { click: _vm.updateArticle }
+                      },
+                      [_vm._v("更新")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass: "button is-primary",
+                        on: { click: _vm.createArticle }
+                      },
+                      [_vm._v("发表")]
+                    )
               ])
             ]
           )
