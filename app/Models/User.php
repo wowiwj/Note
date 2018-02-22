@@ -85,7 +85,11 @@ class User extends Authenticatable
 
     public function visitedArticleCacheKey($article){
 
-        return sprintf("users.%s.visits.%s",$this->id,$article->id);
+        return sprintf("article.users.%s.visits.%s",$this->id,$article->id);
+    }
+
+    public function visitedDiscussionCacheKey($discussion){
+        return sprintf("discussion.users.%s.visits.%s",$this->id,$discussion->id);
     }
 
 

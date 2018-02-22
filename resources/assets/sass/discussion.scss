@@ -1,0 +1,184 @@
+.discussion-info {
+  padding-bottom: 10px;
+  padding: 20px;
+  border-bottom: 1px #f0f0f0 solid;
+  cursor: pointer;
+
+  &:hover{
+
+    background-color:#fdfdfd;
+
+  }
+
+  .article-box {
+    background-color: red;
+
+  }
+
+  .meta {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .front {
+
+      flex: 1;
+      align-items: center;
+      display: flex;
+
+      .time{
+
+        font-size: 12px;
+        color: #888;
+
+      }
+      a {
+
+        height: 22px;
+        .avatar {
+          width: 22px;
+
+        }
+
+        &.nickname {
+          color: #666;
+
+          line-height: 22px;
+
+        }
+
+
+
+      }
+
+    }
+
+    .tags {
+
+
+      .tag {
+
+        background-color: #efefef;
+        // color: rgba(0, 0, 0, .6);
+
+      }
+
+      // margin: 0 5px;
+
+      // width: 100%;
+      // flex: 2;
+
+    }
+
+  }
+}
+
+.discussion-intro {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 10px;
+
+  .placeimage {
+    padding: 0 10px;
+    flex: 3;
+    img {
+      margin-top: 0;
+      padding-top: 0;
+      border-radius: 5px;
+      max-width: 100%;
+      margin-bottom: 0;
+    }
+
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    .placeimage {
+      padding: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .describe {
+
+      h4 {
+        padding: 10px;
+        padding-left: 0;
+
+      }
+    }
+  }
+  .describe {
+    flex: 9;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    padding-bottom: 5px;
+    .title {
+      flex: 1;
+      width: 100%;
+      color: #555;
+      font-weight:600;
+      font-size:20px;
+
+    }
+    h4 {
+      margin: 0;
+    }
+
+    a:hover {
+
+      .title {
+        color: #0000cc;
+      }
+
+    }
+
+    .info {
+      flex: 4;
+
+      width: 100%;
+
+    }
+  }
+}
+
+.discussion-state {
+
+  // background-color: #ccc;
+  display: flex;
+
+  .extra {
+    .label {
+      font-weight: 500;
+      font-size: 12px;
+
+    }
+
+    padding: 2px 6px;
+    color: #ea6f5a !important;
+    border: 1px solid rgba(236, 97, 73, .7);
+    border-radius: 3px;
+  }
+
+  .info {
+
+    font-size: 14px;
+    color: #999;
+    .icon {
+      vertical-align: inherit;
+      margin-left: 10px;
+      margin-right: -5px;
+
+    }
+
+  }
+
+}

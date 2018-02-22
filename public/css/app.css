@@ -20775,6 +20775,189 @@ a:hover {
   color: #3273dc;
 }
 
+.discussion-info {
+  padding-bottom: 10px;
+  padding: 20px;
+  border-bottom: 1px #f0f0f0 solid;
+  cursor: pointer;
+}
+
+.discussion-info:hover {
+  background-color: #fdfdfd;
+}
+
+.discussion-info .article-box {
+  background-color: red;
+}
+
+.discussion-info .meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.discussion-info .meta .front {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.discussion-info .meta .front .time {
+  font-size: 12px;
+  color: #888;
+}
+
+.discussion-info .meta .front a {
+  height: 22px;
+}
+
+.discussion-info .meta .front a .avatar {
+  width: 22px;
+}
+
+.discussion-info .meta .front a.nickname {
+  color: #666;
+  line-height: 22px;
+}
+
+.discussion-info .meta .tags .tag {
+  background-color: #efefef;
+}
+
+.discussion-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10px;
+}
+
+.discussion-intro .placeimage {
+  padding: 0 10px;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.discussion-intro .placeimage img {
+  margin-top: 0;
+  padding-top: 0;
+  border-radius: 5px;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .discussion-intro {
+    display: block;
+  }
+
+  .discussion-intro .placeimage {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .discussion-intro .describe h4 {
+    padding: 10px;
+    padding-left: 0;
+  }
+}
+
+.discussion-intro .describe {
+  -webkit-box-flex: 9;
+      -ms-flex: 9;
+          flex: 9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: auto;
+  padding-bottom: 5px;
+}
+
+.discussion-intro .describe .title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  color: #555;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.discussion-intro .describe h4 {
+  margin: 0;
+}
+
+.discussion-intro .describe a:hover .title {
+  color: #0000cc;
+}
+
+.discussion-intro .describe .info {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  width: 100%;
+}
+
+.discussion-state {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.discussion-state .extra {
+  padding: 2px 6px;
+  color: #ea6f5a !important;
+  border: 1px solid rgba(236, 97, 73, 0.7);
+  border-radius: 3px;
+}
+
+.discussion-state .extra .label {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.discussion-state .info {
+  font-size: 14px;
+  color: #999;
+}
+
+.discussion-state .info .icon {
+  vertical-align: inherit;
+  margin-left: 10px;
+  margin-right: -5px;
+}
+
 .card {
   -webkit-box-shadow: none;
           box-shadow: none;

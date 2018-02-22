@@ -30,6 +30,7 @@
                 <div class="card-content nopadding">
                     <div class="content">
                         @forelse($discussions as $discussion)
+                            @include('discussions.partials.discussion')
                         @empty
                             <div class="empty-block">没有文章数据</div>
                         @endforelse
@@ -45,9 +46,7 @@
 
 
         <div class="column">
-
             @include('layouts.partials.category')
-
         </div>
 
 
