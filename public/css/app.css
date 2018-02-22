@@ -20682,17 +20682,17 @@ a:hover {
   color: #666;
 }
 
-.article-page .favorite-article {
+.article-page .favorite-subject {
   color: #ff763b;
   font-size: 2rem;
 }
 
-.article-page .favorite-article .favorite-count {
+.article-page .favorite-subject .favorite-count {
   font-size: 1.2rem;
   color: #666;
 }
 
-.article-page .favorite-article .favorite-users {
+.article-page .favorite-subject .favorite-users {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20702,12 +20702,12 @@ a:hover {
   font-size: 0;
 }
 
-.article-page .favorite-article .favorite-users .favorite-user {
+.article-page .favorite-subject .favorite-users .favorite-user {
   padding-bottom: 6px;
   margin: 0 3px;
 }
 
-.article-page .favorite-article .favorite-users .favorite-user img {
+.article-page .favorite-subject .favorite-users .favorite-user img {
   border-radius: 50%;
   width: 22px;
   height: 22px;
@@ -20776,7 +20776,6 @@ a:hover {
 }
 
 .discussion-info {
-  padding-bottom: 10px;
   padding: 20px;
   border-bottom: 1px #f0f0f0 solid;
   cursor: pointer;
@@ -20956,6 +20955,57 @@ a:hover {
   vertical-align: inherit;
   margin-left: 10px;
   margin-right: -5px;
+}
+
+.discussion-page .main-title {
+  text-align: center;
+  padding-top: 3rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.discussion-page .main-title .title-summary {
+  color: #aaa;
+  line-height: 2rem;
+  padding: 15px 10px 0;
+  border-bottom: solid 1px #ccc;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.discussion-page .main-title .title-summary a {
+  color: #666;
+}
+
+.discussion-page .favorite-subject {
+  color: #ff763b;
+  font-size: 2rem;
+}
+
+.discussion-page .favorite-subject .favorite-count {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.discussion-page .favorite-subject .favorite-users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 0;
+}
+
+.discussion-page .favorite-subject .favorite-users .favorite-user {
+  padding-bottom: 6px;
+  margin: 0 3px;
+}
+
+.discussion-page .favorite-subject .favorite-users .favorite-user img {
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
 }
 
 .card {

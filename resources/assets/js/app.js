@@ -45,6 +45,7 @@ Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('ArticleMdEditor', require('./components/ArticleMdEditor.vue'));
 Vue.component('parse', require('./components/Parse.vue'));
 Vue.component('ArticleView',require('./pages/Article.vue'));
+Vue.component('DiscussionView',require('./pages/Discussion.vue'));
 Vue.component('Paginator',require('./components/Paginator.vue'));
 Vue.component('Comments',require('./components/Comments.vue'));
 Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));

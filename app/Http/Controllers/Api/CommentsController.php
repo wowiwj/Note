@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Base\Service\Mention;
+use App\Models\Discussion;
 use App\Models\SpecialPage;
 use App\Models\User;
 use App\Notifications\ArticleWasUpdated;
@@ -28,6 +29,27 @@ class CommentsController extends ApiController
         $comments = $article->comments()->paginate(20);
 
         return CommentCollection::collection($comments);
+    }
+
+    public function discussionComments(Discussion $discussion){
+        $comments = $discussion->comments()->paginate(20);
+        return CommentCollection::collection($comments);
+
+    }
+    public function storeDiscussionComments(Discussion $discussion,Request $request){
+        $this->validate($request,[
+            'body' => 'required'
+        ]);
+
+        $mention = new Mention();
+        $parsed_body = $mention->parse($request->body);
+
+        $comment = $discussion->comments()->create([
+            'content' => $parsed_body,
+            'user_id' => Auth::user()->id
+        ]);
+        return new CommentCollection($comment);
+
     }
 
     public function pageComments($name){

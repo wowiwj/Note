@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Base\Traits\GetModelByMorpType;
 use App\Models\Article;
+use App\Models\Discussion;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SubscribeRequest extends FormRequest
@@ -14,7 +15,8 @@ class SubscribeRequest extends FormRequest
     protected function map()
     {
         return [
-            'article' => Article::class
+            'article' => Article::class,
+            'discussion' => Discussion::class
         ];
     }
 

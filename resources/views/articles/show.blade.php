@@ -66,13 +66,14 @@
 
                             <div class="column">
 
-                                <favorite-article
+                                <favorite-subject
                                     :favorites_count="{{ $article->favorites_count }}"
                                     :is_favorited="{{ (int)$article->is_favorited }}"
-                                    :article_id="{{$article->id}}"
+                                    :subject_id="{{$article->id}}"
+                                    subject="article"
                                 >
 
-                                </favorite-article>
+                                </favorite-subject>
                                 
 
                             </div>
@@ -118,7 +119,7 @@
                                 </div>
                                 @endcan
 
-                                <article-subscribe :initial-subscribed="{{ (int)$article->isSubscribed }}" :article-id = {{ $article->id }}></article-subscribe>
+                                <subject-subscribe subject="article" :initial-subscribed="{{ (int)$article->isSubscribed }}" :subject-id = {{ $article->id }}></subject-subscribe>
 
                             </div>
                         </div>

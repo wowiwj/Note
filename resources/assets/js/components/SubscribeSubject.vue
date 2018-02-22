@@ -14,7 +14,7 @@
 <script>
 
     export default {
-        props:['initialSubscribed','articleId'],
+        props:['initialSubscribed','subjectId','subject'],
         data(){
             return {
                 isSubscribe:this.initialSubscribed
@@ -25,7 +25,7 @@
 
                 if (! this.isSubscribe){
                     this.$dialog.confirm({
-                        message: '确定要订阅这篇文章么?',
+                        message: '确定要订阅该主题么?',
                         confirmText: '订阅',
                         cancelText: '取消',
                         onConfirm: () => this.subscribe()
@@ -44,8 +44,8 @@
             subscribe(){
 
                 axios.post('/api/v1/subscribes',{
-                    'type':'article',
-                    'type_id':this.articleId
+                    'type':this.subject,
+                    'type_id':this.subjectId
                 }).then((res)=>{
                     console.log(res.data)
                     this.isSubscribe = true
@@ -65,8 +65,8 @@
             unSubscribe(){
 
                 axios.post('/api/v1/subscribes?_method=delete',{
-                    'type':'article',
-                    'type_id':this.articleId
+                    'type':this.subject,
+                    'type_id':this.subjectId
                 }).then((res)=>{
                     console.log(res.data)
                     this.isSubscribe = false

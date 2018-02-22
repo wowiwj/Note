@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Base\Traits\GetModelByMorpType;
 use App\Models\Article;
+use App\Models\Discussion;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Comment;
 
@@ -16,7 +17,8 @@ class FavoriteRequest extends FormRequest
     {
         return [
             'comment' => Comment::class,
-            'article' => Article::class
+            'article' => Article::class,
+            'discussions' => Discussion::class
         ];
     }
 

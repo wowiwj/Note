@@ -1,13 +1,13 @@
 <script>
 
-    import ArticleSubscribe from '../components/ArticleSubscribe.vue'
-    import FavoriteArticle from '../components/FavoriteArticle.vue'
+    import SubscribeSubject from '../components/SubscribeSubject.vue'
+    import FavoriteSubject from '../components/FavoriteSubject.vue'
 
     export default{
         props:['initialCommentsCount','articleId'],
         components:{
-            'article-subscribe': ArticleSubscribe,
-            'favorite-article': FavoriteArticle
+            'subject-subscribe': SubscribeSubject,
+            'favorite-subject': FavoriteSubject
         },
         data(){
             return {

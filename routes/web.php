@@ -14,8 +14,6 @@
 
 Route::get('/', function () {
 
-//    return view('admin.home.index');
-
     return redirect('articles');
 
 });
@@ -70,8 +68,8 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('drafts','DraftsController@index')->name('drafts.index');
     Route::delete('drafts/{draft}','DraftsController@destroy')->name('drafts.destroy');
 
-    Route::get('note/draft/{draft}','DraftsController@show')->name('drafts.show');
-    Route::get('note/draft/{draft}/edit','DraftsController@edit')->name('drafts.edit');
+    Route::get('article/draft/{draft}','DraftsController@show')->name('drafts.show');
+    Route::get('article/draft/{draft}/edit','DraftsController@edit')->name('drafts.edit');
 
     Route::get('notifications','NotificationsController@index')->name('notifications.index');
 

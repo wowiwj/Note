@@ -42,8 +42,11 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::put('drafts/{draft}','DraftsController@update');
 
     Route::get('articles/{category}/{article}/comments','CommentsController@index');
-
     Route::post('articles/{category}/{article}/comments','CommentsController@store');
+
+    Route::get('discussions/{discussion}/comments','CommentsController@discussionComments');
+    Route::post('discussions/{discussion}/comments','CommentsController@storeDiscussionComments');
+
 
     Route::delete('comments/{comment}','CommentsController@destroy');
 
