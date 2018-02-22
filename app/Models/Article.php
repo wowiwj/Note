@@ -27,7 +27,8 @@ class Article extends Model
     protected $appends = [
         'isSubscribed',
         'favoritesCount' => 'favorites_count',
-        'isFavorited' => 'is_favorited'
+        'isFavorited' => 'is_favorited',
+        'lastComment'
     ];
 
 
@@ -103,6 +104,12 @@ class Article extends Model
     public function scopeFilter($query, ArticleFilters $filters)
     {
         return $filters->apply($query);
+    }
+
+    public function getlastCommentAttribute(){
+
+        $lastComment = $this->comments()->latest()->first();
+        return $lastComment;
     }
 
     public function syncTags($tags){

@@ -29,6 +29,7 @@ class ArticlesController extends Controller
         // https://stackoverflow.com/questions/17159273/laravel-pagination-links-not-including-other-get-parameters
         $articles->appends(Input::except('page'));
 
+
 //        return $articles;
 
         return view('articles.index',compact('articles'));

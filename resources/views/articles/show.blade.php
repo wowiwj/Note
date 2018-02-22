@@ -10,14 +10,41 @@
 
             <div class="column is-9">
                 <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title article-title">
-                            {{ $article->title }}
-                        </p>
 
-                    </header>
                     <div class="card-content">
                         <div class="content">
+
+                            <div class="title is-3 main-title">
+                                {{ $article->title }}
+                                <div class="title-summary">
+                                    分类:
+                                    <a href="{{ $article->category->path() }}">
+                                        {{ $article->category->name }}
+                                    </a>
+                                    ⋅
+                                    <a href="#" class="m-l-5">
+                                        {{ $article->user->name }}
+                                    </a>
+                                    于
+                                    {{ $article->created_at->diffForHumans()}}
+                                    ⋅
+                                    @if($article->lastComment)
+                                        <span class="is-hidden-mobile">
+                                            最后回复由
+                                            <a href="#" class="m-l-5">
+                                                {{ $article->lastComment->user->name }}
+                                            </a>
+                                            于
+                                            {{ $article->lastComment->created_at->diffForHumans()}}
+                                        </span>
+
+                                    @endif
+                                    ⋅
+                                    {{ $article->views_count }}阅读
+                                </div>
+                            </div>
+
+
                             <div class="article">
                                 <parse :content="{{ $article->body }}"></parse>
                             </div>

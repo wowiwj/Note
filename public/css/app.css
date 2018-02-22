@@ -19160,7 +19160,7 @@ nav {
 
 body {
   /* Margin bottom by footer height */
-  font-family: "lato-regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, "PingFang SC","Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   background-color: #f4f5f5;
 }
 
@@ -20660,6 +20660,26 @@ a:hover {
 
 .article-page .article-title {
   font-size: 24px;
+}
+
+.article-page .main-title {
+  text-align: center;
+  padding-top: 3rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.article-page .main-title .title-summary {
+  color: #aaa;
+  line-height: 2rem;
+  padding: 15px 10px 0;
+  border-bottom: solid 1px #ccc;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.article-page .main-title .title-summary a {
+  color: #666;
 }
 
 .article-page .favorite-article {

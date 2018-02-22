@@ -193,6 +193,24 @@
 
   }
 
+  .main-title{
+    text-align: center;
+    padding-top: 3rem;
+    margin-bottom: 3rem;
+    font-weight: 500;
+    .title-summary{
+      color: #aaa;
+      line-height: 2rem;
+      padding: 15px 10px 0;
+      border-bottom: solid 1px #ccc;
+      font-size: 13px;
+      font-weight: 400;
+      a{
+        color: #666;
+      }
+    }
+  }
+
   .favorite-article{
     color: #ff763b;
     font-size: 2rem;
