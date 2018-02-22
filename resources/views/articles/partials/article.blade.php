@@ -94,10 +94,6 @@
                 @else
                     喜欢
                 @endif
-                <span class="icon">
-                        <i class="fa fa-fw fa-usd"></i>
-                    </span>
-                打赏
             </div>
 
         </div>
