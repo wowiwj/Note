@@ -135,7 +135,7 @@ class Article extends Model
 
         $text = strip_tags($html);
 
-        return mb_substr($text,0,150);
+        return mb_substr($text,0,200);
 
     }
 
