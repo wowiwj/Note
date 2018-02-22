@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Models\Draft;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DraftsController extends Controller
 {
@@ -14,9 +15,14 @@ class DraftsController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+
+        $user = Auth::user();
+        return view('drafts.index',compact('user'));
+    }
+
     public function show($draft){
 
-//        return $draft;
         return view('drafts.show');
     }
 

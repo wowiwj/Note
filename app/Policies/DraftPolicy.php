@@ -25,6 +25,10 @@ class DraftPolicy
         return $user->is_admin;
     }
 
+    public function show(User $user,Draft $draft){
+        return $user->id == $draft->user->id;
+    }
+
     public function update(User $user,Draft $draft)
     {
         return $user->id == $draft->user->id;

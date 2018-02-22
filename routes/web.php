@@ -67,6 +67,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('users/{user}/editAvatar','UsersController@editAvatar')->name('users.editAvatar');
     Route::put('users/{user}','UsersController@update')->name('users.update');
 
+    Route::get('drafts','DraftsController@index')->name('drafts.index');
 
     Route::get('note/draft/{draft}','DraftsController@show')->name('drafts.show');
     Route::get('note/draft/{draft}/edit','DraftsController@edit')->name('drafts.edit');
