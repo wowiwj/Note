@@ -73,11 +73,21 @@ class User extends Authenticatable
         return $value;
     }
 
-    public function read($article){
+    public function readArticle($article){
 
         $article->increment('views_count');
         cache()->forever(
             $this->visitedArticleCacheKey($article),
+            Carbon::now()
+        );
+
+    }
+
+    public function readDiscussion($discussion){
+
+        $discussion->increment('views_count');
+        cache()->forever(
+            $this->visitedDiscussionCacheKey($discussion),
             Carbon::now()
         );
 

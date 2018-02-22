@@ -18,6 +18,7 @@ class CreateDiscussionsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->text('body');
+            $table->unsignedInteger('views_count')->default(0);
             $table->unsignedInteger('solved_id')->nullable();
             $table->timestamps();
             $table->softDeletes();

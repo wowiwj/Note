@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Base\Fitters\DiscussionFilters;
+use App\Models\Article;
 use App\Models\Discussion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,6 +25,20 @@ class DiscussionsController extends Controller
 
         return view('discussions.index',compact('discussions'));
     }
+
+    public function show(Discussion $discussion)
+    {
+
+        $discussion->load(['comments']);
+
+        if (auth()->check()){
+            auth()->user()->readDiscussion($discussion);
+        }
+
+        return view('discussions.show',compact('discussion'));
+
+    }
+
 
     protected function getDiscussions(DiscussionFilters $fitters)
     {

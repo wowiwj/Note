@@ -90,6 +90,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('articles/{category}/{article}','ArticlesController@show');
 
     Route::get('discussions','DiscussionsController@index');
+    Route::get('discussions/{discussion}','DiscussionsController@show');
 
 
     Route::get('special_pages/create','SpecialPagesController@create')->name('special_pages.create');

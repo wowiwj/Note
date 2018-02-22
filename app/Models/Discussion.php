@@ -52,7 +52,7 @@ class Discussion extends Model
 
     public function path()
     {
-        return '/articles/'.$this->id;
+        return '/discussions/'.$this->id;
     }
 
     public function setContentAttribute($value)
@@ -63,9 +63,7 @@ class Discussion extends Model
             'raw'  => $value,
             'html' => $html
         ];
-
         $this->makeArticleImage($html);
-
         $this->body = json_encode($data);
     }
 
@@ -77,9 +75,9 @@ class Discussion extends Model
         if (empty($match) || is_null($match[1])){
             return;
         }
-        $article_image = (new ImageUploadHandler())
+        $discussion_image = (new ImageUploadHandler())
             ->makeArticleImage($match[1],'');
-        $this->page_image = $article_image;
+        $this->page_image = $discussion_image;
     }
 
 
@@ -119,9 +117,7 @@ class Discussion extends Model
 
         $body = $this->body;
         $html = json_decode($body,true)['html'];
-
         $text = strip_tags($html);
-
         return mb_substr($text,0,200);
 
     }
@@ -130,9 +126,6 @@ class Discussion extends Model
     protected static function boot()
     {
         parent::boot();
-
-
-
     }
 
     public function notify(){

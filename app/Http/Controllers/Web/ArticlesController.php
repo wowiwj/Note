@@ -55,7 +55,7 @@ class ArticlesController extends Controller
 //        return $article;
 
         if (auth()->check()){
-            auth()->user()->read($article);
+            auth()->user()->readArticle($article);
         }
 
         return view('articles.show',compact('article'));
