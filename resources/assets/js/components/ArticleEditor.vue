@@ -227,9 +227,9 @@
         .title-input {
             margin: 0;
             padding: 20px;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #000;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #555;
             border: none;
             outline: none;
             -webkit-box-flex: 1;

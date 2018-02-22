@@ -306,6 +306,9 @@
         },
         watch:{
             article:function (value) {
+                if (value === null){
+                    return
+                }
                 this.category = value.category
                 this.selectedTags = value.tags
                 this.isOriginal = !!value.is_original
