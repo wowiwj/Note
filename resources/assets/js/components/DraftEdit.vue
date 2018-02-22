@@ -152,27 +152,6 @@
                     console.log(error);
                 });
             },
-            selectImage(editor) {
-                var fileBtn = document.getElementById("btn_file");
-                fileBtn.onchange = this.uploadImage;
-                fileBtn.click();
-            },
-            uploadImage() {
-                var fileBtn = document.getElementById("btn_file");
-                var formData = new FormData();
-                formData.append("file", fileBtn.files[0]);
-                axios.post('/api/v1/image/upload', formData).then(({data}) => {
-
-                    var pos = this.simplemde.codemirror.getCursor();
-                    this.simplemde.codemirror.setSelection(pos, pos);
-                    this.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
-
-                    console.log(data);
-
-                });
-                console.log(fileBtn.files[0]);
-                console.log(1);
-            },
             selectCategory(item){
                 this.category = item
             },

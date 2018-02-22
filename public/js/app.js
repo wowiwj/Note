@@ -2668,6 +2668,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(previewDom);
             previewDom.style.width = width + 20 + 'px';
             previewDom.style.marginLeft = paddingLeft - 10 + 'px';
+        },
+        selectImage: function selectImage() {
+            var fileBtn = document.getElementById("btn_file");
+            fileBtn.onchange = this.uploadImage;
+            fileBtn.click();
+        },
+        uploadImage: function uploadImage() {
+            var _this = this;
+
+            var fileBtn = document.getElementById("btn_file");
+            var formData = new FormData();
+            formData.append("file", fileBtn.files[0]);
+            axios.post('/api/v1/image/upload', formData).then(function (_ref) {
+                var data = _ref.data;
+
+
+                var pos = _this.simplemde.codemirror.getCursor();
+                _this.simplemde.codemirror.setSelection(pos, pos);
+                _this.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
+
+                console.log(data);
+            });
+            console.log(fileBtn.files[0]);
+            console.log(1);
         }
     }
 });
@@ -3550,30 +3574,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
-        selectImage: function selectImage(editor) {
-            var fileBtn = document.getElementById("btn_file");
-            fileBtn.onchange = this.uploadImage;
-            fileBtn.click();
-        },
-        uploadImage: function uploadImage() {
-            var _this3 = this;
-
-            var fileBtn = document.getElementById("btn_file");
-            var formData = new FormData();
-            formData.append("file", fileBtn.files[0]);
-            axios.post('/api/v1/image/upload', formData).then(function (_ref) {
-                var data = _ref.data;
-
-
-                var pos = _this3.simplemde.codemirror.getCursor();
-                _this3.simplemde.codemirror.setSelection(pos, pos);
-                _this3.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
-
-                console.log(data);
-            });
-            console.log(fileBtn.files[0]);
-            console.log(1);
-        },
         selectCategory: function selectCategory(item) {
             this.category = item;
         },
@@ -3588,15 +3588,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
         },
         fetchDraft: function fetchDraft() {
-            var _this4 = this;
+            var _this3 = this;
 
             axios.get('/api/v1/drafts/' + this.draftRef).then(function (response) {
                 console.log(response.data);
                 var draft = response.data.data;
-                _this4.draft = draft;
-                _this4.user = draft.user;
-                _this4.firstFetch = false;
-                _this4.article = draft.relation;
+                _this3.draft = draft;
+                _this3.user = draft.user;
+                _this3.firstFetch = false;
+                _this3.article = draft.relation;
             }, function (error) {
                 console.log(error);
             });
@@ -3614,14 +3614,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.selectedTags.push(tag);
         },
         queryTag: function queryTag(qw) {
-            var _this5 = this;
+            var _this4 = this;
 
             axios.get('/api/v1/tags', {
                 params: {
                     q: qw
                 }
             }).then(function (response) {
-                _this5.tags = response.data.data;
+                _this4.tags = response.data.data;
 
                 console.log(response.data);
             });
@@ -3663,7 +3663,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateArticle: function updateArticle() {
-            var _this6 = this;
+            var _this5 = this;
 
             if (!this.category) {
                 this.$toast.open({
@@ -3685,7 +3685,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/api/v1/articles/' + this.article.id + '?_method=put', formData).then(function (response) {
 
-                _this6.$toast.open({
+                _this5.$toast.open({
                     duration: 5000,
                     message: '\u66F4\u65B0\u6210\u529F',
                     position: 'is-top',
@@ -40982,7 +40982,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ "./node_modules/_marked@0.3.15@marked/lib/marked.js":
+/***/ "./node_modules/_marked@0.3.12@marked/lib/marked.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -41002,25 +41002,18 @@ var block = {
   newline: /^\n+/,
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
-  hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n+|$)/,
+  hr: /^( *[-*_]){3,} *(?:\n+|$)/,
   heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
   nptable: noop,
-  blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
+  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
+  blockquote: /^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,
   list: /^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
   html: /^ *(?:comment *(?:\n|\s*$)|closed *(?:\n{2,}|\s*$)|closing *(?:\n{2,}|\s*$))/,
-  def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,
+  def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
   table: noop,
-  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
-  paragraph: /^([^\n]+(?:\n?(?!hr|heading|lheading| {0,3}>|tag)[^\n]+)+)/,
+  paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,
   text: /^[^\n]+/
 };
-
-block._label = /(?:\\[\[\]]|[^\[\]])+/;
-block._title = /(?:"(?:\\"|[^"]|"[^"\n]*")*"|'\n?(?:[^'\n]+\n?)*'|\([^()]*\))/;
-block.def = replace(block.def)
-  ('label', block._label)
-  ('title', block._title)
-  ();
 
 block.bullet = /(?:[*+-]|\d+\.)/;
 block.item = /^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;
@@ -41030,19 +41023,23 @@ block.item = replace(block.item, 'gm')
 
 block.list = replace(block.list)
   (/bull/g, block.bullet)
-  ('hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))')
+  ('hr', '\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))')
   ('def', '\\n+(?=' + block.def.source + ')')
+  ();
+
+block.blockquote = replace(block.blockquote)
+  ('def', block.def)
   ();
 
 block._tag = '(?!(?:'
   + 'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code'
   + '|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo'
-  + '|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b';
+  + '|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b';
 
 block.html = replace(block.html)
   ('comment', /<!--[\s\S]*?-->/)
   ('closed', /<(tag)[\s\S]+?<\/\1>/)
-  ('closing', /<tag(?:"[^"]*"|'[^']*'|\s[^'"\/>]*)*?\/?>/)
+  ('closing', /<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)
   (/tag/g, block._tag)
   ();
 
@@ -41050,11 +41047,9 @@ block.paragraph = replace(block.paragraph)
   ('hr', block.hr)
   ('heading', block.heading)
   ('lheading', block.lheading)
+  ('blockquote', block.blockquote)
   ('tag', '<' + block._tag)
-  ();
-
-block.blockquote = replace(block.blockquote)
-  ('paragraph', block.paragraph)
+  ('def', block.def)
   ();
 
 /**
@@ -41068,7 +41063,7 @@ block.normal = merge({}, block);
  */
 
 block.gfm = merge({}, block.normal, {
-  fences: /^ *(`{3,}|~{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n+|$)/,
+  fences: /^ *(`{3,}|~{3,})[ \.]*(\S+)? *\n([\s\S]*?)\s*\1 *(?:\n+|$)/,
   paragraph: /^/,
   heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n+|$)/
 });
@@ -41140,7 +41135,7 @@ Lexer.prototype.lex = function(src) {
  * Lexing
  */
 
-Lexer.prototype.token = function(src, top) {
+Lexer.prototype.token = function(src, top, bq) {
   var src = src.replace(/^ +$/gm, '')
     , next
     , loose
@@ -41150,7 +41145,6 @@ Lexer.prototype.token = function(src, top) {
     , item
     , space
     , i
-    , tag
     , l;
 
   while (src) {
@@ -41231,6 +41225,17 @@ Lexer.prototype.token = function(src, top) {
       continue;
     }
 
+    // lheading
+    if (cap = this.rules.lheading.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'heading',
+        depth: cap[2] === '=' ? 1 : 2,
+        text: cap[1]
+      });
+      continue;
+    }
+
     // hr
     if (cap = this.rules.hr.exec(src)) {
       src = src.substring(cap[0].length);
@@ -41253,7 +41258,7 @@ Lexer.prototype.token = function(src, top) {
       // Pass `top` to keep the current
       // "toplevel" state. This is exactly
       // how markdown.pl works.
-      this.token(cap, top);
+      this.token(cap, top, true);
 
       this.tokens.push({
         type: 'blockquote_end'
@@ -41322,7 +41327,7 @@ Lexer.prototype.token = function(src, top) {
         });
 
         // Recurse.
-        this.token(item, false);
+        this.token(item, false, bq);
 
         this.tokens.push({
           type: 'list_item_end'
@@ -41351,16 +41356,12 @@ Lexer.prototype.token = function(src, top) {
     }
 
     // def
-    if (top && (cap = this.rules.def.exec(src))) {
+    if ((!bq && top) && (cap = this.rules.def.exec(src))) {
       src = src.substring(cap[0].length);
-      if (cap[3]) cap[3] = cap[3].substring(1,cap[3].length-1);
-      tag = cap[1].toLowerCase();
-      if (!this.tokens.links[tag]) {
-        this.tokens.links[tag] = {
-          href: cap[2],
-          title: cap[3]
-        };
-      }
+      this.tokens.links[cap[1].toLowerCase()] = {
+        href: cap[2],
+        title: cap[3]
+      };
       continue;
     }
 
@@ -41395,17 +41396,6 @@ Lexer.prototype.token = function(src, top) {
 
       this.tokens.push(item);
 
-      continue;
-    }
-
-    // lheading
-    if (cap = this.rules.lheading.exec(src)) {
-      src = src.substring(cap[0].length);
-      this.tokens.push({
-        type: 'heading',
-        depth: cap[2] === '=' ? 1 : 2,
-        text: cap[1]
-      });
       continue;
     }
 
@@ -41447,27 +41437,19 @@ Lexer.prototype.token = function(src, top) {
 
 var inline = {
   escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
-  autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
+  autolink: /^<([^ <>]+(@|:\/)[^ <>]+)>/,
   url: noop,
-  tag: /^<!--[\s\S]*?-->|^<\/?[a-zA-Z0-9\-]+(?:"[^"]*"|'[^']*'|\s[^<'">\/]*)*?\/?>/,
+  tag: /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^<'">])*?>/,
   link: /^!?\[(inside)\]\(href\)/,
   reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
-  nolink: /^!?\[((?:\[[^\]]*\]|\\[\[\]]|[^\[\]])*)\]/,
+  nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
   strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
-  em: /^_([^\s_](?:[^_]|__)+?[^\s_])_\b|^\*((?:\*\*|[^*])+?)\*(?!\*)/,
-  code: /^(`+)(\s*)([\s\S]*?[^`]?)\2\1(?!`)/,
+  em: /^\b_((?:[^_]|__)+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  code: /^(`+)([\s\S]*?[^`])\1(?!`)/,
   br: /^ {2,}\n(?!\s*$)/,
   del: noop,
-  text: /^[\s\S]+?(?=[\\<!\[`*]|\b_| {2,}\n|$)/
+  text: /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/
 };
-
-inline._scheme = /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/;
-inline._email = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/;
-
-inline.autolink = replace(inline.autolink)
-  ('scheme', inline._scheme)
-  ('email', inline._email)
-  ()
 
 inline._inside = /(?:\[[^\]]*\]|\\[\[\]]|[^\[\]]|\](?=[^\[]*\]))*/;
 inline._href = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
@@ -41502,14 +41484,11 @@ inline.pedantic = merge({}, inline.normal, {
 
 inline.gfm = merge({}, inline.normal, {
   escape: replace(inline.escape)('])', '~|])')(),
-  url: replace(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/)
-    ('email', inline._email)
-    (),
-  _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
+  url: /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
   del: /^~~(?=\S)([\s\S]*?\S)~~/,
   text: replace(inline.text)
     (']|', '~]|')
-    ('|', '|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&\'*+/=?^_`{\\|}~-]+@|')
+    ('|', '|https?://|')
     ()
 });
 
@@ -41587,8 +41566,12 @@ InlineLexer.prototype.output = function(src) {
     if (cap = this.rules.autolink.exec(src)) {
       src = src.substring(cap[0].length);
       if (cap[2] === '@') {
-        text = escape(this.mangle(cap[1]));
-        href = 'mailto:' + text;
+        text = escape(
+          cap[1].charAt(6) === ':'
+          ? this.mangle(cap[1].substring(7))
+          : this.mangle(cap[1])
+        );
+        href = this.mangle('mailto:') + text;
       } else {
         text = escape(cap[1]);
         href = text;
@@ -41599,19 +41582,9 @@ InlineLexer.prototype.output = function(src) {
 
     // url (gfm)
     if (!this.inLink && (cap = this.rules.url.exec(src))) {
-      cap[0] = this.rules._backpedal.exec(cap[0])[0];
       src = src.substring(cap[0].length);
-      if (cap[2] === '@') {
-        text = escape(cap[0]);
-        href = 'mailto:' + text;
-      } else {
-        text = escape(cap[0]);
-        if (cap[1] === 'www.') {
-          href = 'http://' + text;
-        } else {
-          href = text;
-        }
-      }
+      text = escape(cap[1]);
+      href = text;
       out += this.renderer.link(href, null, text);
       continue;
     }
@@ -41678,7 +41651,7 @@ InlineLexer.prototype.output = function(src) {
     // code
     if (cap = this.rules.code.exec(src)) {
       src = src.substring(cap[0].length);
-      out += this.renderer.codespan(escape(cap[3].trim(), true));
+      out += this.renderer.codespan(escape(cap[2].trim(), true));
       continue;
     }
 
@@ -41924,32 +41897,6 @@ Renderer.prototype.text = function(text) {
 };
 
 /**
- * TextRenderer
- * returns only the textual part of the token
- */
-
-function TextRenderer() {}
-
-// no need for block level renderers
-
-TextRenderer.prototype.strong =
-TextRenderer.prototype.em =
-TextRenderer.prototype.codespan =
-TextRenderer.prototype.del =
-TextRenderer.prototype.text = function (text) {
-  return text;
-}
-
-TextRenderer.prototype.link =
-TextRenderer.prototype.image = function(href, title, text) {
-  return '' + text;
-}
-
-TextRenderer.prototype.br = function() {
-  return '';
-}
-
-/**
  * Parsing & Compiling
  */
 
@@ -41966,8 +41913,8 @@ function Parser(options) {
  * Static Parse Method
  */
 
-Parser.parse = function(src, options) {
-  var parser = new Parser(options);
+Parser.parse = function(src, options, renderer) {
+  var parser = new Parser(options, renderer);
   return parser.parse(src);
 };
 
@@ -41976,9 +41923,7 @@ Parser.parse = function(src, options) {
  */
 
 Parser.prototype.parse = function(src) {
-  this.inline = new InlineLexer(src.links, this.options);
-  // use an InlineLexer with a TextRenderer to extract pure text
-  this.inlineText = new InlineLexer(src.links, merge({}, this.options, {renderer: new TextRenderer}));
+  this.inline = new InlineLexer(src.links, this.options, this.renderer);
   this.tokens = src.reverse();
 
   var out = '';
@@ -42035,7 +41980,7 @@ Parser.prototype.tok = function() {
       return this.renderer.heading(
         this.inline.output(this.token.text),
         this.token.depth,
-        unescape(this.inlineText.output(this.token.text)));
+        this.token.text);
     }
     case 'code': {
       return this.renderer.code(this.token.text,
@@ -42048,11 +41993,13 @@ Parser.prototype.tok = function() {
         , i
         , row
         , cell
+        , flags
         , j;
 
       // header
       cell = '';
       for (i = 0; i < this.token.header.length; i++) {
+        flags = { header: true, align: this.token.align[i] };
         cell += this.renderer.tablecell(
           this.inline.output(this.token.header[i]),
           { header: true, align: this.token.align[i] }
@@ -42218,14 +42165,6 @@ function merge(obj) {
  */
 
 function marked(src, opt, callback) {
-  // throw error in case of non string input
-  if (typeof src == 'undefined' || src === null)
-    throw new Error('marked(): input parameter is undefined or null');
-  if (typeof src != 'string')
-    throw new Error('marked(): input parameter is of type ' +
-      Object.prototype.toString.call(src) + ', string expected');
-
-
   if (callback || typeof opt === 'function') {
     if (!callback) {
       callback = opt;
@@ -42346,7 +42285,6 @@ marked.Parser = Parser;
 marked.parser = Parser.parse;
 
 marked.Renderer = Renderer;
-marked.TextRenderer = TextRenderer;
 
 marked.Lexer = Lexer;
 marked.lexer = Lexer.lex;
@@ -44953,11 +44891,7 @@ var render = function() {
         _c("a", {
           staticClass: "fa fa-picture-o",
           attrs: { title: "Insert Image", tabindex: "-1" },
-          on: {
-            click: function($event) {
-              _vm.trigger("drawImage")
-            }
-          }
+          on: { click: _vm.selectImage }
         }),
         _vm._v(" "),
         _c("a", {
@@ -46007,7 +45941,7 @@ Vue.component('LoginView', __webpack_require__("./resources/assets/js/components
 Vue.component('ArticleEditor', __webpack_require__("./resources/assets/js/components/ArticleEditor.vue"));
 Vue.component('DraftEditor', __webpack_require__("./resources/assets/js/components/DraftEdit.vue"));
 
-window.marked = __webpack_require__("./node_modules/_marked@0.3.15@marked/lib/marked.js");
+window.marked = __webpack_require__("./node_modules/_marked@0.3.12@marked/lib/marked.js");
 
 var app = new Vue({
     el: '#app'

@@ -24,7 +24,7 @@
                 <a @click="trigger('toggleOrderedList')" title="Numbered List (Cmd-⌥-L)" tabindex="-1"
                    class="fa fa-list-ol"></a>
                 <a @click="trigger('drawLink')" title="Create Link (Cmd-K)" tabindex="-1" class="fa fa-link"></a>
-                <a @click="trigger('drawImage')" title="Insert Image" tabindex="-1" class="fa fa-picture-o"></a>
+                <a @click="selectImage" title="Insert Image" tabindex="-1" class="fa fa-picture-o"></a>
                 <a @click="trigger('drawTable')" title="Insert Table" tabindex="-1" class="fa fa-table"></a>
                 <a @click="trigger('drawHorizontalRule')" title="Insert Horizontal Line" tabindex="-1"
                    class="fa fa-minus"></a>
@@ -183,6 +183,27 @@
                 console.log(previewDom)
                 previewDom.style.width = (width + 20) + 'px';
                 previewDom.style.marginLeft = (paddingLeft - 10) + 'px';
+            },
+            selectImage() {
+                var fileBtn = document.getElementById("btn_file");
+                fileBtn.onchange = this.uploadImage;
+                fileBtn.click();
+            },
+            uploadImage() {
+                var fileBtn = document.getElementById("btn_file");
+                var formData = new FormData();
+                formData.append("file", fileBtn.files[0]);
+                axios.post('/api/v1/image/upload', formData).then(({data}) => {
+
+                    var pos = this.simplemde.codemirror.getCursor();
+                    this.simplemde.codemirror.setSelection(pos, pos);
+                    this.simplemde.codemirror.replaceSelection('![](' + data.data.image + ')');
+
+                    console.log(data);
+
+                });
+                console.log(fileBtn.files[0]);
+                console.log(1);
             }
 
         }
