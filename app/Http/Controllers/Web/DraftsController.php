@@ -18,7 +18,10 @@ class DraftsController extends Controller
     public function index(){
 
         $user = Auth::user();
-        return view('drafts.index',compact('user'));
+
+        $drafts = $user->drafts()->whereNull('parent_id')->latest()->paginate(20);
+
+        return view('drafts.index',compact('user','drafts'));
     }
 
     public function show($draft){
@@ -32,5 +35,11 @@ class DraftsController extends Controller
 
         return $draft;
 
+    }
+
+    public function destroy(Draft $draft){
+        $draft->delete();
+        flash('删除成功');
+        return back();
     }
 }

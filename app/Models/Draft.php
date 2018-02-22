@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Base\Service\Markdowner;
 use function foo\func;
 use Illuminate\Database\Eloquent\Model;
 use Vinkla\Hashids\Facades\Hashids;
@@ -13,6 +14,8 @@ class Draft extends Model
 //    protected $hidden = ['id'];
 
     protected $appends = ['ref'];
+
+
 
     public function relation()
     {
@@ -53,12 +56,41 @@ class Draft extends Model
         });
     }
 
+    public function getLastUpdateAttribute(){
+        return $this->getLastUpdate();
+    }
+
+
     public function getLastUpdate(){
         $draft = $this;
         if ($this->children()->count() > 0){
             $draft = $this->children()->latest()->first();
         }
         return $draft;
+    }
+
+    public function getBriefAttribute(){
+
+        $body = $this->body;
+        $html = (new Markdowner())->convertMarkdownToHtml($body);
+        $text = strip_tags($html);
+        return mb_substr($text,0,200);
+    }
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($draft){
+            $relation = $draft->relation;
+            if ($relation){
+                $relation->draft_id = null;
+                $relation->save();
+            }
+            $draft->children->each->delete();
+        });
+
     }
 
 

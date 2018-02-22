@@ -83,13 +83,19 @@ class ArticlesController extends Controller
 
     public function edit(Article $article)
     {
-        return view('articles.edit',compact('article'));
+        $draft =$article->currentDraft;
+        if (empty($draft)){
+            $draft = Auth::user()->drafts()->create([
+                'title' => $article->title,
+                'body' => json_decode($article->body)->raw,
+                'relation_type' => Article::class,
+                'relation_id' => $article->id
+            ]);
+        }
+        return redirect()->route('drafts.edit',$draft->ref);
+
     }
 
-    public function update(){
-
-
-    }
 
     public function  destroy(Article $article)
     {
