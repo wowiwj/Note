@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 class DiscussionsController extends Controller
 {
 
+    public function store(){
+
+
+    }
+
+    
+
 
 
 }
