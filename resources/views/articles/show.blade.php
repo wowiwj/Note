@@ -22,7 +22,7 @@
                                         {{ $article->category->name }}
                                     </a>
                                     ⋅
-                                    <a href="#" class="m-l-5">
+                                    <a href="{{ route('users.show',$article->user) }}" class="m-l-5">
                                         {{ $article->user->name }}
                                     </a>
                                     于
@@ -31,7 +31,7 @@
                                     @if($article->lastComment)
                                         <span class="is-hidden-mobile">
                                             最后回复由
-                                            <a href="#" class="m-l-5">
+                                            <a href="{{ route('users.show',$article->lastComment->user) }}" class="m-l-5">
                                                 {{ $article->lastComment->user->name }}
                                             </a>
                                             于

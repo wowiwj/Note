@@ -6,12 +6,12 @@
 
             <div class="front">
 
-                <a href="#">
+                <a href="{{ route('users.show',$article->user) }}">
                     <img class="avatar" src="{{ $article->user->avatar }}" alt="">
 
                 </a>
 
-                <a href="#" class="nickname m-l-5">
+                <a href="{{ route('users.show',$article->user) }}" class="nickname m-l-5">
                     {{ $article->user->name }}
                 </a>
 
