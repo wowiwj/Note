@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Fitters;
+namespace App\Base\Fitters;
 
 
 use App\Models\User;

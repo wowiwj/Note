@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Helpers\Fitters\DiscussionFilters;
+use App\Base\Fitters\DiscussionFilters;
 use App\Models\Discussion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

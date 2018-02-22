@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\Fitters\DiscussionFilters;
+use App\Base\Fitters\DiscussionFilters;
 use Illuminate\Database\Eloquent\Model;
 
 class Discussion extends Model
