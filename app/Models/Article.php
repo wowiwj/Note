@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Helpers\Fitters\ArticleFilters;
-use App\Helpers\Handler\ImageUploadHandler;
-use App\Helpers\Service\Markdowner;
-use App\Helpers\Traits\Favoritable;
-use App\Helpers\Traits\RecordsActivity;
-use App\Helpers\Traits\Subscribable;
+use App\Base\Fitters\ArticleFilters;
+use App\Base\Handler\ImageUploadHandler;
+use App\Base\Service\Markdowner;
+use App\Base\Traits\Favoritable;
+use App\Base\Traits\RecordsActivity;
+use App\Base\Traits\Subscribable;
 use App\Notifications\ArticleWasFavorited;
 use App\Notifications\ArticleWasSubscribed;
 use App\Scopes\ArticleFitterScope;
@@ -27,7 +27,8 @@ class Article extends Model
     protected $appends = [
         'isSubscribed',
         'favoritesCount' => 'favorites_count',
-        'isFavorited' => 'is_favorited'
+        'isFavorited' => 'is_favorited',
+        'lastComment'
     ];
 
 
@@ -46,6 +47,17 @@ class Article extends Model
     {
         return $this->morphToMany(Tag::class,'taggable');
     }
+
+
+    public function drafts()
+    {
+        return $this->morphMany(Draft::class,'relation');
+    }
+
+    public function currentDraft(){
+        return $this->belongsTo(Draft::class,'draft_id','id');
+    }
+
 
     public function path()
     {
@@ -94,6 +106,12 @@ class Article extends Model
         return $filters->apply($query);
     }
 
+    public function getlastCommentAttribute(){
+
+        $lastComment = $this->comments()->latest()->first();
+        return $lastComment;
+    }
+
     public function syncTags($tags){
         $tags = collect($tags)->map(function ($tag){
 
@@ -117,7 +135,7 @@ class Article extends Model
 
         $text = strip_tags($html);
 
-        return mb_substr($text,0,150);
+        return mb_substr($text,0,200);
 
     }
 

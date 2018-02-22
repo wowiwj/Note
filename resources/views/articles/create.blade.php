@@ -3,9 +3,7 @@
 
 @section('content')
 
-    <div class="columns">
-
-        <div class="column is-9">
+    <div class="columns"<div class="columlass="column is-9">
             <div class="card">
 
                 <div class="card-header">

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Api\Helpers\OAuth\QQProvider;
+use App\Base\OAuth\QQProvider;
 use Illuminate\Support\ServiceProvider;
 
 class OAuthServiceProvider extends ServiceProvider

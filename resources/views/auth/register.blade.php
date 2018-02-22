@@ -10,7 +10,7 @@
             <p class="control">
                 <a href="{{ route('oauth.redirect','qq') }}" class="button is-fullwidth">
                     <span class="icon">
-                        <i class="fa fa-qq">
+                        <i class="fab fa-qq">
                         </i></span>
                     <span>
                         <strong>QQ登录</strong>
@@ -20,7 +20,7 @@
             <p class="control">
                 <a href="{{ route('oauth.redirect','github') }}" class="button is-fullwidth">
                     <span class="icon">
-                        <i class="fa fa-github">
+                        <i class="fab fa-github">
                         </i></span>
                     <span>
                         <strong>GitHub登录</strong>

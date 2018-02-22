@@ -3,66 +3,68 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
-use App\Models\Category;
-use App\Models\Tag;
-use App\Transformers\ArticleTransformer;
+use App\Models\Draft;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\Article as ArticleCollection;
+use App\Http\Resources\ArticleResource;
 
 class ArticlesController extends ApiController
 {
 
     public function __construct()
     {
-        parent::__construct();
-
         $this->middleware('auth:api',['except' => ['show','index']]);
 
     }
 
     public function index(){
 
-
         $articles = Article::orderBy('created_at', 'desc')->paginate(20);
-
-        return $this->respondWithPaginator($articles,new ArticleTransformer);
-
+        return ArticleResource::collection($articles);
     }
 
 
 
     public function show(Article $article)
     {
-        return new ArticleCollection($article);
+        return new ArticleResource($article);
     }
+
+
+
 
     public function store(Request $request)
     {
         $this->validate($request,[
             'category_id' => 'required|exists:categories,id',
-            'title' => 'required',
-            'body' => 'required',
+            'draft_ref' => 'required',
             'is_original' => 'required',
             'tags' => ''
         ]);
+
+        $ref = $request->get('draft_ref');
+        $draft = Draft::getWithRef($ref);
+        $draft = $draft->getLastUpdate();
 
         $tags = json_decode($request->tags,true);
 
         $user = Auth::user();
 
         $article = Article::create([
-            'title' => $request->title,
-            'content' => $request->body,
+            'title' => $draft->title,
+            'content' => $draft->body,
+            'draft_id' => $draft->id,
             'user_id' => $user->id,
             'category_id' => $request->category_id,
             'is_original' => $request->is_original
         ]);
 
+        Draft::relationIdWithRef($ref,$article->id);
+
         $article->subscribe();
 
-        return $article->syncTags($tags)->load('category');
+        $article = $article->syncTags($tags)->load('category');
+        return new ArticleResource($article);
 
     }
 
@@ -71,24 +73,27 @@ class ArticlesController extends ApiController
     {
         $this->validate($request,[
             'category_id' => 'required|exists:categories,id',
-            'title' => 'required',
-            'content' => 'required',
+            'draft_ref' => 'required',
             'is_original' => 'required',
             'tags' => ''
         ]);
 
         $tags = json_decode($request->tags,true);
 
+        $ref = $request->get('draft_ref');
+        $draft = Draft::getWithRef($ref);
+        $draft = $draft->getLastUpdate();
 
         $this->authorize('update',$article);
         $article->update([
-            'title' => $request->title,
-            'content' => $request->get('content'),
+            'title' => $draft->title,
+            'content' => $draft->body,
             'category_id' => $request->category_id,
-            'is_original' => $request->is_original
+            'is_original' => $request->is_original,
+            'draft_id' => $draft->id
         ]);
-        return $article->syncTags($tags);
-        
+        $article = $article->syncTags($tags);
+        return new ArticleResource($article);
     }
 
 

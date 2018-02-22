@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Exceptions\SubscribeException;
+use App\Base\Exceptions\SubscribeException;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
@@ -13,7 +13,6 @@ class SubscriptionsController extends ApiController
 
     public function __construct()
     {
-        parent::__construct();
         $this->middleware('auth:api');
     }
 

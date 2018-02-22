@@ -19,7 +19,7 @@ class FavoriteResource extends Resource
             'id' => $this->id,
             'created_at' => $this->created_at->toDateTimeString(),
             'type' => snake_case(class_basename($this->favorited_type)),
-            'user' => new User($this->whenLoaded('user'))
+            'user' => new UserResource($this->whenLoaded('user'))
         ];
 
     }

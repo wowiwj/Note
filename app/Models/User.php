@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+    public function drafts(){
+        return $this->hasMany(Draft::class);
+    }
+
+
 
     public function sendVerifyEmail()
     {
@@ -82,6 +87,8 @@ class User extends Authenticatable
 
         return sprintf("users.%s.visits.%s",$this->id,$article->id);
     }
+
+
 
 
     public static function boot()

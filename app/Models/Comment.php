@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Helpers\Service\Markdowner;
-use App\Helpers\Traits\Favoritable;
-use App\Helpers\Traits\RecordsActivity;
+use App\Base\Service\Markdowner;
+use App\Base\Traits\Favoritable;
+use App\Base\Traits\RecordsActivity;
 use App\Notifications\CommentWasFavorited;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

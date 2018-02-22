@@ -38,6 +38,8 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::get('tags','TagsController@index');
 
+    Route::get('drafts/{draft}','DraftsController@show');
+    Route::put('drafts/{draft}','DraftsController@update');
 
     Route::get('articles/{category}/{article}/comments','CommentsController@index');
 

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Helpers\Fitters\ArticleFilters;
+use App\Base\Fitters\ArticleFilters;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Draft;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Ramsey\Uuid\Uuid;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ArticlesController extends Controller
 {
@@ -25,6 +28,7 @@ class ArticlesController extends Controller
 
         // https://stackoverflow.com/questions/17159273/laravel-pagination-links-not-including-other-get-parameters
         $articles->appends(Input::except('page'));
+
 
 //        return $articles;
 
@@ -59,23 +63,40 @@ class ArticlesController extends Controller
     }
 
 
-
+    /**
+     *
+     * @var \App\Models\User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
-        return view('articles.create');
+        $draft = Auth::user()->drafts()->create([
+            'title' => Carbon::now()->toDateTimeString(),
+            'body' => '',
+            'relation_type' => Article::class
+        ]);
+
+
+        return redirect()->route('drafts.edit',$draft->ref);
     }
 
 
 
     public function edit(Article $article)
     {
-        return view('articles.edit',compact('article'));
+        $draft =$article->currentDraft;
+        if (empty($draft)){
+            $draft = Auth::user()->drafts()->create([
+                'title' => $article->title,
+                'body' => json_decode($article->body)->raw,
+                'relation_type' => Article::class,
+                'relation_id' => $article->id
+            ]);
+        }
+        return redirect()->route('drafts.edit',$draft->ref);
+
     }
 
-    public function update(){
-
-
-    }
 
     public function  destroy(Article $article)
     {
