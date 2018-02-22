@@ -27,8 +27,9 @@
                                     </a>
                                     于
                                     {{ $article->created_at->diffForHumans()}}
-                                    ⋅
+
                                     @if($article->lastComment)
+                                        ⋅
                                         <span class="is-hidden-mobile">
                                             最后回复由
                                             <a href="{{ route('users.show',$article->lastComment->user) }}" class="m-l-5">
