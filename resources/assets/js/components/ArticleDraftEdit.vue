@@ -2,7 +2,7 @@
 
     <div>
 
-        <article-editor
+        <markdown-editor
                 @edit-change="editorChange"
                 place-holder-title="请输入文章标题"
                 place-holder-body="请输入文章内容"
@@ -20,10 +20,10 @@
             <button @click="isModalPublishActive = !isModalPublishActive" class="button is-primary m-r-20">发表</button>
             <a style="align-items: center;justify-content: center;display: inline-flex;"
                class="image is-45x45 is-white m-r-30">
-                <img src="https://lorempixel.com/200/200/?72701" alt="Jermaine Terry" class="avatar img-thumbnail">
+                <img :src="currentUser.avatar" :alt="currentUser" class="avatar img-thumbnail">
             </a>
 
-        </article-editor>
+        </markdown-editor>
 
         <b-modal :active.sync="isModalPublishActive" has-modal-card>
             <div class="modal-card" style="width: 800px">
@@ -88,13 +88,13 @@
 <script>
 
     import Multiselect from 'vue-multiselect'
-    import ArticleEditor from './ArticleEditor.vue'
+    import MarkdownEditor from './MarkdownEditor.vue'
     import {default as SimpleMDE} from 'simplemde/dist/simplemde.min.js'
     import MdeOption from './modules/MdeConfig.js'
 
 
     export default {
-        components: {Multiselect, ArticleEditor},
+        components: {Multiselect, MarkdownEditor},
         props: ['draftRef'],
         data() {
             return {
@@ -301,6 +301,9 @@
         computed:{
             isUpdate:function () {
                 return this.article !== null;
+            },
+            currentUser:function () {
+                return window.App.user
             }
 
         },

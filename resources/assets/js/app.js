@@ -42,7 +42,6 @@ require ('./libs/jquery.sticky');
 
 // Vue.component('example1', require('./components/Example.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('ArticleMdEditor', require('./components/ArticleMdEditor.vue'));
 Vue.component('parse', require('./components/Parse.vue'));
 Vue.component('ArticleView',require('./pages/Article.vue'));
 Vue.component('DiscussionView',require('./pages/Discussion.vue'));
@@ -51,8 +50,8 @@ Vue.component('Comments',require('./components/Comments.vue'));
 Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));
 Vue.component('PageMdEditor',require('./components/PageMdEditor.vue'));
 Vue.component('LoginView',require('./components/LoginView.vue'))
-Vue.component('ArticleEditor',require('./components/ArticleEditor.vue'))
-Vue.component('DraftEditor',require('./components/DraftEdit.vue'))
+Vue.component('ArticleEditor',require('./components/MarkdownEditor.vue'))
+Vue.component('ArticleDraftEditor',require('./components/ArticleDraftEdit.vue'))
 
 
 

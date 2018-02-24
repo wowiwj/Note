@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Base\Handler\ImageUploadHandler;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

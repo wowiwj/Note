@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Identicon\Identicon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Traits\Macroable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable

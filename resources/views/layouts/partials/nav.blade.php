@@ -142,7 +142,7 @@
                             >
 
                             <span class="icon">
-                                <i class="fa fa-fw fa-sign-out m-r-5"></i>
+                                <i class="fas fa-fw fa-sign-out-alt m-r-5"></i>
                             </span>
                                 退出登录
 

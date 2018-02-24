@@ -72,6 +72,7 @@
                 console.log('-------- upload success --------');
                 console.log(jsonData);
                 console.log('field: ' + field);
+                this.show = false
             },
             /**
              * upload fail

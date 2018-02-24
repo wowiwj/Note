@@ -1,10 +1,11 @@
 <?php
 namespace App\Http;
+use App\Models\User;
+
 class Flash{
 
     public function create($message,$level,$key="flash")
     {
-        
 
         session()->flash($key,[
             'text'=>$message,

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Base\Exceptions\SubscribeException;
 use App\Http\Requests\SubscribeRequest;
-use App\Models\Subscription;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
 
 class SubscriptionsController extends ApiController
 {

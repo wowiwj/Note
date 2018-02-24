@@ -5,14 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Base\Service\Mention;
 use App\Models\Discussion;
 use App\Models\SpecialPage;
-use App\Models\User;
-use App\Notifications\ArticleWasUpdated;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\Comment;
-use App\Transformers\CommentTransformer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Resources\CommentResource as CommentCollection;
 
 class CommentsController extends ApiController
@@ -20,7 +16,7 @@ class CommentsController extends ApiController
 
      public function __construct()
     {
-        $this->middleware('auth:api')->except(['index','pageComments']);
+        $this->middleware('auth:api')->except(['index','pageComments','discussionComments']);
 
     }
 

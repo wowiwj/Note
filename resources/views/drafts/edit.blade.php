@@ -3,8 +3,8 @@
 
 @section('content')
 
-    <draft-editor draft-ref="{{ $draft->ref }}">
+    <article-draft-editor draft-ref="{{ $draft->ref }}">
 
-    </draft-editor>
+    </article-draft-editor>
 
 @endsection
