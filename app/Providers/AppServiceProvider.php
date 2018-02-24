@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\SpecialPage;
+use App\Models\Tag;
 use Input;
 use App\Models\Category;
 use Carbon\Carbon;
@@ -27,6 +28,16 @@ class AppServiceProvider extends ServiceProvider
                     ->get();
             });
             $view->with('popular_categories', $categories);
+        });
+
+        \View::composer('*', function ($view) {
+            $tags = \Cache::remember('popular_tags',1, function () {
+                return $tags = Tag::withCount('discussions')
+                    ->orderBy('discussions_count','desc')
+                    ->limit(10)
+                    ->get();
+            });
+            $view->with('popular_tags', $tags);
         });
 
         \View::composer('*', function ($view) {

@@ -56,32 +56,6 @@ class Discussion extends Model
         return '/discussions/'.$this->id;
     }
 
-    public function setContentAttribute($value)
-    {
-
-        $html = (new Markdowner())->convertMarkdownToHtml($value);
-        $data = [
-            'raw'  => $value,
-            'html' => $html
-        ];
-        $this->makeArticleImage($html);
-        $this->body = json_encode($data);
-    }
-
-
-    public function makeArticleImage($html){
-
-        $pattern = "/[img|IMG].*?src=['|\"](.*?(?:[.gif|.jpg]))['|\"].*?[\/]?>/";
-        preg_match($pattern,$html,$match);
-        if (empty($match) || is_null($match[1])){
-            return;
-        }
-        $discussion_image = (new ImageUploadHandler())
-            ->makeArticleImage($match[1],'');
-        $this->page_image = $discussion_image;
-    }
-
-
     public function comments()
     {
         return $this->morphMany(Comment::class,'commentable');
@@ -99,7 +73,15 @@ class Discussion extends Model
     }
 
     public function syncTags($tags){
+
         $tags = collect($tags)->map(function ($tag){
+
+            if (!is_array($tag)){
+                $tag = Tag::query()->firstOrCreate([
+                    'name' => $tag
+                ]);
+                return $tag->id;
+            }
 
             $tag = Tag::where('id',$tag['id'])
                 ->orWhere('name',$tag['name'])

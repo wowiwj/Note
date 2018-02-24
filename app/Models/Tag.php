@@ -13,6 +13,10 @@ class Tag extends Model
         return $this->morphedByMany(Article::class,'taggable');
     }
 
+    public function discussions(){
+        return $this->morphedByMany(Discussion::class,'taggable');
+    }
+
     public function path(){
 
         return '?tag='.$this->name;

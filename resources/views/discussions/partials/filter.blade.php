@@ -20,12 +20,20 @@
                         <li><a href="/discussions?uncommented=1">零回复问题</a></li>
                     </ul>
                     <p class="menu-label">
-                        通过分类过滤
+                        通过标签过滤
                     </p>
                     <ul class="menu-list">
-                        <li><a>Payments</a></li>
-                        <li><a>Transfers</a></li>
-                        <li><a>Balance</a></li>
+                        @forelse($popular_tags as $item)
+
+                            <li>
+                                <a href="{{ $item->path() }}">
+                                    {{ $item->name }}
+                                </a>
+                            </li>
+
+                        @empty
+                            <li class="empty-block">没有分类数据</li>
+                        @endforelse
                     </ul>
                 </aside>
 
