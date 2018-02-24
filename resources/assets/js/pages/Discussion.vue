@@ -15,6 +15,35 @@
             };
         },
         methods: {
+            confirmDelete(){
+
+                this.$dialog.confirm({
+                    message: '确定要删除这篇讨论么?',
+                    confirmText: '删除',
+                    cancelText: '取消',
+                    onConfirm: () => this.deleteDiscussion()
+                })
+            },
+            deleteDiscussion(){
+
+                axios.delete('/api/v1/discussions/' + this.discussionId).then((data)=>{
+
+                    this.$toast.open({
+                        message: '删除成功!',
+                        type: 'is-success'
+
+                    })
+
+                    window.location.href = '/discussions';
+
+                }).catch((error)=>{
+
+                    console.log(error)
+
+                })
+
+
+            }
 
         }
     }

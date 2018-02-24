@@ -4656,7 +4656,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    methods: {}
+    methods: {
+        confirmDelete: function confirmDelete() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                message: '确定要删除这篇讨论么?',
+                confirmText: '删除',
+                cancelText: '取消',
+                onConfirm: function onConfirm() {
+                    return _this.deleteDiscussion();
+                }
+            });
+        },
+        deleteDiscussion: function deleteDiscussion() {
+            var _this2 = this;
+
+            axios.delete('/api/v1/discussions/' + this.discussionId).then(function (data) {
+
+                _this2.$toast.open({
+                    message: '删除成功!',
+                    type: 'is-success'
+
+                });
+
+                window.location.href = '/discussions';
+            }).catch(function (error) {
+
+                console.log(error);
+            });
+        }
+    }
 });
 
 /***/ }),

@@ -7,10 +7,9 @@ use App\Models\Article;
 use App\Models\Discussion;
 use App\Models\Draft;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class DiscussionsController extends Controller
+class DiscussionsController extends ApiController
 {
 
     public function __construct()
@@ -71,6 +70,15 @@ class DiscussionsController extends Controller
         ]);
         $discussion = $discussion->syncTags($tags);
         return new DiscussionResource($discussion);
+    }
+
+    // 删除文章
+    public function destroy(Discussion $discussion){
+
+        $this->authorize('update',$discussion);
+        $discussion->delete();
+        return $this->message('删除成功');
+
     }
 
 }
