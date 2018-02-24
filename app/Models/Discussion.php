@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Base\Fitters\DiscussionFilters;
 use App\Base\Handler\ImageUploadHandler;
 use App\Base\Service\Markdowner;
+use App\Base\Traits\ContentSetable;
 use App\Base\Traits\Favoritable;
 use App\Base\Traits\RecordsActivity;
 use App\Base\Traits\Subscribable;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class Discussion extends Model
 {
 
-    use RecordsActivity,Subscribable,Favoritable,SoftDeletes;
+    use RecordsActivity,Subscribable,Favoritable,ContentSetable,SoftDeletes;
     protected $guarded = [];
 
     protected $with = ['user','tags'];

@@ -50,8 +50,9 @@ Vue.component('Comments',require('./components/Comments.vue'));
 Vue.component('UploadAvatar',require('./components/UpdateAvatar.vue'));
 Vue.component('PageMdEditor',require('./components/PageMdEditor.vue'));
 Vue.component('LoginView',require('./components/LoginView.vue'))
-Vue.component('ArticleEditor',require('./components/MarkdownEditor.vue'))
+Vue.component('MarkdownEditor',require('./components/MarkdownEditor.vue'))
 Vue.component('ArticleDraftEditor',require('./components/ArticleDraftEdit.vue'))
+Vue.component('DiscussionDraftEditor',require('./components/DiscussionDraftEdit.vue'))
 
 
 

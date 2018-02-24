@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Base\Fitters\DiscussionFilters;
 use App\Models\Article;
 use App\Models\Discussion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class DiscussionsController extends Controller
@@ -36,6 +38,39 @@ class DiscussionsController extends Controller
         }
 
         return view('discussions.show',compact('discussion'));
+
+    }
+
+    /**
+     *
+     * @var \App\Models\User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        $draft = Auth::user()->drafts()->create([
+            'title' => Carbon::now()->toDateTimeString(),
+            'body' => '',
+            'relation_type' => Discussion::class
+        ]);
+
+        return redirect()->route('drafts.edit',$draft->ref);
+    }
+
+
+
+    public function edit(Discussion $discussion)
+    {
+        $draft = $discussion->currentDraft;
+        if (empty($draft)){
+            $draft = Auth::user()->drafts()->create([
+                'title' => $discussion->title,
+                'body' => json_decode($discussion->body)->raw,
+                'relation_type' => Discussion::class,
+                'relation_id' => $discussion->id
+            ]);
+        }
+        return redirect()->route('drafts.edit',$draft->ref);
 
     }
 

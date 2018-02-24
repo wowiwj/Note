@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Discussion;
 use App\Models\Draft;
 use App\Models\SpecialPage;
 use App\Models\User;
 use App\Policies\ArticlePolicy;
 use App\Policies\CommentPolicy;
+use App\Policies\DiscussionPolicy;
 use App\Policies\DraftPolicy;
 use App\Policies\SpecialPagePolicy;
 use App\Policies\UserPolicy;
@@ -29,7 +31,8 @@ class AuthServiceProvider extends ServiceProvider
         User::class => UserPolicy::class,
         Comment::class => CommentPolicy::class,
         SpecialPage::class => SpecialPagePolicy::class,
-        Draft::class => DraftPolicy::class
+        Draft::class => DraftPolicy::class,
+        Discussion::class => DiscussionPolicy::class
     ];
 
     /**

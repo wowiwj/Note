@@ -4,7 +4,7 @@
 
             <div class="columns is-multiline">
                 <div class="column is-12 level-item has-text-centered">
-                    <button class="button is-primary" style="width: 100%">提问</button>
+                    <a href="{{ route('discussions.create') }}" class="button is-primary" style="width: 100%">提问</a>
                 </div>
 
                 <aside class="menu">

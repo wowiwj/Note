@@ -13,10 +13,11 @@ class TagsController extends Controller
     public function index(){
 
         $q = Input::get('q');
+        $limit = Input::get('limit') ?: 10;
 
         $tags = Tag::where('name','like','%'.$q.'%')
             ->orWhere('slug','like','%'.$q.'%')
-            ->paginate(10);
+            ->paginate($limit);
 
         return TagCollection::collection($tags);
 

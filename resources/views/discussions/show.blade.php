@@ -89,7 +89,7 @@
                                 @can('update',$discussion)
                                     <div class="is-pulled-right m-l-20">
                                         <b-tooltip label="编辑">
-                                            <a class="popover-with-html" href="{{ route('articles.edit',$discussion) }}">
+                                            <a class="popover-with-html" href="{{ route('discussions.edit',$discussion) }}">
                                                 <i class="fa fa-edit"></i> <span></span>
                                             </a>
                                         </b-tooltip>

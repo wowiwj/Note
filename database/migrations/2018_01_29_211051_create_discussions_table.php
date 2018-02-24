@@ -20,6 +20,7 @@ class CreateDiscussionsTable extends Migration
             $table->text('body');
             $table->unsignedInteger('views_count')->default(0);
             $table->unsignedInteger('solved_id')->nullable();
+            $table->unsignedInteger('draft_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

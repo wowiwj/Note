@@ -52,10 +52,11 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::get('articles', 'ArticlesController@index');
 
-    Route::get('articles/create', 'ArticlesController@create');
-
+    Route::get('articles/create', 'ArticlesController@create')->name('discussions.create');
     Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
 
+    Route::get('discussions/create', 'DiscussionsController@create')->name('discussions.create');
+    Route::get('discussions/{discussion}/edit', 'DiscussionsController@edit')->name('discussions.edit');
 
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');

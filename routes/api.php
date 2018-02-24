@@ -27,8 +27,14 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::post('articles','ArticlesController@store');
     Route::get('articles/{article}','ArticlesController@show');
     Route::put('articles/{article}','ArticlesController@update');
-
     Route::delete('articles/{article}','ArticlesController@destroy');
+
+    Route::get('discussions','DiscussionsController@index');
+    Route::post('discussions','DiscussionsController@store');
+    Route::get('discussions/{discussion}','DiscussionsController@show');
+    Route::put('discussions/{discussion}','DiscussionsController@update');
+    Route::delete('discussions/{discussion}','DiscussionsController@destroy');
+
 
     Route::post('uploadAvatar','UsersController@uploadAvatar');
 

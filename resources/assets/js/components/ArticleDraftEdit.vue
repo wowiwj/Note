@@ -77,9 +77,6 @@
 
         </b-modal>
 
-        <input type="file" id="btn_file" style="display:none">
-
-
     </div>
 
 </template>
@@ -89,8 +86,6 @@
 
     import Multiselect from 'vue-multiselect'
     import MarkdownEditor from './MarkdownEditor.vue'
-    import {default as SimpleMDE} from 'simplemde/dist/simplemde.min.js'
-    import MdeOption from './modules/MdeConfig.js'
 
 
     export default {

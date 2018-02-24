@@ -13,7 +13,7 @@ class Draft extends Model
 
 //    protected $hidden = ['id'];
 
-    protected $appends = ['ref'];
+    protected $appends = ['ref','source'];
 
 
 
@@ -77,6 +77,12 @@ class Draft extends Model
         return mb_substr($text,0,200);
     }
 
+    public function getSourceAttribute(){
+
+        $type = $this->relation_type;
+        return snake_case(class_basename($type));
+
+    }
 
     protected static function boot()
     {

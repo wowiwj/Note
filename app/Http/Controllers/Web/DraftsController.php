@@ -30,10 +30,7 @@ class DraftsController extends Controller
     }
 
     public function edit(Draft $draft){
-
         return view('drafts.edit',compact('draft'));
-
-        return $draft;
 
     }
 
