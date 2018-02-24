@@ -22,7 +22,8 @@ class DiscussionResource extends JsonResource
             'body' => $this->body,
             'created_at' => $this->created_at,
             'user' => new UserResource($this->whenLoaded('user')),
-            'tags' => TagResource::collection($this->whenLoaded('tags'))
+            'tags' => TagResource::collection($this->whenLoaded('tags')),
+            'best_answer' => new CommentResource($this->bastAnswer)
 
         ];
     }

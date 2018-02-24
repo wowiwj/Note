@@ -81,9 +81,8 @@
                 })
             },
             checkAnswer(){
-//                axios.post('/api/v1/discussions/');
 
-
+                window.events.$emit('answer-select',this.comment);
             },
             replyUser(){
 

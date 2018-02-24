@@ -41,10 +41,24 @@
                     console.log(error)
 
                 })
+            },
+            makeBestAnswer(comment){
+                axios.post('/api/v1/discussions/'+this.discussionId + '/' + 'best_answer',{
+                    'comment_id':comment.id
+                }).then((res)=>{
+                    console.log(res.data);
+
+
+                });
 
 
             }
 
+        },
+        created(){
+            window.events.$on('answer-select',function (comment) {
+                this.makeBestAnswer(comment);
+            }.bind(this));
         }
     }
 </script>

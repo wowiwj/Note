@@ -2902,9 +2902,8 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             });
         },
         checkAnswer: function checkAnswer() {
-            //                axios.post('/api/v1/discussions/');
 
-
+            window.events.$emit('answer-select', this.comment);
         },
         replyUser: function replyUser() {
 
@@ -4693,7 +4692,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 console.log(error);
             });
+        },
+        makeBestAnswer: function makeBestAnswer(comment) {
+            axios.post('/api/v1/discussions/' + this.discussionId + '/' + 'best_answer', {
+                'comment_id': comment.id
+            }).then(function (res) {
+                console.log(res.data);
+            });
         }
+    },
+    created: function created() {
+        window.events.$on('answer-select', function (comment) {
+            this.makeBestAnswer(comment);
+        }.bind(this));
     }
 });
 
