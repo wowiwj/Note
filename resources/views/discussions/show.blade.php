@@ -116,7 +116,7 @@
 
                 </div>
 
-                <comments></comments>
+                <comments :discussion-user="{{ $discussion->user }}"></comments>
 
             </div>
 

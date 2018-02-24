@@ -49,6 +49,22 @@ class DiscussionsController extends ApiController
 
     }
 
+    public function bestAnswer(Discussion $discussion,Request $request){
+        $this->validate($request,[
+            'comment_id' => 'required:exists:comments,id'
+        ]);
+
+        $commentId = $request->get('comment_id');
+        if (! $discussion->hasComment($commentId)){
+            return $this->failed('请求非法');
+        }
+        $discussion->solved_id = $commentId;
+        $discussion->save();
+
+        return new DiscussionResource($discussion);
+
+    }
+
     public function update(Discussion $discussion,Request $request)
     {
         $this->validate($request,[

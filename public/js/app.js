@@ -2850,6 +2850,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2858,7 +2862,7 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { FavoriteComment: __WEBPACK_IMPORTED_MODULE_1__FavoriteComment___default.a },
-    props: ['comment', 'index'],
+    props: ['comment', 'index', 'discussionUser'],
     computed: {
         body: function body() {
             var comment = JSON.parse(this.comment.body);
@@ -2866,7 +2870,6 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             return marked(comment.raw).replace(/<pre><code>/g, '<pre><code class=" language-php">');
         },
         ago: function ago() {
-
             return __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.comment.created_at).fromNow();
         },
         profile: function profile() {
@@ -2877,45 +2880,63 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             return window.App.signedIn;
         },
         canDelete: function canDelete() {
-            return window.App.signedIn && this.comment.user.id == window.App.user.id;
+            return window.App.signedIn && this.comment.user.id === window.App.user.id;
+        },
+        canCheckAnswer: function canCheckAnswer() {
+            var isAdmin = window.App.signedIn && window.App.user.is_admin;
+            var isQuestioner = window.App.signedIn && window.App.user.id === this.discussionUser.id;
+            return isAdmin || isQuestioner;
         }
     },
     methods: {
+        confirmCheck: function confirmCheck() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                message: '将改答案解决了我的问题?',
+                cancelText: '取消',
+                confirmText: '确定',
+                onConfirm: function onConfirm() {
+                    return _this.checkAnswer();
+                }
+            });
+        },
+        checkAnswer: function checkAnswer() {},
         replyUser: function replyUser() {
 
             window.events.$emit('reply', this.comment.user);
         },
         confirmDeleteComment: function confirmDeleteComment() {
-            var _this = this;
+            var _this2 = this;
 
             this.$dialog.confirm({
                 message: '确定删除这条评论么?',
                 confirmText: '删除',
                 cancelText: '取消',
                 onConfirm: function onConfirm() {
-                    return _this.deleteComment();
+                    return _this2.deleteComment();
                 }
             });
         },
         deleteComment: function deleteComment() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.delete('/api/v1/comments/' + this.comment.id).then(function (_ref) {
                 var data = _ref.data;
 
 
-                _this2.$toast.open({
+                _this3.$toast.open({
                     duration: 5000,
                     message: '\u8BC4\u8BBA\u5220\u9664\u6210\u529F',
                     position: 'is-bottom',
                     type: 'is-success'
                 });
 
-                _this2.$emit('commentDelete', _this2.index);
+                _this3.$emit('commentDelete', _this3.index);
             }, function (_ref2) {
                 var error = _ref2.error;
 
-                _this2.$toast.open({
+                _this3.$toast.open({
                     duration: 5000,
                     message: '\u8BC4\u8BBA\u5220\u9664\u5931\u8D25',
                     position: 'is-bottom',
@@ -2972,35 +2993,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['discussionUser'],
     components: {
         Comment: __WEBPACK_IMPORTED_MODULE_0__Comment_vue___default.a,
         NewComment: __WEBPACK_IMPORTED_MODULE_1__NewComment_vue___default.a
@@ -3010,13 +3009,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             dataSet: false,
             items: []
-
         };
     },
     created: function created() {
-
         this.fetch();
-
         console.log('success');
     },
     updated: function updated() {
@@ -3047,8 +3043,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.items.push(data);
         },
         removeComment: function removeComment(index) {
-
             this.items.splice(index, 1);
+        }
+    },
+    computed: {
+        title: function title() {
+
+            if (this.isDiscussion) {
+                return '回答';
+            }
+            return '评论';
         }
     }
 });
@@ -43691,7 +43695,11 @@ var render = function() {
     { staticClass: "comments" },
     [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("header", { staticClass: "card-header" }, [
+          _c("p", { staticClass: "card-header-title" }, [
+            _vm._v("\n            " + _vm._s(_vm.title) + "\n            ")
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-content nopadding" }, [
           _c(
@@ -43708,7 +43716,11 @@ var render = function() {
                       { staticClass: "comment-content", attrs: { id: index } },
                       [
                         _c("comment", {
-                          attrs: { index: index, comment: comment },
+                          attrs: {
+                            index: index,
+                            comment: comment,
+                            "discussion-user": _vm.discussionUser
+                          },
                           on: { commentDelete: _vm.removeComment }
                         })
                       ],
@@ -43738,18 +43750,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "card-header" }, [
-      _c("p", { staticClass: "card-header-title" }, [
-        _vm._v("\n            评论\n            ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -45163,6 +45164,17 @@ var render = function() {
                 },
                 [_vm._m(1)]
               )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.canCheckAnswer
+            ? _c(
+                "a",
+                {
+                  staticClass: "comment-option",
+                  on: { click: _vm.confirmCheck }
+                },
+                [_vm._m(2)]
+              )
             : _vm._e()
         ]),
         _vm._v(" "),
@@ -45191,6 +45203,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-small" }, [
       _c("i", { staticClass: "fa fa-reply" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-check" })
     ])
   }
 ]

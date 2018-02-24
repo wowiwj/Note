@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Base\Fitters\DiscussionFilters;
-use App\Base\Handler\ImageUploadHandler;
-use App\Base\Service\Markdowner;
 use App\Base\Traits\ContentSetable;
 use App\Base\Traits\Favoritable;
 use App\Base\Traits\RecordsActivity;
@@ -59,6 +57,11 @@ class Discussion extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class,'commentable');
+    }
+
+    public function hasComment($comment_id){
+
+        return !!$this->comments()->where('id',$comment_id)->first();
     }
 
     public function scopeFilter($query, DiscussionFilters $filters)
