@@ -66,21 +66,22 @@
                 return window.App.signedIn && this.comment.user.id === window.App.user.id;
             },
             canCheckAnswer(){
-                let isAdmin = window.App.signedIn && window.App.user.is_admin;
-                let isQuestioner = window.App.signedIn && window.App.user.id === this.discussionUser.id;
+                let isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser;
+                let isQuestioner = window.App.signedIn && this.discussionUser && window.App.user.id === this.discussionUser.id;
                 return isAdmin || isQuestioner;
             }
         },
         methods: {
             confirmCheck(){
                 this.$dialog.confirm({
-                    message: '将改答案解决了我的问题?',
+                    message: '该答案解决了我的问题?',
                     cancelText: '取消',
                     confirmText: '确定',
                     onConfirm: () => this.checkAnswer()
                 })
             },
             checkAnswer(){
+//                axios.post('/api/v1/discussions/');
 
 
             },

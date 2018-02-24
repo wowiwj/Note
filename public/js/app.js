@@ -2883,8 +2883,8 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             return window.App.signedIn && this.comment.user.id === window.App.user.id;
         },
         canCheckAnswer: function canCheckAnswer() {
-            var isAdmin = window.App.signedIn && window.App.user.is_admin;
-            var isQuestioner = window.App.signedIn && window.App.user.id === this.discussionUser.id;
+            var isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser;
+            var isQuestioner = window.App.signedIn && this.discussionUser && window.App.user.id === this.discussionUser.id;
             return isAdmin || isQuestioner;
         }
     },
@@ -2893,7 +2893,7 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             var _this = this;
 
             this.$dialog.confirm({
-                message: '将改答案解决了我的问题?',
+                message: '该答案解决了我的问题?',
                 cancelText: '取消',
                 confirmText: '确定',
                 onConfirm: function onConfirm() {
@@ -2901,7 +2901,11 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
                 }
             });
         },
-        checkAnswer: function checkAnswer() {},
+        checkAnswer: function checkAnswer() {
+            //                axios.post('/api/v1/discussions/');
+
+
+        },
         replyUser: function replyUser() {
 
             window.events.$emit('reply', this.comment.user);
