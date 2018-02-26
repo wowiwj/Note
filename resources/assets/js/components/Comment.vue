@@ -5,7 +5,7 @@
           <figure class="image is-64x64">
             <img class="avatar img-thumbnail" :src="comment.user.avatar" alt="Image">
           </figure>
-          <favorite-comment :comment="comment"></favorite-comment>  
+          <favorite-comment :comment="comment" :best-answer="bestAnswer"></favorite-comment>
         </div>
         <div class="media-content">
           <div class="content">
@@ -45,7 +45,7 @@
 
     export default{
         components:{FavoriteComment},
-        props: ['comment','index','discussionUser'],
+        props: ['comment','index','discussionUser','bestAnswer'],
         computed: {
             body : function(){
                 var comment = JSON.parse(this.comment.body)
@@ -73,8 +73,6 @@
                 let isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser !== null;
 
                 let isQuestioner = window.App.signedIn && this.discussionUser !== null && window.App.user.id === this.discussionUser.id;
-
-
                 return isAdmin || isQuestioner;
             }
         },
@@ -113,6 +111,10 @@
                         position: 'is-bottom',
                         type: 'is-success'
                     })
+
+                    if (this.comment.id === this.bestAnswer.id){
+                        window.events.$emit('change-best-answer',null)
+                    }
 
                     this.$emit('commentDelete',this.index);
 

@@ -2839,34 +2839,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['discussionId'],
+    props: ['discussionId', 'bestAnswer'],
     components: {
         Comment: __WEBPACK_IMPORTED_MODULE_0__Comment_vue___default.a
-    },
-    data: function data() {
-        return {
-            bestAnswer: null
-        };
-    },
-    created: function created() {
-        var _this = this;
-
-        window.events.$on('best-answer-update', function (comment) {
-            _this.bestAnswer = comment;
-        });
-
-        this.fetch();
-    },
-
-    methods: {
-        fetch: function fetch() {
-            var _this2 = this;
-
-            axios.get('/api/v1/discussions/' + this.discussionId + '/' + 'best_answer').then(function (res) {
-                console.log(res.data);
-                _this2.bestAnswer = res.data.data;
-            });
-        }
     }
 });
 
@@ -2928,7 +2903,7 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { FavoriteComment: __WEBPACK_IMPORTED_MODULE_1__FavoriteComment___default.a },
-    props: ['comment', 'index', 'discussionUser'],
+    props: ['comment', 'index', 'discussionUser', 'bestAnswer'],
     computed: {
         body: function body() {
             var comment = JSON.parse(this.comment.body);
@@ -2956,7 +2931,6 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             var isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser !== null;
 
             var isQuestioner = window.App.signedIn && this.discussionUser !== null && window.App.user.id === this.discussionUser.id;
-
             return isAdmin || isQuestioner;
         }
     },
@@ -3006,6 +2980,10 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
                     position: 'is-bottom',
                     type: 'is-success'
                 });
+
+                if (_this3.comment.id === _this3.bestAnswer.id) {
+                    window.events.$emit('change-best-answer', null);
+                }
 
                 _this3.$emit('commentDelete', _this3.index);
             }, function (_ref2) {
@@ -3067,14 +3045,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['discussionUser'],
+    props: ['discussionUser', 'bestAnswer'],
     components: {
         Comment: __WEBPACK_IMPORTED_MODULE_0__Comment_vue___default.a,
         NewComment: __WEBPACK_IMPORTED_MODULE_1__NewComment_vue___default.a
@@ -3118,6 +3095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.items.push(data);
         },
         removeComment: function removeComment(index) {
+
             this.items.splice(index, 1);
         }
     },
@@ -3129,6 +3107,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             return '评论';
         }
+    },
+    watch: {
+        bestAnswer: {
+            handler: function handler(comment, oldComment) {
+
+                console.log('watch');
+                console.log(comment);
+                console.log(oldComment);
+                if (!oldComment) {
+                    return;
+                }
+                if (!comment) {
+                    this.items = this.items.filter(function (item) {
+                        return item.id !== oldComment.id;
+                    });
+                    return;
+                }
+                //                    if (comment.id === oldComment.id){
+                //                        this.bestAnswer = comment
+                //                        return
+                //                    }
+
+
+                this.items = this.items.map(function (item) {
+                    if (item.id === comment.id) {
+
+                        return comment;
+                    }
+                    return item;
+                });
+            },
+
+            deep: true
+        }
+
     }
 });
 
@@ -3420,7 +3433,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['comment'],
+    props: ['comment', 'bestAnswer'],
     data: function data() {
         return {
             isFavorite: this.comment.is_favorite,
@@ -3440,6 +3453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (data) {
                 _this.isFavorite = true;
                 _this.favoriteCount++;
+                _this.emitChange();
                 console.log(data.data);
             }).catch(function (err) {
                 console.log(err.response.data);
@@ -3454,10 +3468,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (data) {
                 _this2.isFavorite = false;
                 _this2.favoriteCount--;
+                _this2.emitChange();
             }).catch(function (err) {});
         },
         togoFavorite: function togoFavorite() {
             this.isFavorite ? this.unFavorite() : this.favorite();
+        },
+
+        emitChange: function emitChange() {
+            if (!this.bestAnswer) {
+                return;
+            }
+            if (this.comment.id !== this.bestAnswer.id) return;
+            var comment = this.comment;
+            comment.is_favorite = this.isFavorite;
+            comment.favorite_count = this.favoriteCount;
+            window.events.$emit('change-best-answer', comment);
+        }
+    },
+    watch: {
+
+        comment: {
+            handler: function handler(curVal, oldVal) {
+                console.log(curVal, oldVal);
+                this.isFavorite = this.comment.is_favorite;
+                this.favoriteCount = this.comment.favorite_count;
+            },
+
+            deep: true
+
         }
     }
 
@@ -4735,7 +4774,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            commentsCount: this.initialCommentsCount
+            commentsCount: this.initialCommentsCount,
+            bestAnswer: null
         };
     },
 
@@ -4770,14 +4810,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         makeBestAnswer: function makeBestAnswer(comment) {
+            var _this3 = this;
 
             axios.post('/api/v1/discussions/' + this.discussionId + '/' + 'best_answer', {
                 'comment_id': comment.id
             }).then(function (res) {
                 var data = res.data.data;
+                _this3.bestAnswer = comment;
 
                 window.events.$emit('best-answer-update', comment);
                 console.log(res.data);
+            });
+        },
+        fetchBestAnswer: function fetchBestAnswer() {
+            var _this4 = this;
+
+            axios.get('/api/v1/discussions/' + this.discussionId + '/' + 'best_answer').then(function (res) {
+                console.log(res.data);
+                _this4.bestAnswer = res.data.data;
             });
         }
     },
@@ -4787,6 +4837,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.makeBestAnswer(comment);
         }.bind(this));
+
+        window.events.$on('change-best-answer', function (comment) {
+
+            this.bestAnswer = comment;
+        }.bind(this));
+        this.fetchBestAnswer();
     }
 });
 
@@ -43384,7 +43440,14 @@ var render = function() {
             _c(
               "div",
               { staticClass: "comment-content" },
-              [_c("comment", { attrs: { comment: _vm.bestAnswer } })],
+              [
+                _c("comment", {
+                  attrs: {
+                    comment: _vm.bestAnswer,
+                    "best-answer": _vm.bestAnswer
+                  }
+                })
+              ],
               1
             )
           ])
@@ -43878,7 +43941,8 @@ var render = function() {
                           attrs: {
                             index: index,
                             comment: comment,
-                            "discussion-user": _vm.discussionUser
+                            "discussion-user": _vm.discussionUser,
+                            "best-answer": _vm.bestAnswer
                           },
                           on: { commentDelete: _vm.removeComment }
                         })
@@ -45288,7 +45352,9 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("favorite-comment", { attrs: { comment: _vm.comment } })
+        _c("favorite-comment", {
+          attrs: { comment: _vm.comment, "best-answer": _vm.bestAnswer }
+        })
       ],
       1
     ),

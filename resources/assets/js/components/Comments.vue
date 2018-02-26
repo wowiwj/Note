@@ -2,7 +2,6 @@
 
     <div class="comments">
 
-
         <div class="card">
             
             <header class="card-header">
@@ -15,7 +14,7 @@
                     <div class="empty-block" v-if="items.length == 0">评论区空空如也,赶快来评论吧</div>
 
                     <div :id="index" class="comment-content" v-for="(comment,index) in items" v-else>
-                    <comment :index="index" :comment="comment" @commentDelete="removeComment" :discussion-user="discussionUser"></comment>
+                    <comment :index="index" :comment="comment" @commentDelete="removeComment" :discussion-user="discussionUser" :best-answer="bestAnswer"></comment>
                     </div>
                     <div class="text-center">
                         <paginator :dataSet="dataSet" @changed="fetch"></paginator>
@@ -36,7 +35,7 @@
     import NewComment from './NewComment.vue'
 
     export default{
-        props:['discussionUser'],
+        props:['discussionUser','bestAnswer'],
         components:{
             Comment,
             NewComment
@@ -79,7 +78,9 @@
                 this.items.push(data);
             },
             removeComment(index){
+
                 this.items.splice(index, 1);
+
             }
 
         },
@@ -91,6 +92,42 @@
                 }
                 return '评论';
             }
+        },
+        watch:{
+            bestAnswer: {
+                handler(comment,oldComment){
+
+
+                    console.log('watch')
+                    console.log(comment)
+                    console.log(oldComment )
+                    if (!oldComment){
+                        return
+                    }
+                    if (!comment){
+                        this.items = this.items.filter((item)=>{
+                            return item.id !== oldComment.id
+                        })
+                        return
+                    }
+//                    if (comment.id === oldComment.id){
+//                        this.bestAnswer = comment
+//                        return
+//                    }
+
+
+                    this.items = this.items.map((item)=>{
+                        if (item.id === comment.id){
+
+                            return comment
+                        }
+                        return item
+                    })
+
+                },
+                deep:true
+            }
+
         }
     }
 

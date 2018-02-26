@@ -10,7 +10,7 @@
         <div class="card-content nopadding">
             <div class="content comment-contents">
                 <div class="comment-content">
-                    <comment :comment="bestAnswer"></comment>
+                    <comment :comment="bestAnswer" :best-answer="bestAnswer"></comment>
                 </div>
 
             </div>
@@ -24,32 +24,9 @@
     import Comment from './Comment.vue'
 
     export default {
-        props:['discussionId'],
+        props:['discussionId','bestAnswer'],
         components: {
             Comment
-        },
-        data(){
-            return {
-                bestAnswer:null
-            }
-        },
-        created(){
-
-            window.events.$on('best-answer-update',(comment)=>{
-                this.bestAnswer = comment
-            });
-
-            this.fetch()
-        },
-        methods:{
-
-            fetch(){
-                axios.get('/api/v1/discussions/'+this.discussionId + '/' + 'best_answer').then((res)=>{
-                    console.log(res.data);
-                    this.bestAnswer =res.data.data
-                });
-
-            }
         }
     }
 

@@ -13,7 +13,8 @@
         },
         data(){
             return {
-                commentsCount:this.initialCommentsCount
+                commentsCount:this.initialCommentsCount,
+                bestAnswer: null
             };
         },
         methods: {
@@ -50,6 +51,7 @@
                     'comment_id':comment.id
                 }).then((res)=>{
                     let data = res.data.data
+                    this.bestAnswer = comment
 
                     window.events.$emit('best-answer-update',comment);
                     console.log(res.data);
@@ -57,6 +59,13 @@
 
                 });
 
+
+            },
+            fetchBestAnswer(){
+                axios.get('/api/v1/discussions/'+this.discussionId + '/' + 'best_answer').then((res)=>{
+                    console.log(res.data);
+                    this.bestAnswer =res.data.data
+                });
 
             }
 
@@ -67,6 +76,13 @@
 
                 this.makeBestAnswer(comment);
             }.bind(this));
+
+            window.events.$on('change-best-answer',function (comment) {
+
+                this.bestAnswer = comment
+            }.bind(this));
+            this.fetchBestAnswer()
+
         }
     }
 </script>

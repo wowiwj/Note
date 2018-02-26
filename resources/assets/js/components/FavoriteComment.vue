@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    props:['comment'],
+    props:['comment','bestAnswer'],
     data(){
         return {
             isFavorite:this.comment.is_favorite,
@@ -23,6 +23,7 @@ export default {
             }).then((data)=>{
                 this.isFavorite = true
                 this.favoriteCount++;
+                this.emitChange()
                 console.log(data.data);
             }).catch((err)=>{
                 console.log(err.response.data);
@@ -38,11 +39,35 @@ export default {
             }).then((data)=>{
                 this.isFavorite = false;
                 this.favoriteCount--;
+                this.emitChange()
             }).catch((err)=>{
             });
         },
         togoFavorite(){
             this.isFavorite ? this.unFavorite() : this.favorite();
+        },
+        emitChange:function () {
+            if (!this.bestAnswer){
+                return
+            }
+            if (this.comment.id !== this.bestAnswer.id) return;
+            let comment = this.comment
+            comment.is_favorite = this.isFavorite
+            comment.favorite_count = this.favoriteCount
+            window.events.$emit('change-best-answer',comment);
+
+        }
+    },
+    watch:{
+
+        comment: {
+            handler(curVal,oldVal){
+                console.log(curVal,oldVal)
+                this.isFavorite = this.comment.is_favorite;
+                this.favoriteCount = this.comment.favorite_count;
+            },
+            deep:true
+
         }
     }
   
