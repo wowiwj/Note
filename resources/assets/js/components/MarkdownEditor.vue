@@ -54,6 +54,8 @@
 
         </div>
 
+        <input type="file" id="btn_file" style="display:none">
+
     </div>
 
 </template>
