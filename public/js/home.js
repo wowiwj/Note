@@ -29492,7 +29492,9 @@ try {
 
 window.axios = __webpack_require__("./node_modules/_axios@0.17.1@axios/index.js");
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest'
+};
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

@@ -17,7 +17,7 @@ class Discussion extends Model
     use RecordsActivity,Subscribable,Favoritable,ContentSetable,SoftDeletes;
     protected $guarded = [];
 
-    protected $with = ['user','tags','bastAnswer'];
+    protected $with = ['user','tags','bestAnswer'];
 
     protected $appends = [
         'isSubscribed',
@@ -64,7 +64,7 @@ class Discussion extends Model
         return !!$this->comments()->where('id',$comment_id)->first();
     }
 
-    public function bastAnswer(){
+    public function bestAnswer(){
         return $this->belongsTo(Comment::class,'solved_id','id');
     }
 

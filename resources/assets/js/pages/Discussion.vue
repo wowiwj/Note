@@ -2,12 +2,14 @@
 
     import SubscribeSubject from '../components/SubscribeSubject.vue'
     import FavoriteSubject from '../components/FavoriteSubject.vue'
+    import BestAnswer from '../components/BestAnswer.vue'
 
     export default{
         props:['initialCommentsCount','discussionId'],
         components:{
             'subject-subscribe': SubscribeSubject,
-            'favorite-subject': FavoriteSubject
+            'favorite-subject': FavoriteSubject,
+            'best-answer' : BestAnswer
         },
         data(){
             return {
@@ -43,9 +45,13 @@
                 })
             },
             makeBestAnswer(comment){
+
                 axios.post('/api/v1/discussions/'+this.discussionId + '/' + 'best_answer',{
                     'comment_id':comment.id
                 }).then((res)=>{
+                    let data = res.data.data
+
+                    window.events.$emit('best-answer-update',comment);
                     console.log(res.data);
 
 
@@ -56,7 +62,9 @@
 
         },
         created(){
+
             window.events.$on('answer-select',function (comment) {
+
                 this.makeBestAnswer(comment);
             }.bind(this));
         }

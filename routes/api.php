@@ -34,7 +34,9 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('discussions/{discussion}','DiscussionsController@show');
     Route::put('discussions/{discussion}','DiscussionsController@update');
     Route::delete('discussions/{discussion}','DiscussionsController@destroy');
+
     Route::post('discussions/{discussion}/best_answer','DiscussionsController@bestAnswer');
+    Route::get('discussions/{discussion}/best_answer','CommentsController@bestAnswer');
 
 
     Route::post('uploadAvatar','UsersController@uploadAvatar');

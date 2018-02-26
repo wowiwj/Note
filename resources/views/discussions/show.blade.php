@@ -116,6 +116,8 @@
 
                 </div>
 
+                <best-answer :discussion-id="{{ $discussion->id }}"></best-answer>
+
                 <comments :discussion-user="{{ $discussion->user }}"></comments>
 
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Base\Service\Mention;
+use App\Http\Resources\CommentResource;
 use App\Models\Discussion;
 use App\Models\SpecialPage;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class CommentsController extends ApiController
 
      public function __construct()
     {
-        $this->middleware('auth:api')->except(['index','pageComments','discussionComments']);
+        $this->middleware('auth:api')->except(['index','pageComments','discussionComments','bestAnswer']);
 
     }
 
@@ -32,6 +33,16 @@ class CommentsController extends ApiController
         return CommentCollection::collection($comments);
 
     }
+
+    public function bestAnswer(Discussion $discussion){
+
+        $bestAnswer = $discussion->bestAnswer;
+        if (empty($bestAnswer)){
+            return $this->message('没有最佳答案');
+        }
+        return new CommentCollection($bestAnswer);
+    }
+
     public function storeDiscussionComments(Discussion $discussion,Request $request){
         $this->validate($request,[
             'body' => 'required'

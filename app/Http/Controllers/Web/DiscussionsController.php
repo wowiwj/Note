@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Base\Fitters\DiscussionFilters;
+use App\Http\Resources\CommentResource;
 use App\Models\Article;
 use App\Models\Discussion;
 use Carbon\Carbon;
@@ -37,7 +38,10 @@ class DiscussionsController extends Controller
             auth()->user()->readDiscussion($discussion);
         }
 
-        return view('discussions.show',compact('discussion'));
+//        $bestAnswer = (new CommentResource($discussion->bestAnswer))->resolve(request());
+//        $bestAnswer = collect($bestAnswer);
+
+        return view('discussions.show',compact('discussion','bestAnswer'));
 
     }
 

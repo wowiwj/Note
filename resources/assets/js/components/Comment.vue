@@ -66,8 +66,15 @@
                 return window.App.signedIn && this.comment.user.id === window.App.user.id;
             },
             canCheckAnswer(){
-                let isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser;
-                let isQuestioner = window.App.signedIn && this.discussionUser && window.App.user.id === this.discussionUser.id;
+                if (! this.discussionUser){
+                    return false
+                }
+                console.log(window.App.user.is_admin)
+                let isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser !== null;
+
+                let isQuestioner = window.App.signedIn && this.discussionUser !== null && window.App.user.id === this.discussionUser.id;
+
+
                 return isAdmin || isQuestioner;
             }
         },
