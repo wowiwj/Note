@@ -101,10 +101,6 @@
             bestAnswer: {
                 handler(comment,oldComment){
 
-
-                    console.log('watch')
-                    console.log(comment)
-                    console.log(oldComment )
                     if (!oldComment){
                         return
                     }
@@ -114,11 +110,6 @@
                         })
                         return
                     }
-//                    if (comment.id === oldComment.id){
-//                        this.bestAnswer = comment
-//                        return
-//                    }
-
 
                     this.items = this.items.map((item)=>{
                         if (item.id === comment.id){

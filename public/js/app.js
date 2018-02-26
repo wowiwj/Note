@@ -2927,7 +2927,6 @@ __WEBPACK_IMPORTED_MODULE_0_moment___default.a.locale('zh-cn');
             if (!this.discussionUser) {
                 return false;
             }
-            console.log(window.App.user.is_admin);
             var isAdmin = window.App.signedIn && window.App.user.is_admin && this.discussionUser !== null;
 
             var isQuestioner = window.App.signedIn && this.discussionUser !== null && window.App.user.id === this.discussionUser.id;
@@ -3116,9 +3115,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         bestAnswer: {
             handler: function handler(comment, oldComment) {
 
-                console.log('watch');
-                console.log(comment);
-                console.log(oldComment);
                 if (!oldComment) {
                     return;
                 }
@@ -3128,11 +3124,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                     return;
                 }
-                //                    if (comment.id === oldComment.id){
-                //                        this.bestAnswer = comment
-                //                        return
-                //                    }
-
 
                 this.items = this.items.map(function (item) {
                     if (item.id === comment.id) {
