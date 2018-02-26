@@ -13,7 +13,7 @@
                 <div class="content comment-contents">
                     <div class="empty-block" v-if="items.length == 0">评论区空空如也,赶快来评论吧</div>
 
-                    <div :id="index" class="comment-content" v-for="(comment,index) in items" v-else>
+                    <div :id="index" :class="{'comment-content':true,'best-answer-style':isBestAnswer(comment)}" v-for="(comment,index) in items" v-else>
                     <comment :index="index" :comment="comment" @commentDelete="removeComment" :discussion-user="discussionUser" :best-answer="bestAnswer"></comment>
                     </div>
                     <div class="text-center">
@@ -81,6 +81,10 @@
 
                 this.items.splice(index, 1);
 
+            },
+            isBestAnswer(comment){
+                if (! this.bestAnswer) return false;
+                return comment.id === this.bestAnswer.id
             }
 
         },

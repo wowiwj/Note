@@ -62,6 +62,14 @@
         <div class="discussion-state">
             
             <div class="info">
+                @if($discussion->bestAnswer)
+                    <span class="solved">
+                        <span class="icon">
+                            <i class="fa fa-fw fa-check"></i>
+                        </span>
+                        已解决
+                    </span>
+                @endif
                     <span class="icon">
                         <i class="fa fa-fw fa-eye"></i>
                     </span>

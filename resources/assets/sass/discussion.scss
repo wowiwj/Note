@@ -164,6 +164,15 @@
 
   .info {
 
+    .solved{
+      border:1px solid #2ab27b;
+      color: #4bb1b1;
+      border-radius: 10px;
+      .icon {
+        margin-left: 0;
+      }
+    }
+
     font-size: 14px;
     color: #999;
     .icon {

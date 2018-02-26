@@ -20951,6 +20951,16 @@ a:hover {
   color: #999;
 }
 
+.discussion-state .info .solved {
+  border: 1px solid #2ab27b;
+  color: #4bb1b1;
+  border-radius: 10px;
+}
+
+.discussion-state .info .solved .icon {
+  margin-left: 0;
+}
+
 .discussion-state .info .icon {
   vertical-align: inherit;
   margin-left: 10px;

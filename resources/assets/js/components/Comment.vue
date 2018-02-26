@@ -135,3 +135,11 @@
     }
 
 </script>
+
+<style lang="scss">
+
+  .best-answer-style{
+    background: rgba(132,221,75,0.1);
+  }
+
+</style>
