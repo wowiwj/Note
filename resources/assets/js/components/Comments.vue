@@ -91,7 +91,7 @@
         computed:{
             title(){
 
-                if (this.isDiscussion){
+                if (this.discussionUser){
                     return '回答';
                 }
                 return '评论';
