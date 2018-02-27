@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('views_count')->default(0);
             $table->string('title');
             $table->string('page_image')->nullable();
+            $table->string('slug')->nullable();
             $table->text('body');
             $table->boolean('is_original')->default(false)->comment('是否为原创');
             $table->boolean('is_secret')->default(false)->comment('是否为私密文章');

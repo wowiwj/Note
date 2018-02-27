@@ -15,7 +15,6 @@ class DiscussionsController extends ApiController
     public function __construct()
     {
         $this->middleware('auth:api',['except' => ['show','index']]);
-
     }
 
     public function store(Request $request){
@@ -30,7 +29,6 @@ class DiscussionsController extends ApiController
         $draft = $draft->getLastUpdate();
 
         $tags = json_decode($request->tags,true);
-
         $user = Auth::user();
 
         $discussion = Discussion::create([

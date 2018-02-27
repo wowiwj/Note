@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
 use App\Models\SpecialPage;
 use App\Models\Tag;
+use App\Observers\ArticleObserver;
 use Input;
 use App\Models\Category;
 use Carbon\Carbon;
@@ -54,6 +56,8 @@ class AppServiceProvider extends ServiceProvider
 
         Carbon::setLocale('zh');
         Schema::defaultStringLength(191);
+
+//        Article::observe(ArticleObserver::class);
     }
 
     /**

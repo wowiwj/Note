@@ -19,9 +19,6 @@ class SpecialPagesController extends ApiController
         return new SpecialPageResource($page);
     }
 
-
-
-
     public function store(Request $request){
         $this->validate($request,[
             'isShowNav' => 'required',
@@ -33,7 +30,7 @@ class SpecialPagesController extends ApiController
         $page =  SpecialPage::create([
             'show_nav' => $request->isShowNav,
             'title' => $request->title,
-            'body' => $request->body,
+            'body' => clean($request->body),
             'route' => $request->route
         ]);
         return new SpecialPageResource($page);

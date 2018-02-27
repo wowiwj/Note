@@ -44,5 +44,9 @@ return [
         'client_secret' => env('QQ_CLIENT_SECRET','client_secret'),
         'redirect' => env('APP_URL').'/oauth/callback/driver/qq'
     ],
+    'baidu_translate' => [
+        'appid' => env('BAIDU_TRANSLATE_APPID'),
+        'key'   => env('BAIDU_TRANSLATE_KEY'),
+    ],
 
 ];

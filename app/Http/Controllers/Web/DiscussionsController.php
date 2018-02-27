@@ -25,6 +25,7 @@ class DiscussionsController extends Controller
 
         // https://stackoverflow.com/questions/17159273/laravel-pagination-links-not-including-other-get-parameters
         $discussions->appends(Input::except('page'));
+//        return $discussions;
 
         return view('discussions.index',compact('discussions'));
     }
@@ -37,9 +38,6 @@ class DiscussionsController extends Controller
         if (auth()->check()){
             auth()->user()->readDiscussion($discussion);
         }
-
-//        $bestAnswer = (new CommentResource($discussion->bestAnswer))->resolve(request());
-//        $bestAnswer = collect($bestAnswer);
 
         return view('discussions.show',compact('discussion','bestAnswer'));
 

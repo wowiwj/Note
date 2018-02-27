@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Base\Service\Mention;
-use App\Http\Resources\CommentResource;
 use App\Models\Discussion;
 use App\Models\SpecialPage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Http\Resources\CommentResource as CommentCollection;
+use App\Http\Resources\CommentResource;
 
 class CommentsController extends ApiController
 {
@@ -25,12 +24,12 @@ class CommentsController extends ApiController
     {
         $comments = $article->comments()->paginate(20);
 
-        return CommentCollection::collection($comments);
+        return CommentResource::collection($comments);
     }
 
     public function discussionComments(Discussion $discussion){
         $comments = $discussion->comments()->paginate(20);
-        return CommentCollection::collection($comments);
+        return CommentResource::collection($comments);
 
     }
 
@@ -40,7 +39,7 @@ class CommentsController extends ApiController
         if (empty($bestAnswer)){
             return $this->message('没有最佳答案');
         }
-        return new CommentCollection($bestAnswer);
+        return new CommentResource($bestAnswer);
     }
 
     public function storeDiscussionComments(Discussion $discussion,Request $request){
@@ -49,13 +48,13 @@ class CommentsController extends ApiController
         ]);
 
         $mention = new Mention();
-        $parsed_body = $mention->parse($request->body);
+        $parsed_body = $mention->parse(clean($request->body));
 
         $comment = $discussion->comments()->create([
             'content' => $parsed_body,
             'user_id' => Auth::user()->id
         ]);
-        return new CommentCollection($comment);
+        return new CommentResource($comment);
 
     }
 
@@ -64,7 +63,7 @@ class CommentsController extends ApiController
         $page = SpecialPage::where('route',$name)->firstOrFail();
 
         $comments = $page->comments()->paginate(20);
-        return CommentCollection::collection($comments);
+        return CommentResource::collection($comments);
 
     }
 
@@ -74,7 +73,7 @@ class CommentsController extends ApiController
         ]);
 
         $mention = new Mention();
-        $parsed_body = $mention->parse($request->body);
+        $parsed_body = $mention->parse(clean($request->body));
 
         $page = $page = SpecialPage::where('route',$name)->firstOrFail();
 
@@ -82,7 +81,7 @@ class CommentsController extends ApiController
             'content' => $parsed_body,
             'user_id' => Auth::user()->id
         ]);
-        return new CommentCollection($comment);
+        return new CommentResource($comment);
 
     }
 
@@ -93,7 +92,7 @@ class CommentsController extends ApiController
             'body' => 'required'
         ]);
 
-        $parsed_body = app(Mention::class)->parse($request->body);
+        $parsed_body = app(Mention::class)->parse(clean($request->body));
 
         $comment = $article->comments()->create([
             'content' => $parsed_body,
@@ -105,7 +104,7 @@ class CommentsController extends ApiController
         })->each->notify($comment);
 
 
-        return new CommentCollection($comment);
+        return new CommentResource($comment);
     }
 
     public function destroy(Comment $comment){

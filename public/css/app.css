@@ -20559,9 +20559,9 @@ a:hover {
 
 .article-intro .placeimage {
   padding: 0 10px;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
 }
 
 .article-intro .placeimage img {
@@ -20590,9 +20590,9 @@ a:hover {
 }
 
 .article-intro .describe {
-  -webkit-box-flex: 9;
-      -ms-flex: 9;
-          flex: 9;
+  -webkit-box-flex: 10;
+      -ms-flex: 10;
+          flex: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20858,9 +20858,9 @@ a:hover {
 
 .discussion-intro .placeimage {
   padding: 0 10px;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
 }
 
 .discussion-intro .placeimage img {
@@ -20889,9 +20889,9 @@ a:hover {
 }
 
 .discussion-intro .describe {
-  -webkit-box-flex: 9;
-      -ms-flex: 9;
-          flex: 9;
+  -webkit-box-flex: 10;
+      -ms-flex: 10;
+          flex: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

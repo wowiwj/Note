@@ -17,7 +17,9 @@ trait ContentSetable
             'html' => $html
         ];
 
-        $this->makeContentImage($html);
+        if (array_key_exists('page_image', $this->getAttributes())) {
+            $this->makeContentImage($html);
+        }
 
         $this->body = json_encode($data);
     }
@@ -30,9 +32,9 @@ trait ContentSetable
         if (empty($match) || is_null($match[1])){
             return;
         }
-        $article_image = (new ImageUploadHandler())
+        $content_image = (new ImageUploadHandler())
             ->makeArticleImage($match[1],'');
-        $this->page_image = $article_image;
+        $this->page_image = $content_image;
     }
 
 }
