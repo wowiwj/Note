@@ -2,7 +2,6 @@
 
 namespace App\Base\Traits;
 
-
 use App\Models\Favorite;
 use Illuminate\Database\Eloquent\Model;
 

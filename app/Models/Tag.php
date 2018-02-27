@@ -17,9 +17,16 @@ class Tag extends Model
         return $this->morphedByMany(Discussion::class,'taggable');
     }
 
-    public function path(){
+    public function path($name = null){
 
-        return '?tag='.$this->name;
+        $path = '?tag='.$this->name;
+
+
+        if ($name){
+            return url()->route($name).$path;
+        }
+
+        return $path;
 
     }
 

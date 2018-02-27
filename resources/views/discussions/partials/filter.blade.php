@@ -27,7 +27,7 @@
                         @forelse($popular_tags as $item)
 
                             <li>
-                                <a href="{{ $item->path() }}">
+                                <a href="{{ $item->path('discussions.index') }}">
                                     {{ $item->name }}
                                 </a>
                             </li>
