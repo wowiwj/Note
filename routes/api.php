@@ -50,11 +50,11 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('drafts/{draft}','DraftsController@show');
     Route::put('drafts/{draft}','DraftsController@update');
 
-    Route::get('articles/{category}/{article}/comments','CommentsController@index');
-    Route::post('articles/{category}/{article}/comments','CommentsController@store');
+    Route::get('articles/{category}/{article}/{slug?}/comments','CommentsController@index');
+    Route::post('articles/{category}/{article}/{slug?}/comments','CommentsController@store');
 
-    Route::get('discussions/{discussion}/comments','CommentsController@discussionComments');
-    Route::post('discussions/{discussion}/comments','CommentsController@storeDiscussionComments');
+    Route::get('discussions/{discussion}/{slug?}/comments','CommentsController@discussionComments');
+    Route::post('discussions/{discussion}/{slug?}/comments','CommentsController@storeDiscussionComments');
 
 
     Route::delete('comments/{comment}','CommentsController@destroy');

@@ -124,6 +124,7 @@
                     this.draft = draft;
                     this.user = draft.user;
                     this.firstFetch = false
+                    if (! draft.relation) return;
                     this.discussion = draft.relation
                     this.selectedTags = this.discussion.tags
                 }, (error) => {

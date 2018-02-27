@@ -8,7 +8,9 @@ use App\Base\Service\Markdowner;
 use App\Base\Traits\ContentSetable;
 use App\Base\Traits\Favoritable;
 use App\Base\Traits\RecordsActivity;
+use App\Base\Traits\SlugTransable;
 use App\Base\Traits\Subscribable;
+use App\Jobs\TranslateSlug;
 use App\Notifications\ArticleWasFavorited;
 use App\Notifications\ArticleWasSubscribed;
 use App\Scopes\ArticleFitterScope;
@@ -20,7 +22,12 @@ class Article extends Model
 {
 
 
-    use RecordsActivity,Subscribable,Favoritable,ContentSetable,SoftDeletes;
+    use RecordsActivity,
+        Subscribable,
+        Favoritable,
+        SlugTransable,
+        ContentSetable,
+        SoftDeletes;
     protected $guarded = [];
 
     protected $with = ['category','user','tags'];
@@ -58,13 +65,6 @@ class Article extends Model
     public function currentDraft(){
         return $this->belongsTo(Draft::class,'draft_id','id');
     }
-
-
-    public function path()
-    {
-        return '/articles/'.$this->category->slug.'/'.$this->id;
-    }
-
 
 
     public function replies()
@@ -115,13 +115,17 @@ class Article extends Model
 
     }
 
+    public function path($params = [])
+    {
+        return route('articles.show', array_merge([$this->category->slug,$this->id, $this->slug], $params));
+    }
+
 
     protected static function boot()
     {
         parent::boot();
 
         static::addGlobalScope(new ArticleFitterScope);
-
 
     }
 
@@ -154,5 +158,6 @@ class Article extends Model
         $user->notify(new ArticleWasFavorited($this));
 
     }
+
 
 }

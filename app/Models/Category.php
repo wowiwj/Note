@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Base\Traits\SlugTransable;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
+    use SlugTransable;
+
 
     protected $guarded = [];
 
@@ -30,18 +34,7 @@ class Category extends Model
     {
         parent::boot();
 
-        static::saving(function ($category){
-
-            $category->slug = str_slug($category->name);
-
-        });
-
     }
 
-//    public function getArticlesCountAttribute()
-//    {
-////        return 1;
-//        return $this->articles;
-//    }
 
 }

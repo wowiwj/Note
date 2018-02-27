@@ -6,7 +6,9 @@ use App\Base\Fitters\DiscussionFilters;
 use App\Base\Traits\ContentSetable;
 use App\Base\Traits\Favoritable;
 use App\Base\Traits\RecordsActivity;
+use App\Base\Traits\SlugTransable;
 use App\Base\Traits\Subscribable;
+use App\Jobs\TranslateSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +16,13 @@ use Illuminate\Support\Facades\Auth;
 class Discussion extends Model
 {
 
-    use RecordsActivity,Subscribable,Favoritable,ContentSetable,SoftDeletes;
+    use RecordsActivity,
+        Subscribable,
+        Favoritable,
+        ContentSetable,
+        SlugTransable,
+        SoftDeletes;
+
     protected $guarded = [];
 
     protected $with = ['user','tags','bestAnswer'];
@@ -49,10 +57,6 @@ class Discussion extends Model
     }
 
 
-    public function path()
-    {
-        return '/discussions/'.$this->id;
-    }
 
     public function comments()
     {
@@ -112,10 +116,19 @@ class Discussion extends Model
 
     }
 
+    public function path($params = [])
+    {
+        return route('discussions.show', array_merge([$this->id, $this->slug], $params));
+    }
+
 
     protected static function boot()
     {
         parent::boot();
+
+        static::saving(function ($discussion){
+            dispatch(new TranslateSlug($discussion,'title'));
+        });
     }
 
     public function notify(){

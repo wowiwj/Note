@@ -54,9 +54,10 @@ Route::group(['namespace' => 'Web'], function () {
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
 
     Route::get('discussions','DiscussionsController@index')->name('discussions.index');
-    Route::get('discussions/{discussion}','DiscussionsController@show')->name('discussions.show');
     Route::get('discussions/create', 'DiscussionsController@create')->name('discussions.create');
     Route::get('discussions/{discussion}/edit', 'DiscussionsController@edit')->name('discussions.edit');
+    Route::get('discussions/{discussion}/{slug?}','DiscussionsController@show')->name('discussions.show');
+
 
     Route::get('users/{user}','UsersController@show')->name('users.show');
     Route::get('users/{user}/edit','UsersController@edit')->name('users.edit');
@@ -73,7 +74,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::post('categories/store', 'CategoriesController@store')->name('categories.store');
 
     Route::get('articles/{category}', 'ArticlesController@index');
-    Route::get('articles/{category}/{article}','ArticlesController@show');
+    Route::get('articles/{category}/{article}/{slug?}','ArticlesController@show')->name('articles.show');
 
     Route::get('special_pages/create','SpecialPagesController@create')->name('special_pages.create');
     Route::get('special_pages/{page}/edit','SpecialPagesController@edit')->name('special_pages.edit');

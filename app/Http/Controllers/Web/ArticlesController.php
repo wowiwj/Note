@@ -48,9 +48,13 @@ class ArticlesController extends Controller
 
     }
 
-    public function show($category,Article $article)
+    public function show($category,Article $article,Request $request)
     {
 
+        // URL 矫正
+        if ( ! empty($article->slug) && $article->slug != $request->slug) {
+            return redirect($article->path(), 301);
+        }
         $article->load(['comments']);
 //        return $article;
 

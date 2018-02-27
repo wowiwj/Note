@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Base\Traits\SlugTransable;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+    use SlugTransable;
 
     protected $guarded = [];
     public function articles()
@@ -28,18 +30,5 @@ class Tag extends Model
 
         return $path;
 
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($tag){
-            if ($tag->slug == null){
-                $tag->slug = $tag->name;
-            }
-
-
-        });
     }
 }

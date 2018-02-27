@@ -58,7 +58,6 @@ class UsersController extends Controller
 
         flash('验证邮件已发送到你的注册邮箱上，请注意查收。','success');
 
-
         return back();
 
     }

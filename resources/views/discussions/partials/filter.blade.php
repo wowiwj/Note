@@ -13,11 +13,15 @@
                     </p>
                     <ul class="menu-list">
                         <li><a href="/discussions">所有问题</a></li>
+                        <li><a href="/discussions">已解决</a></li>
+                        <li><a href="/discussions">未解决</a></li>
+                        <li><a href="/discussions">7天热门</a></li>
+                        <li><a href="/discussions?popular=1">所有热门</a></li>
+
                         @auth
                         <li><a href="/discussions?by={{ Auth::user()->name }}">我的问题</a></li>
                         <li><a href="/discussions?by={{ Auth::user()->name }}">我的回答</a></li>
                         @endauth
-                        <li><a href="/discussions?popular=1">热门问题</a></li>
                         <li><a href="/discussions?uncommented=1">零回复问题</a></li>
                     </ul>
                     <p class="menu-label">

@@ -30,8 +30,11 @@ class DiscussionsController extends Controller
         return view('discussions.index',compact('discussions'));
     }
 
-    public function show(Discussion $discussion)
+    public function show(Discussion $discussion,Request $request)
     {
+        if ( ! empty($discussion->slug) && $discussion->slug != $request->slug) {
+            return redirect($discussion->path(), 301);
+        }
 
         $discussion->load(['comments']);
 

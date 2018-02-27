@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Models\Article;
+use App\Models\Discussion;
 use App\Models\SpecialPage;
 use App\Models\Tag;
 use App\Observers\ArticleObserver;
+use App\Observers\DiscussionObserver;
 use Input;
 use App\Models\Category;
 use Carbon\Carbon;
@@ -22,6 +24,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        $this->initViewValue();
+
+        Carbon::setLocale('zh');
+        Schema::defaultStringLength(191);
+
+        $this->addObserver();
+
+    }
+
+    protected function addObserver(){
+
+//        Article::observe(ArticleObserver::class);
+//        Discussion::observe(DiscussionObserver::class);
+    }
+
+    protected function initViewValue(){
         \View::composer('*', function ($view) {
             $categories = \Cache::remember('poular_categorys',1, function () {
                 return $categories = Category::withCount('articles')
@@ -52,12 +70,6 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('special_pages', $specialPages);
         });
-
-
-        Carbon::setLocale('zh');
-        Schema::defaultStringLength(191);
-
-//        Article::observe(ArticleObserver::class);
     }
 
     /**
