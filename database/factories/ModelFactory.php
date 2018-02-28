@@ -29,7 +29,7 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     $name = $faker->name;
     return [
         'name' => $name,
-        'slug' => $name,
+        'slug' => str_slug($name),
     ];
 });
 

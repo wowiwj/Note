@@ -12,12 +12,9 @@
 */
 
 
-Route::get('/', function () {
 
-    return redirect('articles');
 
-});
-
+Route::redirect('/', '/articles', 301);
 
 Auth::routes();
 
