@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Base\Handler\SlugTranslateHandler;
 use App\Base\Traits\SlugTransable;
+use App\Jobs\TranslateSlug;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    use SlugTransable;
 
     protected $guarded = [];
     public function articles()
@@ -30,5 +31,14 @@ class Tag extends Model
 
         return $path;
 
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model){
+            $model->slug = app(SlugTranslateHandler::class)->translate($model->name);
+        });
     }
 }
