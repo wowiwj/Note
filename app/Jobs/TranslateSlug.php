@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\DB;
 
 class TranslateSlug implements ShouldQueue
 {
@@ -40,8 +41,8 @@ class TranslateSlug implements ShouldQueue
         $field = $this->field;
         $slug = app(SlugTranslateHandler::class)->translate($this->translate->$field);
 
-        $this->translate->slug = $slug;
-        $this->translate->save();
+
+        DB::table($this->translate->getTable())->where('id', $this->translate->id)->update(['slug' => $slug]);
 
     }
 }

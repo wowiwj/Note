@@ -13,13 +13,15 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(UsersTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(ArticlesTableSeeder::class);
+        $this->call(DiscussionsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
 
-        factory(\App\Models\Category::class,60)->create();
-        factory(\App\Models\Article::class,60)->create();
-        factory(\App\Models\Discussion::class,60)->create();
         factory(\App\Models\Reply::class,60)->create();
-        factory(\App\Models\Comment::class,120)->create();
 
-         $this->call(TagsTableSeeder::class);
+
+
     }
 }

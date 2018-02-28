@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TagsTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,8 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Tag::flushEventListeners();
-        factory(\App\Models\Tag::class,60)->create();
+        \App\Models\Category::flushEventListeners();
+        factory(\App\Models\Category::class,60)->create();
+
     }
 }
