@@ -122,15 +122,6 @@ class Discussion extends Model
     }
 
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($discussion){
-            dispatch(new TranslateSlug($discussion,'title'));
-        });
-    }
-
     public function notify(){
 
         $user = $this->user;

@@ -20,6 +20,7 @@ class CreateDraftsTable extends Migration
             $table->unsignedInteger('relation_id')->nullable();
             $table->string('relation_type')->nullable();
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->text('body');
             $table->timestamps();
         });

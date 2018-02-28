@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\DiscussionResource;
+use App\Jobs\TranslateSlug;
 use App\Models\Article;
 use App\Models\Discussion;
 use App\Models\Draft;
@@ -37,6 +38,8 @@ class DiscussionsController extends ApiController
             'draft_id' => $draft->id,
             'user_id' => $user->id
         ]);
+
+        dispatch(new TranslateSlug($discussion,'title'));
 
         Draft::relationIdWithRef($ref,$discussion->id);
 

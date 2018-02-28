@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Jobs\TranslateSlug;
 use App\Models\Article;
 use App\Models\Draft;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ArticleResource;
@@ -47,17 +49,19 @@ class ArticlesController extends ApiController
         $draft = $draft->getLastUpdate();
 
         $tags = json_decode($request->tags,true);
-
         $user = Auth::user();
 
-        $article = Article::create([
+        $article = Article::query()->create([
             'title' => $draft->title,
             'content' => $draft->body,
             'draft_id' => $draft->id,
             'user_id' => $user->id,
             'category_id' => $request->category_id,
             'is_original' => $request->is_original
+
         ]);
+
+        dispatch(new TranslateSlug($article,'title'));
 
         Draft::relationIdWithRef($ref,$article->id);
 

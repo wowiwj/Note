@@ -11,7 +11,7 @@ class Draft extends Model
 {
     protected $guarded = [];
 
-//    protected $hidden = ['id'];
+    protected $hidden = ['id'];
 
     protected $appends = ['ref','source'];
 

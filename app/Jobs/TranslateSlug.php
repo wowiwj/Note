@@ -41,7 +41,7 @@ class TranslateSlug implements ShouldQueue
         $field = $this->field;
         $slug = app(SlugTranslateHandler::class)->translate($this->translate->$field);
 
-
+        $this->translate->slug = $slug;
         DB::table($this->translate->getTable())->where('id', $this->translate->id)->update(['slug' => $slug]);
 
     }

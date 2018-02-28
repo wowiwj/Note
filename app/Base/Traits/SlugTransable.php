@@ -21,22 +21,28 @@ trait SlugTransable
      */
     protected static function bootSlugTransable()
     {
+
         static::saving(function ($model) {
-
-            $attributes = $model->getAttributes();
-            $translate = 'name';
-
-            if (! array_key_exists('slug', $attributes)) {
-               return;
-            }
-
-            if (array_key_exists('title', $attributes)) {
-                $translate = 'title';
-            }
-
-            dispatch(new TranslateSlug($model,$translate));
-
+            self::translate($model);
         });
+
+    }
+
+    protected static function translate($model){
+
+
+        $attributes = $model->getAttributes();
+        $translate = 'name';
+
+        if (! array_key_exists('slug', $attributes)) {
+            return;
+        }
+
+        if (array_key_exists('title', $attributes)) {
+            $translate = 'title';
+        }
+
+        dispatch(new TranslateSlug($model,$translate));
     }
 
 }
