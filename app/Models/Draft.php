@@ -84,6 +84,19 @@ class Draft extends Model
 
     }
 
+    public function getSourceTitleAttribute(){
+
+        $source = $this->source;
+
+        $maps = [
+            'article' => '文章',
+            'discussion' => '提问'
+        ];
+        return $maps[$source];
+    }
+
+
+
     protected static function boot()
     {
         parent::boot();

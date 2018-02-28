@@ -19,7 +19,7 @@ class DraftsController extends Controller
 
         $user = Auth::user();
 
-        $drafts = $user->drafts()->whereNull('parent_id')->latest()->paginate(20);
+        $drafts = $user->drafts()->whereNull('parent_id')->latest()->paginate(10);
 
         return view('drafts.index',compact('user','drafts'));
     }

@@ -6,14 +6,19 @@
 
         <article class="media">
             <div class="media-content">
-                <div class="content">
+                <div class="content" >
                     @foreach($drafts as $draft)
                         <form id="delete-form-{{ $draft->ref }}" action="{{ route('drafts.destroy',$draft->ref) }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                         </form>
                         <p style="border-bottom: 1px solid #ccc;padding-bottom: 10px">
+                            <span style="padding:0 5px;font-size: 0.8rem;border: 1px solid #2ab27b;color: #4bb1b1;border-radius: 10px;">{{ $draft->sourceTitle }}</span>
                             <strong>{{ $draft->lastUpdate->title }} </strong>
+                            @if($draft->relation)
+                                ·
+                                <a href="{{ $draft->relation->path() }}">关联</a>
+                            @endif
                             <br>
                             {{ $draft->lastUpdate->brief }}
                             <br>
@@ -28,9 +33,11 @@
 
                     @endforeach
 
+
                 </div>
             </div>
         </article>
+        <div style="padding-top: 20px">{{ $drafts->links('vendor.pagination.simple-default') }}</div>
     @endcomponent
 
 
