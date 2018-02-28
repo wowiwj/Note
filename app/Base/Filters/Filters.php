@@ -1,6 +1,7 @@
 <?php
 namespace App\Base\Fitters;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 abstract class Filters{
@@ -16,7 +17,7 @@ abstract class Filters{
         $this->request = $request;
     }
 
-    public function apply($builder)
+    public function apply(Builder $builder)
     {
         $this->builder = $builder;
 
