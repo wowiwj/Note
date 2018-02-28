@@ -2725,7 +2725,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var article = response.data.data;
                 console.log(article);
 
-                var path = 'articles' + '/' + article.category.name + '/' + article.id;
+                var path = 'articles' + '/' + article.category.slug + '/' + article.id;
 
                 window.location.href = '/' + path;
                 console.log(path);
@@ -2766,7 +2766,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var article = response.data.data;
                 console.log(article);
 
-                var path = 'articles' + '/' + article.category.name + '/' + article.id;
+                var path = 'articles' + '/' + article.category.slug + '/' + article.id;
 
                 window.location.href = '/' + path;
                 console.log(path);

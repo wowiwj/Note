@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
 
         factory(\App\Models\Reply::class,60)->create();
 
+        $this->call(MakeDiscussionSolvedSeeder::class);
+
 
 
     }

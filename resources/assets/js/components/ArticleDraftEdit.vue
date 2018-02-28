@@ -230,7 +230,7 @@
                     var article = response.data.data;
                     console.log(article)
 
-                    var path = 'articles' + '/' + article.category.name + '/' + article.id;
+                    var path = 'articles' + '/' + article.category.slug + '/' + article.id;
 
 
                     window.location.href = '/' + path;
@@ -274,7 +274,7 @@
                     var article = response.data.data;
                     console.log(article)
 
-                    var path = 'articles' + '/' + article.category.name + '/' + article.id;
+                    var path = 'articles' + '/' + article.category.slug + '/' + article.id;
 
 
                     window.location.href = '/' + path;
