@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Auth;
 class Article extends Model
 {
 
-
     use RecordsActivity,
         Subscribable,
         Favoritable,

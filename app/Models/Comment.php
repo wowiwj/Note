@@ -63,6 +63,18 @@ class Comment extends Model
 
     }
 
+    public function notifyBestAnswer(){
+
+        $user = Auth::user();
+
+        $discussion = $this->commentable;
+
+        $subscriptions = $discussion->subscriptions()->where('user_id','!=',$user->id)->get();
+
+        $subscriptions->each->notifyUpdateBestAnswer($this,$user);
+
+    }
+
 
 
 }
