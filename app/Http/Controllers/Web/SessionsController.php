@@ -28,21 +28,20 @@ class SessionsController extends Controller
 
             if (Auth::user()->activated) {
 
-                return back();
+//                return back();
 
 //                flash('尊敬的'.Auth::user()->name.',欢迎回来')->success();
                 return redirect()->intended(route("users.show", [Auth::user()]));
             }else{
                 Auth::logout();
-//                flash('你的账号未激活，请检查邮箱中的注册邮件进行激活。')->important();
+                flash('你的账号未激活，请检查邮箱中的注册邮件进行激活。')->important();
 
                 return back();
             }
 
         } else {
 
-            dd('error');
-//            flash('很抱歉，您的邮箱和密码不匹配')->error()->important();
+            flash('很抱歉，您的邮箱和密码不匹配')->error()->important();
             return redirect()->back();
         }
 

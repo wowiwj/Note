@@ -26,10 +26,13 @@ require('./global');
 
 
 require('social-share.js/dist/js/social-share.min.js');
+require('particles.js')
 
 require('./libs/prism');
 
 require ('./libs/jquery.sticky');
+
+
 
 
 
