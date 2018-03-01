@@ -10,11 +10,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
-/public/css
-/public/js
-/public/fonts
-/public/mix-manifest.json
 npm-debug.log
 .DS_Store
 */.DS_Store
-package-lock.json
