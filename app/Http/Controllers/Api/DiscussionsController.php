@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\DiscussionResource;
 use App\Jobs\TranslateSlug;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Discussion;
 use App\Models\Draft;
 use Illuminate\Http\Request;
@@ -55,12 +56,18 @@ class DiscussionsController extends ApiController
             'comment_id' => 'required:exists:comments,id'
         ]);
 
+        $this->authorize('update',$discussion);
+        $user = Auth::user();
+
         $commentId = $request->get('comment_id');
         if (! $discussion->hasComment($commentId)){
             return $this->failed('请求非法');
         }
+        $comment = Comment::query()->find($commentId);
         $discussion->solved_id = $commentId;
         $discussion->save();
+
+        $comment->notifyBestAnswer();
 
         return new DiscussionResource($discussion);
 

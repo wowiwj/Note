@@ -2,12 +2,14 @@
 
 namespace App\Notifications;
 
+use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AnswerWasUpdateBest extends Notification
+class AnswerWasUpdateBest extends Notification implements NotificationMappable
 {
     use Queueable;
 
@@ -47,7 +49,20 @@ class AnswerWasUpdateBest extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'comment_id' => $this->comment->id,
+            'user_id' => $this->user->id
         ];
+    }
+
+    public static function map($data)
+    {
+        $discussion = Comment::query()->find($data['comment_id']);
+        $user = User::query()->find($data['user_id']);
+
+        return (object)[
+            'comment' => $discussion,
+            'user' => $user
+        ];
+
     }
 }

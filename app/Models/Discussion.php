@@ -9,6 +9,7 @@ use App\Base\Traits\RecordsActivity;
 use App\Base\Traits\SlugTransable;
 use App\Base\Traits\Subscribable;
 use App\Jobs\TranslateSlug;
+use App\Notifications\DiscussionWasFavorited;
 use App\Notifications\DiscussionWasSubscribed;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -134,6 +135,8 @@ class Discussion extends Model
     }
 
 
+
+
     public function hasUpdatesFor($user){
         if (empty($user)) return true;
 
@@ -148,8 +151,7 @@ class Discussion extends Model
         if (Auth::user()->id == $user->id){
             return;
         }
-
-//        $user->notify(new ArticleWasFavorited($this));
+        $user->notify(new DiscussionWasFavorited($this));
 
     }
 }

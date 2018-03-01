@@ -60,7 +60,7 @@ class DiscussionWasSubscribed extends Notification implements NotificationMappab
         $user = User::query()->find($data['user_id']);
 
         return (object)[
-            'article' => $discussion,
+            'discussion' => $discussion,
             'user' => $user
         ];
 
