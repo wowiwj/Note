@@ -52,7 +52,7 @@
 
                             </p>
                             <p class="control login">
-                                <a class="button is-primary" href="javascript:showLogin()">
+                                <a class="button is-primary" href="{{ route('login') }}">
                                     <span class="icon">
                                         <i class="fas fa-sign-in-alt"></i>
                                     </span>
