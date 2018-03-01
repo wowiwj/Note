@@ -63,11 +63,11 @@
             <footer class="modal-card-foot">
                 <div class="third-login">
                     第三方登录:
-                    <a :href="githubAuthUrl">
-                        <i class="fa fa-github"></i>
+                    <a @click="thirdLogin(githubAuthUrl)">
+                        <i class="fab fa-github"></i>
                     </a>
-                    <a :href="qqAuthUrl">
-                        <i class="fa fa-qq"></i>
+                    <a @click="thirdLogin(qqAuthUrl)">
+                        <i class="fab fa-qq"></i>
                     </a>
                 </div> 
             </footer>
@@ -122,6 +122,12 @@ export default {
             console.log('login');
 
 
+        },
+        thirdLogin(url){
+
+            window.open(url,"ThirdLogin",
+                "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+
         }
     },
     computed: {
@@ -136,7 +142,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
     
     .modal-background{
@@ -156,6 +162,21 @@ export default {
 
     .is-full-width{
         width:100%;
+    }
+
+    .third-login{
+
+        display: flex;
+        align-items: center;
+
+        .fab{
+            font-size: 22px;
+            padding-left: 15px;
+
+
+        }
+
+
     }
 
 </style>
