@@ -2,45 +2,62 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">重置密码</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
+    <div class="columns" style="padding-top: 100px">
+        <div class="column is-5 is-offset-4">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title" style="text-align: center">
+                        重置密码
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <div>
+                            <form role="form" method="POST"  action="{{ route('password.email') }}">
+                                {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">邮箱</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                @if (session('status'))
+                                    <b-notification>
+                                        {{ session('status') }}
+                                    </b-notification>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    发送重置链接到邮箱
-                                </button>
-                            </div>
+                                <div class="field">
+                                    <label class="label">邮箱</label>
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input name="email" class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="text" placeholder="请输入邮箱"
+                                               value="{{ old('email') }}">
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                            </span>
+                                        <span class="icon is-small is-right">
+                                            <i class="fas fa-check"></i>
+                                            </span>
+                                    </div>
+                                    @if($errors->has('email'))
+                                        <p class="help is-danger">{{ $errors->first('email') }}</p>
+                                    @endif
+                                </div>
+
+                                <div class="field is-grouped is-grouped-centered">
+                                    <p class="control is-full-width">
+                                        <button class="button is-success is-submit">
+                                            发送重置链接到邮箱
+                                        </button>
+                                    </p>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
+
 </div>
 @endsection
