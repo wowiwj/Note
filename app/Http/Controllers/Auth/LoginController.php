@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Api\Helpers\OAuth\OAuthManager;
+use App\Base\OAuth\OAuthManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
@@ -44,8 +44,7 @@ class LoginController extends Controller
     {
 
         if (!in_array($driver,['qq','github'])){
-
-            throw new NotFoundHttpException;
+            abort(404);
         }
 
         return Socialite::driver($driver)->redirect();
