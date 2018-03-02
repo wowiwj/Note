@@ -483,8 +483,8 @@
                         <div class="third-login" style="display: flex;align-items: center;">
                             <div style="margin: 20px">
                                 第三方登录:
-                                <a href="{{ route('oauth.redirect','qq') }}"><i class="fab fa-github"></i></a>
-                                <a href="{{ route('oauth.redirect','github') }}"><i class="fab fa-qq"></i></a></div>
+                                <a href="{{ route('oauth.redirect','github') }}"><i class="fab fa-github"></i></a>
+                                <a href="{{ route('oauth.redirect','qq') }}"><i class="fab fa-qq"></i></a></div>
                             </div>
 
                     </footer>

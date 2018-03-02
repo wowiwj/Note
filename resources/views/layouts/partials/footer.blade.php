@@ -8,7 +8,7 @@
     </p>
     <p>
       <a class="icon" href="https://github.com/wowiwj">
-        <i class="fa fa-github"></i>
+        <i class="fab fa-github"></i>
       </a>
     </p>
   </div>
