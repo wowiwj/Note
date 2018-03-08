@@ -48,7 +48,7 @@
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">
-                            评论
+                            讨论数
                         </p>
                     </header>
                     <div class="card-content">
@@ -67,7 +67,7 @@
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">
-                            讨论数
+                            回复量
                         </p>
                     </header>
                     <div class="card-content">
