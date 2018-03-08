@@ -11,7 +11,7 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        https://stackoverflow.com/questions/30492227/is-it-possible-to-prevent-laravel-running-model-events-when-the-database-is-bein
+        // https://stackoverflow.com/questions/30492227/is-it-possible-to-prevent-laravel-running-model-events-when-the-database-is-bein
         \App\Models\Article::flushEventListeners();
         factory(\App\Models\Article::class,60)->create();
     }
