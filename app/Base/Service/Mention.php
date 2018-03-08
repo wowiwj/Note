@@ -28,7 +28,7 @@ class Mention
         $usernames = [];
 
         foreach ($atlist_tmp[2] as $k=>$v) {
-            if ($atlist_tmp[1][$k] || strlen($v) >25) {
+            if ($atlist_tmp[1][$k] || strlen($v) > 25) {
                 continue;
             }
             $usernames[] = $v;

@@ -3,7 +3,7 @@
         通用
     </p>
     <ul class="menu-list">
-        <li><a href="{{ route('home.index') }}" class="{{ menuIsActive('home.index') }}">面板</a></li>
+        <li><a href="{{ route('home.index') }}" class="{{ menu_is_active('home.index') }}">面板</a></li>
         <li><a>访客</a></li>
     </ul>
 
@@ -21,7 +21,7 @@
         管理员
     </p>
     <ul class="menu-list">
-        <li><a href="{{ route('admin.users.index') }}" class="{{ menuIsActive('admin.users.index') }}">用户管理</a></li>
+        <li><a href="{{ route('admin.users.index') }}" class="{{ menu_is_active('admin.users.index') }}">用户管理</a></li>
         <li>
             <a class="">内容管理</a>
             <ul>

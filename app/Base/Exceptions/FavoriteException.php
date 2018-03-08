@@ -2,7 +2,7 @@
 
 namespace App\Base\Exceptions;
 
-use App\Api\Helpers\Api\ApiResponse;
+use App\Base\Api\ApiResponse;
 use Exception;
 use Throwable;
 

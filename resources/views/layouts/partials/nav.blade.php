@@ -27,7 +27,7 @@
                 </a>
 
                 @foreach($special_pages as $page)
-                    <a class="navbar-item {{ navIsActive('special_pages.show',$page->route) }}" href="/{{ $page->route }}">
+                    <a class="navbar-item {{ nav_is_active('special_pages.show',$page->route) }}" href="/{{ $page->route }}">
                         {{ $page->title }}
                     </a>
                 @endforeach

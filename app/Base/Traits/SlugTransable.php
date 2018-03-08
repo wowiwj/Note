@@ -8,8 +8,6 @@
 
 namespace App\Base\Traits;
 
-
-use App\Base\Handler\SlugTranslateHandler;
 use App\Jobs\TranslateSlug;
 
 trait SlugTransable

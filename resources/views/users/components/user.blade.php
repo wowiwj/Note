@@ -51,9 +51,9 @@
         <section class="white-bg">
             <div class="tabs">
                 <ul>
-                    <li class="{{ menuIsActive('users.show') }}"><a href="{{ route('users.show',$user) }}">动态</a></li>
+                    <li class="{{ menu_is_active('users.show') }}"><a href="{{ route('users.show',$user) }}">动态</a></li>
                     @if($user->id == Auth::id())
-                        <li class="{{ menuIsActive('drafts.index') }}"><a href="{{ route('drafts.index') }}">草稿</a></li>
+                        <li class="{{ menu_is_active('drafts.index') }}"><a href="{{ route('drafts.index') }}">草稿</a></li>
                     @endif
                 </ul>
             </div>
