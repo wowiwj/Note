@@ -1,6 +1,6 @@
 <nav class="navbar is-transparent" style="border-bottom: 1px solid #ccc">
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="/">
             Notes 后台管理
         </a>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
