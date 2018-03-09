@@ -19,9 +19,13 @@ class DatabaseSeeder extends Seeder
         $this->call(DiscussionsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
 
-        factory(\App\Models\Reply::class,60)->create();
+//        factory(\App\Models\Reply::class,60)->create();
 
         $this->call(MakeDiscussionSolvedSeeder::class);
+
+        $this->call(SkillsTableSeeder::class);
+        $this->call(SeriesTableSeeder::class);
+        $this->call(LessonsTableSeeder::class);
 
 
 
