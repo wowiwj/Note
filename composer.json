@@ -15,6 +15,7 @@
         "laravel/framework": "5.6.*",
         "laravel/horizon": "^1.2",
         "laravel/passport": "^5.0",
+        "laravel/scout": "^4.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "league/html-to-markdown": "^4.4",
