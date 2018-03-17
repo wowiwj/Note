@@ -9,10 +9,26 @@
     </header>
     <div class="card-content">
         <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-            <br>
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <nav class="panel">
+                <a class="panel-block is-active">
+                    <span class="panel-icon">
+                      <i class="fas fa-book"></i>
+                    </span>
+                    bulma
+                </a>
+                <a class="panel-block">
+                    <span class="panel-icon">
+                      <i class="fas fa-book"></i>
+                    </span>
+                    marksheet
+                </a>
+
+                <div class="panel-block">
+                    <button class="button is-link is-outlined is-fullwidth">
+                        加载更多
+                    </button>
+                </div>
+            </nav>
         </div>
     </div>
 </div>
