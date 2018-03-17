@@ -57,7 +57,7 @@ Vue.component('LoginView',require('./components/LoginView.vue'))
 Vue.component('MarkdownEditor',require('./components/MarkdownEditor.vue'))
 Vue.component('ArticleDraftEditor',require('./components/ArticleDraftEdit.vue'))
 Vue.component('DiscussionDraftEditor',require('./components/DiscussionDraftEdit.vue'))
-
+Vue.component('ArticleArchive',require('./components/ArticleArchive.vue'));
 
 
 window.marked = require('marked');

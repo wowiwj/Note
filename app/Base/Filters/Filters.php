@@ -33,5 +33,9 @@ abstract class Filters{
         return $this->request->only($this->filters);
     }
 
+    public function setFilters($fitter,$value){
+        $this->filters[$fitter] = $value;
+    }
+
 
 }

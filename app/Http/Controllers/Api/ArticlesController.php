@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\ArchiveResource;
 use App\Jobs\TranslateSlug;
 use App\Models\Article;
 use App\Models\Draft;
@@ -9,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ArticleResource;
+use Illuminate\Support\Facades\Input;
 
 class ArticlesController extends ApiController
 {
@@ -23,6 +25,24 @@ class ArticlesController extends ApiController
 
         $articles = Article::orderBy('created_at', 'desc')->paginate(20);
         return ArticleResource::collection($articles);
+    }
+
+
+    // get article archive date time and publish count
+    public function archiveDates(){
+
+        $page = Input::get('page') ?: 1;
+        $limit = Input::get('limit') ?: 5;
+
+        $archive = Article::query()
+            ->selectRaw('year(created_at)  year')
+            ->selectRaw('month(created_at) month')
+            ->selectRaw('count(*) published')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) desc')
+            ->get();
+
+        return ArchiveResource::collection($archive);
     }
 
 

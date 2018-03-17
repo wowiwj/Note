@@ -11,7 +11,8 @@ class ArticleFilters extends Filters
         'by',
         'popular',
         'uncommented',
-        'tag'
+        'tag',
+        'archive'
     ];
 
     protected function by($username)
@@ -41,6 +42,11 @@ class ArticleFilters extends Filters
         return $this->builder->whereHas('tags',function ($query) use ($name){
             $query->where('slug',$name)->orWhere('name',$name);
         });
+    }
+
+    public function archive($date){
+
+        dd($date);
     }
 
 }
