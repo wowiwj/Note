@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
         specialShadow.style.opacity = scrollFactor;
         specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
-        var navOpacity = 1 - scrollFactor * 0.05;
+        var navOpacity = 1 - scrollFactor * 0.08;
         navbarEl.style.backgroundColor = 'rgba(255,255,255,' + navOpacity + ')';
     }
 
@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
+
 
 
 
