@@ -1,5 +1,6 @@
-<nav class="navbar">
+<nav id="navbar" class="navbar is-fixed-top">
 
+    <div id="specialShadow" class="bd-special-shadow"></div>
     <div class="container">
 
         <div class="navbar-brand">

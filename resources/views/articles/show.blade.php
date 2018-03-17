@@ -167,8 +167,6 @@
                 $("#sticker").unstick();
             }
 
-            console.log(top);
-
         });
 
     </script>
