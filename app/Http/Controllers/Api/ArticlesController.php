@@ -17,7 +17,7 @@ class ArticlesController extends ApiController
 
     public function __construct()
     {
-        $this->middleware('auth:api',['except' => ['show','index']]);
+        $this->middleware('auth:api',['except' => ['show','index','archiveDates']]);
 
     }
 
@@ -30,9 +30,6 @@ class ArticlesController extends ApiController
 
     // get article archive date time and publish count
     public function archiveDates(){
-
-        $page = Input::get('page') ?: 1;
-        $limit = Input::get('limit') ?: 5;
 
         $archive = Article::query()
             ->selectRaw('year(created_at)  year')
