@@ -19,7 +19,7 @@ class ArticlesController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index','show','archive']);
     }
 
     public function index(Category $category, ArticleFilters $fitters)
