@@ -19,7 +19,7 @@ class ArticlesController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('auth')->except(['index','show','archive']);
     }
 
     public function index(Category $category, ArticleFilters $fitters)
@@ -35,11 +35,22 @@ class ArticlesController extends Controller
         return view('articles.index',compact('articles'));
     }
 
+    public function archive($year,$month){
+
+        $startDate = Carbon::create($year,$month)->startOfMonth();
+        $endDate = $startDate->copy()->addMonth();
+        $articles = Article::query()
+            ->where('created_at','>=',$startDate)
+            ->where('created_at','<',$endDate)
+            ->orderBy('created_at','desc')
+            ->paginate(10);
+
+        return view('articles.index',compact('articles'));
+    }
+
     protected function getArticles(Category $category, ArticleFilters $fitters)
     {
         $article = Article::withCount('comments')->latest()->filter($fitters);
-
-//        return $article;
 
         if ($category->exists){
             $article->where('category_id',$category->id);

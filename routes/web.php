@@ -44,11 +44,14 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('notifications','NotificationsController@index')->name('notifications.index');
     Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'UsersController@verify']);
 
+
     Route::get('articles', 'ArticlesController@index');
     Route::get('articles/create', 'ArticlesController@create')->name('articles.create');
     Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
     Route::post('articles', 'ArticlesController@store')->name('articles.store');
     Route::delete('articles/{article}','ArticlesController@destroy')->name('articles.destroy');
+
+    Route::get('articles/archive/{year}/{month}','ArticlesController@archive');
 
     Route::get('discussions','DiscussionsController@index')->name('discussions.index');
     Route::get('discussions/create', 'DiscussionsController@create')->name('discussions.create');

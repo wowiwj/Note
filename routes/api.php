@@ -23,6 +23,8 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
 
     Route::post('auth/login','AuthenticateController@login');
 
+    Route::get('articles/archive_dates','ArticlesController@archiveDates');
+
     Route::get('articles','ArticlesController@index');
     Route::post('articles','ArticlesController@store');
     Route::get('articles/{article}','ArticlesController@show');

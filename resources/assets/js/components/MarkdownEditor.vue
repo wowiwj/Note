@@ -283,7 +283,7 @@
             bottom: 0;
             left: 0;
             opacity: 1;
-            z-index: 9;
+            z-index: 50;
             display: flex;
 
         }
@@ -306,7 +306,7 @@
             bottom: 0;
             left: 0;
             opacity: 1;
-            z-index: 9;
+            z-index: 50;
             display: flex;
 
         }
