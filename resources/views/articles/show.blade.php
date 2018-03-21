@@ -162,8 +162,6 @@
 
             if (top > 300){
 
-                console.log(window.NAV_TRANSLATE_VALUE);
-
                 $("#sticker").sticky({topSpacing:20 + (window.NAVBAR_HRIGHT + window.NAV_TRANSLATE_VALUE)});
             }else{
 
