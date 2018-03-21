@@ -4,6 +4,18 @@
 
 @section('content')
 
+    {{--<nav class="navbar is-fixed-top">--}}
+        {{--<div id="specialShadow" class="bd-special-shadow" style="opacity: 1; transform: scaleY(1);"></div>--}}
+        {{--<div class="container">--}}
+            {{--<div class="columns">--}}
+                {{--<div style="width: 100%" class="column is-9">--}}
+
+                    {{--<div style="line-height: 52px;width: 100%;font-size: 1.6rem;font-weight: 500">{{ $article->title }}</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</nav>--}}
+
     <article-view inline-template :initial-comments-count="0" :article-id="{{ $article->id }}">
         
         <div class="columns article-page">
