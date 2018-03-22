@@ -33,6 +33,7 @@
 
         @include('layouts.partials.nav')
 
+        @yield('banner');
 
         <div class="container">
 
