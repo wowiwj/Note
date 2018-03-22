@@ -27,8 +27,7 @@
         <div class="columns is-multiline">
 
             @foreach($series as $item)
-                <div class="column is-3">
-
+                <a class="column is-3" href="#">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -43,15 +42,12 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
+                </a>
             @endforeach
 
-            <div class="center-block">
-                {{ $series->links('vendor.pagination.default') }}
-            </div>
-
-
+        </div>
+        <div class="center-block">
+            {{ $series->links('vendor.pagination.default') }}
         </div>
     </div>
 
