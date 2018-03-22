@@ -161,7 +161,8 @@
             var top = $(window).scrollTop();
 
             if (top > 300){
-                $("#sticker").sticky({topSpacing:20});
+
+                $("#sticker").sticky({topSpacing:20 + (window.NAVBAR_HRIGHT + window.NAV_TRANSLATE_VALUE)});
             }else{
 
                 $("#sticker").unstick();

@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var scrollFactor = 0;
     var whereYouStoppedScrolling = 0;
 
+    window.NAVBAR_HRIGHT = NAVBAR_HEIGHT;
+
 
 
     function upOrDown(lastY, currentY) {
@@ -86,6 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
             navbarEl.setAttribute('style', navbarStyle);
         }
 
+        // 记录导航条的滚动值
+        window.NAV_TRANSLATE_VALUE = translateValue;
+
         if (currentY > THRESHOLD * 2) {
             scrollFactor = 1;
         } else if (currentY > THRESHOLD) {
@@ -93,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             scrollFactor = 0;
         }
+
 
         var translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
         specialShadow.style.opacity = scrollFactor;
