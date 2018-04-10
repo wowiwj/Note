@@ -14,4 +14,13 @@ class SeriesController extends Controller
 
         return view('series.index',compact('series'));
     }
+
+
+    // 显示系列课程的列表
+    public function show(Series $series){
+
+        $series->load('lessons');
+
+        return view('series.show',compact('series'));
+    }
 }

@@ -27,7 +27,7 @@
         <div class="columns is-multiline">
 
             @foreach($series as $item)
-                <a class="column is-3" href="#">
+                <a class="column is-3" href="{{ $item->path() }}">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -59,14 +59,9 @@
     <style>
 
         #app > .container{
-
             padding-top: 0;
-
         }
-
-
     </style>
-
 
 @endsection
 

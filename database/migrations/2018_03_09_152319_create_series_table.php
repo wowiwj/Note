@@ -18,6 +18,7 @@ class CreateSeriesTable extends Migration
             $table->unsignedInteger('skill_id');
             $table->unsignedInteger('user_id');
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->string('banner');
             $table->text('body');
             $table->timestamps();
