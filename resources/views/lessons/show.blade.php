@@ -5,8 +5,8 @@
 
 @section('banner')
 
-    <div style="background-color: #1b1e21">
-        <div class="container" style="padding-top: 62px;background-color: #111">
+    <div style="background-color: #1b1e21;margin-top: 62px">
+        <div class="container" style="background-color: #111">
             <div class="columns">
                 <div class="column is-10 is-offset-1" style="padding: 0">
                     <video-player></video-player>
