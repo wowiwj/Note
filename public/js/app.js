@@ -13848,7 +13848,7 @@ function forEachObject(object, iterator, context) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
-var minDoc = __webpack_require__(3);
+var minDoc = __webpack_require__(1);
 
 var doccy;
 
@@ -76726,7 +76726,7 @@ module.exports = __webpack_require__("./resources/assets/sass/home.scss");
 
 /***/ }),
 
-/***/ 3:
+/***/ 1:
 /***/ (function(module, exports) {
 
 /* (ignored) */

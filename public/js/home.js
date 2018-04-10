@@ -29689,7 +29689,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./resources/assets/js/home.js");
@@ -29697,4 +29697,4 @@ module.exports = __webpack_require__("./resources/assets/js/home.js");
 
 /***/ })
 
-},[1]);
+},[2]);

@@ -52,6 +52,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('series/{series}/lessons/{lesson}/{slug?}','LessonsController@show')->name('lessons.show');
 
 
+
     Route::get('articles', 'ArticlesController@index');
     Route::get('articles/create', 'ArticlesController@create')->name('articles.create');
     Route::get('articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
