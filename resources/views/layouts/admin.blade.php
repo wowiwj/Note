@@ -31,8 +31,6 @@
 <div id="app">
     @include('layouts.partials.admin_nav')
 
-
-
     <div class="columns">
 
         <div class="column is-2 slide-menu">

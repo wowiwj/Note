@@ -14,7 +14,7 @@
                             {{ $series->title }}
                         </h1>
                         <h2 class="subtitle">
-                            {{ $series->body }}
+                            {{ $series->bio }}
                         </h2>
                     </div>
                     <div class="column is-4 has-text-centered is-hidden-mobile is-hidden-tablet-only">

@@ -6,7 +6,7 @@
 
 @section('banner')
 
-    <section class="hero is-medium is-primary is-bold">
+    <section class="hero is-medium is-primary is-bold" style="margin-top: 60px">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">

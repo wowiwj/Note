@@ -8,6 +8,7 @@ $factory->define(\App\Models\Lesson::class, function (Faker $faker) {
     return [
         'series_id' => $series_id,
         'title' => $faker->sentence,
+        'bio' => $faker->sentence,
         'body' => $faker->text
     ];
 });

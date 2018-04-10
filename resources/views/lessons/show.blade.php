@@ -19,33 +19,82 @@
 
 @section('content')
 
-    <div class="series">
-        <div class="columns">
+    <div class="series columns is-multiline" style="margin-top: 20px">
+        <div class="column is-12">
             <div class="lessons" style="width: 100%">
                 <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title article-title">
+                            {{ $lesson->title }}
+                        </p>
+                    </header>
                     <div class="card-content">
-                        {{--@foreach($series->lessons as $lesson)--}}
-                            {{--<div class="media" style="display: flex;flex-direction: row;align-items: center;justify-content: flex-start">--}}
-                                {{--<div class="media-left" style="flex-direction: column">--}}
-                                    {{--<div class="circle">--}}
-                                        {{--<span class="position">{{ $loop->iteration }}</span>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="media-content" style="padding: 10px;height: auto;align-items: flex-start;flex-direction: column">--}}
-                                    {{--<p class="title is-5">--}}
-                                        {{--<a href="{{ $lesson->path() }}">{{ $lesson->title }}</a>--}}
-                                    {{--</p>--}}
-                                    {{--<p class="subtitle is-6">{{ $lesson->body }}</p>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--@endforeach--}}
+                        <div class="content">
+                            <div class="article">
+                                <parse markdown="{{ $lesson->body }}"></parse>
+                            </div>
+
+                            <div class="columns">
+
+                                <div class="column is-8">
+                                    <div class="social-share-container">
+                                        <div class="social-share" data-disabled="google" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"></div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-4" style="line-height: 30px">
+
+                                    @if(Auth::check() && Auth::user()->is_admin)
+                                        <div class="is-pulled-right m-l-20">
+                                            <b-tooltip label="编辑">
+                                                <a class="popover-with-html" href="{{ route('special_pages.edit',$lesson) }}">
+                                                    <i class="fa fa-edit"></i> <span></span>
+                                                </a>
+                                            </b-tooltip>
+                                        </div>
+
+                                        {{--<form action="{{ route('special_pages.destroy',$page) }}" method="post">--}}
+                                        {{--{{ csrf_field() }}--}}
+                                        {{--{{ method_field("DELETE") }}--}}
+                                        {{--<button class="delete-article">--}}
+
+                                        {{--<b-tooltip label="删除">--}}
+                                        {{--<a class="popover-with-html">--}}
+                                        {{--<i class="fa fa-trash"></i> <span></span>--}}
+                                        {{--</a>--}}
+                                        {{--</b-tooltip>--}}
+                                        {{--</button>--}}
+                                        {{--</form>--}}
+
+                                        {{--<div class="is-pulled-right m-l-20">--}}
+                                        {{--<b-tooltip label="删除">--}}
+                                        {{--<a class="popover-with-html" href="{{ route('articles.edit',$article) }}">--}}
+                                        {{--<i class="fa fa-trash"></i> <span></span>--}}
+                                        {{--</a>--}}
+                                        {{--</b-tooltip>--}}
+                                        {{--</div>--}}
+                                    @endif
+
+                                    <div class="is-pulled-right m-l-20">
+                                        <b-tooltip label="订阅">
+                                            <a class="popover-with-html">
+                                                <i class="fa fa-eye"></i> <span></span>
+                                            </a>
+                                        </b-tooltip>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        <div class="column is-12">
+            <comments></comments>
         </div>
     </div>
-
 
 @endsection
 

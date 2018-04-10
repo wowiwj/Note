@@ -18,6 +18,7 @@ class CreateLessonsTable extends Migration
             $table->unsignedInteger('series_id');
             $table->string('title');
             $table->string('slug')->nullable();
+            $table->string('bio');
             $table->string('video_url')->nullable();
             $table->text('body')->nullable();
             $table->timestamps();
