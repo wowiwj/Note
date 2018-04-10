@@ -49,7 +49,7 @@ Route::group(['namespace' => 'Web'], function () {
     // 课程系列
     Route::get('series','SeriesController@index')->name('series.index');
     Route::get('series/{series}/{slug?}','SeriesController@show')->name('series.show');
-
+    Route::get('series/{series}/lessons/{lesson}/{slug?}','LessonsController@show')->name('lessons.show');
 
 
     Route::get('articles', 'ArticlesController@index');

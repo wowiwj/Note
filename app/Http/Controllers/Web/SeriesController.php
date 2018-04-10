@@ -10,7 +10,7 @@ class SeriesController extends Controller
 {
     public function index(){
 
-        $series = Series::query()->latest()->paginate('20');
+        $series = Series::query()->whereHas('lessons')->latest()->paginate('20');
 
         return view('series.index',compact('series'));
     }

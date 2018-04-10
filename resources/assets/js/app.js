@@ -58,6 +58,7 @@ Vue.component('MarkdownEditor',require('./components/MarkdownEditor.vue'))
 Vue.component('ArticleDraftEditor',require('./components/ArticleDraftEdit.vue'))
 Vue.component('DiscussionDraftEditor',require('./components/DiscussionDraftEdit.vue'))
 Vue.component('ArticleArchive',require('./components/ArticleArchive.vue'));
+Vue.component('VideoPlayer',require('./components/VideoPlay.vue'));
 
 
 window.marked = require('marked');

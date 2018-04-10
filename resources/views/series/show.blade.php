@@ -44,7 +44,7 @@
                             </div>
                             <div class="media-content" style="padding: 10px;height: auto;align-items: flex-start;flex-direction: column">
                                 <p class="title is-5">
-                                    <a href="#">{{ $lesson->title }}</a>
+                                    <a href="{{ $lesson->path() }}">{{ $lesson->title }}</a>
                                 </p>
                                 <p class="subtitle is-6">{{ $lesson->body }}</p>
                             </div>
@@ -54,29 +54,7 @@
                 </div>
             </div>
 
-            @foreach($series->lessons as $lesson)
-                {{--<a class="column is-3" href="{{ $item->path() }}">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-image">--}}
-                            {{--<figure class="image is-4by3">--}}
-                                {{--<img src="{{ $item->banner }}" alt="Placeholder image">--}}
-                            {{--</figure>--}}
-                        {{--</div>--}}
-                        {{--<div class="card-content">--}}
-                            {{--<div class="content">--}}
-                                {{--<div class="is-title" style="font-weight: 600">--}}
-                                    {{--{{ $item->title }}--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</a>--}}
-            @endforeach
-
         </div>
-        {{--<div class="center-block">--}}
-            {{--{{ $series->links('vendor.pagination.default') }}--}}
-        {{--</div>--}}
     </div>
 
 
