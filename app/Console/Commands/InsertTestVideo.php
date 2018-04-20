@@ -63,6 +63,7 @@ class InsertTestVideo extends Command
     }
 
     protected function getSeries(){
+
         $request = $this->client->get($this->currentUrl);
 
         $result = $request->getBody();
@@ -80,8 +81,7 @@ class InsertTestVideo extends Command
                 'banner' => $item['picUrl'],
                 'body' => $item["description"]
             ];
-            $series ? $series->update($fields) : $series->create($fields);
-
+            $series ? $series->update($fields) : Series::query()->create($fields);
             $this->currentSeries ++;
 
         }
