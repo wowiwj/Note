@@ -13,7 +13,7 @@ class InsertTestVideo extends Command
     protected $client;
 
     protected $currentUrl;
-    protected $maxCount = 60;
+    protected $maxCount = 100;
     protected $currentCount = 0;
 
     protected $currentSeries = 1;
