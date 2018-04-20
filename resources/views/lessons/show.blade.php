@@ -12,16 +12,18 @@
         </div>
 
     </div>
-    <div style="background-color: #1b1e21;">
+    @if($lesson->video_url)
+        <div style="background-color: #1b1e21;">
 
-        <div class="container" style="background-color: #1b1e21">
-            <div class="columns">
-                <div class="column is-10 is-offset-1" style="padding: 0">
-                    <video-player></video-player>
+            <div class="container" style="background-color: #1b1e21">
+                <div class="columns">
+                    <div class="column is-10 is-offset-1" style="padding: 0">
+                        <video-player video-url="{{ $lesson->video_url }}"></video-player>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
 @endsection
 

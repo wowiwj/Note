@@ -15,7 +15,14 @@
                 <h2 class="subtitle">
                     发现好课程
                 </h2>
+
+                @if(Auth::user()->is_admin)
+                    <div style="position: absolute;right: 10px;bottom: 10px">
+                        <a href="{{ route('series.create') }}" class="button">添加课程</a>
+                    </div>
+                @endif
             </div>
+
         </div>
     </section>
 

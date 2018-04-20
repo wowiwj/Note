@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-show="videoUrl">
         <video
             id="my-player"
             class="video-js vjs-big-play-centered vjs-fluid vjs-paused vjs-controls-enabled vjs-workinghover vjs-v6 vjs-user-inactive"
@@ -8,9 +8,8 @@
             poster="//vjs.zencdn.net/v/oceans.png"
             data-setup='{}'
         >
-            <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
-            <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
-            <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source>
+            <source :src="videoUrl" type="video/mp4"></source>
+
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
@@ -27,6 +26,13 @@
     import videojs from 'video.js';
     import 'video.js/dist/video-js.css';
     export default {
+        props:['videoUrl'],
+        data(){
+            return {
+
+
+            }
+        }
     }
 
 </script>
