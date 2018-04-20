@@ -69,6 +69,11 @@ class InsertTestVideo extends Command
         $result = $request->getBody();
         $dataList = json_decode($result,true)['data']['recommendList'];
 
+        if (!isset(json_decode($result,true)['data'])){
+            sleep(10);
+            $this->getSeries();
+        }
+
         foreach ($dataList as $item){
 
             $series = Series::query()->find($this->currentSeries);
@@ -111,11 +116,21 @@ class InsertTestVideo extends Command
             $this->currentUrl = $this->getUrl($item->slug);
             $request = $this->client->get($this->currentUrl);
             $result = $request->getBody();
+            if (!isset(json_decode($result,true)['data'])){
+                sleep(10);
+                continue;
+            }
             $datas = json_decode($result,true)['data']['videoList'];
+
+            if (count($datas) <= 0){
+                continue;
+            }
+
             $data = $datas[0];
+
             $videoUrl = $data['mp4ShdUrl'];
             $item->lessons()->update(['video_url' => $videoUrl]);
-            sleep(1);
+            sleep(1.5);
         }
 
     }
