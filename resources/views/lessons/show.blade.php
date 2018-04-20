@@ -5,7 +5,15 @@
 
 @section('banner')
 
-    <div style="background-color: #1b1e21;margin-top: 62px">
+
+    <div style="margin-top: 62px;margin-bottom: 12px;background-color: #00d1b2">
+        <div class="container" style="padding: 10px;font-size: 1rem;font-weight: bold">
+            <p class="text-center" style="color: white">{{ $lesson->title }}</p>
+        </div>
+
+    </div>
+    <div style="background-color: #1b1e21;">
+
         <div class="container" style="background-color: #1b1e21">
             <div class="columns">
                 <div class="column is-10 is-offset-1" style="padding: 0">
@@ -23,11 +31,6 @@
         <div class="column is-12">
             <div class="lessons" style="width: 100%">
                 <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title article-title">
-                            {{ $lesson->title }}
-                        </p>
-                    </header>
                     <div class="card-content">
                         <div class="content">
                             <div class="article">
@@ -105,6 +108,7 @@
         #app > .container{
             padding-top: 0;
         }
+
     </style>
 
 @endsection
