@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
@@ -5,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="keywords" content="{{ config('note.meta.keywords') }}">
+    <title>@yield('title',config('app.name','Blog'))@hasSection('title') - {{config('app.name','Blog')}}@endif</title>
     <meta name="description" content="{{ config('note.meta.description') }}">
+    <meta name="keywords" content="{{ config('note.meta.keywords') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title',config('app.name','Blog'))@hasSection('title') - {{config('app.name','Blog')}}@endif</title>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
