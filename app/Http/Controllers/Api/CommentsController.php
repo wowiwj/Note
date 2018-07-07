@@ -50,6 +50,7 @@ class CommentsController extends ApiController
         $mention = new Mention();
         $parsed_body = $mention->parse($request->body);
 
+
         $comment = $discussion->comments()->create([
             'content' => $parsed_body,
             'user_id' => Auth::user()->id
@@ -73,7 +74,7 @@ class CommentsController extends ApiController
         ]);
 
         $mention = new Mention();
-        $parsed_body = $mention->parse(clean($request->body));
+        $parsed_body = $mention->parse($request->body);
 
         $page = $page = SpecialPage::where('route',$name)->firstOrFail();
 
@@ -92,7 +93,7 @@ class CommentsController extends ApiController
             'body' => 'required'
         ]);
 
-        $parsed_body = app(Mention::class)->parse(clean($request->body));
+        $parsed_body = app(Mention::class)->parse($request->body);
 
         $comment = $article->comments()->create([
             'content' => $parsed_body,
