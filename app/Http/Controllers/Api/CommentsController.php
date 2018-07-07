@@ -48,7 +48,7 @@ class CommentsController extends ApiController
         ]);
 
         $mention = new Mention();
-        $parsed_body = $mention->parse(clean($request->body));
+        $parsed_body = $mention->parse($request->body);
 
         $comment = $discussion->comments()->create([
             'content' => $parsed_body,
