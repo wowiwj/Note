@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-    use SlugTransable;
-
-
     protected $guarded = [];
 
 //    protected $appends = ['articlesCount'];
