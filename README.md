@@ -4,7 +4,6 @@
 
 采用 laravel 5.6 + Vue2.4 + Bulma 开发
 
-- demo地址: http://119.29.81.135
 - 线上地址: https://www.timenotes.me
 
 欢迎大佬们赏玩
